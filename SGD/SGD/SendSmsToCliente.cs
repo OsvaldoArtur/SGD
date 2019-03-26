@@ -10,12 +10,13 @@ namespace SGD
     public class SendSmsToCliente
     {
         sgdbEntities si = new sgdbEntities();
-        Sms_tb Message;
+       // Sms_tb Message;
         // C#
         AutoResetEvent receiveNow;
         public void salvarMensagem(string numeoro, string messagem, string estado) {
             try
             {
+
                 string a = Guid.NewGuid().ToString();
                 Sms_tb sm = new Sms_tb();
                 sm.DataEnvio = DateTime.Now;
