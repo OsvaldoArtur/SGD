@@ -32,5 +32,6 @@ namespace SGD.Models
         public string GuidRecebimentoDocumento { get; set; }
         public string GuidEnviarDocumentos { get; set; }
         public string GuidCategoria { get; set; }
+        public string CodExpediente { get; set; }
     }
 }

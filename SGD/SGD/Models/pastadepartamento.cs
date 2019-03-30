@@ -16,8 +16,8 @@ namespace SGD.Models
     {
         public pastadepartamento()
         {
-            this.RecebimentoDocumentos = new HashSet<RecebimentoDocumentos>();
             this.Cartas_tb = new HashSet<Cartas_tb>();
+            this.RecebimentoDocumentos = new HashSet<RecebimentoDocumentos>();
         }
     
         public int idpastadepartamento { get; set; }
@@ -25,8 +25,8 @@ namespace SGD.Models
         public int idDepartamento { get; set; }
         public string GuidMap { get; set; }
     
+        public virtual ICollection<Cartas_tb> Cartas_tb { get; set; }
         public virtual departamento departamento { get; set; }
         public virtual ICollection<RecebimentoDocumentos> RecebimentoDocumentos { get; set; }
-        public virtual ICollection<Cartas_tb> Cartas_tb { get; set; }
     }
 }

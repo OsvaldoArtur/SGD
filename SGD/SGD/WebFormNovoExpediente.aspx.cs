@@ -37,16 +37,18 @@ namespace SGD
         }
        public int idu;
         string prefixo = "+258";
-        void enviamensagem() {
+        void enviamensagem(string mensagem) {
             try
             {
                
-                enivo.EnviaSms(prefixo + txtContacto.Text, "Entrada do documento nº: " + idEnvio);
+             //   enivo.EnviaSms(prefixo + txtContacto.Text, "Entrada do documento nº: " + mensagem);
+                enivo.EnviaSms(prefixo + txtContacto.Text, "Bem vindos ao SGE -Sistema de Gestao de Expediente. Entrada do documento nº: " + mensagem + ". Em breve sera enviado uma mensagem da resposta. Obrigado");
+
             }
             catch (Exception)
             {
-                enivo.salvarMensagem(prefixo + txtContacto.Text, "Entrada do documento nº: " + idEnvio, "false");
-            
+                //   enivo.salvarMensagem(prefixo + txtContacto.Text, "Bem vindos ao SGE -Sistema de Gestao de Expediente.  Entrada do documento nº: " + mensagem + ". Em breve sera enviado uma mensagem da resposta. Obrigado", "false");
+                return;
             }
         }
 
@@ -57,6 +59,8 @@ namespace SGD
 
             try
             {
+                string a = Guid.NewGuid().ToString();
+
                 EnviarDocumentos ev = new EnviarDocumentos
                 {
                     Contacto = txtContacto.Text,
@@ -68,13 +72,14 @@ namespace SGD
                     NivelUrgencia = txtUrgencia.Text,
                     Estado = "Enviado",
                     Titulo = txtTitulo.Text,
+                    GuidMap = a
 
                 };
                 si.EnviarDocumentos.Add(ev);
                 si.SaveChanges();
                 idEnvio = ev.idEnvio;
                 Recebimento();
-                enviamensagem();
+              //  enviamensagem();
 
                 foreach (HttpPostedFile upFile in FileUpload2.PostedFiles)
                 {
@@ -107,6 +112,11 @@ namespace SGD
         {
             try
             {
+                string a = Guid.NewGuid().ToString();
+
+                int contar = si.EnviarDocumentos.Count();
+                var pedidonumero = "UCM710" + "0" + contar.ToString();
+
                 EnviarDocumentos ev = new EnviarDocumentos
                 {
                     Contacto = txtContacto.Text,
@@ -118,7 +128,8 @@ namespace SGD
                     NivelUrgencia = txtUrgencia.Text,
                     Estado = "Enviado",
                     Titulo = txtTitulo.Text,
-
+                    GuidMap = a,
+                    CodExpediente = pedidonumero
                 };
                 si.EnviarDocumentos.Add(ev);
                 si.SaveChanges();
@@ -141,10 +152,14 @@ namespace SGD
                 lblSucesso.Visible = true;
                 lblSucesso.Text = string.Format("{0} Ficheiros Salvos com Sucesso.", FileUpload2.PostedFiles.Count);
                 //Response.Write("<Script>alert('Enviado com sucesso....');</Script>");
-                Response.Write("Sucessos" + DateTime.Now.Year +""+ idEnvio+"" +txtTitulo.Text );
+            //    Response.Write("Sucessos" + DateTime.Now.Year +""+ idEnvio+"" +txtTitulo.Text );
                 //HttpContext.Current.Response.Redirect("~/WebFormInicio.aspx", false);
                 //HttpContext.Current.ApplicationInstance.CompleteRequest();
-                enviamensagem();
+
+                enviamensagem( ev.CodExpediente);
+                
+                HttpContext.Current.Response.Redirect("~/WebFormDetalhesExpedienteEnviado.aspx?index=" + ev.GuidMap + "&CodExp=" + ev.CodExpediente, false);
+                HttpContext.Current.ApplicationInstance.CompleteRequest();
             }
             catch (Exception)
             {
@@ -193,12 +208,15 @@ namespace SGD
         {
             try
             {
+                string a = Guid.NewGuid().ToString();
+
                 documentosenviados dc = new documentosenviados();
                 dc.Ficheiro = ReadFileBite(obj);
                 dc.NomeDocumento = obj.FileName;
                 string exts = Path.GetExtension(obj.FileName);
                 dc.idEnvio = idEnvio;
                 dc.Extensao = exts;
+                dc.GuidMap = a;
                 dc.Contentype = obj.ContentType;
                 si.documentosenviados.Add(dc);
                 si.SaveChanges();

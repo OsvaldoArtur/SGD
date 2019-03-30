@@ -28,10 +28,10 @@ namespace SGD
                 si.SaveChanges();
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                throw  ex;
             }
         }
         public bool EnviaSms(string numero, string mensagem)
@@ -57,21 +57,25 @@ namespace SGD
                     recievedData = ExecCommand(serialPort, command, 300, "Falha no número");
                     command = mensagem + char.ConvertFromUtf32(26) + "\r";
                     recievedData = ExecCommand(serialPort, command, 3000, "Falha ao enviar mensagem");
+                    salvarMensagem(numero, mensagem, "true");
+
                     serialPort.Close();
+
                     if (recievedData.EndsWith("\r\nOK\r\n"))
                     {
                         mensagemEnviada = true;
-                        salvarMensagem(numero, mensagem, "True");
-                    }
+                     }
                     else if (recievedData.Contains("ERROR"))
                     {
                         mensagemEnviada = false;
-                        salvarMensagem(numero, mensagem, "false");
-                    }
+                       }
                 }
                 catch (Exception ex)
                 {
+                    salvarMensagem(numero, mensagem, "false");
                     throw ex;
+                
+
                 }
                 return mensagemEnviada;
             }

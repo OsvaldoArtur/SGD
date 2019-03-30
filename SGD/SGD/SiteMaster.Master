@@ -137,6 +137,7 @@
                             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                         </asp:ContentPlaceHolder>
                         </div>
+                        <br />
                         <div class="footer" style="background-color:cornflowerblue">
                                                                   <div class="container text-white">
 <p class="text-center">
@@ -202,5 +203,7 @@ Tel (Central): (+258) 23 324 809 - Fax: (+258) 23 324 858 - Email:
     <script src="assets/js/demo-12.js"></script>
     <script src="assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
     <script src="assets/js/jquery.mousewheel.min.js"></script>
+
+        <script type="text/javascript" src="bower_components/sweetalert/dist/sweetalert.min.js"></script>
 </body>
 </html>

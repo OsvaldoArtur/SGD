@@ -31,8 +31,9 @@ namespace SGD
             dados(idu);
             //condicoes(idu);
             // enableButoes();
+       
         }
-
+        
         void sair() {
             Session["idu"] = 0;
             HttpContext.Current.Response.Redirect("~/Default.aspx", false);

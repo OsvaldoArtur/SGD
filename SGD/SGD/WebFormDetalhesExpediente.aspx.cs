@@ -32,5 +32,10 @@ namespace SGD
             Response.Write(bytes);
             Response.End();
         }
+
+        protected void btnResponder_Click(object sender, EventArgs e)
+        {
+            PanelResponder.Visible = true;
+        }
     }
 }

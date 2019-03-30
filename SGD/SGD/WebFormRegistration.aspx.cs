@@ -19,10 +19,12 @@ namespace SGD
         void registro() {
             try
             {
+                string a = Guid.NewGuid().ToString();
                 user us = new user();
                 us.Email = txtEmail.Text;
                 us.NomeUsuario = txtNome.Text;
                 us.Senha = txtSenha.Text;
+                us.GuidMap = a;
                 si.user.Add(us);
                 si.SaveChanges();
             }

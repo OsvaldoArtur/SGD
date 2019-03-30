@@ -19,13 +19,17 @@
                                         Inicio
                                     </a>
                                 </li>
-                          
+
                             </ul>
                         </div>
                     </div>
                     <div class="page-body">
                         <div class="row">
-                         <%--   <div class="col-sm-4">
+
+
+
+
+                            <%--   <div class="col-sm-4">
                                 <a href="Web_Forms/WebForm1T.aspx">
                                     <div class="card bg-primary large-widget-card">
 
@@ -38,7 +42,7 @@
                                 </a>
                             </div>--%>
 
-                           <%-- <div class="col-sm-4">
+                            <%-- <div class="col-sm-4">
                                 <a href="WebFormInicio.aspx">
                                     <div class="card bg-info large-widget-card">
                                         <div class="card-block-big">
@@ -49,7 +53,7 @@
                                     </div>
                                 </a>
                             </div>--%>
-                        <%--    <div class="col-sm-4">
+                            <%--    <div class="col-sm-4">
                                 <a href="WebFormInicio.aspx">
                                     <div class="card bg-inverse large-widget-card">
                                         <div class="card-block-big">
@@ -60,7 +64,7 @@
                                     </div>
                                 </a>
                             </div>--%>
-                  
+
 
                             <%--  <div class="col-sm-3">
                                 <a href="WebFormNovoExpediente.aspx">
@@ -74,7 +78,7 @@
                                 </a>
                             </div>--%>
                         </div>
-                        <div class="row">
+                        <%--                        <div class="row">
                             <%
                          //       si = new SGD.Models.sgdbEntities;
                                 var busca = si.View_PermissaoDepartamento.Where(d=> d.idUsuario == idu && d.Estado.Equals("true")).ToList();
@@ -106,7 +110,64 @@
                             <%}%>
 
 
+                        </div>--%>
+
+
+              <%--          <div class="row">
+                            <%
+                                //       si = new SGD.Models.sgdbEntities;
+                                var busca = si.View_PermissaoDepartamento.Where(d => d.idUsuario == idu && d.Estado.Equals("true")).ToList();
+                                foreach (var item in busca)
+                                {
+                                    nome = item.NomeDepartamento;
+                                    id = item.GuidDepartamento; %>
+                            <div class="col-sm-4">
+
+                                <a href="WebFormPastaDepartamento.aspx?id=<%=id%>">
+
+
+                                    <div class="card table-card widget-success-card">
+                                        <div class="">
+                                            <div class="row-table">
+                                                <div class="col-sm-3 card-block-big">
+                                                    <i class="icofont icofont-tags"></i>
+                                                </div>
+                                                <div class="col-sm-9">
+
+                                                    <h6><%=nome %></h6>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <%}%>
+                        </div>--%>
+                        <div class="row">
+                            <%
+                                //       si = new SGD.Models.sgdbEntities;
+                                var busca = si.View_PermissaoDepartamento.Where(d => d.idUsuario == idu && d.Estado.Equals("true")).ToList();
+                                foreach (var item in busca)
+                                {
+                                    nome = item.NomeDepartamento;
+                                    id = item.GuidDepartamento; %>
+                               <div class="col-md-6 col-xl-3">
+                            <a href="WebFormPastaDepartamento.aspx?id=<%=id%>"> 
+                             
+                                    <div class="card client-blocks card-border-info">
+                                        <div class="card-block">
+
+                                            <h5 class=" text-muted"><%=nome %></h5>
+                                            <i class="icofont icofont-2x icofont-ui-folder text-info"></i>
+                                        </div>
+                                    </div>
+                                </a>
+                                </div>
+                           
+                             <%}%>
                         </div>
+
                         <div class="row">
                             <p>
                                 <asp:Button ID="Button1" CssClass="btn btn-primary" OnClick="Button1_Click" runat="server" Text="Button" />

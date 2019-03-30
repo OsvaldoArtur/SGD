@@ -197,5 +197,27 @@ public         sgdbEntities si = new sgdbEntities();
                 throw;
             }
         }
+
+        protected void btnSalvarUsuario_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string a = Guid.NewGuid().ToString();
+
+                user us = new Models.user();
+                us.Email = txtEmails.Text;
+                us.NomeUsuario = txtNomeusuario.Text;
+                us.GuidMap = a;
+                us.Senha = txtSenhas.Text;
+                si.user.Add(us);
+                si.SaveChanges();
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

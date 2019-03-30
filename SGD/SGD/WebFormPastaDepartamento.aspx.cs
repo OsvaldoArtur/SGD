@@ -37,9 +37,13 @@ namespace SGD
         {
             try
             {
+                string a = Guid.NewGuid().ToString();
+
+
                 pastadepartamento pd = new Models.pastadepartamento();
                 pd.NomePasta = txtNpasta.Text;
                 pd.idDepartamento = idDept;
+                pd.GuidMap = a;
                 si.pastadepartamento.Add(pd);
                 si.SaveChanges();
               

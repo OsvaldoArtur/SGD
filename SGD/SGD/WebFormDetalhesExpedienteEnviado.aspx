@@ -1,9 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="WebFormDetalhesExpediente.aspx.cs" Inherits="SGD.WebFormDetalhesExpediente" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="WebFormDetalhesExpedienteEnviado.aspx.cs" Inherits="SGD.WebFormDetalhesExpedienteEnviado" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="pcoded-content">
+      <div class="pcoded-content">
         <div class="pcoded-inner-content">
             <div class="main-body">
                 <div class="page-wrapper">
@@ -28,77 +27,17 @@
                     <div class="page-body">
                         <div class="row">
                             <div class="col-lg-12">
-                                <asp:Panel ID="PanelResponder" Visible ="false" runat="server">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="card b-l-info business-info services m-b-20">
-                                                <div class="card-header">
-                                                    <div class="card-header-right">
-                                                        <i class="icofont icofont-rounded-down"></i>
-                                                        <i class="icofont icofont-close-circled"></i>
-
-                                                    </div>
-                                                    <div class="service-header">
-                                                        <a>
-                                                            <h5 class="card-header-text">Resposta <i class="icofont icofont-2x icofont-attachment"></i></h5>
-                                                            <span class="text-muted">A resposta do expediente deve ser acompanhada de um comentario. </span>
-
-                                                        </a>
-                                                    </div>
-
-                                                </div>
-                                                <div class="card-block">
-                                                    <div class="">
-                                                        <div class="form-group row">
-                                                            <div class="col-sm-2 col-form-label">
-                                                                <label class="text-center">Resposta do Expediente: </label>
-                                                            </div>
-                                                            <div class="col-sm-2">
-                                                                <asp:DropDownList ID="DropResposta" CssClass="form-control form-control-info" runat="server">
-                                                                    <asp:ListItem>Deferido</asp:ListItem>
-                                                                    <asp:ListItem>Indeferido</asp:ListItem>
-                                                                    <asp:ListItem>Autorizado</asp:ListItem>
-                                                                    <asp:ListItem>Nao Autorizado</asp:ListItem>
-                                                                    <asp:ListItem>Em analise</asp:ListItem>
-                                                                </asp:DropDownList>
-
-                                                            </div>
-                                                            <div class="col-sm-6">
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row">
-                                                            <div class="col-sm-12">
-                                                                <asp:TextBox ID="txtComentario" ValidateRequestMode="Enabled" runat="server" Placeholder="Comentarios..." CssClass="form-control form-control-info" TextMode="MultiLine" Rows="6">
-
-                                                                </asp:TextBox>
-
-                                                            </div>
-                                                            <div class="col-sm-6">
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row">
-
-                                                            <div class=" col-lg-12">
-                                                                <div class=" text-right">
-
-                                                                    <asp:Button ID="btnResponde" CssClass=" btn btn-info" runat="server" Text="Responder" />
+                                <div runat="server" visible="true"  class="alert alert-success">
+                                                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                                        <i class="icofont icofont-close-line-circled"></i>
+                                                                    </button>
+                                                                    <strong>Sucesso!</strong> Expediente em sucesso! <code></code>
                                                                 </div>
-                                                            </div>
-                                                        </div>
-
-
-                                                        <!-- end of col-sm-8 -->
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </asp:Panel>
                             </div>
                             <div class="col-lg-12">
                                 <div class="card card-border-info">
                                     <div class="card-header">
-                                        <h5>Lista de Categorias <i class="icofont icofont-2x icofont-clip"></i></h5>
+                                        <h5>Expediente Info. <i class="icofont icofont-2x icofont-send-mail"></i></h5>
                                         <div class="card-header-right">
                                             <i class="icofont icofont-rounded-down"></i>
                                             <i class="icofont icofont-close-circled"></i>
@@ -116,9 +55,10 @@
                                                                 <div class="col-lg-12 col-xl-6">
                                                                     <table class="table m-0">
                                                                         <%
+                                                                            
                                                                             si = new SGD.Models.sgdbEntities();
-                                                                            int idP = int.Parse(Request.QueryString["index"]);
-                                                                            var leva = si.View_Recebimentos.Where(d => d.idRecebimento == idP).FirstOrDefault();
+                                                                            string idP = Request.QueryString["index"];
+                                                                            var leva = si.View_Recebimentos.Where(d => d.GuidEnviarDocumentos.Equals( idP)).FirstOrDefault();
 
                                                                             var usuario = si.user.Where(s => s.idUser == leva.idUsuario).FirstOrDefault();
                                                                             string Nome = usuario.NomeUsuario.ToString();
@@ -164,18 +104,16 @@
                                                                                 <th scope="row">Data Recebimento:</th>
                                                                                 <td><%=leva.DataRecebimento %></td>
                                                                             </tr>
-                                                                            <tr>
-                                                                                <th scope="row"></th>
-                                                                                <td>
-                                                                                    <div class="text-right">
-                                                                                        <asp:LinkButton ID="btnResponder" OnClick="btnResponder_Click" CssClass="btn btn-info" runat="server" Text="Responder" />
-                                                                                    </div>
-                                                                                </td>
+
+                                                                             <tr>
+                                                                                <th scope="row">Codigo Processo:</th>
+                                                                                <td><%=leva.CodExpediente %></td>
                                                                             </tr>
-                                                                            <%-- <tr>
-                                                                                <th scope="row">Location</th>
-                                                                                <td>New York, USA</td>
-                                                                            </tr>--%>
+                                                                            
+                                                                             <tr>
+                                                                                <th scope="row">Guid:</th>
+                                                                                <td><%=leva.GuidEnviarDocumentos %></td>
+                                                                            </tr>
                                                                         </tbody>
                                                                     </table>
                                                                 </div>
@@ -247,7 +185,7 @@
                                                                     <%
 
                                                                         si = new SGD.Models.sgdbEntities();
-                                                                        var proc = si.documentosenviados.Where(d => d.idEnvio == idP).ToList();
+                                                                        var proc = si.documentosenviados.Where(d => d.GuidMap == idP).ToList();
                                                                         foreach (var an in proc)
                                                                         {
                                                                             nome = an.NomeDocumento.ToString();

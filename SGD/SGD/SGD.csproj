@@ -143,9 +143,12 @@
     <Content Include="bower_components\summernote\dist\font\summernotef534.eot" />
     <Content Include="bower_components\summernote\dist\font\summernotef534.ttf" />
     <Content Include="bower_components\summernote\dist\font\summernotef534.woff" />
+    <Content Include="WebFormCadastroEmpresa.aspx" />
     <Content Include="WebFormConfiguracoes.aspx" />
     <Content Include="WebFormCursos.aspx" />
     <Content Include="WebFormDetalhesExpediente.aspx" />
+    <Content Include="WebFormDetalhesExpedienteEnviado.aspx" />
+    <Content Include="WebFormDetalhesUsuario.aspx" />
     <Content Include="WebFormDownloadDocument.aspx" />
     <Content Include="WebFormElaborarCartas.aspx" />
     <Content Include="WebFormExpe.aspx" />
@@ -1770,6 +1773,13 @@
     <Compile Include="SiteMaster.Master.designer.cs">
       <DependentUpon>SiteMaster.Master</DependentUpon>
     </Compile>
+    <Compile Include="WebFormCadastroEmpresa.aspx.cs">
+      <DependentUpon>WebFormCadastroEmpresa.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebFormCadastroEmpresa.aspx.designer.cs">
+      <DependentUpon>WebFormCadastroEmpresa.aspx</DependentUpon>
+    </Compile>
     <Compile Include="WebFormConfiguracoes.aspx.cs">
       <DependentUpon>WebFormConfiguracoes.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1790,6 +1800,20 @@
     </Compile>
     <Compile Include="WebFormDetalhesExpediente.aspx.designer.cs">
       <DependentUpon>WebFormDetalhesExpediente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebFormDetalhesExpedienteEnviado.aspx.cs">
+      <DependentUpon>WebFormDetalhesExpedienteEnviado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebFormDetalhesExpedienteEnviado.aspx.designer.cs">
+      <DependentUpon>WebFormDetalhesExpedienteEnviado.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebFormDetalhesUsuario.aspx.cs">
+      <DependentUpon>WebFormDetalhesUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebFormDetalhesUsuario.aspx.designer.cs">
+      <DependentUpon>WebFormDetalhesUsuario.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebFormDownloadDocument.aspx.cs">
       <DependentUpon>WebFormDownloadDocument.aspx</DependentUpon>

@@ -29,7 +29,7 @@
                         <div class="row">
 
                             <div class="col-lg-12">
-                                <div class="card">
+                                <div class="card card-border-info">
                                     <div class="card-header">
                                         <h5>Permissao Pasta</h5>
                                         <div class="card-header-right">

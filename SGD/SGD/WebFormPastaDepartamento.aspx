@@ -50,9 +50,15 @@
 
 
                             <div class="col-lg-12">
-                                <div class="card">
+                                <div class="card card-border-info">
                                     <div class="card-header">
-                                        <h5><i class="icofont icofont-2x icofont-folder"></i></h5>
+                                        <%
+                                            var gui = Request.QueryString["id"];
+                                            si = new SGD.Models.sgdbEntities();
+                                            var LevaNome = si.departamento.Where(d => d.GuidMap.Equals(gui)).FirstOrDefault();
+
+                                             %>
+                                        <h5><%=LevaNome.NomeDepartamento %> <i class="icofont icofont-2x icofont-folder"></i></h5>
                                         <div class="card-header-right">
                                             <i class="icofont icofont-rounded-down"></i>
                                             <%--    <i class="icofont icofont-refresh"></i>--%>
@@ -98,18 +104,21 @@
                                                                     </div>--%>
                                                     </div>
                                                     <% 
-                                                     int idusuario = int.Parse(Session["idu"].ToString());
+                                                        int idusuario = int.Parse(Session["idu"].ToString());
                                                         si = new SGD.Models.sgdbEntities();
-                                                      //  int ID = int.Parse(Request.QueryString["id"]);
+                                                        //  int ID = int.Parse(Request.QueryString["id"]);
                                                         var lista = si.pastadepartamento.Where(d=> d.idDepartamento == idDept).ToList();
-                                                      //  ids = ID;
-                                                        
-                                                      
+                                                        //  ids = ID;
+
+                                                         var conta = si.EnviarDocumentos.Where(d => d.idPastaDepartamento == idDept).Count();
+
                                                         foreach (var site in lista)
                                                         {
                                                             idDept = site.idDepartamento;
+
+                                                            var contou = si.EnviarDocumentos.Where(s=> s.idPastaDepartamento == site.idpastadepartamento && s.Estado.Equals("Enviado")). Count();
                                                            
-                                                    %>
+                                                                                                                    %>
                                                     <div class="media">
                                                         <div class="media-left media-middle photo-table">
                                                             <i class="icofont icofont-ui-folder icofont-4x"></i>
@@ -117,7 +126,7 @@
                                                         <a href="WebFormDocumentos.aspx?id=<%=site.idpastadepartamento%>">
                                                             <div class="media-body">
                                                                 <br />
-                                                                <h6 class="text-dark"><% =site.NomePasta %> <label class="badge badge-primary"></label></h6> 
+                                                                <h6 class="text-dark"><% =site.NomePasta %> <label class="badge badge-primary"> <%=contou %></label></h6> 
 
                                                                 <%--                                                                <p><%=site.idDepartamento %></p>--%>
                                                             </div>

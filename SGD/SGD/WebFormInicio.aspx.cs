@@ -37,6 +37,22 @@ namespace SGD
                 HttpContext.Current.ApplicationInstance.CompleteRequest();
 
             }
+            procuraEmpresa();
+        }
+        void procuraEmpresa()
+        {
+            var emp = si.Instituicao_tb.Count();
+
+            if (emp != 0)
+            {
+
+            }
+            else
+            {
+                HttpContext.Current.Response.Redirect("~/WebFormCadastroEmpresa.aspx", false);
+                HttpContext.Current.ApplicationInstance.CompleteRequest();
+
+            }
         }
         public List<string> Sites = new List<string>();
 

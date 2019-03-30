@@ -56,6 +56,9 @@
                                         <asp:Button ID="btnCOM" OnClick="btnCOM_Click" CssClass="btn-info btn" runat="server" Text="Port SMS" />
                                     </li>
 
+                                    <li>
+                                        <asp:Button ID="btnUsuario" CssClass="btn-info btn" runat="server" Text="Usuarios" />
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -70,7 +73,7 @@
 
 
                                     <div class="col-lg-12">
-                                        <div class="card">
+                                        <div class="card card-border-info">
                                             <div class="card-header">
                                                 <h5>Lista de Cursos</h5>
                                                 <div class="card-header-right">
@@ -132,7 +135,7 @@
                             <asp:Panel ID="PanelDepartamento" Visible="false" runat="server">
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <div class="card">
+                                        <div class="card card-border-info">
                                             <div class="card-header">
                                                 <h5>Lista de Departamentos</h5>
                                                 <div class="card-header-right">
@@ -191,7 +194,7 @@
                             <asp:Panel ID="PanelCategoria" Visible="false" runat="server">
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <div class="card">
+                                        <div class="card card-border-info">
                                             <div class="card-header">
                                                 <h5>Lista de Categorias</h5>
                                                 <div class="card-header-right">
@@ -257,7 +260,7 @@
 
 
                                     <div class="col-lg-12">
-                                        <div class="card">
+                                        <div class="card card-border-info">
                                             <div class="card-header">
                                                 <h5>Lista de Pedidos</h5>
                                                 <div class="card-header-right">
@@ -325,7 +328,7 @@
 
 
                                     <div class="col-lg-12">
-                                        <div class="card">
+                                        <div class="card card-border-info">
                                             <div class="card-header">
                                                 <h5>Port Nome</h5>
                                                 <div class="card-header-right">
@@ -337,7 +340,7 @@
 
                                             <div class="row card-block">
                                                 <div class="col-sm-12">
-                                                 
+
                                                     <br />
                                                     <ul class="list-view">
                                                         <li>
@@ -347,7 +350,7 @@
 
                                                                         <div class="media-body">
                                                                             <div class="">
-                                                                          
+
                                                                                 <div class="input-group">
                                                                                     <asp:TextBox ID="TextBoxCOMSMS" ValidateRequestMode="Enabled" Placeholder="Ex:. COM10" CssClass="form-control form-control-info col-lg-6" runat="server"></asp:TextBox>
                                                                                 </div>
@@ -397,6 +400,113 @@
                                     </div>
                                 </div>
                             </asp:Panel>
+
+
+                            <asp:Panel ID="PanelUsuario" Visible="true" runat="server">
+                                <div class="row">
+
+
+                                    <div class="col-md-12">
+                                        <div class="card b-l-info business-info services m-b-20">
+                                            <div class="card-header">
+                                                <div class="service-header">
+                                                    <a href="#">
+                                                        <h5 class="card-header-text">Novo usuario</h5>
+                                                    </a>
+                                                </div>
+                                                <div class="card-header-right">
+                                                    <i class="icofont icofont-rounded-down"></i>
+                                                    <i class="icofont icofont-close-circled"></i>
+
+                                                </div>
+                                            </div>
+                                            <div class="card-block">
+                                                <div class="">
+                                                    <div class="form-group row">
+                                                        <div class="col-sm-4">
+                                                            <asp:TextBox ID="txtNomeusuario" CssClass="form-control form-control-info" Placeholder="Nome Completo" runat="server"></asp:TextBox>
+
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <asp:TextBox ID="txtEmails" CssClass="form-control form-control-info" Placeholder="Email" TextMode="Email" runat="server"></asp:TextBox>
+
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <asp:TextBox ID="txtSenhas" CssClass="form-control form-control-info" Placeholder="Senha" TextMode="Password" runat="server"></asp:TextBox>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="form-group row">
+
+                                                        <div class="col-sm-12">
+                                                            <div class="text-right">
+                                                                <asp:Button ID="btnSalvarUsuario" OnClick="btnSalvarUsuario_Click" CssClass=" btn btn-info" runat="server" Text="Salvar" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- end of col-sm-8 -->
+                                                </div>
+                                                <!-- end of row -->
+                                            </div>
+                                            <!-- end of card-block -->
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-12">
+                                        <div class="card card-border-info">
+                                            <div class="card-header">
+                                                <h5>lista de Usuarios</h5>
+                                                <div class="card-header-right">
+                                                    <i class="icofont icofont-rounded-down"></i>
+                                                    <i class="icofont icofont-close-circled"></i>
+                                                    
+                                                </div>
+                                            </div>
+
+                                            <div class="card-block">
+                                                <div class="card-block table-border-style">
+                                                    <div class="table-responsive">
+                                                        <table class="table">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>#</th>
+                                                                    <th>User Name</th>
+                                                                    <th>Email User</th>
+<%--                                                                    <th>Username</th>--%>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                             
+                                                                   <%
+                                                                    si = new SGD.Models.sgdbEntities();
+                                                                    var procurausuario = si.user.ToList();
+                                                                    foreach(var item in procurausuario)
+                                                                    {
+
+                                                                    
+                                                                     %>
+                                                                
+                                                                <tr>
+                                                                    
+                                                                   <th scope="row"><a href="WebFormDetalhesUsuario.aspx?id=<%=item.GuidMap %>" class="text-muted"><%=item.idUser %></a></th>
+                                                                    <td><a href="WebFormDetalhesUsuario.aspx?id=<%=item.GuidMap %>" class="text-muted"><%=item.NomeUsuario %></a></td>
+                                                                    <td><a href="WebFormDetalhesUsuario.aspx?id=<%=item.GuidMap %>" class="text-muted"><%=item.Email %></a></td>
+                                                                    <%--<td><%=item.Email %></td>--%>
+                                                                </tr>
+                                                                <%} %>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </asp:Panel>
+
+
+
                         </div>
 
                     </div>

@@ -32,6 +32,7 @@ namespace SGD.Models
         public string NivelUrgencia { get; set; }
         public Nullable<int> idCategoria { get; set; }
         public string GuidMap { get; set; }
+        public string CodExpediente { get; set; }
     
         public virtual categoria categoria { get; set; }
         public virtual ICollection<documentosenviados> documentosenviados { get; set; }
