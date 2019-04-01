@@ -27,10 +27,24 @@ namespace SGD.Models
         public string Email { get; set; }
         public string Senha { get; set; }
         public string GuidMap { get; set; }
+        public string Naturalidade { get; set; }
+        public string Local_residencia { get; set; }
+        public Nullable<decimal> Altura { get; set; }
+        public string Documento { get; set; }
+        public string N_documento { get; set; }
+        public string Local_emissao { get; set; }
+        public Nullable<System.DateTime> Data_emissao { get; set; }
+        public Nullable<System.DateTime> Data_nascimento { get; set; }
+        public string Estado_civil { get; set; }
+        public string Sexo { get; set; }
+        public Nullable<int> idDepartamento { get; set; }
+        public Nullable<int> id_tipo_usuario { get; set; }
     
         public virtual ICollection<Condicao_tb> Condicao_tb { get; set; }
+        public virtual departamento departamento { get; set; }
         public virtual ICollection<EnviarDocumentos> EnviarDocumentos { get; set; }
         public virtual ICollection<PermissaoDeparramento_tb> PermissaoDeparramento_tb { get; set; }
         public virtual ICollection<RespostaDocumento> RespostaDocumento { get; set; }
+        public virtual Tipo_usuario_tb Tipo_usuario_tb { get; set; }
     }
 }

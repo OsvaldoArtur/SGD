@@ -29,66 +29,174 @@
                             </ul>
                         </div>
                     </div>
+                 <div class="">
+                        <div class="card-block">
+
+
+                            <div class="shares-like">
+                                <ul>
+                                 
+                                 
+                                    <li>
+                                        <asp:Button ID="btnpn1" CssClass="btn-info btn-lg btn" OnClick="pane1_ServerClick" runat="server" Text="Recebidos" />
+                                    </li>
+
+                                    <li>
+                                        <asp:Button ID="btnpn2" CssClass="btn-info btn-lg btn" OnClick="pane2_ServerClick" runat="server" Text="Respondidos" />
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+
+
                     <div class="page-body">
-                        <div class="row">
+                        <div class="">
 
-
-                            <div class="col-lg-12">
-                                <div class="card card-border-info">
-                                    <div class="card-header">
-                                          <h5></h5>
-                                        <div class="card-header-right">
+                            <asp:Panel ID="panel1"  runat="server" Visible="true">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="card b-l-success  business-info services m-b-20">
+                                                    <div class="card-header">
+                                                        <div class="service-header">
+                                                            <h5 class="card-header-text">Expedientes Recebidos</h5>
+                                                            <span>Exepedientes ainda nao lidos</span>
+                                                        </div>
+                                                                                     <div class="card-header-right">
                                             <i class="icofont icofont-rounded-down"></i>
                                             <i class="icofont icofont-close-circled"></i>
 
                                         </div>
-                                        <div class="card-title">
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+                                                       
+                                                                <div class="table-responsive">
+                                                    <table class="table table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>#</th>
+                                                                <th>Titulo</th>
+                                                                <th>Data</th>
+                                                                <th>Nivel</th>
+                                                                   <th>Tipo</th>
+                                                                <th>Estado</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+
+                                                              <%
+                                                                  si = new SGD.Models.sgdbEntities();
+                                                                  string idsss = Request.QueryString["id"];
+                                                                  var  idpast = si.pastadepartamento.Where(d => d.GuidMap.Equals(idsss)).FirstOrDefault();
+                                                                  var procuradocumentosnaolidos = si.EnviarDocumentos.Where(d=> d.Estado.Equals("Enviado") && d.idPastaDepartamento == idpast.idpastadepartamento ).OrderByDescending(a => a.DataEnvio).ToList();
+                                                                  foreach(var item in procuradocumentosnaolidos)
+                                                                  {
+                                                                      var cate = si.categoria.Where(s => s.idCategoria == item.idCategoria).FirstOrDefault();
+
+                                                                     %>
+                                                                
+
+                                                            <tr>
+                                                                <th scope="row"><a href="WebFormDetalhesExpediente.aspx?index=<%=item.GuidMap %>" class="text-muted"><%=item.CodExpediente%></a></th>
+                                                                <td><%=item.Titulo%></td>
+                                                                <td><%=item.DataEnvio%></td>
+                                                                <td><%=item.NivelUrgencia %></td>
+                                                                  <td><%=cate.NomeCategoria %></td>
+                                                                <td><span class=" label label-success">Novo</span></td>
+                                                            </tr>
+                                                          <%} %>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                                     </div>
+                                                            <!-- end of col-sm-8 -->
+                                                        </div>
+                                                        <!-- end of row -->
+                                                    </div>
+                                                    <!-- end of card-block -->
+                                                </div>
+                                    </div>
+                                </div>
+                            </asp:Panel>
+                            <asp:Panel ID="panel2" runat="server" Visible="false">
+
+                                    <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="card b-l-success  business-info services m-b-20">
+                                                    <div class="card-header">
+                                                        <div class="service-header">
+                                                            <h5 class="card-header-text">Expedientes Respondidos</h5>
+                                                            <span>Exepedientes lidos</span>
+                                                        </div>
+                                                                                     <div class="card-header-right">
+                                            <i class="icofont icofont-rounded-down"></i>
+                                            <i class="icofont icofont-close-circled"></i>
 
                                         </div>
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+                                                       
+                                                                <div class="table-responsive">
+                                                    <table class="table table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>#</th>
+                                                                <th>Titulo</th>
+                                                                <th>Data</th>
+                                                                <th>Nivel</th>
+                                                                   <th>Tipo</th>
+                                                                <th>Estado</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
 
-                                    </div>
-                                    <div class="row card-block">
-                                           <div style="overflow: scroll" class="col-lg-12">
-                                                 <div class="col-lg-12">
-                                                           <asp:GridView ID="GridView1" CssClass=" table table-hover table-striped table-bordered nowrap" runat="server" AutoGenerateColumns="False" DataKeyNames="idEnvio,idpastadepartamento,iddepartamento,idUser,idCategoria" DataSourceID="SqlDataSourceExpediente">
-                                        <Columns>
-                                            <asp:BoundField DataField="idEnvio" HeaderText="idEnvio" ReadOnly="True" SortExpression="idEnvio" />
-                                            <asp:BoundField DataField="DataEnvio" HeaderText="DataEnvio" SortExpression="DataEnvio" />
-                                            <asp:BoundField DataField="Estado" HeaderText="Estado" SortExpression="Estado" />
-                                            <asp:BoundField DataField="Mensagem" HeaderText="Mensagem" SortExpression="Mensagem" />
-                                            <asp:BoundField DataField="Titulo" HeaderText="Titulo" SortExpression="Titulo" />
-                                            <asp:BoundField DataField="Contacto" HeaderText="Contacto" SortExpression="Contacto" />
-                                            <asp:BoundField DataField="NivelUrgencia" HeaderText="NivelUrgencia" SortExpression="NivelUrgencia" />
-                                            <asp:BoundField DataField="NomeCategoria" HeaderText="NomeCategoria" SortExpression="NomeCategoria" />
-                                            <asp:BoundField DataField="NomeUsuario" HeaderText="NomeUsuario" SortExpression="NomeUsuario" />
-                                            <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
-                                            <asp:BoundField DataField="Senha" HeaderText="Senha" SortExpression="Senha" />
-                                            <asp:BoundField DataField="idpastadepartamento" HeaderText="idpastadepartamento" ReadOnly="True" SortExpression="idpastadepartamento" />
-                                            <asp:BoundField DataField="NomePasta" HeaderText="NomePasta" SortExpression="NomePasta" />
-                                            <asp:BoundField DataField="iddepartamento" HeaderText="iddepartamento" ReadOnly="True" SortExpression="iddepartamento" />
-                                            <asp:BoundField DataField="NomeDepartamento" HeaderText="NomeDepartamento" SortExpression="NomeDepartamento" />
-                                            <asp:BoundField DataField="idUser" HeaderText="idUser" ReadOnly="True" SortExpression="idUser" />
-                                            <asp:BoundField DataField="idCategoria" HeaderText="idCategoria" ReadOnly="True" SortExpression="idCategoria" />
-                                        </Columns>
-                                    </asp:GridView>
-                                    <asp:SqlDataSource ID="SqlDataSourceExpediente" runat="server" ConnectionString="<%$ ConnectionStrings:sgdbConnectionString %>" SelectCommand="SELECT [idEnvio], [DataEnvio], [Estado], [Mensagem], [Titulo], [Contacto], [NivelUrgencia], [NomeCategoria], [NomeUsuario], [Email], [Senha], [idpastadepartamento], [NomePasta], [iddepartamento], [NomeDepartamento], [idUser], [idCategoria] FROM [View_Expedientes] WHERE ([idpastadepartamento] = @iddepartamento)">
-                                        <SelectParameters>
-                                            <asp:QueryStringParameter Name="iddepartamento" QueryStringField="id" Type="Int32" />
-                                        </SelectParameters>
-                                    </asp:SqlDataSource>
-                                     </div>
-                                           </div>
-                                      
+                                                              <%
+                                                                  si = new SGD.Models.sgdbEntities();
+                                                                  string idsss = Request.QueryString["id"];
+                                                                  var  idpast = si.pastadepartamento.Where(d => d.GuidMap.Equals(idsss)).FirstOrDefault();
+                                                                  var procuradocumentosnaolidos = si.EnviarDocumentos.Where(d=> d.Estado.Equals("Respondido") && d.idPastaDepartamento == idpast.idpastadepartamento ).OrderByDescending(a => a.DataEnvio).ToList();
+                                                                  foreach(var item in procuradocumentosnaolidos)
+                                                                  {
+                                                                      var cate = si.categoria.Where(s => s.idCategoria == item.idCategoria).FirstOrDefault();
+
+                                                                     %>
+                                                                
+
+                                                            <tr>
+                                                                <th scope="row"><a href="WebFormDetalhesExpediente.aspx?index=<%=item.GuidMap %>" class="text-muted"><%=item.CodExpediente%></a></th>
+                                                                <td><%=item.Titulo%></td>
+                                                                <td><%=item.DataEnvio%></td>
+                                                                <td><%=item.NivelUrgencia %></td>
+                                                                  <td><%=cate.NomeCategoria %></td>
+                                                                <td><span class=" label label-info">Respondido</span></td>
+                                                            </tr>
+                                                          <%} %>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                                     </div>
+                                                            <!-- end of col-sm-8 -->
+                                                        </div>
+                                                        <!-- end of row -->
+                                                    </div>
+                                                    <!-- end of card-block -->
+                                                </div>
                                     </div>
                                 </div>
 
-                            </div>
+                            </asp:Panel>
+                           
 
 
 
 
 
-                      
+
 
 
 

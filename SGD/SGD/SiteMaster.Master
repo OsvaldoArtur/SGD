@@ -63,6 +63,10 @@
                                                     </a>
                                             </li>
                                             <li class="nav-item">
+                                                <a class="nav-link text-white" href="WebFormReport.aspx"><i class="icofont icofont-attachment text-white"></i> Report 
+                                                    </a>
+                                            </li>
+<%--                                            <li class="nav-item">
                                                 <a class="nav-link text-white" href="#">Gestao
                                                     <i class="icofont icofont-rounded-down text-white"></i></a>
                                                 <ul class="navbar-varient-submenu ">
@@ -70,9 +74,9 @@
                                                     <li><a href="WebFormPedidosCartas.aspx">Adicionar Pedidos</a></li>
                                                     <li><a href="WebFormResumoActual.aspx">Resumo Actual</a></li>                                                    
                                                 </ul>
-                                            </li>
+                                            </li>--%>
                                             
-                                            <li class="nav-item">
+<%--                                            <li class="nav-item">
                                                 <a class="nav-link text-white" href="#">Adicionar
                                                     <i class="icofont icofont-rounded-down text-white"></i></a>
                                                 <ul class="navbar-varient-submenu">
@@ -81,8 +85,8 @@
                                                     <li><a href="#">Pasta Departamento</a></li>
                                                     <li><a href="#">New Page</a></li>
                                                 </ul>
-                                            </li>
-                                                <li class="nav-item">
+                                            </li>--%>
+                                                <%--<li class="nav-item">
                                                 <a class="nav-link text-white" href="WebFormRecebidos.aspx">
                                                     <%
                                                         var contarecebidos = si.EnviarDocumentos.Count();
@@ -91,7 +95,7 @@
                                                     <label class="badge badge-md bg-inverse text-white"><%=contarecebidos %></label>
                                                 </a>
 
-                                            </li>
+                                            </li>--%>
 
                                         </ul>
                            

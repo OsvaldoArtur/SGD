@@ -34,7 +34,8 @@
                                             </div>
                                             <div class="col-lg-6">
                                                 <asp:TextBox ID="txtContacto" CssClass="form-control form-control-info"  placeholder="Contacto" TextMode="Phone" runat="server"></asp:TextBox>
-                                                 
+                                                 
+
                                             </div>
                                         </div>
                                         <div class="form-group row">

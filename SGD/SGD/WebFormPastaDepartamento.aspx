@@ -123,7 +123,7 @@
                                                         <div class="media-left media-middle photo-table">
                                                             <i class="icofont icofont-ui-folder icofont-4x"></i>
                                                         </div>
-                                                        <a href="WebFormDocumentos.aspx?id=<%=site.idpastadepartamento%>">
+                                                        <a href="WebFormDocumentos.aspx?id=<%=site.GuidMap%>">
                                                             <div class="media-body">
                                                                 <br />
                                                                 <h6 class="text-dark"><% =site.NomePasta %> <label class="badge badge-primary"> <%=contou %></label></h6> 

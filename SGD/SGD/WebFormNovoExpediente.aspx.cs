@@ -156,9 +156,9 @@ namespace SGD
                 //HttpContext.Current.Response.Redirect("~/WebFormInicio.aspx", false);
                 //HttpContext.Current.ApplicationInstance.CompleteRequest();
 
-                enviamensagem( ev.CodExpediente);
+              // enviamensagem( ev.CodExpediente);
                 
-                HttpContext.Current.Response.Redirect("~/WebFormDetalhesExpedienteEnviado.aspx?index=" + ev.GuidMap + "&CodExp=" + ev.CodExpediente, false);
+                HttpContext.Current.Response.Redirect("~/WebFormDetalhesExpedienteEnviado.aspx?index=" + ev.GuidMap + "&CodExp=" + ev.CodExpediente +"&Cell=" + txtContacto.Text, false);
                 HttpContext.Current.ApplicationInstance.CompleteRequest();
             }
             catch (Exception)

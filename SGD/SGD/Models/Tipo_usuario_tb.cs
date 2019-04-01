@@ -12,22 +12,17 @@ namespace SGD.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class departamento
+    public partial class Tipo_usuario_tb
     {
-        public departamento()
+        public Tipo_usuario_tb()
         {
-            this.PermissaoDeparramento_tb = new HashSet<PermissaoDeparramento_tb>();
             this.user = new HashSet<user>();
-            this.pastadepartamento = new HashSet<pastadepartamento>();
         }
     
-        public int iddepartamento { get; set; }
-        public string NomeDepartamento { get; set; }
-        public string DescricaoDepartamanto { get; set; }
-        public string GuidMap { get; set; }
+        public int id_tipo_usuario { get; set; }
+        public string Nome_tipo { get; set; }
+        public string Descricao { get; set; }
     
-        public virtual ICollection<PermissaoDeparramento_tb> PermissaoDeparramento_tb { get; set; }
         public virtual ICollection<user> user { get; set; }
-        public virtual ICollection<pastadepartamento> pastadepartamento { get; set; }
     }
 }

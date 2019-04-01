@@ -151,7 +151,9 @@
                                 foreach (var item in busca)
                                 {
                                     nome = item.NomeDepartamento;
-                                    id = item.GuidDepartamento; %>
+                                    id = item.GuidDepartamento;
+                              //      var que = si.View_Recebimentos.Where(d=> d.id)
+                                     %>
                                <div class="col-md-6 col-xl-3">
                             <a href="WebFormPastaDepartamento.aspx?id=<%=id%>"> 
                              

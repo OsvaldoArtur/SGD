@@ -406,7 +406,7 @@
                                 <div class="row">
 
 
-                                    <div class="col-md-12">
+                                    <div class="col-md-6">
                                         <div class="card b-l-info business-info services m-b-20">
                                             <div class="card-header">
                                                 <div class="service-header">
@@ -423,17 +423,110 @@
                                             <div class="card-block">
                                                 <div class="">
                                                     <div class="form-group row">
-                                                        <div class="col-sm-4">
+                                                        <div class="col-sm-12">
                                                             <asp:TextBox ID="txtNomeusuario" CssClass="form-control form-control-info" Placeholder="Nome Completo" runat="server"></asp:TextBox>
 
                                                         </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <div class="col-sm-2">
+                                                            <label class="col-form-label">Data nasc.</label>
+                                                        </div>
                                                         <div class="col-sm-4">
-                                                            <asp:TextBox ID="txtEmails" CssClass="form-control form-control-info" Placeholder="Email" TextMode="Email" runat="server"></asp:TextBox>
+                                                            <asp:TextBox ID="txtDataNascimento" CssClass="form-control form-control-info" TextMode="Date" runat="server"></asp:TextBox>
+
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <asp:TextBox ID="txtNaturalidade" CssClass="form-control form-control-info" Placeholder="Naturalidade" runat="server"></asp:TextBox>
+
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <div class="col-sm-8">
+                                                            <asp:TextBox ID="txtResidencia" CssClass="form-control form-control-info" Placeholder="Residencia" runat="server"></asp:TextBox>
 
                                                         </div>
                                                         <div class="col-sm-4">
+                                                            <asp:TextBox ID="txtAltura" CssClass="form-control form-control-info" Placeholder="Altura ex.: 1,85" runat="server"></asp:TextBox>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <div class="col-sm-3">
+                                                            <asp:DropDownList ID="txtDocumento" runat="server" CssClass="form-control form-control-info">
+                                                                <asp:ListItem>BI</asp:ListItem>
+                                                                <asp:ListItem>NUIT</asp:ListItem>
+                                                                <asp:ListItem>Carta de Conducao</asp:ListItem>
+                                                                <asp:ListItem>Cartao de Eleitor</asp:ListItem>
+                                                                <asp:ListItem>Passaporte</asp:ListItem>
+                                                                <asp:ListItem>Espera B.I</asp:ListItem>
+                                                                <asp:ListItem>Cedula</asp:ListItem>
+                                                                <asp:ListItem>INSS</asp:ListItem>
+                                                            </asp:DropDownList>
+                                                        </div>
+                                                        <div class="col-sm-9">
+                                                            <asp:TextBox ID="txtNumeroDocuemtno" CssClass="form-control form-control-info" Placeholder="Nº de documento" runat="server"></asp:TextBox>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <div class="col-sm-6">
+                                                            <asp:TextBox ID="txtLocalEmissao" CssClass="form-control form-control-info" Placeholder="Local de Emissao" runat="server"></asp:TextBox>
+
+                                                        </div>
+                                                        <div class="col-sm-2">
+                                                            <label class="col-form-label">Data emis.</label>
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <asp:TextBox ID="txtDataEmissao" TextMode="Date" CssClass="form-control form-control-info" runat="server"></asp:TextBox>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <div class="col-sm-6">
+                                                            <asp:DropDownList ID="txtEstadoCivil" runat="server" CssClass="form-control form-control-info">
+                                                                <asp:ListItem>Solterio(a)</asp:ListItem>
+                                                                <asp:ListItem>Casado(a)</asp:ListItem>
+                                                                <asp:ListItem>Divorciado(a)</asp:ListItem>
+                                                                <asp:ListItem>Viuvo(a)</asp:ListItem>
+
+                                                            </asp:DropDownList>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <asp:DropDownList ID="txtSexo" runat="server" CssClass="form-control form-control-info">
+                                                                    <asp:ListItem>Feminino</asp:ListItem>
+                                                                    <asp:ListItem>Masculino</asp:ListItem>
+
+                                                                </asp:DropDownList>
+                                                            </div>
+                                                        
+
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <div class="col-sm-6">
+                                                            <asp:DropDownList ID="txtDeparta" runat="server" CssClass="form-control form-control-info" DataSourceID="SqlDataSourceDeparta" DataTextField="NomeDepartamento" DataValueField="iddepartamento">
+                                                            </asp:DropDownList>
+                                                            <asp:SqlDataSource ID="SqlDataSourceDeparta" runat="server" ConnectionString="<%$ ConnectionStrings:sgdbConnectionString %>" SelectCommand="SELECT [iddepartamento], [NomeDepartamento] FROM [departamento] ORDER BY [NomeDepartamento]"></asp:SqlDataSource>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <asp:DropDownList ID="txtTipo" runat="server" CssClass="form-control form-control-info" DataSourceID="SqlDataSourceTipoUsuario" DataTextField="Nome_tipo" DataValueField="id_tipo_usuario">
+                                                            </asp:DropDownList>
+                                                            <asp:SqlDataSource ID="SqlDataSourceTipoUsuario" runat="server" ConnectionString="<%$ ConnectionStrings:sgdbConnectionString %>" SelectCommand="SELECT [id_tipo_usuario], [Nome_tipo] FROM [Tipo_usuario_tb]"></asp:SqlDataSource>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <div class="col-sm-12">
+                                                            <asp:TextBox ID="txtEmails" CssClass="form-control form-control-info" Placeholder="Email" TextMode="Email" runat="server"></asp:TextBox>
+
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <div class="col-sm-12">
                                                             <asp:TextBox ID="txtSenhas" CssClass="form-control form-control-info" Placeholder="Senha" TextMode="Password" runat="server"></asp:TextBox>
                                                         </div>
+
 
                                                     </div>
                                                     <div class="form-group row">
@@ -453,14 +546,14 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-lg-12">
+                                    <div class="col-md-6">
                                         <div class="card card-border-info">
                                             <div class="card-header">
                                                 <h5>lista de Usuarios</h5>
                                                 <div class="card-header-right">
                                                     <i class="icofont icofont-rounded-down"></i>
                                                     <i class="icofont icofont-close-circled"></i>
-                                                    
+
                                                 </div>
                                             </div>
 
@@ -473,23 +566,23 @@
                                                                     <th>#</th>
                                                                     <th>User Name</th>
                                                                     <th>Email User</th>
-<%--                                                                    <th>Username</th>--%>
+                                                                    <%--                                                                    <th>Username</th>--%>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                             
-                                                                   <%
+
+                                                                <%
                                                                     si = new SGD.Models.sgdbEntities();
                                                                     var procurausuario = si.user.ToList();
-                                                                    foreach(var item in procurausuario)
+                                                                    foreach (var item in procurausuario)
                                                                     {
 
-                                                                    
-                                                                     %>
-                                                                
+
+                                                                %>
+
                                                                 <tr>
-                                                                    
-                                                                   <th scope="row"><a href="WebFormDetalhesUsuario.aspx?id=<%=item.GuidMap %>" class="text-muted"><%=item.idUser %></a></th>
+
+                                                                    <th scope="row"><a href="WebFormDetalhesUsuario.aspx?id=<%=item.GuidMap %>" class="text-muted"><%=item.idUser %></a></th>
                                                                     <td><a href="WebFormDetalhesUsuario.aspx?id=<%=item.GuidMap %>" class="text-muted"><%=item.NomeUsuario %></a></td>
                                                                     <td><a href="WebFormDetalhesUsuario.aspx?id=<%=item.GuidMap %>" class="text-muted"><%=item.Email %></a></td>
                                                                     <%--<td><%=item.Email %></td>--%>
@@ -527,40 +620,39 @@
                     <div class="auth-box">
                         <div class="row m-b-20">
                             <div class="col-md-12">
-                                <h3 class="text-center txt-primary">Novo Curso </h3>
+                                <h3 class="text-center txt-primary">Novo Curso</h3>
+                                <div class="input-group">
+
+                                    <asp:TextBox ID="txtNomeCurso" ValidateRequestMode="Enabled" CssClass="form-control" placeholder="NomeCurso" runat="server"></asp:TextBox>
+                                    <span class="md-line"></span>
+                                </div>
+                                <div class="input-group">
+
+                                    <asp:TextBox ID="txtDescricaoCurso" ValidateRequestMode="Enabled" CssClass="form-control" TextMode="MultiLine" Rows="4" placeholder="Descricao" runat="server"></asp:TextBox>
+                                    <span class="md-line"></span>
+                                </div>
+
+                                <div class="row m-t-15">
+                                    <div class="col-md-12">
+
+                                        <asp:Button ID="btnSalvar" runat="server" CssClass="btn btn-primary btn-md btn-block waves-effect text-center" OnClick="btnSalvar_Click" Text="Salvar" />
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="row">
+                                    <div class="col-md-10">
+                                        <p class="text-inverse text-left m-b-0">@ Osvaldo A. Dionisio</p>
+                                        <%--          <p class="text-inverse text-left"><b>Your Autentification Team</b></p>--%>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <%-- <img src="assets/images/auth/Logo-small-bottom.png" alt="small-logo.png">--%>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <hr />
-                        <div class="input-group">
-
-                            <asp:TextBox ID="txtNomeCurso" ValidateRequestMode="Enabled" CssClass="form-control" placeholder="Nome Curso" runat="server"></asp:TextBox>
-                            <span class="md-line"></span>
-                        </div>
-                        <div class="input-group">
-
-                            <asp:TextBox ID="txtDescricaoCurso" ValidateRequestMode="Enabled" CssClass="form-control" TextMode="MultiLine" Rows="4" placeholder="Descricao" runat="server"></asp:TextBox>
-                            <span class="md-line"></span>
-                        </div>
-
-                        <div class="row m-t-15">
-                            <div class="col-md-12">
-
-                                <asp:Button ID="btnSalvar" runat="server" CssClass="btn btn-primary btn-md btn-block waves-effect text-center" OnClick="btnSalvar_Click" Text="Salvar" />
-                            </div>
-                        </div>
-                        <hr />
-                        <div class="row">
-                            <div class="col-md-10">
-                                <p class="text-inverse text-left m-b-0">@ Osvaldo A. Dionisio</p>
-                                <%--          <p class="text-inverse text-left"><b>Your Autentification Team</b></p>--%>
-                            </div>
-                            <div class="col-md-2">
-                                <%-- <img src="assets/images/auth/Logo-small-bottom.png" alt="small-logo.png">--%>
-                            </div>
-                        </div>
+                        <!-- end of form -->
                     </div>
                 </div>
-                <!-- end of form -->
             </div>
         </div>
     </div>

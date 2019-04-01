@@ -27,6 +27,14 @@
                     </div>
                     <div class="page-body">
                         <div class="row">
+                              <div class="col-lg-12">
+                                <div runat="server" id="messagesucesso" visible="false"  class="alert alert-success">
+                                                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                                        <i class="icofont icofont-close-line-circled"></i>
+                                                                    </button>
+                                                                    <strong>Sucesso!</strong> Expediente em sucesso! <code></code>
+                                                                </div>
+                            </div>
                             <div class="col-lg-12">
                                 <asp:Panel ID="PanelResponder" Visible ="false" runat="server">
                                     <div class="row">
@@ -81,7 +89,7 @@
                                                             <div class=" col-lg-12">
                                                                 <div class=" text-right">
 
-                                                                    <asp:Button ID="btnResponde" CssClass=" btn btn-info" runat="server" Text="Responder" />
+                                                                    <asp:Button ID="btnResponde" CssClass=" btn btn-info" OnClick="btnResponde_Click" runat="server" Text="Responder" />
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -98,7 +106,7 @@
                             <div class="col-lg-12">
                                 <div class="card card-border-info">
                                     <div class="card-header">
-                                        <h5>Lista de Categorias <i class="icofont icofont-2x icofont-clip"></i></h5>
+                                        <h5>Detalhes Expediente <i class="icofont icofont-2x icofont-clip"></i></h5>
                                         <div class="card-header-right">
                                             <i class="icofont icofont-rounded-down"></i>
                                             <i class="icofont icofont-close-circled"></i>
@@ -117,8 +125,8 @@
                                                                     <table class="table m-0">
                                                                         <%
                                                                             si = new SGD.Models.sgdbEntities();
-                                                                            int idP = int.Parse(Request.QueryString["index"]);
-                                                                            var leva = si.View_Recebimentos.Where(d => d.idRecebimento == idP).FirstOrDefault();
+                                                                            var idP = Request.QueryString["index"];
+                                                                            var leva = si.View_Recebimentos.Where(d => d.GuidEnviarDocumentos.Equals(idP)).FirstOrDefault();
 
                                                                             var usuario = si.user.Where(s => s.idUser == leva.idUsuario).FirstOrDefault();
                                                                             string Nome = usuario.NomeUsuario.ToString();
@@ -163,6 +171,10 @@
                                                                             <tr>
                                                                                 <th scope="row">Data Recebimento:</th>
                                                                                 <td><%=leva.DataRecebimento %></td>
+                                                                            </tr>
+                                                                              <tr>
+                                                                                <th scope="row">Codigo Processo:</th>
+                                                                                <td><%=leva.CodExpediente %></td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <th scope="row"></th>
@@ -247,7 +259,7 @@
                                                                     <%
 
                                                                         si = new SGD.Models.sgdbEntities();
-                                                                        var proc = si.documentosenviados.Where(d => d.idEnvio == idP).ToList();
+                                                                        var proc = si.documentosenviados.Where(d => d.idEnvio == leva.idEnvio).ToList();
                                                                         foreach (var an in proc)
                                                                         {
                                                                             nome = an.NomeDocumento.ToString();
@@ -279,6 +291,71 @@
                                     </div>
                                 </div>
                             </div>
+
+
+                                                        <div class="col-sm-12">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="card b-l-info business-info services m-b-20">
+                                            <div class="card-header">
+                                                <div class="card-header-right">
+                                                    <i class="icofont icofont-rounded-down"></i>
+                                                    <i class="icofont icofont-close-circled"></i>
+
+                                                </div>
+                                                <div class="service-header">
+                                                    <a>
+                                                        <h5 class="card-header-text">Respostas <i class="icofont icofont-2x icofont-question"></i></h5>
+                                                    </a>
+                                                </div>
+
+                                            </div>
+                                            <div class="card-block">
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                   <div class="table-responsive">
+                                                    <table class="table table-styling">
+                                                        <thead>
+                                                            <tr class="table-primary">
+                                                                <th>#</th>
+                                                                <th>Resposta</th>
+                                                                <th>Nota</th>
+                                                                <th>Cc</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                             <%
+                                                                  si = new SGD.Models.sgdbEntities();
+                                                                  string idsss = Request.QueryString["index"];
+                                                                  var  idpast = si.EnviarDocumentos.Where(d => d.GuidMap.Equals(idsss)).FirstOrDefault();
+                                                                  var procurarespostas = si.RespostaDocumento.Where(d=> d.idEnvio== idpast.idEnvio ).OrderByDescending(a => a.DatResposta).ToList();
+                                                                  foreach(var item in procurarespostas)
+                                                                  {
+                                                                      var cate = si.user.Where(s => s.idUser== item.idUsuario).FirstOrDefault();
+
+                                                                     %>
+                                                                
+
+                                                             <tr>
+                                                                <th scope="row"><%=item.DatResposta %></th>
+                                                                <td><%=item.Resposta %></td>
+                                                                <td><%=item.Comentario %></td>
+                                                                <td>@<%=cate.NomeUsuario %></td>
+                                                            </tr>
+                                                               <%} %>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                         </div>
+                                                    <!-- end of col-sm-8 -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
                         </div>
                     </div>
                 </div>

@@ -10,10 +10,11 @@ namespace SGD
     public class SendSmsToCliente
     {
         sgdbEntities si = new sgdbEntities();
-       // Sms_tb Message;
+        // Sms_tb Message;
         // C#
         AutoResetEvent receiveNow;
-        public void salvarMensagem(string numeoro, string messagem, string estado) {
+        public void salvarMensagem(string numeoro, string messagem, string estado)
+        {
             try
             {
 
@@ -31,7 +32,7 @@ namespace SGD
             catch (Exception ex)
             {
 
-                throw  ex;
+                throw ex;
             }
         }
         public bool EnviaSms(string numero, string mensagem)
@@ -64,17 +65,17 @@ namespace SGD
                     if (recievedData.EndsWith("\r\nOK\r\n"))
                     {
                         mensagemEnviada = true;
-                     }
+                    }
                     else if (recievedData.Contains("ERROR"))
                     {
                         mensagemEnviada = false;
-                       }
+                    }
                 }
                 catch (Exception ex)
                 {
                     salvarMensagem(numero, mensagem, "false");
+
                     throw ex;
-                
 
                 }
                 return mensagemEnviada;
