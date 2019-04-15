@@ -152,6 +152,7 @@
     <Content Include="WebFormDownloadDocument.aspx" />
     <Content Include="WebFormElaborarCartas.aspx" />
     <Content Include="WebFormExpe.aspx" />
+    <Content Include="WebFormMailSgd.aspx" />
     <Content Include="WebFormNovoExpediente.aspx" />
     <Content Include="WebFormPedidosCartas.aspx" />
     <Content Include="WebFormPermissaoPasta.aspx" />
@@ -1839,6 +1840,13 @@
     </Compile>
     <Compile Include="WebFormExpe.aspx.designer.cs">
       <DependentUpon>WebFormExpe.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebFormMailSgd.aspx.cs">
+      <DependentUpon>WebFormMailSgd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebFormMailSgd.aspx.designer.cs">
+      <DependentUpon>WebFormMailSgd.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebFormNovoExpediente.aspx.cs">
       <DependentUpon>WebFormNovoExpediente.aspx</DependentUpon>

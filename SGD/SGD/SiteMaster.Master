@@ -27,10 +27,6 @@
 
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
-
-
-
-
 </head>
 
 <body>
@@ -64,6 +60,10 @@
                                             </li>
                                             <li class="nav-item">
                                                 <a class="nav-link text-white" href="WebFormReport.aspx"><i class="icofont icofont-attachment text-white"></i> Report 
+                                                    </a>
+                                            </li>
+                                              <li class="nav-item">
+                                               <a class="nav-link text-white" href="WebFormMailSgd.aspx"><i class="icofont icofont-send-mail text-white"></i> Send Email
                                                     </a>
                                             </li>
 <%--                                            <li class="nav-item">
@@ -110,11 +110,11 @@
                                                     <i class="icofont icofont-rounded-down"></i>
                                                 </a>
                                                 <ul class="navbar-varient-submenu profile-sub-menu">
-                                                    <li>
+                                                    <%--<li>
                                                         <a href="WebFormPermissaoPasta.aspx">
                                                             <i class="icon-settings text-white"></i> Settings
                                                         </a>
-                                                    </li>
+                                                    </li>--%>
                                                     <li>
                                                         <a href="WebFormResumoActual.aspx">
                                                             <i class="icon-user text-white"></i> Resumo do Sistema
@@ -208,6 +208,7 @@ Tel (Central): (+258) 23 324 809 - Fax: (+258) 23 324 858 - Email:
     <script src="assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
     <script src="assets/js/jquery.mousewheel.min.js"></script>
 
-        <script type="text/javascript" src="bower_components/sweetalert/dist/sweetalert.min.js"></script>
+        <script type="text/javascript" src="bower_components/sweetalert/dist/sweetalert.min.js"></script>
+
 </body>
 </html>

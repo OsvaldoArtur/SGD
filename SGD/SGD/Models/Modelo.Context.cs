@@ -33,7 +33,6 @@ namespace SGD.Models
         public DbSet<departamento> departamento { get; set; }
         public DbSet<documento> documento { get; set; }
         public DbSet<documentosenviados> documentosenviados { get; set; }
-        public DbSet<DocumentoUsuario_tb> DocumentoUsuario_tb { get; set; }
         public DbSet<EnviarDocumentos> EnviarDocumentos { get; set; }
         public DbSet<Funcoes_tb> Funcoes_tb { get; set; }
         public DbSet<Instituicao_tb> Instituicao_tb { get; set; }
@@ -54,5 +53,6 @@ namespace SGD.Models
         public DbSet<View_PermissaoDepartamento> View_PermissaoDepartamento { get; set; }
         public DbSet<View_Recebimentos> View_Recebimentos { get; set; }
         public DbSet<View_RespostasCartas> View_RespostasCartas { get; set; }
+        public DbSet<DocumentoUsuario_tb> DocumentoUsuario_tb { get; set; }
     }
 }

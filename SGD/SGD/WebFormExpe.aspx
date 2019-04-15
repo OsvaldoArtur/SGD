@@ -161,6 +161,13 @@
 
                                                                 <div class="table-responsive">
                                                                     <table class="table">
+                                                                        <thead>
+                                                                            <tr> <td>Assunto</td>
+                                                                                <td>Descricao</td>
+                                                                                <td>Data Envio</td>
+                                                                                </tr>
+                                                                          
+                                                                        </thead>
                                                                         <tbody>
                                                                             <%
                                                                                 si = new SGD.Models.sgdbEntities();
@@ -172,14 +179,14 @@
                                                                                     Assunto = item.Assunto;
                                                                                     Menssagem = item.Nota;
                                                                                     dataEnvio = DateTime.Parse(item.DataEnvio.ToString());
-                                                                                    horaEnvio = DateTime.Parse(item.HoraEnvio.ToString());
+                                                                                    horaEnvio =  DateTime.Parse(item.HoraEnvio.ToString());
                                                                                     Estado = item.Estado;
                                                                             %>
                                                                             <tr class="<%=Estado%>">
 
                                                                                 <td><%=Assunto %></td>
                                                                                 <td><%= Menssagem%></td>
-                                                                                <td class="email-attch"></td>
+                                                                               <%--<td class="email-attch"></td>--%>
                                                                                 <%--<td class="email-time"><%=dataEnvio %></td>--%>
                                                                                 <td class="email-time"><%=horaEnvio %></td>
                                                                             </tr>

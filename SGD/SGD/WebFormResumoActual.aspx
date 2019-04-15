@@ -48,7 +48,7 @@
                                                          %>
                                                     <h3><%=contardepartamentos%> +</h3>
                                                     <span class="m-t-10">Departamentos</span>
-                                                    <i class="icofont icofont-offside"></i>
+                                                    <i class="icofont icofont-offside text-white"></i>
                                                 </div>
                                             </div>
                                         </div>

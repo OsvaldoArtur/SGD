@@ -57,7 +57,7 @@
                             <asp:Panel ID="panel1"  runat="server" Visible="true">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <div class="card b-l-success  business-info services m-b-20">
+                                        <div class="card b-l-info  business-info services m-b-20">
                                                     <div class="card-header">
                                                         <div class="service-header">
                                                             <h5 class="card-header-text">Expedientes Recebidos</h5>
@@ -125,7 +125,7 @@
 
                                     <div class="row">
                                     <div class="col-md-12">
-                                        <div class="card b-l-success  business-info services m-b-20">
+                                        <div class="card b-l-info  business-info services m-b-20">
                                                     <div class="card-header">
                                                         <div class="service-header">
                                                             <h5 class="card-header-text">Expedientes Respondidos</h5>

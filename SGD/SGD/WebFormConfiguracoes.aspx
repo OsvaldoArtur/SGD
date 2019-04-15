@@ -57,7 +57,7 @@
                                     </li>
 
                                     <li>
-                                        <asp:Button ID="btnUsuario" CssClass="btn-info btn" runat="server" Text="Usuarios" />
+                                        <asp:Button ID="btnUsuario" CssClass="btn-info btn" OnClick="btnUsuario_Click" runat="server" Text="Usuarios" />
                                     </li>
                                 </ul>
                             </div>
@@ -402,7 +402,7 @@
                             </asp:Panel>
 
 
-                            <asp:Panel ID="PanelUsuario" Visible="true" runat="server">
+                            <asp:Panel ID="PanelUsuario" Visible="false" runat="server">
                                 <div class="row">
 
 

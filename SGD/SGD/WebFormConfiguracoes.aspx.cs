@@ -26,6 +26,7 @@ public         sgdbEntities si = new sgdbEntities();
             PanelDepartamento.Visible = false;
             PanelCategoria.Visible = false;
             PanelPedidos.Visible = false;
+            PanelUsuario.Visible = false;
 
         }
 
@@ -64,6 +65,7 @@ public         sgdbEntities si = new sgdbEntities();
             PanelCategoria.Visible = false;
             PanelPedidos.Visible = false;
             PanelCOM.Visible = false;
+            PanelUsuario.Visible = false;
         }
 
         protected void adicionarnovoDepartamento()
@@ -98,6 +100,7 @@ public         sgdbEntities si = new sgdbEntities();
             PanelCategoria.Visible = true;
             PanelPedidos.Visible = false;
             PanelCOM.Visible = false;
+            PanelUsuario.Visible = false;
         }
 
         protected void btnSalvarCategoria_Click(object sender, EventArgs e)
@@ -129,6 +132,7 @@ public         sgdbEntities si = new sgdbEntities();
             PanelCategoria.Visible = false;
             PanelPedidos.Visible = true;
             PanelCOM.Visible = false;
+            PanelUsuario.Visible = false;
         }
         protected void adicionarnovoPedido()
         {
@@ -167,6 +171,7 @@ public         sgdbEntities si = new sgdbEntities();
             PanelCategoria.Visible = false;
             PanelPedidos.Visible = false;
             PanelCOM.Visible = true;
+            PanelUsuario.Visible = false;
 
         }
 
@@ -250,6 +255,17 @@ public         sgdbEntities si = new sgdbEntities();
 
                 throw;
             }
+        }
+
+        protected void btnUsuario_Click(object sender, EventArgs e)
+        {
+            PanelCursos.Visible = false;
+            PanelDepartamento.Visible = false;
+            PanelCategoria.Visible = false;
+            PanelPedidos.Visible = false;
+            PanelCOM.Visible = false;
+            PanelUsuario.Visible = true;
+
         }
     }
 }
