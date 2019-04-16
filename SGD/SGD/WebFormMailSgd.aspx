@@ -259,11 +259,12 @@
                                                                           
                                                                         </thead>
                                                                         <tbody>
+                                                                            <%-- Osvaldo --%>
                                                                             <%
                                                                                 si = new SGD.Models.sgdbEntities();
 
                                                                                 var procua = si.DocumentoUsuario_tb.Where(d=> d.idUserSender == idu) .ToList().OrderByDescending(d=> d.HoraEnvio);
-
+                                                                                
                                                                                 foreach (var item in procua)
                                                                                 {
                                                                                     Assunto = item.Assunto;
