@@ -21,7 +21,7 @@
                                         Inicio 
                                     </a>
                                 </li>
-                                <li class="breadcrumb-item">Categoria 
+                                <li class="breadcrumb-item">Configuracoes 
                                 </li>
 
                             </ul>

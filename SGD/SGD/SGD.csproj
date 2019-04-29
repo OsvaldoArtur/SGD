@@ -155,8 +155,11 @@
     <Content Include="WebFormMailSgd.aspx" />
     <Content Include="WebFormNovoExpediente.aspx" />
     <Content Include="WebFormPedidosCartas.aspx" />
+    <Content Include="WebFormPerfilUsuario.aspx" />
     <Content Include="WebFormPermissaoPasta.aspx" />
+    <Content Include="WebFormPesquisarExpedientes.aspx" />
     <Content Include="WebFormPortNameConfig.aspx" />
+    <Content Include="WebFormReadEmail.aspx" />
     <Content Include="WebFormRecebidos.aspx" />
     <Content Include="WebFormRegistration.aspx" />
     <Content Include="WebFormReport.aspx" />
@@ -1862,6 +1865,13 @@
     <Compile Include="WebFormPedidosCartas.aspx.designer.cs">
       <DependentUpon>WebFormPedidosCartas.aspx</DependentUpon>
     </Compile>
+    <Compile Include="WebFormPerfilUsuario.aspx.cs">
+      <DependentUpon>WebFormPerfilUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebFormPerfilUsuario.aspx.designer.cs">
+      <DependentUpon>WebFormPerfilUsuario.aspx</DependentUpon>
+    </Compile>
     <Compile Include="WebFormPermissaoPasta.aspx.cs">
       <DependentUpon>WebFormPermissaoPasta.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1869,12 +1879,26 @@
     <Compile Include="WebFormPermissaoPasta.aspx.designer.cs">
       <DependentUpon>WebFormPermissaoPasta.aspx</DependentUpon>
     </Compile>
+    <Compile Include="WebFormPesquisarExpedientes.aspx.cs">
+      <DependentUpon>WebFormPesquisarExpedientes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebFormPesquisarExpedientes.aspx.designer.cs">
+      <DependentUpon>WebFormPesquisarExpedientes.aspx</DependentUpon>
+    </Compile>
     <Compile Include="WebFormPortNameConfig.aspx.cs">
       <DependentUpon>WebFormPortNameConfig.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="WebFormPortNameConfig.aspx.designer.cs">
       <DependentUpon>WebFormPortNameConfig.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebFormReadEmail.aspx.cs">
+      <DependentUpon>WebFormReadEmail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebFormReadEmail.aspx.designer.cs">
+      <DependentUpon>WebFormReadEmail.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebFormRecebidos.aspx.cs">
       <DependentUpon>WebFormRecebidos.aspx</DependentUpon>

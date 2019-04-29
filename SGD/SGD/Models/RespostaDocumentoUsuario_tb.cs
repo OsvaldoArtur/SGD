@@ -19,6 +19,8 @@ namespace SGD.Models
         public string Resposta { get; set; }
         public Nullable<System.DateTime> DataResposta { get; set; }
         public Nullable<System.TimeSpan> HoraResposta { get; set; }
+        public Nullable<int> idUserResposta { get; set; }
+        public string Estado { get; set; }
     
         public virtual DocumentoUsuario_tb DocumentoUsuario_tb { get; set; }
     }

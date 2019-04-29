@@ -63,7 +63,7 @@ namespace SGD
                 dc.HoraEnvio = DateTime.Now.TimeOfDay;
                 dc.idPedido = int.Parse(DropDownListTipoPedido.SelectedValue);
                 dc.idUserReceiver = int.Parse(DropDownListPara.SelectedValue);
-                dc.idUserSender = 1;
+                dc.idUserSender = idu;
                 dc.Nota = txtNota.Text;
                 si.DocumentoUsuario_tb.Add(dc);
                 si.SaveChanges();

@@ -22,7 +22,6 @@
         <EntityTypeShape EntityType="sgdbModel.RecebimentoDocumentos" Width="1.5" PointX="10.5" PointY="14.125" IsExpanded="true" />
         <EntityTypeShape EntityType="sgdbModel.RespostaCartas_tb" Width="1.5" PointX="7.5" PointY="20.625" IsExpanded="true" />
         <EntityTypeShape EntityType="sgdbModel.RespostaDocumento" Width="1.5" PointX="13.5" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="sgdbModel.RespostaDocumentoUsuario_tb" Width="1.5" PointX="3" PointY="1.625" IsExpanded="true" />
         <EntityTypeShape EntityType="sgdbModel.Sms_tb" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="sgdbModel.sysdiagrams" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="sgdbModel.Tipo_usuario_tb" Width="1.5" PointX="3.75" PointY="8.25" IsExpanded="true" />
@@ -53,6 +52,7 @@
         <AssociationConnector Association="sgdbModel.FK_RespostaDocumento_user" ManuallyRouted="false" />
         <AssociationConnector Association="sgdbModel.FK_user_Tipo_usuario_tb" ManuallyRouted="false" />
         <EntityTypeShape EntityType="sgdbModel.DocumentoUsuario_tb" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="sgdbModel.RespostaDocumentoUsuario_tb" Width="1.5" PointX="3" PointY="1.125" />
         <AssociationConnector Association="sgdbModel.FK_RespostaDocumentoUsuario_tb_DocumentoUsuario_tb" />
       </Diagram>
     </edmx:Diagrams>

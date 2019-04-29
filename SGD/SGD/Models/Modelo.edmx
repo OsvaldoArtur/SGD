@@ -216,8 +216,10 @@
           <Property Name="idRespostaDocumentoUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="idDocumentoUser" Type="int" />
           <Property Name="Resposta" Type="varchar(max)" />
-          <Property Name="DataResposta" Type="date" />
+          <Property Name="DataResposta" Type="datetime" />
           <Property Name="HoraResposta" Type="time" Precision="7" />
+          <Property Name="idUserResposta" Type="int" />
+          <Property Name="Estado" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Sms_tb">
           <Key>
@@ -1046,17 +1048,6 @@ FROM [dbo].[View_RespostasCartas] AS [View_RespostasCartas]</DefiningQuery>
           <NavigationProperty Name="EnviarDocumentos" Relationship="Self.FK_RespostaDocumento_EnviarDocumentos" FromRole="RespostaDocumento" ToRole="EnviarDocumentos" />
           <NavigationProperty Name="user" Relationship="Self.FK_RespostaDocumento_user" FromRole="RespostaDocumento" ToRole="user" />
         </EntityType>
-        <EntityType Name="RespostaDocumentoUsuario_tb">
-          <Key>
-            <PropertyRef Name="idRespostaDocumentoUsuario" />
-          </Key>
-          <Property Name="idRespostaDocumentoUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="idDocumentoUser" Type="Int32" />
-          <Property Name="Resposta" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="DataResposta" Type="DateTime" Precision="0" />
-          <Property Name="HoraResposta" Type="Time" Precision="7" />
-          <NavigationProperty Name="DocumentoUsuario_tb" Relationship="sgdbModel.FK_RespostaDocumentoUsuario_tb_DocumentoUsuario_tb" FromRole="RespostaDocumentoUsuario_tb" ToRole="DocumentoUsuario_tb" />
-        </EntityType>
         <EntityType Name="Sms_tb">
           <Key>
             <PropertyRef Name="idSms" />
@@ -1473,7 +1464,6 @@ FROM [dbo].[View_RespostasCartas] AS [View_RespostasCartas]</DefiningQuery>
           <EntitySet Name="RecebimentoDocumentos" EntityType="Self.RecebimentoDocumentos" />
           <EntitySet Name="RespostaCartas_tb" EntityType="Self.RespostaCartas_tb" />
           <EntitySet Name="RespostaDocumento" EntityType="Self.RespostaDocumento" />
-          <EntitySet Name="RespostaDocumentoUsuario_tb" EntityType="Self.RespostaDocumentoUsuario_tb" />
           <EntitySet Name="Sms_tb" EntityType="Self.Sms_tb" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="Tipo_usuario_tb" EntityType="Self.Tipo_usuario_tb" />
@@ -1561,6 +1551,7 @@ FROM [dbo].[View_RespostasCartas] AS [View_RespostasCartas]</DefiningQuery>
             <End Role="user" EntitySet="user" />
           </AssociationSet>
           <EntitySet Name="DocumentoUsuario_tb" EntityType="sgdbModel.DocumentoUsuario_tb" />
+          <EntitySet Name="RespostaDocumentoUsuario_tb" EntityType="sgdbModel.RespostaDocumentoUsuario_tb" />
           <AssociationSet Name="FK_RespostaDocumentoUsuario_tb_DocumentoUsuario_tb" Association="sgdbModel.FK_RespostaDocumentoUsuario_tb_DocumentoUsuario_tb">
             <End Role="DocumentoUsuario_tb" EntitySet="DocumentoUsuario_tb" />
             <End Role="RespostaDocumentoUsuario_tb" EntitySet="RespostaDocumentoUsuario_tb" />
@@ -1582,6 +1573,19 @@ FROM [dbo].[View_RespostasCartas] AS [View_RespostasCartas]</DefiningQuery>
           <Property Name="HoraEnvio" Type="Time" Precision="7" />
           <Property Name="GuidMap" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="RespostaDocumentoUsuario_tb" Relationship="sgdbModel.FK_RespostaDocumentoUsuario_tb_DocumentoUsuario_tb" FromRole="DocumentoUsuario_tb" ToRole="RespostaDocumentoUsuario_tb" />
+        </EntityType>
+        <EntityType Name="RespostaDocumentoUsuario_tb">
+          <Key>
+            <PropertyRef Name="idRespostaDocumentoUsuario" />
+          </Key>
+          <Property Name="idRespostaDocumentoUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idDocumentoUser" Type="Int32" />
+          <Property Name="Resposta" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DataResposta" Type="DateTime" Precision="3" />
+          <Property Name="HoraResposta" Type="Time" Precision="7" />
+          <Property Name="idUserResposta" Type="Int32" />
+          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="DocumentoUsuario_tb" Relationship="sgdbModel.FK_RespostaDocumentoUsuario_tb_DocumentoUsuario_tb" FromRole="RespostaDocumentoUsuario_tb" ToRole="DocumentoUsuario_tb" />
         </EntityType>
         <Association Name="FK_RespostaDocumentoUsuario_tb_DocumentoUsuario_tb">
           <End Type="sgdbModel.DocumentoUsuario_tb" Role="DocumentoUsuario_tb" Multiplicity="0..1" />
@@ -1806,17 +1810,6 @@ FROM [dbo].[View_RespostasCartas] AS [View_RespostasCartas]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="RespostaDocumentoUsuario_tb">
-            <EntityTypeMapping TypeName="sgdbModel.RespostaDocumentoUsuario_tb">
-              <MappingFragment StoreEntitySet="RespostaDocumentoUsuario_tb">
-                <ScalarProperty Name="idRespostaDocumentoUsuario" ColumnName="idRespostaDocumentoUsuario" />
-                <ScalarProperty Name="idDocumentoUser" ColumnName="idDocumentoUser" />
-                <ScalarProperty Name="Resposta" ColumnName="Resposta" />
-                <ScalarProperty Name="DataResposta" ColumnName="DataResposta" />
-                <ScalarProperty Name="HoraResposta" ColumnName="HoraResposta" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Sms_tb">
             <EntityTypeMapping TypeName="sgdbModel.Sms_tb">
               <MappingFragment StoreEntitySet="Sms_tb">
@@ -1993,6 +1986,19 @@ FROM [dbo].[View_RespostasCartas] AS [View_RespostasCartas]</DefiningQuery>
                 <ScalarProperty Name="idUserSender" ColumnName="idUserSender" />
                 <ScalarProperty Name="idUserReceiver" ColumnName="idUserReceiver" />
                 <ScalarProperty Name="idDocumentouser" ColumnName="idDocumentouser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RespostaDocumentoUsuario_tb">
+            <EntityTypeMapping TypeName="sgdbModel.RespostaDocumentoUsuario_tb">
+              <MappingFragment StoreEntitySet="RespostaDocumentoUsuario_tb">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="idUserResposta" ColumnName="idUserResposta" />
+                <ScalarProperty Name="HoraResposta" ColumnName="HoraResposta" />
+                <ScalarProperty Name="DataResposta" ColumnName="DataResposta" />
+                <ScalarProperty Name="Resposta" ColumnName="Resposta" />
+                <ScalarProperty Name="idDocumentoUser" ColumnName="idDocumentoUser" />
+                <ScalarProperty Name="idRespostaDocumentoUsuario" ColumnName="idRespostaDocumentoUsuario" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

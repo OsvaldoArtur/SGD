@@ -66,6 +66,10 @@
                                                <a class="nav-link text-white" href="WebFormMailSgd.aspx"><i class="icofont icofont-send-mail text-white"></i> Send Email
                                                     </a>
                                             </li>
+                                                                                          <li class="nav-item">
+                                               <a class="nav-link text-white" href="WebFormPesquisarExpedientes.aspx"><i class="icofont icofont-search text-white"></i> Pesquisar Expedientes
+                                                    </a>
+                                            </li>
 <%--                                            <li class="nav-item">
                                                 <a class="nav-link text-white" href="#">Gestao
                                                     <i class="icofont icofont-rounded-down text-white"></i></a>
@@ -115,6 +119,11 @@
                                                             <i class="icon-settings text-white"></i> Settings
                                                         </a>
                                                     </li>--%>
+                                                    <li>
+                                                        <a href="WebFormPerfilUsuario.aspx">
+                                                            <i class="icon-user-follow text-white"></i> Perfil
+                                                        </a>
+                                                    </li>
                                                     <li>
                                                         <a href="WebFormResumoActual.aspx">
                                                             <i class="icon-user text-white"></i> Resumo do Sistema
