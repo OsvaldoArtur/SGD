@@ -49,7 +49,7 @@
 
 <div class="container">
     <div class="row">
-                        <div class="col-md-3"><img class="pull-right" src="assets/images/ucm_logo.jpg" alt="UCM logo" /> </div>
+                        <div class="col-md-3"><a href="http://ucm.ac.mz"><img class="pull-right" src="assets/images/ucm_logo.jpg" alt="UCM logo" /></a></div>
 		<div class="col-md-9 brand">
 		<h1 class="text-muted">Bem-vindo ao Sistema de Gestão de Expediente da Universidade Católica de Moçambique</h1> 
 		<h4></h4>

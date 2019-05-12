@@ -171,9 +171,9 @@
                         </div>
 
                         <div class="row">
-                            <p>
+                           <%-- <p>
                                 <asp:Button ID="Button1" CssClass="btn btn-primary" OnClick="Button1_Click" runat="server" Text="Button" />
-                            </p>
+                            </p>--%>
                         </div>
                     </div>
                 </div>
