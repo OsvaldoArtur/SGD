@@ -19,14 +19,25 @@ namespace SGD
 
         protected void pane2_ServerClick(object sender, EventArgs e)
         {
-            panel1.Visible = false;
-            panel2.Visible = true;
+          
         }
 
         protected void pane1_ServerClick(object sender, EventArgs e)
         {
-            panel1.Visible = true;
-            panel2.Visible = false;
+        }
+
+        protected void dpvalidate_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (dpvalidate.SelectedValue == "Recebidos")
+            {
+
+                panel1.Visible = true;
+                panel2.Visible = false;
+            }
+            else if (dpvalidate.SelectedValue == "Respondidos") {
+                panel1.Visible = false;
+                panel2.Visible = true;
+            }
         }
     }
 }

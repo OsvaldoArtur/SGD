@@ -134,11 +134,11 @@ namespace SGD
                 si.EnviarDocumentos.Add(ev);
                 si.SaveChanges();
                 idEnvio = ev.idEnvio;
-                Recebimento();
+                Recebimento();                {
+
                
 
                 foreach (HttpPostedFile upFile in FileUpload2.PostedFiles)
-                {
                     if (upFile.ContentLength == 0)
                     {
 

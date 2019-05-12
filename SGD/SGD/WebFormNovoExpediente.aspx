@@ -41,7 +41,7 @@
                                     </div>
 
                                     <div class="row card-block">
-                              
+
                                         <div class="col-sm-12">
                                             <div class="text-right">
                                                 <%--    <a href="#sign-in" data-toggle="modal" data-target="#sign-in"><i class="ion-plus">Novo</i></a>--%>
@@ -110,16 +110,16 @@
                                                                                     </asp:SqlDataSource>
                                                                                 </div>
                                                                             </div>
-                                                                             <div class="row">
-                                                                        <div class="input-group col-lg-6">
-                                                                            <asp:FileUpload ID="FileUpload2" CssClass="form-control" AllowMultiple="true" ValidateRequestMode="Enabled" runat="server" />
+                                                                            <div class="row">
+                                                                                <div class="input-group col-lg-6">
+                                                                                    <asp:FileUpload ID="FileUpload2" CssClass="form-control" AllowMultiple="true" ValidateRequestMode="Enabled" runat="server" />
 
-                                                                        </div>
-                                                                        <div class="input-group col-lg-6">
-                                                                            <asp:Label ID="lblSucesso" CssClass="text-success" Visible="false" runat="server" Text="Label"></asp:Label>
-                                                                        </div>
+                                                                                </div>
+                                                                                <div class="input-group col-lg-6">
+                                                                                    <asp:Label ID="lblSucesso" CssClass="text-success" Visible="false" runat="server" Text="Label"></asp:Label>
+                                                                                </div>
 
-                                                                    </div>
+                                                                            </div>
                                                                             <div class="row">
                                                                                 <div class="input-group col-sm-12">
                                                                                 </div>
@@ -129,12 +129,21 @@
                                                                                 </div>
 
                                                                                 <div class="card-block">
-                                                                                       <asp:Button ID="Button1" OnClick="Button1_Click" CssClass="btn btn-success" runat="server" Text="Enviar" />
-                                                                                           <asp:Button ID="Button2" CssClass="btn btn-info" runat="server" Text="Cancelar" />
-                                                                               
-                                                                                </div>
-                                          
+                                                                                    <asp:Button ID="Button1" OnClick="Button1_Click" ValidationGroup="0A" CssClass="btn btn-success" runat="server" Text="Enviar" />
+                                                                                    <asp:Button ID="Button2" CssClass="btn btn-info" runat="server" Text="Cancelar" />
 
+                                                                                </div>
+
+
+                                                                            </div>
+                                                                            <div class="row">
+                                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ValidationGroup="0A" CssClass="label label-danger" runat="server" ControlToValidate="txtTitulo" ErrorMessage="*Titulo" Display="Dynamic"></asp:RequiredFieldValidator>
+                                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ValidationGroup="0A" CssClass="label label-danger" runat="server" ControlToValidate="txtUrgencia" ErrorMessage="*Urgencia" Display="Dynamic"></asp:RequiredFieldValidator>
+                                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" ValidationGroup="0A" CssClass="label label-danger" runat="server" ControlToValidate="txtContacto" ErrorMessage="*Contacto" Display="Dynamic"></asp:RequiredFieldValidator>
+                                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator4" ValidationGroup="0A" CssClass="label label-danger" runat="server" ControlToValidate="txtcategoria" ErrorMessage="*Categoria" Display="Dynamic"></asp:RequiredFieldValidator>
+                                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator5" ValidationGroup="0A" CssClass="label label-danger" runat="server" ControlToValidate="txtDepartamentos" ErrorMessage="*Departamento" Display="Dynamic"></asp:RequiredFieldValidator>
+                                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator6" ValidationGroup="0A" CssClass="label label-danger" runat="server" ControlToValidate="txtPasta" ErrorMessage="*Pasta" Display="Dynamic"></asp:RequiredFieldValidator>
+                                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator7" ValidationGroup="0A" CssClass="label label-danger" runat="server" ControlToValidate="txtDescricao" ErrorMessage="*Descricao" Display="Dynamic"></asp:RequiredFieldValidator>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -156,17 +165,17 @@
         </div>
     </div>
     <script>
-    function msgConfirmOkCancel() {
-        var x = confirm("Deseja Realmente efetuar a operacao?"); 
-        if (x == true) {
-    
+        function msgConfirmOkCancel() {
+            var x = confirm("Deseja Realmente efetuar a operacao?");
+            if (x == true) {
 
-            confirm("Sucesso");
-       
-        } else {
-            confirm("Cancel");
+
+                confirm("Sucesso");
+
+            } else {
+                confirm("Cancel");
+            }
         }
-    }
 
-</script>
+    </script>
 </asp:Content>
