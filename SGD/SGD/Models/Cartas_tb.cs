@@ -27,15 +27,16 @@ namespace SGD.Models
         public string CodigoCarta { get; set; }
         public Nullable<System.DateTime> DataCarta { get; set; }
         public Nullable<int> idUsuario { get; set; }
-        public Nullable<int> idPastaDepartamento { get; set; }
+        public int idPastaDepartamento { get; set; }
         public string Estado { get; set; }
         public string GuidMap { get; set; }
         public byte[] Documento1 { get; set; }
         public byte[] Documento2 { get; set; }
+        public string Descricao { get; set; }
     
         public virtual Curso_tb Curso_tb { get; set; }
-        public virtual pastadepartamento pastadepartamento { get; set; }
         public virtual Pedidos_tb Pedidos_tb { get; set; }
         public virtual ICollection<RespostaCartas_tb> RespostaCartas_tb { get; set; }
+        public virtual pastadepartamento pastadepartamento { get; set; }
     }
 }

@@ -25,7 +25,6 @@ namespace SGD.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<Cartas_tb> Cartas_tb { get; set; }
         public DbSet<categoria> categoria { get; set; }
         public DbSet<COMConfig_tb> COMConfig_tb { get; set; }
         public DbSet<Condicao_tb> Condicao_tb { get; set; }
@@ -36,7 +35,6 @@ namespace SGD.Models
         public DbSet<EnviarDocumentos> EnviarDocumentos { get; set; }
         public DbSet<Funcoes_tb> Funcoes_tb { get; set; }
         public DbSet<Instituicao_tb> Instituicao_tb { get; set; }
-        public DbSet<pastadepartamento> pastadepartamento { get; set; }
         public DbSet<Pedidos_tb> Pedidos_tb { get; set; }
         public DbSet<PermissaoDeparramento_tb> PermissaoDeparramento_tb { get; set; }
         public DbSet<RecebimentoDocumentos> RecebimentoDocumentos { get; set; }
@@ -54,5 +52,7 @@ namespace SGD.Models
         public DbSet<View_RespostasCartas> View_RespostasCartas { get; set; }
         public DbSet<DocumentoUsuario_tb> DocumentoUsuario_tb { get; set; }
         public DbSet<RespostaDocumentoUsuario_tb> RespostaDocumentoUsuario_tb { get; set; }
+        public DbSet<Cartas_tb> Cartas_tb { get; set; }
+        public DbSet<pastadepartamento> pastadepartamento { get; set; }
     }
 }

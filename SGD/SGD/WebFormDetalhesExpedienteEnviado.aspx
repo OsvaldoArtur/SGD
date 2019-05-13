@@ -159,7 +159,7 @@
                             </div>
 
 
-                            <div class="col-sm-12">
+   <div class="col-sm-12">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="card b-l-info business-info services m-b-20">
@@ -185,7 +185,7 @@
                                                                     <%
 
                                                                         si = new SGD.Models.sgdbEntities();
-                                                                        var proc = si.documentosenviados.Where(d => d.GuidMap == idP).ToList();
+                                                                        var proc = si.documentosenviados.Where(d => d.idEnvio == leva.idEnvio).ToList();
                                                                         foreach (var an in proc)
                                                                         {
                                                                             nome = an.NomeDocumento.ToString();

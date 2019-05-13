@@ -24,6 +24,9 @@ namespace SGD.Models
         public string NomePasta { get; set; }
         public int idDepartamento { get; set; }
         public string GuidMap { get; set; }
+        public Nullable<int> idOwner { get; set; }
+        public Nullable<System.DateTime> DataCriada { get; set; }
+        public string DescricaoPasta { get; set; }
     
         public virtual ICollection<Cartas_tb> Cartas_tb { get; set; }
         public virtual departamento departamento { get; set; }

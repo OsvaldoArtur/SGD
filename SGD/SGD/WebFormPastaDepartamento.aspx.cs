@@ -44,6 +44,9 @@ namespace SGD
                 pd.NomePasta = txtNpasta.Text;
                 pd.idDepartamento = idDept;
                 pd.GuidMap = a;
+                pd.idOwner = int.Parse(Session["idu"].ToString());
+                pd.DescricaoPasta = txtDescricaoPAstas.Text;
+                pd.DataCriada = DateTime.Now;               
                 si.pastadepartamento.Add(pd);
                 si.SaveChanges();
               

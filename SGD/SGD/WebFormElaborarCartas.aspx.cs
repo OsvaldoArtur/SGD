@@ -59,6 +59,7 @@ namespace SGD
                 dp.Periodo = DropDownListPeriodo.Text;
                 dp.CodigoCarta = pedidonumero;
                 dp.DataCarta = DateTime.Now;
+                dp.Descricao = txtDescr.Text;
                 dp.idPedido = int.Parse(txtPedido.SelectedValue);
                 dp.idUsuario = idu;
                 dp.idPastaDepartamento = int.Parse(txtPasta.SelectedValue);

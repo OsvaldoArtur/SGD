@@ -17,11 +17,12 @@
           <Property Name="CodigoCarta" Type="varchar" MaxLength="50" />
           <Property Name="DataCarta" Type="datetime" />
           <Property Name="idUsuario" Type="int" />
-          <Property Name="idPastaDepartamento" Type="int" />
+          <Property Name="idPastaDepartamento" Type="int" Nullable="false" />
           <Property Name="Estado" Type="varchar" MaxLength="50" />
           <Property Name="GuidMap" Type="varchar(max)" />
           <Property Name="Documento1" Type="varbinary(max)" />
           <Property Name="Documento2" Type="varbinary(max)" />
+          <Property Name="Descricao" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="categoria">
           <Key>
@@ -156,6 +157,9 @@
           <Property Name="NomePasta" Type="nvarchar" MaxLength="255" />
           <Property Name="idDepartamento" Type="int" Nullable="false" />
           <Property Name="GuidMap" Type="varchar(max)" />
+          <Property Name="idOwner" Type="int" />
+          <Property Name="DataCriada" Type="datetime" />
+          <Property Name="DescricaoPasta" Type="varchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="Pedidos_tb">
           <Key>
@@ -406,7 +410,7 @@ warning 6002: The table/view 'sgdb.dbo.View_RespostasCartas' does not have a pri
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Cartas_tb_pastadepartamento">
-          <End Role="pastadepartamento" Type="Self.pastadepartamento" Multiplicity="0..1" />
+          <End Role="pastadepartamento" Type="Self.pastadepartamento" Multiplicity="1" />
           <End Role="Cartas_tb" Type="Self.Cartas_tb" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="pastadepartamento">
@@ -830,28 +834,6 @@ FROM [dbo].[View_RespostasCartas] AS [View_RespostasCartas]</DefiningQuery>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="sgdbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Cartas_tb">
-          <Key>
-            <PropertyRef Name="idCarta" />
-          </Key>
-          <Property Name="idCarta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NomeRequerente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="idCurso" Type="Int32" />
-          <Property Name="Periodo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="idPedido" Type="Int32" />
-          <Property Name="CodigoCarta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="DataCarta" Type="DateTime" Precision="3" />
-          <Property Name="idUsuario" Type="Int32" />
-          <Property Name="idPastaDepartamento" Type="Int32" />
-          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="GuidMap" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Documento1" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Documento2" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <NavigationProperty Name="Curso_tb" Relationship="Self.FK_Cartas_tb_Curso_tb" FromRole="Cartas_tb" ToRole="Curso_tb" />
-          <NavigationProperty Name="pastadepartamento" Relationship="Self.FK_Cartas_tb_pastadepartamento" FromRole="Cartas_tb" ToRole="pastadepartamento" />
-          <NavigationProperty Name="Pedidos_tb" Relationship="Self.FK_Cartas_tb_Pedidos_tb" FromRole="Cartas_tb" ToRole="Pedidos_tb" />
-          <NavigationProperty Name="RespostaCartas_tb" Relationship="Self.FK_RespostaCartas_tb_Cartas_tb" FromRole="Cartas_tb" ToRole="RespostaCartas_tb" />
-        </EntityType>
         <EntityType Name="categoria">
           <Key>
             <PropertyRef Name="idCategoria" />
@@ -888,7 +870,7 @@ FROM [dbo].[View_RespostasCartas] AS [View_RespostasCartas]</DefiningQuery>
           <Property Name="idCurso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Curso" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="DescricaoCurso" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Cartas_tb" Relationship="Self.FK_Cartas_tb_Curso_tb" FromRole="Curso_tb" ToRole="Cartas_tb" />
+          <NavigationProperty Name="Cartas_tb" Relationship="sgdbModel.FK_Cartas_tb_Curso_tb" FromRole="Curso_tb" ToRole="Cartas_tb" />
         </EntityType>
         <EntityType Name="departamento">
           <Key>
@@ -900,7 +882,7 @@ FROM [dbo].[View_RespostasCartas] AS [View_RespostasCartas]</DefiningQuery>
           <Property Name="GuidMap" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="PermissaoDeparramento_tb" Relationship="Self.FK_PermissaoDeparramento_tb_departamento" FromRole="departamento" ToRole="PermissaoDeparramento_tb" />
           <NavigationProperty Name="user" Relationship="Self.FK_user_departamento" FromRole="departamento" ToRole="user" />
-          <NavigationProperty Name="pastadepartamento" Relationship="Self.pastadepartamento_FK_pastadepartamento_idDeparta" FromRole="departamento" ToRole="pastadepartamento" />
+          <NavigationProperty Name="pastadepartamento" Relationship="sgdbModel.pastadepartamento_FK_pastadepartamento_idDeparta" FromRole="departamento" ToRole="pastadepartamento" />
         </EntityType>
         <EntityType Name="documento">
           <Key>
@@ -976,18 +958,6 @@ FROM [dbo].[View_RespostasCartas] AS [View_RespostasCartas]</DefiningQuery>
           <Property Name="Slogan" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="Logo" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
-        <EntityType Name="pastadepartamento">
-          <Key>
-            <PropertyRef Name="idpastadepartamento" />
-          </Key>
-          <Property Name="idpastadepartamento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NomePasta" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="idDepartamento" Type="Int32" Nullable="false" />
-          <Property Name="GuidMap" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Cartas_tb" Relationship="Self.FK_Cartas_tb_pastadepartamento" FromRole="pastadepartamento" ToRole="Cartas_tb" />
-          <NavigationProperty Name="departamento" Relationship="Self.pastadepartamento_FK_pastadepartamento_idDeparta" FromRole="pastadepartamento" ToRole="departamento" />
-          <NavigationProperty Name="RecebimentoDocumentos" Relationship="Self.FK_RecebimentoDocumentos_pastadepartamento" FromRole="pastadepartamento" ToRole="RecebimentoDocumentos" />
-        </EntityType>
         <EntityType Name="Pedidos_tb">
           <Key>
             <PropertyRef Name="idPedidos" />
@@ -995,7 +965,7 @@ FROM [dbo].[View_RespostasCartas] AS [View_RespostasCartas]</DefiningQuery>
           <Property Name="idPedidos" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Pedido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="DescricaoPedido" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Cartas_tb" Relationship="Self.FK_Cartas_tb_Pedidos_tb" FromRole="Pedidos_tb" ToRole="Cartas_tb" />
+          <NavigationProperty Name="Cartas_tb" Relationship="sgdbModel.FK_Cartas_tb_Pedidos_tb" FromRole="Pedidos_tb" ToRole="Cartas_tb" />
         </EntityType>
         <EntityType Name="PermissaoDeparramento_tb">
           <Key>
@@ -1021,7 +991,7 @@ FROM [dbo].[View_RespostasCartas] AS [View_RespostasCartas]</DefiningQuery>
           <Property Name="Informacao" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="GuidMap" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="EnviarDocumentos" Relationship="Self.FK_RecebimentoDocumentos_EnviarDocumentos" FromRole="RecebimentoDocumentos" ToRole="EnviarDocumentos" />
-          <NavigationProperty Name="pastadepartamento" Relationship="Self.FK_RecebimentoDocumentos_pastadepartamento" FromRole="RecebimentoDocumentos" ToRole="pastadepartamento" />
+          <NavigationProperty Name="pastadepartamento" Relationship="sgdbModel.FK_RecebimentoDocumentos_pastadepartamento" FromRole="RecebimentoDocumentos" ToRole="pastadepartamento" />
         </EntityType>
         <EntityType Name="RespostaCartas_tb">
           <Key>
@@ -1032,7 +1002,7 @@ FROM [dbo].[View_RespostasCartas] AS [View_RespostasCartas]</DefiningQuery>
           <Property Name="DataResposta" Type="DateTime" Precision="3" />
           <Property Name="Resposta" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="Nota" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Cartas_tb" Relationship="Self.FK_RespostaCartas_tb_Cartas_tb" FromRole="RespostaCartas_tb" ToRole="Cartas_tb" />
+          <NavigationProperty Name="Cartas_tb" Relationship="sgdbModel.FK_RespostaCartas_tb_Cartas_tb" FromRole="RespostaCartas_tb" ToRole="Cartas_tb" />
         </EntityType>
         <EntityType Name="RespostaDocumento">
           <Key>
@@ -1218,54 +1188,6 @@ FROM [dbo].[View_RespostasCartas] AS [View_RespostasCartas]</DefiningQuery>
           <Property Name="Resposta" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="Nota" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
         </EntityType>
-        <Association Name="FK_Cartas_tb_Curso_tb">
-          <End Role="Curso_tb" Type="Self.Curso_tb" Multiplicity="0..1" />
-          <End Role="Cartas_tb" Type="Self.Cartas_tb" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Curso_tb">
-              <PropertyRef Name="idCurso" />
-            </Principal>
-            <Dependent Role="Cartas_tb">
-              <PropertyRef Name="idCurso" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Cartas_tb_pastadepartamento">
-          <End Role="pastadepartamento" Type="Self.pastadepartamento" Multiplicity="0..1" />
-          <End Role="Cartas_tb" Type="Self.Cartas_tb" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="pastadepartamento">
-              <PropertyRef Name="idpastadepartamento" />
-            </Principal>
-            <Dependent Role="Cartas_tb">
-              <PropertyRef Name="idPastaDepartamento" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Cartas_tb_Pedidos_tb">
-          <End Role="Pedidos_tb" Type="Self.Pedidos_tb" Multiplicity="0..1" />
-          <End Role="Cartas_tb" Type="Self.Cartas_tb" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Pedidos_tb">
-              <PropertyRef Name="idPedidos" />
-            </Principal>
-            <Dependent Role="Cartas_tb">
-              <PropertyRef Name="idPedido" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_RespostaCartas_tb_Cartas_tb">
-          <End Role="Cartas_tb" Type="Self.Cartas_tb" Multiplicity="0..1" />
-          <End Role="RespostaCartas_tb" Type="Self.RespostaCartas_tb" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Cartas_tb">
-              <PropertyRef Name="idCarta" />
-            </Principal>
-            <Dependent Role="RespostaCartas_tb">
-              <PropertyRef Name="idCarta" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_EnviarDocumentos_categoria">
           <End Role="categoria" Type="Self.categoria" Multiplicity="0..1" />
           <End Role="EnviarDocumentos" Type="Self.EnviarDocumentos" Multiplicity="*" />
@@ -1322,18 +1244,6 @@ FROM [dbo].[View_RespostasCartas] AS [View_RespostasCartas]</DefiningQuery>
               <PropertyRef Name="iddepartamento" />
             </Principal>
             <Dependent Role="user">
-              <PropertyRef Name="idDepartamento" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="pastadepartamento_FK_pastadepartamento_idDeparta">
-          <End Role="departamento" Type="Self.departamento" Multiplicity="1" />
-          <End Role="pastadepartamento" Type="Self.pastadepartamento" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="departamento">
-              <PropertyRef Name="iddepartamento" />
-            </Principal>
-            <Dependent Role="pastadepartamento">
               <PropertyRef Name="idDepartamento" />
             </Dependent>
           </ReferentialConstraint>
@@ -1398,18 +1308,6 @@ FROM [dbo].[View_RespostasCartas] AS [View_RespostasCartas]</DefiningQuery>
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_RecebimentoDocumentos_pastadepartamento">
-          <End Role="pastadepartamento" Type="Self.pastadepartamento" Multiplicity="0..1" />
-          <End Role="RecebimentoDocumentos" Type="Self.RecebimentoDocumentos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="pastadepartamento">
-              <PropertyRef Name="idpastadepartamento" />
-            </Principal>
-            <Dependent Role="RecebimentoDocumentos">
-              <PropertyRef Name="idPastaDepartamento" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_PermissaoPasta_user">
           <End Role="user" Type="Self.user" Multiplicity="0..1" />
           <End Role="PermissaoDeparramento_tb" Type="Self.PermissaoDeparramento_tb" Multiplicity="*" />
@@ -1447,7 +1345,6 @@ FROM [dbo].[View_RespostasCartas] AS [View_RespostasCartas]</DefiningQuery>
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="sgdbEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Cartas_tb" EntityType="Self.Cartas_tb" />
           <EntitySet Name="categoria" EntityType="Self.categoria" />
           <EntitySet Name="COMConfig_tb" EntityType="Self.COMConfig_tb" />
           <EntitySet Name="Condicao_tb" EntityType="Self.Condicao_tb" />
@@ -1458,7 +1355,6 @@ FROM [dbo].[View_RespostasCartas] AS [View_RespostasCartas]</DefiningQuery>
           <EntitySet Name="EnviarDocumentos" EntityType="Self.EnviarDocumentos" />
           <EntitySet Name="Funcoes_tb" EntityType="Self.Funcoes_tb" />
           <EntitySet Name="Instituicao_tb" EntityType="Self.Instituicao_tb" />
-          <EntitySet Name="pastadepartamento" EntityType="Self.pastadepartamento" />
           <EntitySet Name="Pedidos_tb" EntityType="Self.Pedidos_tb" />
           <EntitySet Name="PermissaoDeparramento_tb" EntityType="Self.PermissaoDeparramento_tb" />
           <EntitySet Name="RecebimentoDocumentos" EntityType="Self.RecebimentoDocumentos" />
@@ -1474,22 +1370,6 @@ FROM [dbo].[View_RespostasCartas] AS [View_RespostasCartas]</DefiningQuery>
           <EntitySet Name="View_PermissaoDepartamento" EntityType="Self.View_PermissaoDepartamento" />
           <EntitySet Name="View_Recebimentos" EntityType="Self.View_Recebimentos" />
           <EntitySet Name="View_RespostasCartas" EntityType="Self.View_RespostasCartas" />
-          <AssociationSet Name="FK_Cartas_tb_Curso_tb" Association="Self.FK_Cartas_tb_Curso_tb">
-            <End Role="Curso_tb" EntitySet="Curso_tb" />
-            <End Role="Cartas_tb" EntitySet="Cartas_tb" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Cartas_tb_pastadepartamento" Association="Self.FK_Cartas_tb_pastadepartamento">
-            <End Role="pastadepartamento" EntitySet="pastadepartamento" />
-            <End Role="Cartas_tb" EntitySet="Cartas_tb" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Cartas_tb_Pedidos_tb" Association="Self.FK_Cartas_tb_Pedidos_tb">
-            <End Role="Pedidos_tb" EntitySet="Pedidos_tb" />
-            <End Role="Cartas_tb" EntitySet="Cartas_tb" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RespostaCartas_tb_Cartas_tb" Association="Self.FK_RespostaCartas_tb_Cartas_tb">
-            <End Role="Cartas_tb" EntitySet="Cartas_tb" />
-            <End Role="RespostaCartas_tb" EntitySet="RespostaCartas_tb" />
-          </AssociationSet>
           <AssociationSet Name="FK_EnviarDocumentos_categoria" Association="Self.FK_EnviarDocumentos_categoria">
             <End Role="categoria" EntitySet="categoria" />
             <End Role="EnviarDocumentos" EntitySet="EnviarDocumentos" />
@@ -1509,10 +1389,6 @@ FROM [dbo].[View_RespostasCartas] AS [View_RespostasCartas]</DefiningQuery>
           <AssociationSet Name="FK_user_departamento" Association="Self.FK_user_departamento">
             <End Role="departamento" EntitySet="departamento" />
             <End Role="user" EntitySet="user" />
-          </AssociationSet>
-          <AssociationSet Name="pastadepartamento_FK_pastadepartamento_idDeparta" Association="Self.pastadepartamento_FK_pastadepartamento_idDeparta">
-            <End Role="departamento" EntitySet="departamento" />
-            <End Role="pastadepartamento" EntitySet="pastadepartamento" />
           </AssociationSet>
           <AssociationSet Name="FK_documentosenviados_EnviarDocumentos" Association="Self.FK_documentosenviados_EnviarDocumentos">
             <End Role="EnviarDocumentos" EntitySet="EnviarDocumentos" />
@@ -1534,10 +1410,6 @@ FROM [dbo].[View_RespostasCartas] AS [View_RespostasCartas]</DefiningQuery>
             <End Role="TipoFuncao_tb" EntitySet="TipoFuncao_tb" />
             <End Role="Funcoes_tb" EntitySet="Funcoes_tb" />
           </AssociationSet>
-          <AssociationSet Name="FK_RecebimentoDocumentos_pastadepartamento" Association="Self.FK_RecebimentoDocumentos_pastadepartamento">
-            <End Role="pastadepartamento" EntitySet="pastadepartamento" />
-            <End Role="RecebimentoDocumentos" EntitySet="RecebimentoDocumentos" />
-          </AssociationSet>
           <AssociationSet Name="FK_PermissaoPasta_user" Association="Self.FK_PermissaoPasta_user">
             <End Role="user" EntitySet="user" />
             <End Role="PermissaoDeparramento_tb" EntitySet="PermissaoDeparramento_tb" />
@@ -1555,6 +1427,32 @@ FROM [dbo].[View_RespostasCartas] AS [View_RespostasCartas]</DefiningQuery>
           <AssociationSet Name="FK_RespostaDocumentoUsuario_tb_DocumentoUsuario_tb" Association="sgdbModel.FK_RespostaDocumentoUsuario_tb_DocumentoUsuario_tb">
             <End Role="DocumentoUsuario_tb" EntitySet="DocumentoUsuario_tb" />
             <End Role="RespostaDocumentoUsuario_tb" EntitySet="RespostaDocumentoUsuario_tb" />
+          </AssociationSet>
+          <EntitySet Name="Cartas_tb" EntityType="sgdbModel.Cartas_tb" />
+          <AssociationSet Name="FK_Cartas_tb_Curso_tb" Association="sgdbModel.FK_Cartas_tb_Curso_tb">
+            <End Role="Curso_tb" EntitySet="Curso_tb" />
+            <End Role="Cartas_tb" EntitySet="Cartas_tb" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cartas_tb_Pedidos_tb" Association="sgdbModel.FK_Cartas_tb_Pedidos_tb">
+            <End Role="Pedidos_tb" EntitySet="Pedidos_tb" />
+            <End Role="Cartas_tb" EntitySet="Cartas_tb" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RespostaCartas_tb_Cartas_tb" Association="sgdbModel.FK_RespostaCartas_tb_Cartas_tb">
+            <End Role="Cartas_tb" EntitySet="Cartas_tb" />
+            <End Role="RespostaCartas_tb" EntitySet="RespostaCartas_tb" />
+          </AssociationSet>
+          <EntitySet Name="pastadepartamento" EntityType="sgdbModel.pastadepartamento" />
+          <AssociationSet Name="FK_Cartas_tb_pastadepartamento" Association="sgdbModel.FK_Cartas_tb_pastadepartamento">
+            <End Role="pastadepartamento" EntitySet="pastadepartamento" />
+            <End Role="Cartas_tb" EntitySet="Cartas_tb" />
+          </AssociationSet>
+          <AssociationSet Name="pastadepartamento_FK_pastadepartamento_idDeparta" Association="sgdbModel.pastadepartamento_FK_pastadepartamento_idDeparta">
+            <End Role="departamento" EntitySet="departamento" />
+            <End Role="pastadepartamento" EntitySet="pastadepartamento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RecebimentoDocumentos_pastadepartamento" Association="sgdbModel.FK_RecebimentoDocumentos_pastadepartamento">
+            <End Role="pastadepartamento" EntitySet="pastadepartamento" />
+            <End Role="RecebimentoDocumentos" EntitySet="RecebimentoDocumentos" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="DocumentoUsuario_tb">
@@ -1599,31 +1497,122 @@ FROM [dbo].[View_RespostasCartas] AS [View_RespostasCartas]</DefiningQuery>
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Cartas_tb">
+          <Key>
+            <PropertyRef Name="idCarta" />
+          </Key>
+          <Property Name="idCarta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NomeRequerente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="idCurso" Type="Int32" />
+          <Property Name="Periodo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="idPedido" Type="Int32" />
+          <Property Name="CodigoCarta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DataCarta" Type="DateTime" Precision="3" />
+          <Property Name="idUsuario" Type="Int32" />
+          <Property Name="idPastaDepartamento" Type="Int32" Nullable="false" />
+          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GuidMap" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Documento1" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Documento2" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Descricao" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Curso_tb" Relationship="sgdbModel.FK_Cartas_tb_Curso_tb" FromRole="Cartas_tb" ToRole="Curso_tb" />
+          <NavigationProperty Name="Pedidos_tb" Relationship="sgdbModel.FK_Cartas_tb_Pedidos_tb" FromRole="Cartas_tb" ToRole="Pedidos_tb" />
+          <NavigationProperty Name="RespostaCartas_tb" Relationship="sgdbModel.FK_RespostaCartas_tb_Cartas_tb" FromRole="Cartas_tb" ToRole="RespostaCartas_tb" />
+          <NavigationProperty Name="pastadepartamento" Relationship="sgdbModel.FK_Cartas_tb_pastadepartamento" FromRole="Cartas_tb" ToRole="pastadepartamento" />
+        </EntityType>
+        <Association Name="FK_Cartas_tb_Curso_tb">
+          <End Type="sgdbModel.Curso_tb" Role="Curso_tb" Multiplicity="0..1" />
+          <End Type="sgdbModel.Cartas_tb" Role="Cartas_tb" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Curso_tb">
+              <PropertyRef Name="idCurso" />
+            </Principal>
+            <Dependent Role="Cartas_tb">
+              <PropertyRef Name="idCurso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cartas_tb_Pedidos_tb">
+          <End Type="sgdbModel.Pedidos_tb" Role="Pedidos_tb" Multiplicity="0..1" />
+          <End Type="sgdbModel.Cartas_tb" Role="Cartas_tb" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pedidos_tb">
+              <PropertyRef Name="idPedidos" />
+            </Principal>
+            <Dependent Role="Cartas_tb">
+              <PropertyRef Name="idPedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RespostaCartas_tb_Cartas_tb">
+          <End Type="sgdbModel.Cartas_tb" Role="Cartas_tb" Multiplicity="0..1" />
+          <End Type="sgdbModel.RespostaCartas_tb" Role="RespostaCartas_tb" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cartas_tb">
+              <PropertyRef Name="idCarta" />
+            </Principal>
+            <Dependent Role="RespostaCartas_tb">
+              <PropertyRef Name="idCarta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="pastadepartamento">
+          <Key>
+            <PropertyRef Name="idpastadepartamento" />
+          </Key>
+          <Property Name="idpastadepartamento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NomePasta" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="idDepartamento" Type="Int32" Nullable="false" />
+          <Property Name="GuidMap" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="idOwner" Type="Int32" />
+          <Property Name="DataCriada" Type="DateTime" Precision="3" />
+          <Property Name="DescricaoPasta" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Cartas_tb" Relationship="sgdbModel.FK_Cartas_tb_pastadepartamento" FromRole="pastadepartamento" ToRole="Cartas_tb" />
+          <NavigationProperty Name="departamento" Relationship="sgdbModel.pastadepartamento_FK_pastadepartamento_idDeparta" FromRole="pastadepartamento" ToRole="departamento" />
+          <NavigationProperty Name="RecebimentoDocumentos" Relationship="sgdbModel.FK_RecebimentoDocumentos_pastadepartamento" FromRole="pastadepartamento" ToRole="RecebimentoDocumentos" />
+        </EntityType>
+        <Association Name="FK_Cartas_tb_pastadepartamento">
+          <End Type="sgdbModel.pastadepartamento" Role="pastadepartamento" Multiplicity="1" />
+          <End Type="sgdbModel.Cartas_tb" Role="Cartas_tb" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pastadepartamento">
+              <PropertyRef Name="idpastadepartamento" />
+            </Principal>
+            <Dependent Role="Cartas_tb">
+              <PropertyRef Name="idPastaDepartamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pastadepartamento_FK_pastadepartamento_idDeparta">
+          <End Type="sgdbModel.departamento" Role="departamento" Multiplicity="1" />
+          <End Type="sgdbModel.pastadepartamento" Role="pastadepartamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="departamento">
+              <PropertyRef Name="iddepartamento" />
+            </Principal>
+            <Dependent Role="pastadepartamento">
+              <PropertyRef Name="idDepartamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RecebimentoDocumentos_pastadepartamento">
+          <End Type="sgdbModel.pastadepartamento" Role="pastadepartamento" Multiplicity="0..1" />
+          <End Type="sgdbModel.RecebimentoDocumentos" Role="RecebimentoDocumentos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pastadepartamento">
+              <PropertyRef Name="idpastadepartamento" />
+            </Principal>
+            <Dependent Role="RecebimentoDocumentos">
+              <PropertyRef Name="idPastaDepartamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="sgdbModelStoreContainer" CdmEntityContainer="sgdbEntities">
-          <EntitySetMapping Name="Cartas_tb">
-            <EntityTypeMapping TypeName="sgdbModel.Cartas_tb">
-              <MappingFragment StoreEntitySet="Cartas_tb">
-                <ScalarProperty Name="idCarta" ColumnName="idCarta" />
-                <ScalarProperty Name="NomeRequerente" ColumnName="NomeRequerente" />
-                <ScalarProperty Name="idCurso" ColumnName="idCurso" />
-                <ScalarProperty Name="Periodo" ColumnName="Periodo" />
-                <ScalarProperty Name="idPedido" ColumnName="idPedido" />
-                <ScalarProperty Name="CodigoCarta" ColumnName="CodigoCarta" />
-                <ScalarProperty Name="DataCarta" ColumnName="DataCarta" />
-                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
-                <ScalarProperty Name="idPastaDepartamento" ColumnName="idPastaDepartamento" />
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="GuidMap" ColumnName="GuidMap" />
-                <ScalarProperty Name="Documento1" ColumnName="Documento1" />
-                <ScalarProperty Name="Documento2" ColumnName="Documento2" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="categoria">
             <EntityTypeMapping TypeName="sgdbModel.categoria">
               <MappingFragment StoreEntitySet="categoria">
@@ -1740,16 +1729,6 @@ FROM [dbo].[View_RespostasCartas] AS [View_RespostasCartas]</DefiningQuery>
                 <ScalarProperty Name="NUIT" ColumnName="NUIT" />
                 <ScalarProperty Name="Slogan" ColumnName="Slogan" />
                 <ScalarProperty Name="Logo" ColumnName="Logo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="pastadepartamento">
-            <EntityTypeMapping TypeName="sgdbModel.pastadepartamento">
-              <MappingFragment StoreEntitySet="pastadepartamento">
-                <ScalarProperty Name="idpastadepartamento" ColumnName="idpastadepartamento" />
-                <ScalarProperty Name="NomePasta" ColumnName="NomePasta" />
-                <ScalarProperty Name="idDepartamento" ColumnName="idDepartamento" />
-                <ScalarProperty Name="GuidMap" ColumnName="GuidMap" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1999,6 +1978,39 @@ FROM [dbo].[View_RespostasCartas] AS [View_RespostasCartas]</DefiningQuery>
                 <ScalarProperty Name="Resposta" ColumnName="Resposta" />
                 <ScalarProperty Name="idDocumentoUser" ColumnName="idDocumentoUser" />
                 <ScalarProperty Name="idRespostaDocumentoUsuario" ColumnName="idRespostaDocumentoUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cartas_tb">
+            <EntityTypeMapping TypeName="sgdbModel.Cartas_tb">
+              <MappingFragment StoreEntitySet="Cartas_tb">
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+                <ScalarProperty Name="Documento2" ColumnName="Documento2" />
+                <ScalarProperty Name="Documento1" ColumnName="Documento1" />
+                <ScalarProperty Name="GuidMap" ColumnName="GuidMap" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="idPastaDepartamento" ColumnName="idPastaDepartamento" />
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+                <ScalarProperty Name="DataCarta" ColumnName="DataCarta" />
+                <ScalarProperty Name="CodigoCarta" ColumnName="CodigoCarta" />
+                <ScalarProperty Name="idPedido" ColumnName="idPedido" />
+                <ScalarProperty Name="Periodo" ColumnName="Periodo" />
+                <ScalarProperty Name="idCurso" ColumnName="idCurso" />
+                <ScalarProperty Name="NomeRequerente" ColumnName="NomeRequerente" />
+                <ScalarProperty Name="idCarta" ColumnName="idCarta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pastadepartamento">
+            <EntityTypeMapping TypeName="sgdbModel.pastadepartamento">
+              <MappingFragment StoreEntitySet="pastadepartamento">
+                <ScalarProperty Name="DescricaoPasta" ColumnName="DescricaoPasta" />
+                <ScalarProperty Name="DataCriada" ColumnName="DataCriada" />
+                <ScalarProperty Name="idOwner" ColumnName="idOwner" />
+                <ScalarProperty Name="GuidMap" ColumnName="GuidMap" />
+                <ScalarProperty Name="idDepartamento" ColumnName="idDepartamento" />
+                <ScalarProperty Name="NomePasta" ColumnName="NomePasta" />
+                <ScalarProperty Name="idpastadepartamento" ColumnName="idpastadepartamento" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

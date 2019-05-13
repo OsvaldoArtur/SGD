@@ -9,8 +9,8 @@
                 <div class="page-wrapper">
                     <div class="page-header">
                         <div class="page-header-title">
-                            <h4>Cartas</h4>
-                            <span class="text-muted">Criar novas Cartas </span>
+                            <h4>Cartas (Estudante)</h4>
+                            <span class="text-muted">Criar novas Cartas (Estudantes) </span>
                         </div>
                         <div class="page-header-breadcrumb">
                             <ul class="breadcrumb-title">
@@ -142,11 +142,11 @@
                                                                             </div>
                                                                             <div class="row">
                                                                                 <div class="input-group col-lg-6">
-                                                                                    <asp:FileUpload ID="FileUpload2" CssClass="form-control" AllowMultiple="false" ValidateRequestMode="Enabled" runat="server" />
+                                                                                    <asp:FileUpload ID="FileUpload2" ToolTip="Ficheiro 1" CssClass="form-control" AllowMultiple="false" ValidateRequestMode="Enabled" runat="server" />
 
                                                                                 </div>
                                                                                                                                      <div class="input-group col-lg-6">
-                                                                                    <asp:FileUpload ID="FileUpload1" CssClass="form-control" AllowMultiple="false" ValidateRequestMode="Enabled" runat="server" />
+                                                                                    <asp:FileUpload ID="FileUpload1" ToolTip="Ficheiro 2" CssClass="form-control" AllowMultiple="false" ValidateRequestMode="Enabled" runat="server" />
 
                                                                                 </div>
                                                                                 <div class="input-group col-lg-6">
@@ -154,6 +154,12 @@
                                                                                 </div>
 
                                                                             </div>
+                                                                            <div class=" row">
+                                                                                <div class=" input-group col-lg-12">
+                                                                                    <asp:TextBox ID="txtDescr" runat="server"  TextMode="MultiLine" Rows="3" CssClass="form-control form-control-default" placeholder="Descricao" Text="Default"></asp:TextBox>
+                                                                                </div>
+                                                                            </div>
+
                                                                             <div class="row">
        <%--                                                                         <div class="input-group col-sm-12">
                                                                                 </div>

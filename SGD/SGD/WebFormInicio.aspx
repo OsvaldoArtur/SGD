@@ -154,14 +154,21 @@
                                     id = item.GuidDepartamento;
                               //      var que = si.View_Recebimentos.Where(d=> d.id)
                                      %>
-                               <div class="col-md-6 col-xl-3">
+                               <div class="col-md-6 col-xl-4" >
                             <a href="WebFormPastaDepartamento.aspx?id=<%=id%>"> 
                              
-                                    <div class="card client-blocks card-border-info">
+                                    <div class="card client-blocks card-border-info " style="width:360px; height:100px">
                                         <div class="card-block">
-
-                                            <h5 class=" text-muted"><%=nome %></h5>
-                                            <i class="icofont icofont-2x icofont-ui-folder text-info"></i>
+                                            <div class="row">
+                                                <div class="col-lg-2">
+                                                  <i class="icofont icofont-2x icofont-folder-open icofont-2x text-info"></i>
+                                                </div>
+                                                <div class="col-lg-10">
+                                                   <h5 class=" text-muted "><%=nome %></h5>
+                                                </div>
+                                            </div>
+                                            
+                                         
                                         </div>
                                     </div>
                                 </a>

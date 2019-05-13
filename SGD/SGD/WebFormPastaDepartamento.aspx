@@ -57,7 +57,7 @@
                                             si = new SGD.Models.sgdbEntities();
                                             var LevaNome = si.departamento.Where(d => d.GuidMap.Equals(gui)).FirstOrDefault();
 
-                                             %>
+                                        %>
                                         <h5><%=LevaNome.NomeDepartamento %> <i class="icofont icofont-2x icofont-folder"></i></h5>
                                         <div class="card-header-right">
                                             <i class="icofont icofont-rounded-down"></i>
@@ -77,62 +77,43 @@
                                                 <li>--%>
                                             <div class="card user-card">
                                                 <div class="card-block">
-                                                    <div class="media">
 
-                                                        <%--                                                                <div class="media-body">
-                                                                    <div class="table-responsive">
-                                                                        <table class="table">
+                                                    <div class="data-table-main icon-list-demo">
+                                                        <div class="row">
+                                                            <% 
+                                                                int idusuario = int.Parse(Session["idu"].ToString());
+                                                                si = new SGD.Models.sgdbEntities();
+                                                                var lista = si.pastadepartamento.Where(d => d.idDepartamento == idDept).ToList();
 
-                                                                            <tbody>
-                                                                                <% 
 
-                                                                                    si = new SGD.Models.sgdbEntities();
-                                                                                    int ID = int.Parse(Request.QueryString["id"]);
-                                                                                    var lista = si.pastadepartamento.Where(d => d.idDepartamento == ID).ToList();
-                                                                                    ids = ID;
-                                                                                    foreach (var site in lista)
-                                                                                    { %>
+                                                                var conta = si.EnviarDocumentos.Where(d => d.idPastaDepartamento == idDept).Count();
 
-                                                                                <tr>
-                                                                                    <td><i runat="server" id="pasta" class="icofont icofont-folder"></i> <% =site.NomePasta %></td>
+                                                                foreach (var site in lista)
+                                                                {
+                                                                    idDept = site.idDepartamento;
 
-                                                                                </tr>
+                                                                    var contou = si.EnviarDocumentos.Where(s => s.idPastaDepartamento == site.idpastadepartamento && s.Estado.Equals("Enviado")).Count();
+                                                                    var contou1 = si.EnviarDocumentos.Where(s => s.idPastaDepartamento == site.idpastadepartamento && s.Estado.Equals("Respondido")).Count();
 
-                                                                                <% }%>
-                                                                            </tbody>
-                                                                        </table>
-                                                                    </div>--%>
-                                                    </div>
-                                                    <% 
-                                                        int idusuario = int.Parse(Session["idu"].ToString());
-                                                        si = new SGD.Models.sgdbEntities();
-                                                        //  int ID = int.Parse(Request.QueryString["id"]);
-                                                        var lista = si.pastadepartamento.Where(d=> d.idDepartamento == idDept).ToList();
-                                                        //  ids = ID;
+                                                            %>
+                                                            <div class="col-sm-12 col-md-6 col-lg-4 ">
+                                                                <a href="WebFormDocumentos.aspx?id=<%=site.GuidMap%>">
 
-                                                         var conta = si.EnviarDocumentos.Where(d => d.idPastaDepartamento == idDept).Count();
 
-                                                        foreach (var site in lista)
-                                                        {
-                                                            idDept = site.idDepartamento;
-
-                                                            var contou = si.EnviarDocumentos.Where(s=> s.idPastaDepartamento == site.idpastadepartamento && s.Estado.Equals("Enviado")). Count();
-                                                           
-                                                                                                                    %>
-                                                    <div class="media">
-                                                        <div class="media-left media-middle photo-table">
-                                                            <i class="icofont icofont-ui-folder icofont-4x"></i>
-                                                        </div>
-                                                        <a href="WebFormDocumentos.aspx?id=<%=site.GuidMap%>">
-                                                            <div class="media-body">
-                                                                <br />
-                                                                <h6 class="text-dark"><% =site.NomePasta %> <label class="badge badge-primary"> <%=contou %></label></h6> 
-
-                                                                <%--                                                                <p><%=site.idDepartamento %></p>--%>
+                                                                    <i class="icofont icofont-folder"></i>
+                                                                    <label class="txt-muted"><% =site.NomePasta %></label>
+                                                                    <label class="badge badge-primary"><%=contou %></label>
+                                                                    <label class="badge badge-inverse"><%=contou1 %></label>
+                                                                </a>
                                                             </div>
-                                                        </a>
+
+                                                            <% }%>
+                                                        </div>
+
                                                     </div>
-                                                    <% }%>
+
+
+
                                                 </div>
                                             </div>
                                         </div>
@@ -168,6 +149,11 @@
                             <asp:TextBox ID="txtNpasta" ValidateRequestMode="Enabled" CssClass="form-control" placeholder="Nome da Pasta" runat="server"></asp:TextBox>
                             <span class="md-line"></span>
                         </div>
+                        <div class="input-group">
+
+                            <asp:TextBox ID="txtDescricaoPAstas" ValidateRequestMode="Enabled" CssClass="form-control" placeholder="Descricao" TextMode="MultiLine" Rows="3" runat="server"></asp:TextBox>
+                            <span class="md-line"></span>
+                        </div>
                         <%--              <div class="input-group">
 
                                 <asp:TextBox ID="txtDescricaoDepartamento" ValidateRequestMode="Enabled" CssClass="form-control" TextMode="MultiLine" Rows="4" placeholder="Descricao" runat="server"></asp:TextBox>
@@ -199,5 +185,5 @@
 
 
 </asp:Content>
- 
+
 

@@ -5,7 +5,6 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="0019c1f920054e98a8fea7fdfe59bdd3" Name="Diagram1">
-        <EntityTypeShape EntityType="sgdbModel.Cartas_tb" Width="1.5" PointX="5.25" PointY="19.5" IsExpanded="true" />
         <EntityTypeShape EntityType="sgdbModel.categoria" Width="1.5" PointX="6" PointY="16.125" IsExpanded="true" />
         <EntityTypeShape EntityType="sgdbModel.COMConfig_tb" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="sgdbModel.Condicao_tb" Width="1.5" PointX="11.25" PointY="11.125" IsExpanded="true" />
@@ -16,7 +15,6 @@
         <EntityTypeShape EntityType="sgdbModel.EnviarDocumentos" Width="1.5" PointX="8.25" PointY="10" IsExpanded="true" />
         <EntityTypeShape EntityType="sgdbModel.Funcoes_tb" Width="1.5" PointX="9" PointY="6" IsExpanded="true" />
         <EntityTypeShape EntityType="sgdbModel.Instituicao_tb" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="sgdbModel.pastadepartamento" Width="1.5" PointX="3" PointY="20.5" IsExpanded="true" />
         <EntityTypeShape EntityType="sgdbModel.Pedidos_tb" Width="1.5" PointX="3" PointY="24" IsExpanded="true" />
         <EntityTypeShape EntityType="sgdbModel.PermissaoDeparramento_tb" Width="1.5" PointX="3" PointY="10.875" IsExpanded="true" />
         <EntityTypeShape EntityType="sgdbModel.RecebimentoDocumentos" Width="1.5" PointX="10.5" PointY="14.125" IsExpanded="true" />
@@ -32,28 +30,30 @@
         <EntityTypeShape EntityType="sgdbModel.View_PermissaoDepartamento" Width="1.5" PointX="13.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="sgdbModel.View_Recebimentos" Width="1.5" PointX="12.75" PointY="14.75" IsExpanded="true" />
         <EntityTypeShape EntityType="sgdbModel.View_RespostasCartas" Width="1.5" PointX="13.75" PointY="5.75" IsExpanded="true" />
-        <AssociationConnector Association="sgdbModel.FK_Cartas_tb_Curso_tb" ManuallyRouted="false" />
-        <AssociationConnector Association="sgdbModel.FK_Cartas_tb_pastadepartamento" ManuallyRouted="false" />
-        <AssociationConnector Association="sgdbModel.FK_Cartas_tb_Pedidos_tb" ManuallyRouted="false" />
-        <AssociationConnector Association="sgdbModel.FK_RespostaCartas_tb_Cartas_tb" ManuallyRouted="false" />
         <AssociationConnector Association="sgdbModel.FK_EnviarDocumentos_categoria" ManuallyRouted="false" />
         <AssociationConnector Association="sgdbModel.FK_Condicao_tb_Funcoes_tb" ManuallyRouted="false" />
         <AssociationConnector Association="sgdbModel.FK_Condicao_tb_user" ManuallyRouted="false" />
         <AssociationConnector Association="sgdbModel.FK_PermissaoDeparramento_tb_departamento" ManuallyRouted="false" />
         <AssociationConnector Association="sgdbModel.FK_user_departamento" ManuallyRouted="false" />
-        <AssociationConnector Association="sgdbModel.pastadepartamento_FK_pastadepartamento_idDeparta" ManuallyRouted="false" />
         <AssociationConnector Association="sgdbModel.FK_documentosenviados_EnviarDocumentos" ManuallyRouted="false" />
         <AssociationConnector Association="sgdbModel.FK_EnviarDocumentos_user" ManuallyRouted="false" />
         <AssociationConnector Association="sgdbModel.FK_RecebimentoDocumentos_EnviarDocumentos" ManuallyRouted="false" />
         <AssociationConnector Association="sgdbModel.FK_RespostaDocumento_EnviarDocumentos" ManuallyRouted="false" />
         <AssociationConnector Association="sgdbModel.FK_Funcoes_tb_TipoFuncao_tb" ManuallyRouted="false" />
-        <AssociationConnector Association="sgdbModel.FK_RecebimentoDocumentos_pastadepartamento" ManuallyRouted="false" />
         <AssociationConnector Association="sgdbModel.FK_PermissaoPasta_user" ManuallyRouted="false" />
         <AssociationConnector Association="sgdbModel.FK_RespostaDocumento_user" ManuallyRouted="false" />
         <AssociationConnector Association="sgdbModel.FK_user_Tipo_usuario_tb" ManuallyRouted="false" />
         <EntityTypeShape EntityType="sgdbModel.DocumentoUsuario_tb" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="sgdbModel.RespostaDocumentoUsuario_tb" Width="1.5" PointX="3" PointY="1.125" />
         <AssociationConnector Association="sgdbModel.FK_RespostaDocumentoUsuario_tb_DocumentoUsuario_tb" />
+        <EntityTypeShape EntityType="sgdbModel.Cartas_tb" Width="1.5" PointX="5.25" PointY="19.375" />
+        <AssociationConnector Association="sgdbModel.FK_Cartas_tb_Curso_tb" />
+        <AssociationConnector Association="sgdbModel.FK_Cartas_tb_Pedidos_tb" />
+        <AssociationConnector Association="sgdbModel.FK_RespostaCartas_tb_Cartas_tb" />
+        <EntityTypeShape EntityType="sgdbModel.pastadepartamento" Width="2.375" PointX="3" PointY="26.75" />
+        <AssociationConnector Association="sgdbModel.FK_Cartas_tb_pastadepartamento" />
+        <AssociationConnector Association="sgdbModel.pastadepartamento_FK_pastadepartamento_idDeparta" />
+        <AssociationConnector Association="sgdbModel.FK_RecebimentoDocumentos_pastadepartamento" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
