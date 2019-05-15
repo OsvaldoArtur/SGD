@@ -77,7 +77,7 @@ namespace SGD
                 //script += "')};";
                 //ClientScript.RegisterStartupScript(this.GetType(), "SuccessMessage", script, true);
                 //Response.Redirect("WebFormInicio.aspx");
-                ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Form submitted.');", true);
+              //  ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Form submitted.');", true);
               //  ScriptManager.RegisterStartupScript(this, this.GetType(), "err_msg", "alert('" + "abe" + "');window.location='WebFormInicio.aspx';", true);
             }
             catch (Exception)

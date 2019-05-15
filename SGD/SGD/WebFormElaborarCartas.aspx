@@ -84,7 +84,7 @@
                                                                                     <asp:SqlDataSource ID="SqlDataSourcePedidos" runat="server" ConnectionString="<%$ ConnectionStrings:sgdbConnectionString %>" SelectCommand="SELECT [idPedidos], [Pedido], [DescricaoPedido] FROM [Pedidos_tb]"></asp:SqlDataSource>
                                                                                 </div>
                                                                                 <div class="input-group col-sm-6">
-                                                                              
+
                                                                                     <label class="col-form-label col-sm-4 ">Periodo:</label>
                                                                                     <asp:DropDownList ID="DropDownListPeriodo" CssClass="form-control form-control-feedback col-sm-8" runat="server">
                                                                                         <asp:ListItem>Laboral</asp:ListItem>
@@ -100,12 +100,12 @@
 
 
                                                                                 <div class="input-group col-sm-6">
-<%--                                                                                                                                                                    <label class="col-form-label col-sm-4">Categoria:</label>
+                                                                                    <%--                                                                                                                                                                    <label class="col-form-label col-sm-4">Categoria:</label>
                                                                                     <asp:DropDownList ID="DropDownList1" CssClass="form-control form-control-feedback col-sm-8" runat="server" DataSourceID="SqlDataSourceCategoria" DataTextField="NomeCategoria" DataValueField="idCategoria">
                                                                                     </asp:DropDownList>
                                                                                     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:sgdbConnectionString %>" SelectCommand="SELECT [idCategoria], [NomeCategoria] FROM [categoria]">/asp:SqlDataSource>--%>
-                                                                                <asp:TextBox ID="txtMotivo" placeholder="Motivo" CssClass="form-control form-control-feedback" runat="server"></asp:TextBox>
-                                                                                     </div>
+                                                                                    <asp:TextBox ID="txtMotivo" placeholder="Motivo" CssClass="form-control form-control-feedback" runat="server"></asp:TextBox>
+                                                                                </div>
                                                                                 <div class="input-group col-sm-6">
                                                                                     <%-- <asp:TextBox ID="txtContacto" placeholder="Ex:. 840000000" CssClass="form-control form-control-feedback" runat="server"></asp:TextBox>--%>
                                                                                     <label class="col-form-label col-sm-4">Ano Lectivo:</label>
@@ -145,7 +145,7 @@
                                                                                     <asp:FileUpload ID="FileUpload2" ToolTip="Ficheiro 1" CssClass="form-control" AllowMultiple="false" ValidateRequestMode="Enabled" runat="server" />
 
                                                                                 </div>
-                                                                                                                                     <div class="input-group col-lg-6">
+                                                                                <div class="input-group col-lg-6">
                                                                                     <asp:FileUpload ID="FileUpload1" ToolTip="Ficheiro 2" CssClass="form-control" AllowMultiple="false" ValidateRequestMode="Enabled" runat="server" />
 
                                                                                 </div>
@@ -156,12 +156,12 @@
                                                                             </div>
                                                                             <div class=" row">
                                                                                 <div class=" input-group col-lg-12">
-                                                                                    <asp:TextBox ID="txtDescr" runat="server"  TextMode="MultiLine" Rows="3" CssClass="form-control form-control-default" placeholder="Descricao" Text="Default"></asp:TextBox>
+                                                                                    <asp:TextBox ID="txtDescr" runat="server" TextMode="MultiLine" Rows="3" CssClass="form-control form-control-default" placeholder="Descricao" Text="Default"></asp:TextBox>
                                                                                 </div>
                                                                             </div>
 
                                                                             <div class="row">
-       <%--                                                                         <div class="input-group col-sm-12">
+                                                                                <%--                                                                         <div class="input-group col-sm-12">
                                                                                 </div>
 
                                                                                 <div class="input-group col-sm-12">
@@ -169,12 +169,24 @@
                                                                                 </div>--%>
 
                                                                                 <div class="card-block">
-                                                                                    <asp:Button ID="Button1" CssClass="btn btn-success" runat="server" OnClick="Button1_Click" OnClientClick="return confirm('Are you sure you want to save selected records?');"  Text="Enviar Carta" />
+                                                                                    <asp:Button ID="Button1" ValidationGroup="0A" CssClass="btn btn-success" runat="server" OnClick="Button1_Click"  Text="Enviar Carta" />
                                                                                     <asp:Button ID="Button2" CssClass="btn btn-info" runat="server" Text="Cancelar" />
 
                                                                                 </div>
 
 
+                                                                            </div>
+                                                                            <div class="row">
+                                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ValidationGroup="0A" CssClass="label label-danger" runat="server" ControlToValidate="txtNomeCliente" ErrorMessage="*Nome Cliente" Display="Dynamic"></asp:RequiredFieldValidator>
+                                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ValidationGroup="0A" CssClass="label label-danger" runat="server" ControlToValidate="txtCurso" ErrorMessage="*Urgencia" Display="Dynamic"></asp:RequiredFieldValidator>
+                                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator3" ValidationGroup="0A" CssClass="label label-danger" runat="server" ControlToValidate="txtPedido" ErrorMessage="*Pedido" Display="Dynamic"></asp:RequiredFieldValidator>
+                                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator4" ValidationGroup="0A" CssClass="label label-danger" runat="server" ControlToValidate="DropDownListPeriodo" ErrorMessage="*Periodo" Display="Dynamic"></asp:RequiredFieldValidator>
+                                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator5" ValidationGroup="0A" CssClass="label label-danger" runat="server" ControlToValidate="txtMotivo" ErrorMessage="*Motivo" Display="Dynamic"></asp:RequiredFieldValidator>
+                                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator6" ValidationGroup="0A" CssClass="label label-danger" runat="server" ControlToValidate="DropDownList2" ErrorMessage="*Ano" Display="Dynamic"></asp:RequiredFieldValidator>
+                                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator7" ValidationGroup="0A" CssClass="label label-danger" runat="server" ControlToValidate="txtDepartamentos" ErrorMessage="*Departamento" Display="Dynamic"></asp:RequiredFieldValidator>
+                                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator8" ValidationGroup="0A" CssClass="label label-danger" runat="server" ControlToValidate="txtPasta" ErrorMessage="*Pasta" Display="Dynamic"></asp:RequiredFieldValidator>
+                                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator9" ValidationGroup="0A" CssClass="label label-danger" runat="server" ControlToValidate="txtDescr" ErrorMessage="*Comentario" Display="Dynamic"></asp:RequiredFieldValidator>
+                                                                              
                                                                             </div>
                                                                         </div>
                                                                     </div>

@@ -101,9 +101,9 @@
 
 
                                                                     <i class="icofont icofont-folder"></i>
-                                                                    <label class="txt-muted"><% =site.NomePasta %></label>
-                                                                    <label class="badge badge-primary"><%=contou %></label>
-                                                                    <label class="badge badge-inverse"><%=contou1 %></label>
+                                                               <a href="WebFormDocumentos.aspx?id=<%=site.GuidMap%>">        <label class="txt-muted"><% =site.NomePasta %></label></a>
+                                                                <a href="WebFormDocumentos.aspx?id=<%=site.GuidMap%>">       <label class="badge badge-primary"><%=contou %></label></a>
+                                                                       <a href="WebFormDocumentos.aspx?id=<%=site.GuidMap%>"> <label class="badge badge-inverse"><%=contou1 %></label></a>
                                                                 </a>
                                                             </div>
 

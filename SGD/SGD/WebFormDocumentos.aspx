@@ -122,11 +122,11 @@
 
                                                                     <tr>
                                                                         <th scope="row"><a href="WebFormDetalhesExpediente.aspx?index=<%=item.GuidMap %>" class="text-muted"><%=item.CodExpediente%></a></th>
-                                                                        <td><%=item.Titulo%></td>
-                                                                        <td><%=item.DataEnvio%></td>
-                                                                        <td><%=item.NivelUrgencia %></td>
-                                                                        <td><%=cate.NomeCategoria %></td>
-                                                                        <td><span class=" label label-success">Novo</span></td>
+                                                                        <td><a href="WebFormDetalhesExpediente.aspx?index=<%=item.GuidMap %>" class="text-muted"><%=item.Titulo%></a></td>
+                                                                        <td><a href="WebFormDetalhesExpediente.aspx?index=<%=item.GuidMap %>" class="text-muted"><%=item.DataEnvio%></a></td>
+                                                                        <td><a href="WebFormDetalhesExpediente.aspx?index=<%=item.GuidMap %>" class="text-muted"><%=item.NivelUrgencia %></a></td>
+                                                                        <td><a href="WebFormDetalhesExpediente.aspx?index=<%=item.GuidMap %>" class="text-muted"><%=cate.NomeCategoria %></a></td>
+                                                                        <td><span class=" label label-success"><a href="WebFormDetalhesExpediente.aspx?index=<%=item.GuidMap %>" class="text-white">Novo</a></span></td>
                                                                     </tr>
                                                                     <%} %>
                                                                 </tbody>
