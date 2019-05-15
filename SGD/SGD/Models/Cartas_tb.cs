@@ -16,6 +16,7 @@ namespace SGD.Models
     {
         public Cartas_tb()
         {
+            this.Anexos_Cartas_tb = new HashSet<Anexos_Cartas_tb>();
             this.RespostaCartas_tb = new HashSet<RespostaCartas_tb>();
         }
     
@@ -30,13 +31,14 @@ namespace SGD.Models
         public int idPastaDepartamento { get; set; }
         public string Estado { get; set; }
         public string GuidMap { get; set; }
-        public byte[] Documento1 { get; set; }
-        public byte[] Documento2 { get; set; }
         public string Descricao { get; set; }
+        public string ContactoCelular { get; set; }
+        public string AnoLectivo { get; set; }
     
         public virtual Curso_tb Curso_tb { get; set; }
-        public virtual Pedidos_tb Pedidos_tb { get; set; }
-        public virtual ICollection<RespostaCartas_tb> RespostaCartas_tb { get; set; }
         public virtual pastadepartamento pastadepartamento { get; set; }
+        public virtual Pedidos_tb Pedidos_tb { get; set; }
+        public virtual ICollection<Anexos_Cartas_tb> Anexos_Cartas_tb { get; set; }
+        public virtual ICollection<RespostaCartas_tb> RespostaCartas_tb { get; set; }
     }
 }

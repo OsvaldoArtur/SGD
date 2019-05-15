@@ -146,9 +146,12 @@
     <Content Include="WebFormCadastroEmpresa.aspx" />
     <Content Include="WebFormConfiguracoes.aspx" />
     <Content Include="WebFormCursos.aspx" />
+    <Content Include="WebFormDetalhesCartas.aspx" />
     <Content Include="WebFormDetalhesExpediente.aspx" />
     <Content Include="WebFormDetalhesExpedienteEnviado.aspx" />
     <Content Include="WebFormDetalhesUsuario.aspx" />
+    <Content Include="WebFormDownloadAnexo.aspx" />
+    <Content Include="WebFormDownloadCartas.aspx" />
     <Content Include="WebFormDownloadDocument.aspx" />
     <Content Include="WebFormElaborarCartas.aspx" />
     <Content Include="WebFormExpe.aspx" />
@@ -166,6 +169,7 @@
     <Content Include="WebFormResumoActual.aspx" />
     <Content Include="WebFormSendSMS.aspx" />
     <Content Include="SiteMaster.Master" />
+    <Content Include="WebFormSucessoCartas.aspx" />
     <EntityDeploy Include="Models\Modelo.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Modelo.Designer.cs</LastGenOutput>
@@ -1670,6 +1674,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Anexos_Cartas_tb.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Cartas_tb.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
@@ -1802,6 +1809,13 @@
     <Compile Include="WebFormCursos.aspx.designer.cs">
       <DependentUpon>WebFormCursos.aspx</DependentUpon>
     </Compile>
+    <Compile Include="WebFormDetalhesCartas.aspx.cs">
+      <DependentUpon>WebFormDetalhesCartas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebFormDetalhesCartas.aspx.designer.cs">
+      <DependentUpon>WebFormDetalhesCartas.aspx</DependentUpon>
+    </Compile>
     <Compile Include="WebFormDetalhesExpediente.aspx.cs">
       <DependentUpon>WebFormDetalhesExpediente.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1822,6 +1836,20 @@
     </Compile>
     <Compile Include="WebFormDetalhesUsuario.aspx.designer.cs">
       <DependentUpon>WebFormDetalhesUsuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebFormDownloadAnexo.aspx.cs">
+      <DependentUpon>WebFormDownloadAnexo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebFormDownloadAnexo.aspx.designer.cs">
+      <DependentUpon>WebFormDownloadAnexo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebFormDownloadCartas.aspx.cs">
+      <DependentUpon>WebFormDownloadCartas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebFormDownloadCartas.aspx.designer.cs">
+      <DependentUpon>WebFormDownloadCartas.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebFormDownloadDocument.aspx.cs">
       <DependentUpon>WebFormDownloadDocument.aspx</DependentUpon>
@@ -1983,6 +2011,13 @@
     </Compile>
     <Compile Include="WebFormSendSMS.aspx.designer.cs">
       <DependentUpon>WebFormSendSMS.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebFormSucessoCartas.aspx.cs">
+      <DependentUpon>WebFormSucessoCartas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebFormSucessoCartas.aspx.designer.cs">
+      <DependentUpon>WebFormSucessoCartas.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

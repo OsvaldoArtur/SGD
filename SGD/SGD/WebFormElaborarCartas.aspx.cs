@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using SGD.Models;
+using System.IO;
 
 namespace SGD
 {
@@ -28,7 +29,7 @@ namespace SGD
 
             }
 
-       
+
         }
 
         private byte[] ReadFileBite(HttpPostedFile fObj2)
@@ -37,27 +38,29 @@ namespace SGD
             fObj2.InputStream.Read(data, 0, fObj2.ContentLength);
             return data;
         }
-
+        int idcart;
         protected void adicionarnovo()
         {
             try
             {
 
-                string message = "Do you want to submit?";
-                ClientScript.RegisterOnSubmitStatement(this.GetType(), "confirm", "return confirm('" + message + "');");
+                //string message = "Do you want to submit?";
+                //ClientScript.RegisterOnSubmitStatement(this.GetType(), "confirm", "return confirm('" + message + "');");
 
 
                 string a = Guid.NewGuid().ToString();
 
                 int contar = si.Cartas_tb.Count();
 
-                var pedidonumero = "UCM710" + "0" + contar.ToString(); 
+                var pedidonumero = "UCM710" + "0" + contar.ToString();
 
                 Cartas_tb dp = new Models.Cartas_tb();
                 dp.NomeRequerente = txtNomeCliente.Text;
                 dp.idCurso = int.Parse(txtCurso.SelectedValue);
                 dp.Periodo = DropDownListPeriodo.Text;
                 dp.CodigoCarta = pedidonumero;
+                dp.ContactoCelular = txtContacto.Text;
+                dp.AnoLectivo = DropDownList2.Text;
                 dp.DataCarta = DateTime.Now;
                 dp.Descricao = txtDescr.Text;
                 dp.idPedido = int.Parse(txtPedido.SelectedValue);
@@ -65,20 +68,49 @@ namespace SGD
                 dp.idPastaDepartamento = int.Parse(txtPasta.SelectedValue);
                 dp.Estado = "Enviado";
                 dp.GuidMap = a;
-                dp.Documento1 = ReadFileBite(FileUpload1.PostedFile);
-                dp.Documento2 = ReadFileBite(FileUpload2.PostedFile);
-
-
                 si.Cartas_tb.Add(dp);
                 si.SaveChanges();
-                //string message = "Dados Salvo com Sucesso!";
-                //string script = "window.onload = function(){ alert('";
-                //script += message;
-                //script += "')};";
-                //ClientScript.RegisterStartupScript(this.GetType(), "SuccessMessage", script, true);
-                //Response.Redirect("WebFormInicio.aspx");
-              //  ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Form submitted.');", true);
-              //  ScriptManager.RegisterStartupScript(this, this.GetType(), "err_msg", "alert('" + "abe" + "');window.location='WebFormInicio.aspx';", true);
+                idcart = dp.idCarta;
+                foreach (HttpPostedFile upFile in FileUpload2.PostedFiles)
+                    if (upFile.ContentLength == 0)
+                    {
+
+                    }
+                    else
+                    {
+                        SaveFiles(upFile);
+                    }
+
+                HttpContext.Current.Response.Redirect("~/WebFormSucessoCartas.aspx?index=" + dp.GuidMap + "&CodExp=" + dp.CodigoCarta + "&Cell=" + txtContacto.Text, false);
+                HttpContext.Current.ApplicationInstance.CompleteRequest();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        private void SaveFiles(HttpPostedFile obj)
+        {
+            try
+            {
+                string a = Guid.NewGuid().ToString();
+
+                Anexos_Cartas_tb dc = new Anexos_Cartas_tb();
+                dc.Anexo_Ficheiro = ReadFileBite(obj);
+                dc.Anexo_Nome = obj.FileName;
+                string exts = Path.GetExtension(obj.FileName);
+                dc.idCarta = idcart;
+                dc.Anexo_Type  = exts;
+                dc.Anexo_GuidMap = a;
+                dc.DataAnexo = DateTime.Now;
+                dc.idUsuario = idu;
+                
+                dc.Anexo_Contentype = obj.ContentType;
+                si.Anexos_Cartas_tb.Add(dc);
+                si.SaveChanges();
+
             }
             catch (Exception)
             {

@@ -1,8 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="WebFormDownloadDocument.aspx.cs" Inherits="SGD.WebFormDownloadDocument" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="WebFormDownloadCartas.aspx.cs" Inherits="SGD.WebFormDownloadCartas" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-        <div class="pcoded-content">
+            <div class="pcoded-content">
         <div class="pcoded-inner-content">
             <div class="main-body">
                 <div class="page-wrapper">

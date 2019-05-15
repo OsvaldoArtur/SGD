@@ -134,7 +134,9 @@ namespace SGD
                 si.EnviarDocumentos.Add(ev);
                 si.SaveChanges();
                 idEnvio = ev.idEnvio;
-                Recebimento();                {
+                Recebimento();
+
+                {
 
                
 

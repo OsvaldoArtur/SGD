@@ -12,15 +12,17 @@ namespace SGD.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class RespostaCartas_tb
+    public partial class Anexos_Cartas_tb
     {
-        public int idResposta { get; set; }
+        public int idAnexosCartas { get; set; }
         public Nullable<int> idCarta { get; set; }
-        public Nullable<System.DateTime> DataResposta { get; set; }
-        public string Resposta { get; set; }
-        public string Nota { get; set; }
-        public byte[] Anexo { get; set; }
+        public Nullable<System.DateTime> DataAnexo { get; set; }
         public Nullable<int> idUsuario { get; set; }
+        public string Anexo_Nome { get; set; }
+        public byte[] Anexo_Ficheiro { get; set; }
+        public string Anexo_Type { get; set; }
+        public string Anexo_Contentype { get; set; }
+        public string Anexo_GuidMap { get; set; }
     
         public virtual Cartas_tb Cartas_tb { get; set; }
     }

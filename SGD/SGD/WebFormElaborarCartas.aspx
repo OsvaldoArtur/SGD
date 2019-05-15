@@ -30,7 +30,7 @@
 
 
                             <div class="col-lg-12">
-                                <div class="card">
+                                <div class="card card-border-info">
                                     <div class="card-header">
                                         <h5>Cartas</h5>
                                         <div class="card-header-right">
@@ -141,20 +141,19 @@
                                                                                 </div>
                                                                             </div>
                                                                             <div class="row">
+                                                                                 <div class="input-group col-lg-6">
+                                                                                   <asp:TextBox ID="txtContacto" CssClass="form-control form-control-primary" runat="server" placeholder="Ex: 848046991"></asp:TextBox>
+                                                                                </div>
                                                                                 <div class="input-group col-lg-6">
-                                                                                    <asp:FileUpload ID="FileUpload2" ToolTip="Ficheiro 1" CssClass="form-control" AllowMultiple="false" ValidateRequestMode="Enabled" runat="server" />
+                                                                                    <asp:FileUpload ID="FileUpload2" AllowMultiple="true" ToolTip="Selecionar Ficheiros 'docx, xls, pdf, txt, other'" CssClass="form-control"  ValidateRequestMode="Enabled" runat="server" />
 
                                                                                 </div>
-                                                                                <div class="input-group col-lg-6">
-                                                                                    <asp:FileUpload ID="FileUpload1" ToolTip="Ficheiro 2" CssClass="form-control" AllowMultiple="false" ValidateRequestMode="Enabled" runat="server" />
-
-                                                                                </div>
-                                                                                <div class="input-group col-lg-6">
-                                                                                    <asp:Label ID="lblSucesso" CssClass="text-success" Visible="false" runat="server" Text="Label"></asp:Label>
-                                                                                </div>
+                                               
+                                                                               
 
                                                                             </div>
                                                                             <div class=" row">
+                                                                                
                                                                                 <div class=" input-group col-lg-12">
                                                                                     <asp:TextBox ID="txtDescr" runat="server" TextMode="MultiLine" Rows="3" CssClass="form-control form-control-default" placeholder="Descricao" Text="Default"></asp:TextBox>
                                                                                 </div>

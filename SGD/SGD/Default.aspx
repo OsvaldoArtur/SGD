@@ -152,8 +152,8 @@ Ponta-Gêa, Beira, Mo&ccedil;ambique
                                 <div class="col-md-12">
 
                                     <asp:Button ID="Button1" runat="server" CssClass="btn btn-info btn-md btn-block waves-effect text-center" Text="Entrar" OnClick="Button1_Click" ValidationGroup="a" />
-                                </div>
-
+                              
+                                      </div>
                             </div>
                             <hr />
                             <div class="row">

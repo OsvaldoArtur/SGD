@@ -70,7 +70,7 @@
                                     <div class=" row card-block">
                                         <div class="col-sm-12">
                                             <div class="text-right">
-                                                <a href="#sign-in" data-toggle="modal" data-target="#sign-in"><i class="ion-plus"> Nova Pasta</i></a>
+                                                <a href="#sign-in" data-toggle="modal" data-target="#sign-in"><i class="ion-plus">Nova Pasta</i></a>
                                             </div>
                                             <br />
                                             <%--  <ul class="list-view">
@@ -97,14 +97,12 @@
 
                                                             %>
                                                             <div class="col-sm-12 col-md-6 col-lg-4 ">
-                                                                <a href="WebFormDocumentos.aspx?id=<%=site.GuidMap%>">
-
-
-                                                                    <i class="icofont icofont-folder"></i>
-                                                               <a href="WebFormDocumentos.aspx?id=<%=site.GuidMap%>">        <label class="txt-muted"><% =site.NomePasta %></label></a>
-                                                                <a href="WebFormDocumentos.aspx?id=<%=site.GuidMap%>">       <label class="badge badge-primary"><%=contou %></label></a>
-                                                                       <a href="WebFormDocumentos.aspx?id=<%=site.GuidMap%>"> <label class="badge badge-inverse"><%=contou1 %></label></a>
-                                                                </a>
+                                                                <a href="WebFormDocumentos.aspx?id=<%=site.GuidMap%>"><i class="icofont icofont-folder"></i></a>
+                                                                <label class="txt-muted"><a href="WebFormDocumentos.aspx?id=<%=site.GuidMap%>"><% =site.NomePasta %> </a></label>
+                                                                <label class="badge badge-primary"><%=contou %></label>
+                                                                <label class="badge badge-inverse"><%=contou1 %></label>
+                                                          
+                                                                <%--</a>--%>
                                                             </div>
 
                                                             <% }%>

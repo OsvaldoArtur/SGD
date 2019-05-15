@@ -1,15 +1,14 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="WebFormDetalhesExpedienteEnviado.aspx.cs" Inherits="SGD.WebFormDetalhesExpedienteEnviado" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="WebFormSucessoCartas.aspx.cs" Inherits="SGD.WebFormSucessoCartas" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="pcoded-content">
+        <div class="pcoded-content">
         <div class="pcoded-inner-content">
             <div class="main-body">
                 <div class="page-wrapper">
                     <div class="page-header">
                         <div class="page-header-title">
-                            <h4>Detalhes</h4>
+                            <h4>Report Carta</h4>
                         </div>
                         <div class="page-header-breadcrumb">
                             <ul class="breadcrumb-title">
@@ -19,7 +18,7 @@
                                         Inicio 
                                     </a>
                                 </li>
-                                <li class="breadcrumb-item">Detalhes Expediente 
+                                <li class="breadcrumb-item">Detalhes Carta 
                                 </li>
 
                             </ul>
@@ -32,13 +31,13 @@
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                         <i class="icofont icofont-close-line-circled"></i>
                                     </button>
-                                    <strong>Sucesso!</strong> Expediente em sucesso! <code></code>
+                                    <strong>Sucesso!</strong> Submetido com sucesso! <code></code>
                                 </div>
                             </div>
                             <div class="col-lg-12">
                                 <div class="card card-border-info">
                                     <div class="card-header">
-                                        <h5>Expediente Info. <i class="icofont icofont-2x icofont-send-mail"></i></h5>
+                                        <h5>Carta Info. <i class="icofont icofont-2x icofont-send-mail"></i></h5>
                                         <div class="card-header-right">
                                             <i class="icofont icofont-rounded-down"></i>
                                             <i class="icofont icofont-close-circled"></i>
@@ -59,34 +58,37 @@
 
                                                                             si = new SGD.Models.sgdbEntities();
                                                                             string idP = Request.QueryString["index"];
-                                                                            var leva = si.View_Recebimentos.Where(d => d.GuidEnviarDocumentos.Equals(idP)).FirstOrDefault();
+                                                                            var leva = si.Cartas_tb.Where(d => d.GuidMap .Equals(idP)).FirstOrDefault();
 
                                                                             var usuario = si.user.Where(s => s.idUser == leva.idUsuario).FirstOrDefault();
                                                                             string Nome = usuario.NomeUsuario.ToString();
-
+                                                                            var cusreq = si.Curso_tb.Where(d => d.idCurso == leva.idCurso).FirstOrDefault();
+                                                                            var reqped = si.Pedidos_tb.Where(d => d.idPedidos == leva.idPedido).FirstOrDefault();
                                                                         %>
                                                                         <tbody>
                                                                             <tr>
-                                                                                <th scope="row">Titulo:</th>
-                                                                                <td><%=leva.Titulo %></td>
+                                                                                <th scope="row">Requerente:</th>
+                                                                                <td><%=leva.NomeRequerente %></td>
                                                                             </tr>
                                                                             <tr>
 
-                                                                                <th scope="row">Tipo de Documento:</th>
-                                                                                <td><%=leva.NomeCategoria %></td>
+                                                                                <th scope="row">Curso:</th>
+                                                                                <td><%=cusreq.Curso %></td>
+                                                                            </tr>
+                                                                         
+                                                                            <tr>
+                                                                                <th scope="row">Ano:</th>
+                                                                                <td><%=leva.AnoLectivo %></td>
+                                                                            </tr>
+                                                                               <tr>
+                                                                                <th scope="row">Periodo:</th>
+                                                                                <td><%=leva.Periodo %></td>
                                                                             </tr>
                                                                             <tr>
-                                                                                <th scope="row">Data Envio:</th>
-                                                                                <td><%=leva.DataEnvio %></td>
+                                                                                <th scope="row">Pedido:</th>
+                                                                                <td><%=reqped.Pedido %></td>
                                                                             </tr>
-                                                                            <tr>
-                                                                                <th scope="row">Contacto:</th>
-                                                                                <td><%=leva.Contacto %></td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <th scope="row">Nivel de Urgencia:</th>
-                                                                                <td><%=leva.NivelUrgencia %></td>
-                                                                            </tr>
+                                                                            
                                                                         </tbody>
                                                                     </table>
                                                                 </div>
@@ -102,18 +104,18 @@
                                                                                 <td><%=leva.Estado %></td>
                                                                             </tr>
                                                                             <tr>
-                                                                                <th scope="row">Data Recebimento:</th>
-                                                                                <td><%=leva.DataRecebimento %></td>
+                                                                                <th scope="row">Data Enviada:</th>
+                                                                                <td><%=leva.DataCarta  %></td>
                                                                             </tr>
 
                                                                             <tr>
-                                                                                <th scope="row">Codigo Processo:</th>
-                                                                                <td><%=leva.CodExpediente %></td>
+                                                                                <th scope="row">Codigo Carta:</th>
+                                                                                <td><%=leva.CodigoCarta  %></td>
                                                                             </tr>
 
                                                                             <tr>
                                                                                 <th scope="row">Guid:</th>
-                                                                                <td><%=leva.GuidEnviarDocumentos %></td>
+                                                                                <td><%=leva.GuidMap %></td>
                                                                             </tr>
                                                                         </tbody>
                                                                     </table>
@@ -149,7 +151,7 @@
                                             <div class="card-block">
                                                 <div class="row">
                                                     <div class="col-sm-12">
-                                                        <p class="task-detail" style="font-size: larger"><%=leva.Mensagem %></p>
+                                                        <p class="task-detail" style="font-size: larger"><%=leva.Descricao %></p>
                                                     </div>
                                                     <!-- end of col-sm-8 -->
                                                 </div>
@@ -177,7 +179,7 @@
                                                 </div>
 
                                             </div>
-                                            <div class="card-block">
+                             <div class="card-block">
                                                 <div class="row">
                                                     <div style="overflow: scroll" class="col-lg-12">
                                                         <div class="col-lg-6 col-md-12">
@@ -186,21 +188,18 @@
                                                                     <%
 
                                                                         si = new SGD.Models.sgdbEntities();
-                                                                        var proc = si.documentosenviados.Where(d => d.idEnvio == leva.idEnvio).ToList();
+                                                                        var proc = si.Anexos_Cartas_tb.Where(d => d.idCarta == leva.idCarta).ToList();
                                                                         foreach (var an in proc)
                                                                         {
-                                                                            nome = an.NomeDocumento.ToString();
-                                                                            string av = an.Contentype;
-                                                                            extensao = an.Extensao;
-                                                                            id = an.idDocumentosEnviados;
+            
                                                                     %>
                                                                     <tr>
                                                                         <th class="social-label b-none p-t-0"><i class="icofont icofont-2x icofont-document-folder"></i>
                                                                         </th>
-                                                                        <td class="social-user-name b-none p-t-0 text-muted"><%=nome %></td>
-                                                                        <td class="social-user-name b-none p-t-0 text-muted"><%=av %></td>
-                                                                        <td class="social-user-name b-none p-t-0 text-muted"><%=extensao %></td>
-                                                                        <td class="social-user-name b-none p-t-0 text-muted"><a href="WebFormDownloadDocument.aspx?id=<%=id%>" target="_blank">Download</a></td>
+                                                                        <td class="social-user-name b-none p-t-0 text-muted"><%=an.Anexo_Nome  %></td>
+                                                                        <td class="social-user-name b-none p-t-0 text-muted"><%=an.Anexo_Type %></td>
+                                                                        <td class="social-user-name b-none p-t-0 text-muted"><%=an.Anexo_Contentype %></td>
+                                                                        <td class="social-user-name b-none p-t-0 text-muted"><a href="WebFormDownloadCartas.aspx?id=<%=an.idAnexosCartas%>" target="_blank">Download</a></td>
 
                                                                     </tr>
 

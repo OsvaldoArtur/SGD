@@ -38,7 +38,6 @@ namespace SGD.Models
         public DbSet<Pedidos_tb> Pedidos_tb { get; set; }
         public DbSet<PermissaoDeparramento_tb> PermissaoDeparramento_tb { get; set; }
         public DbSet<RecebimentoDocumentos> RecebimentoDocumentos { get; set; }
-        public DbSet<RespostaCartas_tb> RespostaCartas_tb { get; set; }
         public DbSet<RespostaDocumento> RespostaDocumento { get; set; }
         public DbSet<Sms_tb> Sms_tb { get; set; }
         public DbSet<sysdiagrams> sysdiagrams { get; set; }
@@ -52,7 +51,9 @@ namespace SGD.Models
         public DbSet<View_RespostasCartas> View_RespostasCartas { get; set; }
         public DbSet<DocumentoUsuario_tb> DocumentoUsuario_tb { get; set; }
         public DbSet<RespostaDocumentoUsuario_tb> RespostaDocumentoUsuario_tb { get; set; }
-        public DbSet<Cartas_tb> Cartas_tb { get; set; }
         public DbSet<pastadepartamento> pastadepartamento { get; set; }
+        public DbSet<Cartas_tb> Cartas_tb { get; set; }
+        public DbSet<Anexos_Cartas_tb> Anexos_Cartas_tb { get; set; }
+        public DbSet<RespostaCartas_tb> RespostaCartas_tb { get; set; }
     }
 }
