@@ -27,16 +27,16 @@
                     </div>
                     <div class="page-body">
                         <div class="row">
-                              <div class="col-lg-12">
-                                <div runat="server" id="messagesucesso" visible="false"  class="alert alert-success">
-                                                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                                        <i class="icofont icofont-close-line-circled"></i>
-                                                                    </button>
-                                                                    <strong>Sucesso!</strong> Expediente em sucesso! <code></code>
-                                                                </div>
+                            <div class="col-lg-12">
+                                <div runat="server" id="messagesucesso" visible="false" class="alert alert-success">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <i class="icofont icofont-close-line-circled"></i>
+                                    </button>
+                                    <strong>Sucesso!</strong> Expediente em sucesso! <code></code>
+                                </div>
                             </div>
                             <div class="col-lg-12">
-                                <asp:Panel ID="PanelResponder" Visible ="false" runat="server">
+                                <asp:Panel ID="PanelResponder" Visible="false" runat="server">
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="card b-l-info business-info services m-b-20">
@@ -76,7 +76,7 @@
                                                         </div>
                                                         <div class="form-group row">
                                                             <div class="col-sm-12">
-                                                                <asp:TextBox ID="txtComentario" ValidateRequestMode="Enabled" runat="server" Placeholder="Comentarios..." CssClass="form-control form-control-info" TextMode="MultiLine" Rows="6">
+                                                                <asp:TextBox ID="txtComentario" ValidateRequestMode="Enabled" runat="server" Placeholder="Nota..." CssClass="form-control form-control-info" TextMode="MultiLine" Rows="6">
 
                                                                 </asp:TextBox>
 
@@ -172,7 +172,7 @@
                                                                                 <th scope="row">Data Recebimento:</th>
                                                                                 <td><%=leva.DataRecebimento %></td>
                                                                             </tr>
-                                                                              <tr>
+                                                                            <tr>
                                                                                 <th scope="row">Codigo Processo:</th>
                                                                                 <td><%=leva.CodExpediente %></td>
                                                                             </tr>
@@ -230,8 +230,8 @@
                                         </div>
                                     </div>
                                 </div>
-                           
-                                 </div>
+
+                            </div>
 
 
                             <div class="col-sm-12">
@@ -294,7 +294,7 @@
                             </div>
 
 
-                                                        <div class="col-sm-12">
+                            <div class="col-sm-12">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="card b-l-info business-info services m-b-20">
@@ -314,40 +314,42 @@
                                             <div class="card-block">
                                                 <div class="row">
                                                     <div class="col-sm-12">
-                                                   <div class="table-responsive">
-                                                    <table class="table table-styling">
-                                                        <thead>
-                                                            <tr class="table-primary">
-                                                                <th>#</th>
-                                                                <th>Resposta</th>
-                                                                <th>Nota</th>
-                                                                <th>Cc</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                             <%
-                                                                  si = new SGD.Models.sgdbEntities();
-                                                                  string idsss = Request.QueryString["index"];
-                                                                  var  idpast = si.EnviarDocumentos.Where(d => d.GuidMap.Equals(idsss)).FirstOrDefault();
-                                                                  var procurarespostas = si.RespostaDocumento.Where(d=> d.idEnvio== idpast.idEnvio ).OrderByDescending(a => a.DatResposta).ToList();
-                                                                  foreach(var item in procurarespostas)
-                                                                  {
-                                                                      var cate = si.user.Where(s => s.idUser== item.idUsuario).FirstOrDefault();
+                                                        <div class="table-responsive">
+                                                            <table class="table table-styling">
+                                                                <thead>
+                                                                    <tr class="table-primary">
+                                                                        <th>#</th>
+                                                                        <th>Resposta</th>
+                                                                        <th>Nota</th>
+                                                                        <th>Cc</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <%
+                                                                        si = new SGD.Models.sgdbEntities();
+                                                                        string idsss = Request.QueryString["index"];
+                                                                        var idpast = si.EnviarDocumentos.Where(d => d.GuidMap.Equals(idsss)).FirstOrDefault();
+                                                                        var procurarespostas = si.RespostaDocumento.Where(d => d.idEnvio == idpast.idEnvio).OrderByDescending(a => a.DatResposta).ToList();
+                                                                        foreach (var item in procurarespostas)
+                                                                        {
+                                                                            var cate = si.user.Where(s => s.idUser == item.idUsuario).FirstOrDefault();
 
-                                                                     %>
-                                                                
+                                                                    %>
 
-                                                             <tr>
-                                                                <th scope="row"><%=item.DatResposta %></th>
-                                                                <td><%=item.Resposta %></td>
-                                                                <td><%=item.Comentario %></td>
-                                                                <td>@<%=cate.NomeUsuario %></td>
-                                                            </tr>
-                                                               <%} %>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                                         </div>
+
+                                                                    <tr>
+                                                                        <th scope="row"><%=item.DatResposta %></th>
+                                                                        <td><%=item.Resposta %></td>
+                                                                        <td><%=item.Comentario %></td>
+                                                                        <td>@<%=cate.NomeUsuario %></td>
+                                                                        
+                                                                        <td><a  target="_blank" href="WebFormPrintResult.aspx?Resposta=<%=item.Resposta%>&Nome=<% =leva.Titulo%>&Categoria=<%=leva.NomeCategoria%>&CodigoExpe=<% =leva.CodExpediente%>"><i class="icofont icofont-print"></i></a></td>
+                                                                    </tr>
+                                                                    <%} %>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
                                                     <!-- end of col-sm-8 -->
                                                 </div>
                                             </div>

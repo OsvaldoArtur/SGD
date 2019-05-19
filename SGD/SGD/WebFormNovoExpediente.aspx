@@ -62,7 +62,7 @@
                                                                             <div class="row">
                                                                                 <div class="input-group col-sm-6">
 
-                                                                                    <asp:TextBox ID="txtTitulo" placeholder="Titulo Envio" CssClass="form-control form-control-feedback" runat="server"></asp:TextBox>
+                                                                                    <asp:TextBox ID="txtTitulo" placeholder="Entidade" CssClass="form-control form-control-feedback" runat="server"></asp:TextBox>
                                                                                 </div>
                                                                                 <div class="input-group col-sm-6">
                                                                                     <label class="col-form-label col-sm-4">Nivel:</label>

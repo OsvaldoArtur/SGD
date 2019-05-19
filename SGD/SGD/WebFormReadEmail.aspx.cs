@@ -29,6 +29,7 @@ namespace SGD
                 ab.idUserResposta = idu;
                 ab.Estado = "Nao";
                 ab.idDocumentoUser = dis.idDocumentouser;
+                dis.Estado = "Respondido";
                 ab.Resposta = txtNota.Text;
                 si.RespostaDocumentoUsuario_tb.Add(ab);
                 si.SaveChanges();

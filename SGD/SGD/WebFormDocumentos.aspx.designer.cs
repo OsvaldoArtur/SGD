@@ -13,6 +13,33 @@ namespace SGD {
     public partial class WebFormDocumentos {
         
         /// <summary>
+        /// btnExpediente control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton btnExpediente;
+        
+        /// <summary>
+        /// btnCart control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton btnCart;
+        
+        /// <summary>
+        /// panelExp control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel panelExp;
+        
+        /// <summary>
         /// dpvalidate control.
         /// </summary>
         /// <remarks>
@@ -20,24 +47,6 @@ namespace SGD {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList dpvalidate;
-        
-        /// <summary>
-        /// btnpn1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnpn1;
-        
-        /// <summary>
-        /// btnpn2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnpn2;
         
         /// <summary>
         /// panel1 control.
@@ -58,6 +67,15 @@ namespace SGD {
         protected global::System.Web.UI.WebControls.Panel panel2;
         
         /// <summary>
+        /// panelCarta control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel panelCarta;
+        
+        /// <summary>
         /// DropDownList1 control.
         /// </summary>
         /// <remarks>
@@ -65,24 +83,6 @@ namespace SGD {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
-        
-        /// <summary>
-        /// Button1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
-        
-        /// <summary>
-        /// Button2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button2;
         
         /// <summary>
         /// panel3 control.

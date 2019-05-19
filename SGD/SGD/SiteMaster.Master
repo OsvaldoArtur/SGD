@@ -25,6 +25,7 @@
     <link rel="stylesheet" type="text/css" href="assets/css/ionicons.css" />
     <link rel="stylesheet" type="text/css" href="assets/css/jquery.mCustomScrollbar.css" />
 
+
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -42,140 +43,114 @@
             <div class="pcoded-container navbar-wrapper">
                 <div class="pcoded-main-container">
                     <div class="pcoded-wrapper">
-                  
+
                         <nav class="navbar navbar-toggleable-md navbar-light info-nav-dark fixed-top light-nav-border">
-                                    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbardropdown">
-                                        <span class="navbar-toggler-icon"></span>
-                                    </button>
-                                    <a class="navbar-brand text-white" href="WebFormInicio.aspx"><i class="icofont icofont-home text-white"></i> Pagina Inicial</a>
-                                    <div id="navbardropdown" class="collapse navbar-collapse">
-                                        <ul class="navbar-nav mr-auto">
-                                            <li class="nav-item">
-                                                <a class="nav-link text-white" href="WebFormNovoExpediente.aspx"><i class="icofont icofont-file-document text-white"></i> Novo Expediente 
-                                                    </a>
-                                            </li>
-                                                 <li class="nav-item">
-                                                <a class="nav-link text-white" href="WebFormElaborarCartas.aspx"><i class="icofont icofont-mail text-white"></i> Cartas 
-                                                    </a>
-                                            </li>
-                                         <%--   <li class="nav-item">
+                            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbardropdown">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <a class="navbar-brand text-white" href="WebFormInicio.aspx"><i class="icofont icofont-home text-white"></i>Pagina Inicial</a>
+                            <div id="navbardropdown" class="collapse navbar-collapse">
+                                <ul class="navbar-nav mr-auto">
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white" href="WebFormNovoExpediente.aspx"><i class="icofont icofont-file-document text-white"></i> Novo Expediente 
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white" href="WebFormElaborarCartas.aspx"><i class="icofont icofont-mail text-white"></i> Cartas 
+                                        </a>
+                                    </li>
+                                    <%--   <li class="nav-item">
                                                 <a class="nav-link text-white" href="WebFormReport.aspx"><i class="icofont icofont-attachment text-white"></i> Report 
                                                     </a>
                                             </li>--%>
-                                              <li class="nav-item">
-                                               <a class="nav-link text-white" href="WebFormMailSgd.aspx"><i class="icofont icofont-send-mail text-white"></i> Send Email
-                                                    </a>
-                                            </li>
-                                                                                          <li class="nav-item">
-                                               <a class="nav-link text-white" href="WebFormPesquisarExpedientes.aspx"><i class="icofont icofont-search text-white"></i> Pesquisar Expedientes
-                                                    </a>
-                                            </li>
-<%--                                            <li class="nav-item">
-                                                <a class="nav-link text-white" href="#">Gestao
-                                                    <i class="icofont icofont-rounded-down text-white"></i></a>
-                                                <ul class="navbar-varient-submenu ">
-                                                    <li><a href="WebFormCursos.aspx">Adicionar Cursos</a></li>
-                                                    <li><a href="WebFormPedidosCartas.aspx">Adicionar Pedidos</a></li>
-                                                    <li><a href="WebFormResumoActual.aspx">Resumo Actual</a></li>                                                    
-                                                </ul>
-                                            </li>--%>
-                                            
-<%--                                            <li class="nav-item">
-                                                <a class="nav-link text-white" href="#">Adicionar
-                                                    <i class="icofont icofont-rounded-down text-white"></i></a>
-                                                <ul class="navbar-varient-submenu">
-                                                    <li><a href="WebFormCategoria.aspx">Categoria</a></li>
-                                                    <li><a href="WebFormDepartamentos.aspx">Departamento</a></li>
-                                                    <li><a href="#">Pasta Departamento</a></li>
-                                                    <li><a href="#">New Page</a></li>
-                                                </ul>
-                                            </li>--%>
-                                                <%--<li class="nav-item">
-                                                <a class="nav-link text-white" href="WebFormRecebidos.aspx">
-                                                    <%
-                                                        var contarecebidos = si.EnviarDocumentos.Count();
-                                                         %>
-                                                    <i class="icofont icofont-inbox text-white"></i> Recebidos
-                                                    <label class="badge badge-md bg-inverse text-white"><%=contarecebidos %></label>
+                                    <li class="nav-item">
+                                        <%
+                                            si = new SGD.Models.sgdbEntities();
+                                            var cantaemial = si.DocumentoUsuario_tb.Where(d => d.idUserReceiver == idu && d.Estado.Equals("Enviado")).Count();
+                                             %>
+                                        <a class="nav-link text-white" href="WebFormMailSgd.aspx"><i class="icofont icofont-send-mail text-white"></i> Email <span class="badge badge-info text-white"> <%=cantaemial%></span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white" href="WebFormPesquisarExpedientes.aspx"><i class="icofont icofont-search text-white"></i> Pesquisar Expedientes
+                                        </a>
+                                    </li>
+
+
+                                </ul>
+
+
+                                <div class="form-inline">
+
+                                    <div class="nav-item">
+                                        <a href="#">
+                                          <%--  <img class="img-40" src="assets/images/user.png" alt="User-Profile-Image" />
+                                          --%>
+                                            <i class="icofont icofont-user-alt-3 icofont-2x text-white"></i>
+                                              <span runat="server" id="nomeUsuario"></span>
+                                             <i class="icofont icofont-rounded-down"></i>
+                                        </a>
+                                        <ul class="navbar-varient-submenu">
+                                          
+                                            <li>
+                                                <a href="WebFormPerfilUsuario.aspx">
+                                                    <i class="icon-user-follow text-white"></i> Perfil
                                                 </a>
-
-                                            </li>--%>
-
+                                            </li>
+                                            <li>
+                                                <a href="WebFormResumoActual.aspx">
+                                                    <i class="icon-user text-white"></i> Resumo do Sistema
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="WebFormConfiguracoes.aspx">
+                                                    <i class="icon-options text-white"></i> Configuracoes
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="Default.aspx">
+                                                    <i class="icon-logout text-white"></i> Sair
+                                                </a>
+                                            </li>
                                         </ul>
-                           
-
-                                        <div class="form-inline">
-                                        
-                                            <div class="nav-item">
-                                                <a href="#">
-                                                    <img class="img-40" src="assets/images/user.png" alt="User-Profile-Image" />
-                                                    <span runat="server" id="nomeUsuario"></span>
-                                               <%--     <span class="m-l-10">John Doe</span>--%>
-                                                    <i class="icofont icofont-rounded-down"></i>
-                                                </a>
-                                                <ul class="navbar-varient-submenu profile-sub-menu">
-                                                    <%--<li>
-                                                        <a href="WebFormPermissaoPasta.aspx">
-                                                            <i class="icon-settings text-white"></i> Settings
-                                                        </a>
-                                                    </li>--%>
-                                                    <li>
-                                                        <a href="WebFormPerfilUsuario.aspx">
-                                                            <i class="icon-user-follow text-white"></i> Perfil
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="WebFormResumoActual.aspx">
-                                                            <i class="icon-user text-white"></i> Resumo do Sistema
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="WebFormConfiguracoes.aspx">
-                                                            <i class="icon-options text-white"></i> Configuracoes
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="Default.aspx" >
-                                                            <i class="icon-logout text-white"></i> Sair
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
                                     </div>
-                                </nav>
+                                </div>
+                            </div>
+                        </nav>
                         <br />
                         <br />
                         <div class="well-lg">
+                            <br />
                             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-                        </asp:ContentPlaceHolder>
+                            </asp:ContentPlaceHolder>
                         </div>
                         <br />
-                        <div class="footer" style="background-color:cornflowerblue">
-                                                                  <div class="container text-white">
-<p class="text-center">
-Universidade Cat&oacute;lica de Mo&ccedil;ambique - &copy; 2019 Todos os Direitos Reservados - Rua Comandante Galvão, nº688, 
+                        <div class="footer" style="background-color: cornflowerblue">
+                            <div class="container text-white">
+                                <p class="text-center">
+                                    Universidade Cat&oacute;lica de Mo&ccedil;ambique - &copy; 2019 Todos os Direitos Reservados - Rua Comandante Galvão, nº688, 
 Ponta-Gêa, Beira, Mo&ccedil;ambique
-<br/>
-Tel (Central): (+258) 23 324 809 - Fax: (+258) 23 324 858 - Email:
-<a href="mailto:reitoria@ucm.ac.mz" class="text-white">reitoria@ucm.ac.mz</a>
-- Web:
-<a title="www.ucm.ac.mz" class="text-white"  href="http://www.ucm.ac.mz">www.ucm.ac.mz</a>
-    <br />Desenvolvido por Osvaldo Artur Dionisio @Copyright 2019
-</p>
-                                                                  
-</div>
-                 <%--       <div class="text-right">
+                                    <br />
+                                    Tel (Central): (+258) 23 324 809 - Fax: (+258) 23 324 858 - Email:
+                                    <a href="mailto:reitoria@ucm.ac.mz" class="text-white">reitoria@ucm.ac.mz</a>
+                                    - Web:
+                                    <a title="www.ucm.ac.mz" class="text-white" href="http://www.ucm.ac.mz">www.ucm.ac.mz</a>
+                                    <br />
+                                    Desenvolvido por Osvaldo Artur Dionisio @Copyright 2019
+                                </p>
+
+                            </div>
+                            <%--       <div class="text-right">
                              <span>Deezy@20k8</span>   
                         </div>--%>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
         </div>
-    
-                
+
+
     </form>
 
     <script type="text/javascript" src="../bower_components/jquery/dist/jquery.min.js"></script>
@@ -203,10 +178,10 @@ Tel (Central): (+258) 23 324 809 - Fax: (+258) 23 324 858 - Email:
     <script type="text/javascript" src="assets/pages/dashboard/amchart/js/light.js"></script>
     <script type="text/javascript" src="assets/pages/dashboard/amchart/js/custom-amchart.js"></script>
     <!-- i18next.min.js -->
-    <script type="text/javascript" src="../bower_components/i18next/i18next.min.js"></script>
-    <script type="text/javascript" src="../bower_components/i18next-xhr-backend/i18nextXHRBackend.min.js"></script>
-    <script type="text/javascript" src="../bower_components/i18next-browser-languagedetector/i18nextBrowserLanguageDetector.min.js"></script>
-    <script type="text/javascript" src="../bower_components/jquery-i18next/jquery-i18next.min.js"></script>
+    <script type="text/javascript" src="bower_components/i18next/i18next.min.js"></script>
+    <script type="text/javascript" src="bower_components/i18next-xhr-backend/i18nextXHRBackend.min.js"></script>
+    <script type="text/javascript" src="bower_components/i18next-browser-languagedetector/i18nextBrowserLanguageDetector.min.js"></script>
+    <script type="text/javascript" src="bower_components/jquery-i18next/jquery-i18next.min.js"></script>
     <!-- Custom js -->
     <script type="text/javascript" src="assets/pages/dashboard/custom-dashboard.js"></script>
     <script type="text/javascript" src="assets/js/script.js"></script>
@@ -217,7 +192,8 @@ Tel (Central): (+258) 23 324 809 - Fax: (+258) 23 324 858 - Email:
     <script src="assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
     <script src="assets/js/jquery.mousewheel.min.js"></script>
 
-        <script type="text/javascript" src="bower_components/sweetalert/dist/sweetalert.min.js"></script>
+    <script type="text/javascript" src="bower_components/sweetalert/dist/sweetalert.min.js"></script>
+
 
 </body>
 </html>

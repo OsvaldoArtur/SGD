@@ -36,21 +36,10 @@
 
 
                                         <div class="row">
-
-                                            <!-- Left-side section start -->
                                             <div class="col-lg-12 col-xl-3">
-                                                <%--<div class="user-head row">
-                                                        <div class="user-face">
-                                                            <img src="assets/images/user.png" class="img-60" alt="User-Profile-Image">
-                                                        </div>
-                                                        <div class="user-name">
-                                                            <span>John Doe</span>
-                                                            <span>johndoe34@gmail.com</span>
-                                                        </div>
-                                                    </div>--%>
+                                        
                                                 <div class="user-body" style="min-height: 657px;">
                                                     <div class="card-block">
-                                                        <%--<asp:Button runat="server" OnClick="btnCompor_Click" ID="btnCompor" CssClass="btn btn-danger btn-block" Text="Compor"></asp:Button>--%>
                                                         <button type="button" data-toggle="modal" data-target="#departamentos" runat="server" class="btn btn-info btn-block">Novo Email</button>
 
                                                     </div>
@@ -85,51 +74,9 @@
                                                                 </a>
                                                             </div>
                                                         </li>
-                                                        <%--    <li>
-                                                                <div class="mail-section">
-                                                                    <a href="#">
-                                                                        <i class="icofont icofont-star"></i>Starred
-                                                                    </a>
-                                                                </div>
-                                                            </li>
-                                                            <li>
-                                                                <div class="mail-section">
-                                                                    <a href="#">
-                                                                        <i class="icofont icofont-file-text"></i>Drafts
-                                                                    </a>
-                                                                </div>
-                                                            </li>
 
-                                                            <li>
-                                                                <div class="mail-section">
-                                                                    <a href="#">
-                                                                        <i class="icofont icofont-ui-delete"></i>Trash
-                                                                    </a>
-                                                                    <label class="label label-info f-right">30</label>
-                                                                </div>
-                                                            </li>
-                                                        --%>
                                                     </ul>
-                                                    <%--<ul class="card-block label-list">
-                                                            <li>
-                                                                <h5>Labels</h5>
-                                                            </li>
-                                                            <li>
-                                                                <a class="mail-work" href="#">Work</a>
-                                                            </li>
-                                                            <li>
-                                                                <a class="mail-design" href="#">Design</a>
-                                                            </li>
-                                                            <li>
-                                                                <a class="mail-family" href="#">Family</a>
-                                                            </li>
-                                                            <li>
-                                                                <a class="mail-friends" href="#">Friends</a>
-                                                            </li>
-                                                            <li>
-                                                                <a class="mail-office" href="#">Office</a>
-                                                            </li>
-                                                        </ul>--%>
+                                                  
                                                 </div>
                                             </div>
                                             <!-- Left-side section end -->

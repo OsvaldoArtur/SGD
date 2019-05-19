@@ -22,8 +22,8 @@ $(function() {
     // Default style
     $('#pnotify-default').on('click', function () {
         new PNotify({
-            title: 'Primary notice',
-            text: 'Check me out! I\'m a notice.',
+            title: 'Emails Recebidos',
+            text: 'Possui emais nao lidos na sua caixa!',
             icon: 'icofont icofont-info-circle',
             type: 'default'
         });

@@ -26,7 +26,7 @@ $(window).on('load',function(){
     };
 
    
-        notify('Welcome to Notification page', 'inverse');
+        notify('Bem Vindo ao Sistema de Gestao de Expediente', 'inverse');
    
 });
 

@@ -2,6 +2,21 @@
 
 <%@ Register Assembly="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+        <script type = "text/javascript">
+        function PrintPanel() {
+            var panel = document.getElementById("<%=pnlContents.ClientID %>");
+            var printWindow = window.open('', '', 'height=800,width=800');
+            printWindow.document.write('<html><head><title>Sistema de Gestao de Expedientes v.1</title>');
+            printWindow.document.write('</head><body >');
+            printWindow.document.write(panel.innerHTML);
+            printWindow.document.write('</body></html>');
+            printWindow.document.close();
+            setTimeout(function () {
+                printWindow.print();
+            }, 500);
+            return false;
+        }
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="pcoded-content">
@@ -21,93 +36,41 @@
                                         Inicio
                                     </a>
                                 </li>
-                                <li class="breadcrumb-item">Permissao
+                                <li class="breadcrumb-item">Invoice
                                 </li>
                             </ul>
                         </div>
                     </div>
                     <div class="page-body">
-                        <div class="row">
-
+                           <asp:Button ID="btnPrint" runat="server" Text="Print" OnClientClick = "return PrintPanel();" />
+                        <div id="pnlContents" runat="server">
+                        <div class="row ">
                             <div class="col-lg-12">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h5>Permissao Pasta</h5>
-                                        <div class="card-header-right">
-                                            <i class="icofont icofont-rounded-down"></i>
-
-                                            <i class="icofont icofont-close-circled"></i>
-
-                                        </div>
-                                    </div>
-
-                                    <div class="row card-block">
-                                        <div class="col-lg-12">
-                                            <div class="container">
-                                                       <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-         <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="10pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Height="1200px" Width="800px">
-            <LocalReport ReportPath="ReportCredential.rdlc">
-                <DataSources>
-                    <rsweb:ReportDataSource DataSourceId="ObjectDataSource1" Name="DataSetResposta" />
-                </DataSources>
-            </LocalReport>
-       
-        </rsweb:ReportViewer>
-                                                       <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" DeleteMethod="Delete" InsertMethod="Insert" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="SGD.sgdbDataSetUsuarioTableAdapters.userTableAdapter" UpdateMethod="Update">
-                                                           <DeleteParameters>
-                                                               <asp:Parameter Name="Original_idUser" Type="Int32" />
-                                                           </DeleteParameters>
-                                                           <InsertParameters>
-                                                               <asp:Parameter Name="NomeUsuario" Type="String" />
-                                                               <asp:Parameter Name="Email" Type="String" />
-                                                               <asp:Parameter Name="Senha" Type="String" />
-                                                               <asp:Parameter Name="GuidMap" Type="String" />
-                                                               <asp:Parameter Name="Naturalidade" Type="String" />
-                                                               <asp:Parameter Name="Local_residencia" Type="String" />
-                                                               <asp:Parameter Name="Altura" Type="Decimal" />
-                                                               <asp:Parameter Name="Documento" Type="String" />
-                                                               <asp:Parameter Name="N_documento" Type="String" />
-                                                               <asp:Parameter Name="Local_emissao" Type="String" />
-                                                               <asp:Parameter Name="Data_emissao" Type="DateTime" />
-                                                               <asp:Parameter Name="Data_nascimento" Type="DateTime" />
-                                                               <asp:Parameter Name="Estado_civil" Type="String" />
-                                                               <asp:Parameter Name="Sexo" Type="String" />
-                                                               <asp:Parameter Name="idDepartamento" Type="Int32" />
-                                                               <asp:Parameter Name="id_tipo_usuario" Type="Int32" />
-                                                           </InsertParameters>
-                                                           <UpdateParameters>
-                                                               <asp:Parameter Name="NomeUsuario" Type="String" />
-                                                               <asp:Parameter Name="Email" Type="String" />
-                                                               <asp:Parameter Name="Senha" Type="String" />
-                                                               <asp:Parameter Name="GuidMap" Type="String" />
-                                                               <asp:Parameter Name="Naturalidade" Type="String" />
-                                                               <asp:Parameter Name="Local_residencia" Type="String" />
-                                                               <asp:Parameter Name="Altura" Type="Decimal" />
-                                                               <asp:Parameter Name="Documento" Type="String" />
-                                                               <asp:Parameter Name="N_documento" Type="String" />
-                                                               <asp:Parameter Name="Local_emissao" Type="String" />
-                                                               <asp:Parameter Name="Data_emissao" Type="DateTime" />
-                                                               <asp:Parameter Name="Data_nascimento" Type="DateTime" />
-                                                               <asp:Parameter Name="Estado_civil" Type="String" />
-                                                               <asp:Parameter Name="Sexo" Type="String" />
-                                                               <asp:Parameter Name="idDepartamento" Type="Int32" />
-                                                               <asp:Parameter Name="id_tipo_usuario" Type="Int32" />
-                                                               <asp:Parameter Name="Original_idUser" Type="Int32" />
-                                                           </UpdateParameters>
-                                                       </asp:ObjectDataSource>
-                                                <%--<asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Download" />--%>
-                                                <%--<button type="button" class="btn btn-success alert-success-msg m-b-10" onclick="_gaq.push(['_trackEvent', 'example', 'try', 'alert-success']);">Success</button>--%>
-
-                                                <ol>
-                                                </ol>
-                                            </div>
-
-                                        </div>
-
-
-                                    </div>
+                                <div class="text-center">
+                                    <h5 class="text-muted" style="font-size:24px; font-family:'Times New Roman', Times, serif; font-variant-position:sub">Celebrando Qualidade e Inovacao</h5>
                                 </div>
+                                <br />
+                                <div class=" text-justify">
+                                    <b>Codigo do Expediente:</b>   UCM1201E
+                                </div>
+                                <br />
+                                <div class=" text-justify">
+                                    <b>A UNIVERSIDADE CATOLICA DE MOCAMBIQUE:</b> - Faculdade de Gestao de Recursos
+                                                 Naturais e Mineralogia - Tete, vem por meio desta informar ao senhor(a) que o
+                                                 pedido de V.Excia <b>Sr Oscar Artur Dionisio</b>, a solicitacao de trancar matricula
+                                                 recaiu sobre o seguinte despacho:
+                                </div>
+
+                                <div class="text-justify">Autorizo.</div>
+                                <br />
+                                <div class="text-center">Tete aos, <%=DateTime.Now.Date %>.</div>
+                                <div class="text-center">______________________________________</div>
+                                <div class="text-center">dr: Osvaldo Artur Dionisio</div>
+
                             </div>
+
+
+                        </div>
                         </div>
                     </div>
 

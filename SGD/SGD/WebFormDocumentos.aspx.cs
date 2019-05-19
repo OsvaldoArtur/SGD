@@ -39,5 +39,48 @@ namespace SGD
                 panel2.Visible = true;
             }
         }
+
+        protected void btnExpediente_ServerClick(object sender, EventArgs e)
+        {
+            try
+            {
+                panelExp.Visible = true;
+                panelCarta.Visible = false;
+            }
+            catch (Exception)
+            {
+
+                return;
+            }
+        }
+
+        protected void btnCart_ServerClick(object sender, EventArgs e)
+        {
+            try
+            {
+                panelExp.Visible = false ;
+                panelCarta.Visible = true;
+            }
+            catch (Exception)
+            {
+
+                return;
+            }
+        }
+
+        protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (DropDownList1.SelectedValue == "Recebidos")
+            {
+
+                panel3.Visible = true;
+                panel4.Visible = false;
+            }
+            else if (DropDownList1.SelectedValue == "Respondidos")
+            {
+                panel3.Visible = false;
+                panel4.Visible = true;
+            }
+        }
     }
 }

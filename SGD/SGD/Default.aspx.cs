@@ -33,6 +33,7 @@ namespace SGD
                 {
                     var leva = si.user.Where(d => d.Email.Equals(emai) && d.Senha.Equals(senha)).FirstOrDefault();
                     Session["idu"] = leva.idUser;
+                    Session["NomeU"] = leva.NomeUsuario;
                     // Session["idp"] = leva.idPermissao;
 
                     //    Response.Redirect("~/Forms/PaginaInicial.aspx");

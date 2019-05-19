@@ -99,8 +99,8 @@
                                                             <div class="col-sm-12 col-md-6 col-lg-4 ">
                                                                 <a href="WebFormDocumentos.aspx?id=<%=site.GuidMap%>"><i class="icofont icofont-folder"></i></a>
                                                                 <label class="txt-muted"><a href="WebFormDocumentos.aspx?id=<%=site.GuidMap%>"><% =site.NomePasta %> </a></label>
-                                                                <label class="badge badge-primary"><%=contou %></label>
-                                                                <label class="badge badge-inverse"><%=contou1 %></label>
+                                                             <%--   <label class="badge badge-primary"><%=contou %></label>
+                                                                <label class="badge badge-inverse"><%=contou1 %></label>--%>
                                                           
                                                                 <%--</a>--%>
                                                             </div>

@@ -185,6 +185,7 @@
                                                                                  <asp:RequiredFieldValidator ID="RequiredFieldValidator7" ValidationGroup="0A" CssClass="label label-danger" runat="server" ControlToValidate="txtDepartamentos" ErrorMessage="*Departamento" Display="Dynamic"></asp:RequiredFieldValidator>
                                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator8" ValidationGroup="0A" CssClass="label label-danger" runat="server" ControlToValidate="txtPasta" ErrorMessage="*Pasta" Display="Dynamic"></asp:RequiredFieldValidator>
                                                                                  <asp:RequiredFieldValidator ID="RequiredFieldValidator9" ValidationGroup="0A" CssClass="label label-danger" runat="server" ControlToValidate="txtDescr" ErrorMessage="*Comentario" Display="Dynamic"></asp:RequiredFieldValidator>
+                                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator10" ValidationGroup="0A" CssClass="label label-danger" runat="server" ControlToValidate="txtContacto" ErrorMessage="*Contacto" Display="Dynamic"></asp:RequiredFieldValidator>
                                                                               
                                                                             </div>
                                                                         </div>

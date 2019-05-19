@@ -1,0 +1,11 @@
+﻿body{
+    height:297mm;
+    width:210mm;
+}
+div.chapter, div.appendix {
+    page-break-after: always;
+}
+
+div.titlepage {
+  page: blank;
+}

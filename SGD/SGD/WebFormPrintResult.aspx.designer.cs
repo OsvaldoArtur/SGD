@@ -10,24 +10,24 @@
 namespace SGD {
     
     
-    public partial class WebFormReport {
+    public partial class WebFormPrintResult {
         
         /// <summary>
-        /// btnPrint control.
+        /// form1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnPrint;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// pnlContents control.
+        /// Panel1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl pnlContents;
+        protected global::System.Web.UI.WebControls.Panel Panel1;
     }
 }

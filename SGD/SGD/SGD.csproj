@@ -143,6 +143,7 @@
     <Content Include="bower_components\summernote\dist\font\summernotef534.eot" />
     <Content Include="bower_components\summernote\dist\font\summernotef534.ttf" />
     <Content Include="bower_components\summernote\dist\font\summernotef534.woff" />
+    <Content Include="Scripts\StyleSheet1.css" />
     <Content Include="WebFormCadastroEmpresa.aspx" />
     <Content Include="WebFormConfiguracoes.aspx" />
     <Content Include="WebFormCursos.aspx" />
@@ -162,6 +163,7 @@
     <Content Include="WebFormPermissaoPasta.aspx" />
     <Content Include="WebFormPesquisarExpedientes.aspx" />
     <Content Include="WebFormPortNameConfig.aspx" />
+    <Content Include="WebFormPrintResult.aspx" />
     <Content Include="WebFormReadEmail.aspx" />
     <Content Include="WebFormRecebidos.aspx" />
     <Content Include="WebFormRegistration.aspx" />
@@ -1920,6 +1922,13 @@
     </Compile>
     <Compile Include="WebFormPortNameConfig.aspx.designer.cs">
       <DependentUpon>WebFormPortNameConfig.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebFormPrintResult.aspx.cs">
+      <DependentUpon>WebFormPrintResult.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebFormPrintResult.aspx.designer.cs">
+      <DependentUpon>WebFormPrintResult.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebFormReadEmail.aspx.cs">
       <DependentUpon>WebFormReadEmail.aspx</DependentUpon>
