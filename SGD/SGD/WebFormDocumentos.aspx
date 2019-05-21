@@ -44,7 +44,7 @@
                                                 string idPsa = Request.QueryString["id"];
                                                 var idpast = si.pastadepartamento.Where(d => d.GuidMap.Equals(idPsa)).FirstOrDefault();
                                                 var procuranaolidos = si.EnviarDocumentos.Where(d => d.Estado.Equals("Enviado") && d.idPastaDepartamento == idpast.idpastadepartamento).Count();
-                                                var procuralidos = si.EnviarDocumentos.Where(d => d.Estado.Equals("Recebido") && d.idPastaDepartamento == idpast.idpastadepartamento).Count();
+                                                var procuralidos = si.EnviarDocumentos.Where(d => d.Estado.Equals("Respondido") && d.idPastaDepartamento == idpast.idpastadepartamento).Count();
 
                                                 var procuranaolidosc = si.Cartas_tb.Where(d => d.Estado.Equals("Enviado") && d.idPastaDepartamento == idpast.idpastadepartamento).Count();
                                                 var procuralidosc = si.Cartas_tb.Where(d => d.Estado.Equals("Recebido") && d.idPastaDepartamento == idpast.idpastadepartamento).Count();

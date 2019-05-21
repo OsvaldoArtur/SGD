@@ -25,12 +25,12 @@
     </script>
 
     <style type="text/css" media="print">
-@page {
-    size: 21cm 29.7cm;
-    margin: 1cm 1cm 1cm 1cm;
-     /* change the margins as you want them to be. */
-}
-</style>
+        @page {
+            size: 21cm 29.7cm;
+            margin: 1cm 1cm 1cm 1cm;
+            /* change the margins as you want them to be. */
+        }
+    </style>
 
 
 </head>
@@ -55,7 +55,7 @@
                                 <table>
                                     <tr>
                                         <td style="width: 200px">
-                                            <img src="assets/images/ucm_logo.jpg" width="100" height="100"  />
+                                            <img src="assets/images/ucm_logo.jpg" width="100" height="100" />
                                         </td>
 
                                         <td style="width: 500px">
@@ -78,7 +78,7 @@
                                             <br />
 
                                             <div class="text-center">
-                                                <p style="font-size: 20px; font-family: 'Times New Roman', Times, serif; font-style: normal"><b><u> CELEBRANDO QUALIDADE E INOVACAO</u></b></p>
+                                                <p style="font-size: 20px; font-family: 'Times New Roman', Times, serif; font-style: normal"><b><u>CELEBRANDO QUALIDADE E INOVACAO</u></b></p>
                                             </div>
                                         </td>
                                     </tr>
@@ -86,7 +86,7 @@
                                         <td colspan="2">
                                             <br />
                                             <div class=" text-justify" style="font-size: 18px; font-family: 'Times New Roman', Times, serif; font-style: normal">
-                                                <b>Codigo do Expediente:</b> <%=Request.QueryString["CodigoExpe"]%> 
+                                                <b>Codigo do Expediente:</b> <%=Request.QueryString["CodigoExpe"]%>
                                             </div>
                                             <br />
                                             <div class=" text-justify" style="font-size: 18px; font-family: 'Times New Roman', Times, serif; font-style: normal">
@@ -95,7 +95,7 @@
                                                  pedido de V.Excia <b>Sr(a) <%=Request.QueryString["Nome"]%> </b>, <%=Request.QueryString["Pedido"]%> 
                                                  recaiu sobre o seguinte despacho:
                                             </div>
-                                            
+
                                             <div class="text-justify" style="font-size: 18px; font-family: 'Times New Roman', Times, serif; font-style: normal"><b><%=Request.QueryString["Resposta"]%> </b></div>
                                             <br />
                                             <br />
@@ -103,24 +103,24 @@
                                             <br />
                                             <div class="text-center" style="font-size: 18px; font-family: 'Times New Roman', Times, serif; font-style: normal">
                                                 Tete aos, <%=DateTime.Now.ToShortDateString() %>
-                                               
-                                            <br />
-                                               <b> O responsavel da Secretaria</b>
+
                                                 <br />
-                                            ______________________________________
-                                            <br /> <% = Session["NomeU"] %>
-                                         <b> </b> 
+                                                <b>O responsavel da Secretaria</b>
+                                                <br />
+                                                ______________________________________
                                             <br />
+                                                <% = Session["NomeU"] %>
+                                                <b></b>
+                                                <br />
                                             </div>
                                         </td>
                                     </tr>
-                              
-                                        <tr>
+
+                                    <tr>
+                                        <td colspan="2"></td>
+                                    </tr>
+                                    <tr>
                                         <td colspan="2">
-                                            </td>
-                                         </tr>
-                                        <tr>
-                                        <td colspan="2">
                                             <br />
                                             <br />
                                             <br />
@@ -128,29 +128,35 @@
                                             <br />
                                             <br />
                                             <br />
-                                            <br />                      
-                                            <br />
-                                                 <p class="text-center text-muted" style="font-size: 12px; font-family: 'Times New Roman', Times, serif; font-style: normal">
-                                        Universidade Cat&oacute;lica de Mo&ccedil;ambique - &copy; 2019 Todos os Direitos Reservados - Rua Comandante Galvão, nº688,Ponta-Gêa, Beira, Mo&ccedil;ambique
+                                            <p class="text-center text-muted" style="font-size: 12px; font-family: 'Times New Roman', Times, serif; font-style: normal">
+                                                Universidade Cat&oacute;lica de Mo&ccedil;ambique - &copy; 2019 Todos os Direitos Reservados - Rua Comandante Galvão, nº688,Ponta-Gêa, Beira, Mo&ccedil;ambique
                                     <br />
-                                        Tel (Central): (+258) 23 324 809 - Fax: (+258) 23 324 858 - Email:
+                                                Tel (Central): (+258) 23 324 809 - Fax: (+258) 23 324 858 - Email:
                                     <a href="mailto:reitoria@ucm.ac.mz">reitoria@ucm.ac.mz</a>
-                                        - Web:
+                                                - Web:
                                     <a title="www.ucm.ac.mz" href="http://www.ucm.ac.mz">www.ucm.ac.mz</a>
-                                        <br />
-                                        Desenvolvido por Osvaldo Artur Dionisio @Copyright 2019
-                                    </p>
+                                                <br />
+                                                Desenvolvido por Osvaldo Artur Dionisio @Copyright 2019
+                                            </p>
 
-                                            </td>
-                                         </tr>
-
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                            <br />
+                                            <br />
+                                            <p class="text-center text-muted" style="font-size: 12px; font-family: 'Times New Roman', Times, serif; font-style: normal">
+                                                Processado por Computador @Sistema de Gestao de Expediente
+                                            </p>
+                                        </td>
+                                    </tr>
                                 </table>
 
 
 
 
-                               
-                
+
+
                             </div>
 
                         </div>
@@ -159,7 +165,7 @@
             </div>
 
 
-      
+
 
         </asp:Panel>
 

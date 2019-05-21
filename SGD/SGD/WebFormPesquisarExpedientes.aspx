@@ -33,17 +33,46 @@
                                         <h5 class="text-muted">Procurar</h5>
                                     </div>
                                     <div class="card-block">
-                                        <div class="">
-                                            <div class="input-group">
+
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="row">
+                                                    <div class="input-group col-sm-2">
+                                                        <label class="col-form-label ">Codigo do Expediente:</label>
+                                                    </div>
+                                                    <div class="input-group col-sm-6">
+                                                        <asp:TextBox ID="Text1" runat="server" CssClass="form-control form-control-info" ValidateRequestMode="Enabled" ValidationGroup="a" placeholder="Procurar por codigo"></asp:TextBox>
+                                                    </div>
+                                                    <div class="input-group col-sm-2">
+                                                        <asp:Button ID="Button2" CssClass="btn btn-info" ValidationGroup="a" OnClick="Button1_Click" runat="server" Text="Procurar" />
+                                                    </div>
+                                                    <div class="input-group col-sm-2">
+                                                        <table>
+                                                            <tr>
+                                                                <td>
+                                                                    <asp:RadioButton ID="rd1" GroupName="gp1" runat="server" Text="Cartas" AutoPostBack="true" /></td>
+                                                                <td>
+                                                                    <asp:RadioButton ID="RadioButton1" GroupName="gp1" runat="server" CssClass="radio-danger" Text="Expedientes" AutoPostBack="true" /></td>
+
+                                                            </tr>
+
+                                                        </table>
+                                                    </div>
+                                                    <div>
+                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" CssClass="label label-inverse-danger" ControlToValidate="Text1" runat="server" ErrorMessage="*Codigo" ValidationGroup="a" Display="Dynamic"></asp:RequiredFieldValidator>
+                                                    </div>
+
+                                                </div>
+
                                             </div>
-                                            <div class="input-group">
-                                                <label class="col-form-label col-xl-1">Codigo do Expediente: </label>
-                                                <input id="Text1" type="text" class="form-control form-control-info col-xl-4" runat="server" placeholder="Procurar por codigo" />
-                                                <asp:Button ID="Button2" CssClass="btn btn-info col-xl-1" OnClick="Button1_Click" runat="server" Text="Procurar" />
-                                            </div>
+
                                         </div>
+
+
                                     </div>
                                 </div>
+
+
                             </div>
 
                             <div class="col-lg-12">
@@ -53,12 +82,11 @@
 
                                     </div>
                                     <div class="card-block">
-                                        <div class="row">
-                                            <div class="col-lg-12">
-                                                <asp:GridView ID="GridView1" CssClass="table  table-bordered table-responsive" runat="server"></asp:GridView>
-
-                                            </div>
-                                        </div>
+                                        <asp:GridView ID="GridView1" CssClass="table table-striped table-bordered nowrap" runat="server" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
+                                            <Columns>
+                                                <asp:CommandField ShowSelectButton="True" />
+                                            </Columns>
+                                        </asp:GridView>
                                     </div>
                                 </div>
                             </div>
@@ -68,5 +96,4 @@
             </div>
         </div>
     </div>
-
 </asp:Content>
