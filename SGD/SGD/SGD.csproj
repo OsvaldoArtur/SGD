@@ -164,6 +164,7 @@
     <Content Include="WebFormPesquisarExpedientes.aspx" />
     <Content Include="WebFormPortNameConfig.aspx" />
     <Content Include="WebFormPrintResult.aspx" />
+    <Content Include="WebFormPrintResultC.aspx" />
     <Content Include="WebFormReadEmail.aspx" />
     <Content Include="WebFormRecebidos.aspx" />
     <Content Include="WebFormRegistration.aspx" />
@@ -172,6 +173,8 @@
     <Content Include="WebFormSendSMS.aspx" />
     <Content Include="SiteMaster.Master" />
     <Content Include="WebFormSucessoCartas.aspx" />
+    <Content Include="WebFormViewC.aspx" />
+    <Content Include="WebFormViewE.aspx" />
     <EntityDeploy Include="Models\Modelo.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Modelo.Designer.cs</LastGenOutput>
@@ -1688,9 +1691,6 @@
     <Compile Include="Models\COMConfig_tb.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Condicao_tb.cs">
-      <DependentUpon>Modelo.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Curso_tb.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
@@ -1707,9 +1707,6 @@
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\EnviarDocumentos.cs">
-      <DependentUpon>Modelo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Funcoes_tb.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Instituicao_tb.cs">
@@ -1755,9 +1752,6 @@
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>Modelo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\TipoFuncao_tb.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Tipo_usuario_tb.cs">
@@ -1930,6 +1924,13 @@
     <Compile Include="WebFormPrintResult.aspx.designer.cs">
       <DependentUpon>WebFormPrintResult.aspx</DependentUpon>
     </Compile>
+    <Compile Include="WebFormPrintResultC.aspx.cs">
+      <DependentUpon>WebFormPrintResultC.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebFormPrintResultC.aspx.designer.cs">
+      <DependentUpon>WebFormPrintResultC.aspx</DependentUpon>
+    </Compile>
     <Compile Include="WebFormReadEmail.aspx.cs">
       <DependentUpon>WebFormReadEmail.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2027,6 +2028,20 @@
     </Compile>
     <Compile Include="WebFormSucessoCartas.aspx.designer.cs">
       <DependentUpon>WebFormSucessoCartas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebFormViewC.aspx.cs">
+      <DependentUpon>WebFormViewC.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebFormViewC.aspx.designer.cs">
+      <DependentUpon>WebFormViewC.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebFormViewE.aspx.cs">
+      <DependentUpon>WebFormViewE.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebFormViewE.aspx.designer.cs">
+      <DependentUpon>WebFormViewE.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

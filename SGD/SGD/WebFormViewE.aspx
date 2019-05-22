@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="WebFormDetalhesCartas.aspx.cs" Inherits="SGD.WebFormDetalhesCartas" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="WebFormViewE.aspx.cs" Inherits="SGD.WebFormViewE" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -9,7 +9,7 @@
                 <div class="page-wrapper">
                     <div class="page-header">
                         <div class="page-header-title">
-                            <h4>Report Carta</h4>
+                            <h4>Detalhes</h4>
                         </div>
                         <div class="page-header-breadcrumb">
                             <ul class="breadcrumb-title">
@@ -19,7 +19,7 @@
                                         Inicio 
                                     </a>
                                 </li>
-                                <li class="breadcrumb-item">Detalhes Carta 
+                                <li class="breadcrumb-item">Detalhes Expediente 
                                 </li>
 
                             </ul>
@@ -27,88 +27,10 @@
                     </div>
                     <div class="page-body">
                         <div class="row">
-                            
-                            <div class="col-lg-12">
-                                <asp:Panel ID="PanelResponder" Visible="false" runat="server">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="card b-l-info business-info services m-b-20">
-                                                <div class="card-header">
-                                                    <div class="card-header-right">
-                                                        <i class="icofont icofont-rounded-down"></i>
-                                                        <i class="icofont icofont-close-circled"></i>
-
-                                                    </div>
-                                                    <div class="service-header">
-                                                        <a>
-                                                            <h5 class="card-header-text">Resposta <i class="icofont icofont-2x icofont-attachment"></i></h5>
-                                                            <span class="text-muted">A resposta do expediente deve ser acompanhada de um comentario. </span>
-
-                                                        </a>
-                                                    </div>
-
-                                                </div>
-                                                <div class="card-block">
-                                                    <div class="">
-                                                        <div class="form-group row">
-                                                            <div class="col-sm-2 col-form-label">
-                                                                <label class="text-center">Resposta do Expediente: </label>
-                                                            </div>
-                                                            <div class="col-sm-2">
-                                                                <asp:DropDownList ID="DropResposta" CssClass="form-control form-control-info" runat="server">
-                                                                    <asp:ListItem>Deferido</asp:ListItem>
-                                                                    <asp:ListItem>Indeferido</asp:ListItem>
-                                                                    <asp:ListItem>Autorizado</asp:ListItem>
-                                                                    <asp:ListItem>Nao Autorizado</asp:ListItem>
-                                                                    <asp:ListItem>Em analise</asp:ListItem>
-                                                                </asp:DropDownList>
-
-                                                            </div>
-                                                            <div class="col-sm-6">
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row">
-                                                            <div class="col-sm-12">
-                                                                <asp:TextBox ID="txtComentario" ValidateRequestMode="Enabled" runat="server" Placeholder="Comentarios..." CssClass="form-control form-control-info" TextMode="MultiLine" Rows="6">
-
-                                                                </asp:TextBox>
-
-                                                            </div>
-                                                            <div class="col-sm-6">
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row">
-
-                                                            <div class=" col-lg-12">
-                                                                <div class=" text-right">
-
-                                                                    <asp:Button ID="btnResponde" CssClass=" btn btn-info" OnClick="btnResponde_Click1" runat="server" Text="Responder" />
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-
-                                                        <!-- end of col-sm-8 -->
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </asp:Panel>
-                            </div>
-
-                            <div class="col-lg-12">
-                                <div runat="server" visible="false" class="alert alert-success">
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                        <i class="icofont icofont-close-line-circled"></i>
-                                    </button>
-                                    <strong>Sucesso!</strong> Submetido com sucesso! <code></code>
-                                </div>
-                            </div>
                             <div class="col-lg-12">
                                 <div class="card card-border-info">
                                     <div class="card-header">
-                                        <h5>Carta Info. <i class="icofont icofont-2x icofont-send-mail"></i></h5>
+                                        <h5>Detalhes Expediente <i class="icofont icofont-2x icofont-clip"></i></h5>
                                         <div class="card-header-right">
                                             <i class="icofont icofont-rounded-down"></i>
                                             <i class="icofont icofont-close-circled"></i>
@@ -126,40 +48,36 @@
                                                                 <div class="col-lg-12 col-xl-6">
                                                                     <table class="table m-0">
                                                                         <%
-
                                                                             si = new SGD.Models.sgdbEntities();
-                                                                            string idP = Request.QueryString["index"];
-                                                                            var leva = si.Cartas_tb.Where(d => d.GuidMap.Equals(idP)).FirstOrDefault();
+                                                                            var idP = Request.QueryString["index"];
+                                                                            var leva = si.View_Recebimentos.Where(d => d.GuidEnviarDocumentos.Equals(idP)).FirstOrDefault();
 
                                                                             var usuario = si.user.Where(s => s.idUser == leva.idUsuario).FirstOrDefault();
                                                                             string Nome = usuario.NomeUsuario.ToString();
-                                                                            var cusreq = si.Curso_tb.Where(d => d.idCurso == leva.idCurso).FirstOrDefault();
-                                                                            var reqped = si.Pedidos_tb.Where(d => d.idPedidos == leva.idPedido).FirstOrDefault();
+
                                                                         %>
                                                                         <tbody>
                                                                             <tr>
-                                                                                <th scope="row">Requerente:</th>
-                                                                                <td><%=leva.NomeRequerente %></td>
+                                                                                <th scope="row">Titulo:</th>
+                                                                                <td><%=leva.Titulo %></td>
                                                                             </tr>
                                                                             <tr>
 
-                                                                                <th scope="row">Curso:</th>
-                                                                                <td><%=cusreq.Curso %></td>
-                                                                            </tr>
-
-                                                                            <tr>
-                                                                                <th scope="row">Ano:</th>
-                                                                                <td><%=leva.AnoLectivo %></td>
+                                                                                <th scope="row">Tipo de Documento:</th>
+                                                                                <td><%=leva.NomeCategoria %></td>
                                                                             </tr>
                                                                             <tr>
-                                                                                <th scope="row">Periodo:</th>
-                                                                                <td><%=leva.Periodo %></td>
+                                                                                <th scope="row">Data Envio:</th>
+                                                                                <td><%=leva.DataEnvio %></td>
                                                                             </tr>
                                                                             <tr>
-                                                                                <th scope="row">Pedido:</th>
-                                                                                <td><%=reqped.Pedido %></td>
+                                                                                <th scope="row">Contacto:</th>
+                                                                                <td><%=leva.Contacto %></td>
                                                                             </tr>
-
+                                                                            <tr>
+                                                                                <th scope="row">Nivel de Urgencia:</th>
+                                                                                <td><%=leva.NivelUrgencia %></td>
+                                                                            </tr>
                                                                         </tbody>
                                                                     </table>
                                                                 </div>
@@ -175,27 +93,21 @@
                                                                                 <td><%=leva.Estado %></td>
                                                                             </tr>
                                                                             <tr>
-                                                                                <th scope="row">Data Enviada:</th>
-                                                                                <td><%=leva.DataCarta  %></td>
+                                                                                <th scope="row">Data Recebimento:</th>
+                                                                                <td><%=leva.DataRecebimento %></td>
                                                                             </tr>
-
                                                                             <tr>
-                                                                                <th scope="row">Codigo Carta:</th>
-                                                                                <td><%=leva.CodigoCarta  %></td>
+                                                                                <th scope="row">Codigo Processo:</th>
+                                                                                <td><%=leva.CodExpediente %></td>
                                                                             </tr>
-
                                                                             <tr>
-                                                                                <th scope="row">Guid:</th>
-                                                                                <td><%=leva.GuidMap %></td>
-                                                                            </tr>
-                                                                                 <tr>
                                                                                 <th scope="row"></th>
-                                                                                <td>
-                                                                                    <div class="text-right">
-                                                                                        <asp:LinkButton ID="btnRespondesr" OnClick="btnRespondesr_Click" CssClass="btn btn-info" runat="server" Text="Responder" />
-                                                                                    </div>
-                                                                                </td>
+                                                                        
                                                                             </tr>
+                                                                            <%-- <tr>
+                                                                                <th scope="row">Location</th>
+                                                                                <td>New York, USA</td>
+                                                                            </tr>--%>
                                                                         </tbody>
                                                                     </table>
                                                                 </div>
@@ -230,7 +142,7 @@
                                             <div class="card-block">
                                                 <div class="row">
                                                     <div class="col-sm-12">
-                                                        <p class="task-detail" style="font-size: larger"><%=leva.Descricao %></p>
+                                                        <p class="task-detail" style="font-size: larger"><%=leva.Mensagem %></p>
                                                     </div>
                                                     <!-- end of col-sm-8 -->
                                                 </div>
@@ -238,6 +150,7 @@
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
 
 
@@ -267,18 +180,21 @@
                                                                     <%
 
                                                                         si = new SGD.Models.sgdbEntities();
-                                                                        var proc = si.Anexos_Cartas_tb.Where(d => d.idCarta == leva.idCarta).ToList();
+                                                                        var proc = si.documentosenviados.Where(d => d.idEnvio == leva.idEnvio).ToList();
                                                                         foreach (var an in proc)
                                                                         {
-
+                                                                            nome = an.NomeDocumento.ToString();
+                                                                            string av = an.Contentype;
+                                                                            extensao = an.Extensao;
+                                                                            id = an.idDocumentosEnviados;
                                                                     %>
                                                                     <tr>
                                                                         <th class="social-label b-none p-t-0"><i class="icofont icofont-2x icofont-document-folder"></i>
                                                                         </th>
-                                                                        <td class="social-user-name b-none p-t-0 text-muted"><%=an.Anexo_Nome  %></td>
-                                                                        <td class="social-user-name b-none p-t-0 text-muted"><%=an.Anexo_Type %></td>
-                                                                        <td class="social-user-name b-none p-t-0 text-muted"><%=an.Anexo_Contentype %></td>
-                                                                        <td class="social-user-name b-none p-t-0 text-muted"><a href="WebFormDownloadCartas.aspx?id=<%=an.idAnexosCartas%>" target="_blank">Download</a></td>
+                                                                        <td class="social-user-name b-none p-t-0 text-muted"><%=nome %></td>
+                                                                        <td class="social-user-name b-none p-t-0 text-muted"><%=av %></td>
+                                                                        <td class="social-user-name b-none p-t-0 text-muted"><%=extensao %></td>
+                                                                        <td class="social-user-name b-none p-t-0 text-muted"><a href="WebFormDownloadDocument.aspx?id=<%=id%>" target="_blank">Download</a></td>
 
                                                                     </tr>
 
@@ -332,8 +248,8 @@
                                                                     <%
                                                                         si = new SGD.Models.sgdbEntities();
                                                                         string idsss = Request.QueryString["index"];
-                                                                        var cartrespo = si.Cartas_tb.Where(d => d.GuidMap.Equals(idsss)).FirstOrDefault();
-                                                                        var procurarespostas = si.RespostaCartas_tb.Where(d => d.idCarta == cartrespo.idCarta).OrderByDescending(a => a.DataResposta).ToList();
+                                                                        var idpast = si.EnviarDocumentos.Where(d => d.GuidMap.Equals(idsss)).FirstOrDefault();
+                                                                        var procurarespostas = si.RespostaDocumento.Where(d => d.idEnvio == idpast.idEnvio).OrderByDescending(a => a.DatResposta).ToList();
                                                                         foreach (var item in procurarespostas)
                                                                         {
                                                                             var cate = si.user.Where(s => s.idUser == item.idUsuario).FirstOrDefault();
@@ -342,13 +258,12 @@
 
 
                                                                     <tr>
-                                                                        <th scope="row"><%=item.DataResposta %></th>
+                                                                        <th scope="row"><%=item.DatResposta %></th>
                                                                         <td><%=item.Resposta %></td>
-                                                                        <td><%=item.Nota %></td>
+                                                                        <td><%=item.Comentario %></td>
                                                                         <td>@<%=cate.NomeUsuario %></td>
-                                                                         <td><a target="_blank" href="WebFormPrintResultC.aspx?Resposta=<%=item.Resposta%>&CodigoExpe=<%=leva.CodigoCarta%>"><i class="icofont icofont-print"></i></a></td>
+                                                                        <td><a target="_blank" href="WebFormPrintResult.aspx?Resposta=<%=item.Resposta%>&CodigoExpe=<%=leva.CodExpediente%>"><i class="icofont icofont-print"></i></a></td>
 
-                                                                        <%--<td class="social-user-name b-none p-t-0 text-muted"><a href="WebFormDownloadAnexo.aspx?id=<%=item.idResposta%>" target="_blank">Anexo</a></td>--%>
                                                                     </tr>
                                                                     <%} %>
                                                                 </tbody>

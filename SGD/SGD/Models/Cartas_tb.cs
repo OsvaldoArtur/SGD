@@ -35,10 +35,10 @@ namespace SGD.Models
         public string ContactoCelular { get; set; }
         public string AnoLectivo { get; set; }
     
+        public virtual ICollection<Anexos_Cartas_tb> Anexos_Cartas_tb { get; set; }
         public virtual Curso_tb Curso_tb { get; set; }
         public virtual pastadepartamento pastadepartamento { get; set; }
         public virtual Pedidos_tb Pedidos_tb { get; set; }
-        public virtual ICollection<Anexos_Cartas_tb> Anexos_Cartas_tb { get; set; }
         public virtual ICollection<RespostaCartas_tb> RespostaCartas_tb { get; set; }
     }
 }

@@ -50,9 +50,9 @@
                                                         <table>
                                                             <tr>
                                                                 <td>
-                                                                    <asp:RadioButton ID="rd1" GroupName="gp1" runat="server" Text="Cartas" AutoPostBack="true" /></td>
+                                                                    <asp:RadioButton ID="rd1" Checked="true" GroupName="gp1" runat="server" OnCheckedChanged="rd1_CheckedChanged" Text="Cartas" AutoPostBack="true" /></td>
                                                                 <td>
-                                                                    <asp:RadioButton ID="RadioButton1" GroupName="gp1" runat="server" CssClass="radio-danger" Text="Expedientes" AutoPostBack="true" /></td>
+                                                                    <asp:RadioButton ID="RadioButton1" GroupName="gp1" runat="server" CssClass="radio-danger" OnCheckedChanged="RadioButton1_CheckedChanged" Text="Expedientes" AutoPostBack="true" /></td>
 
                                                             </tr>
 

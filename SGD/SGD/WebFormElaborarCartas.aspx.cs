@@ -52,7 +52,7 @@ namespace SGD
 
                 int contar = si.Cartas_tb.Count();
 
-                var pedidonumero = "UCM710" + "0" + contar.ToString();
+                var pedidonumero = "UCM710" + "0" + contar.ToString() + "C";
 
                 Cartas_tb dp = new Models.Cartas_tb();
                 dp.NomeRequerente = txtNomeCliente.Text;

@@ -55,15 +55,6 @@
           <Property Name="COMConfig" Type="varchar" MaxLength="50" />
           <Property Name="DataAlteracao" Type="datetime" />
         </EntityType>
-        <EntityType Name="Condicao_tb">
-          <Key>
-            <PropertyRef Name="idCondicao" />
-          </Key>
-          <Property Name="idCondicao" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="idFuncao" Type="int" />
-          <Property Name="Estado" Type="varchar" MaxLength="50" />
-          <Property Name="idUsuario" Type="int" />
-        </EntityType>
         <EntityType Name="Curso_tb">
           <Key>
             <PropertyRef Name="idCurso" />
@@ -132,22 +123,12 @@
           <Property Name="idPastaDepartamento" Type="int" />
           <Property Name="Estado" Type="varchar" MaxLength="50" />
           <Property Name="Mensagem" Type="text" />
-          <Property Name="Titulo" Type="varchar" MaxLength="50" />
+          <Property Name="Titulo" Type="varchar" MaxLength="250" />
           <Property Name="Contacto" Type="varchar" MaxLength="50" />
           <Property Name="NivelUrgencia" Type="varchar" MaxLength="50" />
           <Property Name="idCategoria" Type="int" />
           <Property Name="GuidMap" Type="varchar(max)" />
           <Property Name="CodExpediente" Type="varchar" MaxLength="250" />
-        </EntityType>
-        <EntityType Name="Funcoes_tb">
-          <Key>
-            <PropertyRef Name="idFuncao" />
-          </Key>
-          <Property Name="idFuncao" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Funcao" Type="varchar" MaxLength="50" />
-          <Property Name="Descricao" Type="text" />
-          <Property Name="idTipoFuncao" Type="int" />
-          <Property Name="GuidMap" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="Instituicao_tb">
           <Key>
@@ -269,15 +250,6 @@
           <Property Name="id_tipo_usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nome_tipo" Type="varchar" MaxLength="50" />
           <Property Name="Descricao" Type="varchar" MaxLength="520" />
-        </EntityType>
-        <EntityType Name="TipoFuncao_tb">
-          <Key>
-            <PropertyRef Name="idTipoFuncao" />
-          </Key>
-          <Property Name="idTipoFuncao" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="NomeTipo" Type="varchar" MaxLength="50" />
-          <Property Name="Descricao" Type="text" />
-          <Property Name="GuidMap" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="user">
           <Key>
@@ -461,30 +433,6 @@ warning 6002: The table/view 'sgdb.dbo.View_RespostasCartas' does not have a pri
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Condicao_tb_Funcoes_tb">
-          <End Role="Funcoes_tb" Type="Self.Funcoes_tb" Multiplicity="0..1" />
-          <End Role="Condicao_tb" Type="Self.Condicao_tb" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Funcoes_tb">
-              <PropertyRef Name="idFuncao" />
-            </Principal>
-            <Dependent Role="Condicao_tb">
-              <PropertyRef Name="idFuncao" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Condicao_tb_user">
-          <End Role="user" Type="Self.user" Multiplicity="0..1" />
-          <End Role="Condicao_tb" Type="Self.Condicao_tb" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="user">
-              <PropertyRef Name="idUser" />
-            </Principal>
-            <Dependent Role="Condicao_tb">
-              <PropertyRef Name="idUsuario" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_documentosenviados_EnviarDocumentos">
           <End Role="EnviarDocumentos" Type="Self.EnviarDocumentos" Multiplicity="0..1" />
           <End Role="documentosenviados" Type="Self.documentosenviados" Multiplicity="*" />
@@ -518,18 +466,6 @@ warning 6002: The table/view 'sgdb.dbo.View_RespostasCartas' does not have a pri
             </Principal>
             <Dependent Role="EnviarDocumentos">
               <PropertyRef Name="idUsuario" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Funcoes_tb_TipoFuncao_tb">
-          <End Role="TipoFuncao_tb" Type="Self.TipoFuncao_tb" Multiplicity="0..1" />
-          <End Role="Funcoes_tb" Type="Self.Funcoes_tb" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TipoFuncao_tb">
-              <PropertyRef Name="idTipoFuncao" />
-            </Principal>
-            <Dependent Role="Funcoes_tb">
-              <PropertyRef Name="idTipoFuncao" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -670,14 +606,12 @@ warning 6002: The table/view 'sgdb.dbo.View_RespostasCartas' does not have a pri
           <EntitySet Name="Cartas_tb" EntityType="Self.Cartas_tb" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="categoria" EntityType="Self.categoria" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="COMConfig_tb" EntityType="Self.COMConfig_tb" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Condicao_tb" EntityType="Self.Condicao_tb" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Curso_tb" EntityType="Self.Curso_tb" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="departamento" EntityType="Self.departamento" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="documento" EntityType="Self.documento" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="documentosenviados" EntityType="Self.documentosenviados" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DocumentoUsuario_tb" EntityType="Self.DocumentoUsuario_tb" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EnviarDocumentos" EntityType="Self.EnviarDocumentos" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Funcoes_tb" EntityType="Self.Funcoes_tb" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Instituicao_tb" EntityType="Self.Instituicao_tb" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="pastadepartamento" EntityType="Self.pastadepartamento" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Pedidos_tb" EntityType="Self.Pedidos_tb" Schema="dbo" store:Type="Tables" />
@@ -689,7 +623,6 @@ warning 6002: The table/view 'sgdb.dbo.View_RespostasCartas' does not have a pri
           <EntitySet Name="Sms_tb" EntityType="Self.Sms_tb" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tipo_usuario_tb" EntityType="Self.Tipo_usuario_tb" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="TipoFuncao_tb" EntityType="Self.TipoFuncao_tb" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="user" EntityType="Self.user" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="View_Expedientes" EntityType="Self.View_Expedientes" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -794,14 +727,6 @@ FROM [dbo].[View_RespostasCartas] AS [View_RespostasCartas]</DefiningQuery>
             <End Role="Pedidos_tb" EntitySet="Pedidos_tb" />
             <End Role="Cartas_tb" EntitySet="Cartas_tb" />
           </AssociationSet>
-          <AssociationSet Name="FK_Condicao_tb_Funcoes_tb" Association="Self.FK_Condicao_tb_Funcoes_tb">
-            <End Role="Funcoes_tb" EntitySet="Funcoes_tb" />
-            <End Role="Condicao_tb" EntitySet="Condicao_tb" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Condicao_tb_user" Association="Self.FK_Condicao_tb_user">
-            <End Role="user" EntitySet="user" />
-            <End Role="Condicao_tb" EntitySet="Condicao_tb" />
-          </AssociationSet>
           <AssociationSet Name="FK_documentosenviados_EnviarDocumentos" Association="Self.FK_documentosenviados_EnviarDocumentos">
             <End Role="EnviarDocumentos" EntitySet="EnviarDocumentos" />
             <End Role="documentosenviados" EntitySet="documentosenviados" />
@@ -813,10 +738,6 @@ FROM [dbo].[View_RespostasCartas] AS [View_RespostasCartas]</DefiningQuery>
           <AssociationSet Name="FK_EnviarDocumentos_user" Association="Self.FK_EnviarDocumentos_user">
             <End Role="user" EntitySet="user" />
             <End Role="EnviarDocumentos" EntitySet="EnviarDocumentos" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Funcoes_tb_TipoFuncao_tb" Association="Self.FK_Funcoes_tb_TipoFuncao_tb">
-            <End Role="TipoFuncao_tb" EntitySet="TipoFuncao_tb" />
-            <End Role="Funcoes_tb" EntitySet="Funcoes_tb" />
           </AssociationSet>
           <AssociationSet Name="FK_PermissaoDeparramento_tb_departamento" Association="Self.FK_PermissaoDeparramento_tb_departamento">
             <End Role="departamento" EntitySet="departamento" />
@@ -867,6 +788,146 @@ FROM [dbo].[View_RespostasCartas] AS [View_RespostasCartas]</DefiningQuery>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="sgdbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="sgdbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Anexos_Cartas_tb" EntityType="sgdbModel.Anexos_Cartas_tb" />
+          <EntitySet Name="Cartas_tb" EntityType="sgdbModel.Cartas_tb" />
+          <EntitySet Name="categoria" EntityType="sgdbModel.categoria" />
+          <EntitySet Name="COMConfig_tb" EntityType="sgdbModel.COMConfig_tb" />
+          <EntitySet Name="Curso_tb" EntityType="sgdbModel.Curso_tb" />
+          <EntitySet Name="departamento" EntityType="sgdbModel.departamento" />
+          <EntitySet Name="documento" EntityType="sgdbModel.documento" />
+          <EntitySet Name="documentosenviados" EntityType="sgdbModel.documentosenviados" />
+          <EntitySet Name="DocumentoUsuario_tb" EntityType="sgdbModel.DocumentoUsuario_tb" />
+          <EntitySet Name="Instituicao_tb" EntityType="sgdbModel.Instituicao_tb" />
+          <EntitySet Name="pastadepartamento" EntityType="sgdbModel.pastadepartamento" />
+          <EntitySet Name="Pedidos_tb" EntityType="sgdbModel.Pedidos_tb" />
+          <EntitySet Name="PermissaoDeparramento_tb" EntityType="sgdbModel.PermissaoDeparramento_tb" />
+          <EntitySet Name="RecebimentoDocumentos" EntityType="sgdbModel.RecebimentoDocumentos" />
+          <EntitySet Name="RespostaCartas_tb" EntityType="sgdbModel.RespostaCartas_tb" />
+          <EntitySet Name="RespostaDocumento" EntityType="sgdbModel.RespostaDocumento" />
+          <EntitySet Name="RespostaDocumentoUsuario_tb" EntityType="sgdbModel.RespostaDocumentoUsuario_tb" />
+          <EntitySet Name="Sms_tb" EntityType="sgdbModel.Sms_tb" />
+          <EntitySet Name="sysdiagrams" EntityType="sgdbModel.sysdiagrams" />
+          <EntitySet Name="Tipo_usuario_tb" EntityType="sgdbModel.Tipo_usuario_tb" />
+          <EntitySet Name="user" EntityType="sgdbModel.user" />
+          <EntitySet Name="View_Expedientes" EntityType="sgdbModel.View_Expedientes" />
+          <EntitySet Name="View_Pastas" EntityType="sgdbModel.View_Pastas" />
+          <EntitySet Name="View_PermissaoDepartamento" EntityType="sgdbModel.View_PermissaoDepartamento" />
+          <EntitySet Name="View_Recebimentos" EntityType="sgdbModel.View_Recebimentos" />
+          <EntitySet Name="View_RespostasCartas" EntityType="sgdbModel.View_RespostasCartas" />
+          <AssociationSet Name="FK_Anexos_Cartas_tb_Cartas_tb" Association="sgdbModel.FK_Anexos_Cartas_tb_Cartas_tb">
+            <End Role="Cartas_tb" EntitySet="Cartas_tb" />
+            <End Role="Anexos_Cartas_tb" EntitySet="Anexos_Cartas_tb" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cartas_tb_Curso_tb" Association="sgdbModel.FK_Cartas_tb_Curso_tb">
+            <End Role="Curso_tb" EntitySet="Curso_tb" />
+            <End Role="Cartas_tb" EntitySet="Cartas_tb" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cartas_tb_pastadepartamento" Association="sgdbModel.FK_Cartas_tb_pastadepartamento">
+            <End Role="pastadepartamento" EntitySet="pastadepartamento" />
+            <End Role="Cartas_tb" EntitySet="Cartas_tb" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cartas_tb_Pedidos_tb" Association="sgdbModel.FK_Cartas_tb_Pedidos_tb">
+            <End Role="Pedidos_tb" EntitySet="Pedidos_tb" />
+            <End Role="Cartas_tb" EntitySet="Cartas_tb" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RespostaCartas_tb_Cartas_tb" Association="sgdbModel.FK_RespostaCartas_tb_Cartas_tb">
+            <End Role="Cartas_tb" EntitySet="Cartas_tb" />
+            <End Role="RespostaCartas_tb" EntitySet="RespostaCartas_tb" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PermissaoDeparramento_tb_departamento" Association="sgdbModel.FK_PermissaoDeparramento_tb_departamento">
+            <End Role="departamento" EntitySet="departamento" />
+            <End Role="PermissaoDeparramento_tb" EntitySet="PermissaoDeparramento_tb" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_departamento" Association="sgdbModel.FK_user_departamento">
+            <End Role="departamento" EntitySet="departamento" />
+            <End Role="user" EntitySet="user" />
+          </AssociationSet>
+          <AssociationSet Name="pastadepartamento_FK_pastadepartamento_idDeparta" Association="sgdbModel.pastadepartamento_FK_pastadepartamento_idDeparta">
+            <End Role="departamento" EntitySet="departamento" />
+            <End Role="pastadepartamento" EntitySet="pastadepartamento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RespostaDocumentoUsuario_tb_DocumentoUsuario_tb" Association="sgdbModel.FK_RespostaDocumentoUsuario_tb_DocumentoUsuario_tb">
+            <End Role="DocumentoUsuario_tb" EntitySet="DocumentoUsuario_tb" />
+            <End Role="RespostaDocumentoUsuario_tb" EntitySet="RespostaDocumentoUsuario_tb" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RecebimentoDocumentos_pastadepartamento" Association="sgdbModel.FK_RecebimentoDocumentos_pastadepartamento">
+            <End Role="pastadepartamento" EntitySet="pastadepartamento" />
+            <End Role="RecebimentoDocumentos" EntitySet="RecebimentoDocumentos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PermissaoPasta_user" Association="sgdbModel.FK_PermissaoPasta_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="PermissaoDeparramento_tb" EntitySet="PermissaoDeparramento_tb" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RespostaDocumento_user" Association="sgdbModel.FK_RespostaDocumento_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="RespostaDocumento" EntitySet="RespostaDocumento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_Tipo_usuario_tb" Association="sgdbModel.FK_user_Tipo_usuario_tb">
+            <End Role="Tipo_usuario_tb" EntitySet="Tipo_usuario_tb" />
+            <End Role="user" EntitySet="user" />
+          </AssociationSet>
+          <EntitySet Name="EnviarDocumentos" EntityType="sgdbModel.EnviarDocumentos" />
+          <AssociationSet Name="FK_EnviarDocumentos_categoria" Association="sgdbModel.FK_EnviarDocumentos_categoria">
+            <End Role="categoria" EntitySet="categoria" />
+            <End Role="EnviarDocumentos" EntitySet="EnviarDocumentos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_documentosenviados_EnviarDocumentos" Association="sgdbModel.FK_documentosenviados_EnviarDocumentos">
+            <End Role="EnviarDocumentos" EntitySet="EnviarDocumentos" />
+            <End Role="documentosenviados" EntitySet="documentosenviados" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EnviarDocumentos_user" Association="sgdbModel.FK_EnviarDocumentos_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="EnviarDocumentos" EntitySet="EnviarDocumentos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RecebimentoDocumentos_EnviarDocumentos" Association="sgdbModel.FK_RecebimentoDocumentos_EnviarDocumentos">
+            <End Role="EnviarDocumentos" EntitySet="EnviarDocumentos" />
+            <End Role="RecebimentoDocumentos" EntitySet="RecebimentoDocumentos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RespostaDocumento_EnviarDocumentos" Association="sgdbModel.FK_RespostaDocumento_EnviarDocumentos">
+            <End Role="EnviarDocumentos" EntitySet="EnviarDocumentos" />
+            <End Role="RespostaDocumento" EntitySet="RespostaDocumento" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Anexos_Cartas_tb">
+          <Key>
+            <PropertyRef Name="idAnexosCartas" />
+          </Key>
+          <Property Name="idAnexosCartas" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idCarta" Type="Int32" />
+          <Property Name="DataAnexo" Type="DateTime" Precision="3" />
+          <Property Name="idUsuario" Type="Int32" />
+          <Property Name="Anexo_Nome" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Anexo_Ficheiro" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Anexo_Type" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Anexo_Contentype" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Anexo_GuidMap" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Cartas_tb" Relationship="sgdbModel.FK_Anexos_Cartas_tb_Cartas_tb" FromRole="Anexos_Cartas_tb" ToRole="Cartas_tb" />
+        </EntityType>
+        <EntityType Name="Cartas_tb">
+          <Key>
+            <PropertyRef Name="idCarta" />
+          </Key>
+          <Property Name="idCarta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NomeRequerente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="idCurso" Type="Int32" />
+          <Property Name="Periodo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="idPedido" Type="Int32" />
+          <Property Name="CodigoCarta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DataCarta" Type="DateTime" Precision="3" />
+          <Property Name="idUsuario" Type="Int32" />
+          <Property Name="idPastaDepartamento" Type="Int32" Nullable="false" />
+          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GuidMap" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Descricao" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ContactoCelular" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AnoLectivo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Anexos_Cartas_tb" Relationship="sgdbModel.FK_Anexos_Cartas_tb_Cartas_tb" FromRole="Cartas_tb" ToRole="Anexos_Cartas_tb" />
+          <NavigationProperty Name="Curso_tb" Relationship="sgdbModel.FK_Cartas_tb_Curso_tb" FromRole="Cartas_tb" ToRole="Curso_tb" />
+          <NavigationProperty Name="pastadepartamento" Relationship="sgdbModel.FK_Cartas_tb_pastadepartamento" FromRole="Cartas_tb" ToRole="pastadepartamento" />
+          <NavigationProperty Name="Pedidos_tb" Relationship="sgdbModel.FK_Cartas_tb_Pedidos_tb" FromRole="Cartas_tb" ToRole="Pedidos_tb" />
+          <NavigationProperty Name="RespostaCartas_tb" Relationship="sgdbModel.FK_RespostaCartas_tb_Cartas_tb" FromRole="Cartas_tb" ToRole="RespostaCartas_tb" />
+        </EntityType>
         <EntityType Name="categoria">
           <Key>
             <PropertyRef Name="idCategoria" />
@@ -875,7 +936,7 @@ FROM [dbo].[View_RespostasCartas] AS [View_RespostasCartas]</DefiningQuery>
           <Property Name="NomeCategoria" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="DescricaoCategoria" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="GuidMap" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="EnviarDocumentos" Relationship="Self.FK_EnviarDocumentos_categoria" FromRole="categoria" ToRole="EnviarDocumentos" />
+          <NavigationProperty Name="EnviarDocumentos" Relationship="sgdbModel.FK_EnviarDocumentos_categoria" FromRole="categoria" ToRole="EnviarDocumentos" />
         </EntityType>
         <EntityType Name="COMConfig_tb">
           <Key>
@@ -884,17 +945,6 @@ FROM [dbo].[View_RespostasCartas] AS [View_RespostasCartas]</DefiningQuery>
           <Property Name="idCOM" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="COMConfig" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="DataAlteracao" Type="DateTime" Precision="3" />
-        </EntityType>
-        <EntityType Name="Condicao_tb">
-          <Key>
-            <PropertyRef Name="idCondicao" />
-          </Key>
-          <Property Name="idCondicao" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="idFuncao" Type="Int32" />
-          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="idUsuario" Type="Int32" />
-          <NavigationProperty Name="Funcoes_tb" Relationship="Self.FK_Condicao_tb_Funcoes_tb" FromRole="Condicao_tb" ToRole="Funcoes_tb" />
-          <NavigationProperty Name="user" Relationship="Self.FK_Condicao_tb_user" FromRole="Condicao_tb" ToRole="user" />
         </EntityType>
         <EntityType Name="Curso_tb">
           <Key>
@@ -913,8 +963,8 @@ FROM [dbo].[View_RespostasCartas] AS [View_RespostasCartas]</DefiningQuery>
           <Property Name="NomeDepartamento" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="DescricaoDepartamanto" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="GuidMap" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="PermissaoDeparramento_tb" Relationship="Self.FK_PermissaoDeparramento_tb_departamento" FromRole="departamento" ToRole="PermissaoDeparramento_tb" />
-          <NavigationProperty Name="user" Relationship="Self.FK_user_departamento" FromRole="departamento" ToRole="user" />
+          <NavigationProperty Name="PermissaoDeparramento_tb" Relationship="sgdbModel.FK_PermissaoDeparramento_tb_departamento" FromRole="departamento" ToRole="PermissaoDeparramento_tb" />
+          <NavigationProperty Name="user" Relationship="sgdbModel.FK_user_departamento" FromRole="departamento" ToRole="user" />
           <NavigationProperty Name="pastadepartamento" Relationship="sgdbModel.pastadepartamento_FK_pastadepartamento_idDeparta" FromRole="departamento" ToRole="pastadepartamento" />
         </EntityType>
         <EntityType Name="documento">
@@ -941,41 +991,24 @@ FROM [dbo].[View_RespostasCartas] AS [View_RespostasCartas]</DefiningQuery>
           <Property Name="idEnvio" Type="Int32" />
           <Property Name="Contentype" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="GuidMap" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="EnviarDocumentos" Relationship="Self.FK_documentosenviados_EnviarDocumentos" FromRole="documentosenviados" ToRole="EnviarDocumentos" />
+          <NavigationProperty Name="EnviarDocumentos" Relationship="sgdbModel.FK_documentosenviados_EnviarDocumentos" FromRole="documentosenviados" ToRole="EnviarDocumentos" />
         </EntityType>
-        <EntityType Name="EnviarDocumentos">
+        <EntityType Name="DocumentoUsuario_tb">
           <Key>
-            <PropertyRef Name="idEnvio" />
+            <PropertyRef Name="idDocumentouser" />
           </Key>
-          <Property Name="idEnvio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="DataEnvio" Type="DateTime" Precision="3" />
-          <Property Name="idUsuario" Type="Int32" />
-          <Property Name="idPastaDepartamento" Type="Int32" />
+          <Property Name="idDocumentouser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idUserReceiver" Type="Int32" />
+          <Property Name="idUserSender" Type="Int32" />
+          <Property Name="Assunto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Nota" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Mensagem" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Titulo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Contacto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="NivelUrgencia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="idCategoria" Type="Int32" />
+          <Property Name="CodigoDocumneto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="idPedido" Type="Int32" />
+          <Property Name="DataEnvio" Type="DateTime" Precision="3" />
+          <Property Name="HoraEnvio" Type="Time" Precision="7" />
           <Property Name="GuidMap" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="CodExpediente" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="categoria" Relationship="Self.FK_EnviarDocumentos_categoria" FromRole="EnviarDocumentos" ToRole="categoria" />
-          <NavigationProperty Name="documentosenviados" Relationship="Self.FK_documentosenviados_EnviarDocumentos" FromRole="EnviarDocumentos" ToRole="documentosenviados" />
-          <NavigationProperty Name="user" Relationship="Self.FK_EnviarDocumentos_user" FromRole="EnviarDocumentos" ToRole="user" />
-          <NavigationProperty Name="RecebimentoDocumentos" Relationship="Self.FK_RecebimentoDocumentos_EnviarDocumentos" FromRole="EnviarDocumentos" ToRole="RecebimentoDocumentos" />
-          <NavigationProperty Name="RespostaDocumento" Relationship="Self.FK_RespostaDocumento_EnviarDocumentos" FromRole="EnviarDocumentos" ToRole="RespostaDocumento" />
-        </EntityType>
-        <EntityType Name="Funcoes_tb">
-          <Key>
-            <PropertyRef Name="idFuncao" />
-          </Key>
-          <Property Name="idFuncao" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Funcao" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Descricao" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="idTipoFuncao" Type="Int32" />
-          <Property Name="GuidMap" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Condicao_tb" Relationship="Self.FK_Condicao_tb_Funcoes_tb" FromRole="Funcoes_tb" ToRole="Condicao_tb" />
-          <NavigationProperty Name="TipoFuncao_tb" Relationship="Self.FK_Funcoes_tb_TipoFuncao_tb" FromRole="Funcoes_tb" ToRole="TipoFuncao_tb" />
+          <NavigationProperty Name="RespostaDocumentoUsuario_tb" Relationship="sgdbModel.FK_RespostaDocumentoUsuario_tb_DocumentoUsuario_tb" FromRole="DocumentoUsuario_tb" ToRole="RespostaDocumentoUsuario_tb" />
         </EntityType>
         <EntityType Name="Instituicao_tb">
           <Key>
@@ -990,6 +1023,21 @@ FROM [dbo].[View_RespostasCartas] AS [View_RespostasCartas]</DefiningQuery>
           <Property Name="NUIT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Slogan" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="Logo" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="pastadepartamento">
+          <Key>
+            <PropertyRef Name="idpastadepartamento" />
+          </Key>
+          <Property Name="idpastadepartamento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NomePasta" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="idDepartamento" Type="Int32" Nullable="false" />
+          <Property Name="GuidMap" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="idOwner" Type="Int32" />
+          <Property Name="DataCriada" Type="DateTime" Precision="3" />
+          <Property Name="DescricaoPasta" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Cartas_tb" Relationship="sgdbModel.FK_Cartas_tb_pastadepartamento" FromRole="pastadepartamento" ToRole="Cartas_tb" />
+          <NavigationProperty Name="departamento" Relationship="sgdbModel.pastadepartamento_FK_pastadepartamento_idDeparta" FromRole="pastadepartamento" ToRole="departamento" />
+          <NavigationProperty Name="RecebimentoDocumentos" Relationship="sgdbModel.FK_RecebimentoDocumentos_pastadepartamento" FromRole="pastadepartamento" ToRole="RecebimentoDocumentos" />
         </EntityType>
         <EntityType Name="Pedidos_tb">
           <Key>
@@ -1010,8 +1058,8 @@ FROM [dbo].[View_RespostasCartas] AS [View_RespostasCartas]</DefiningQuery>
           <Property Name="DataRegisto" Type="DateTime" Precision="3" />
           <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="GuidMap" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="departamento" Relationship="Self.FK_PermissaoDeparramento_tb_departamento" FromRole="PermissaoDeparramento_tb" ToRole="departamento" />
-          <NavigationProperty Name="user" Relationship="Self.FK_PermissaoPasta_user" FromRole="PermissaoDeparramento_tb" ToRole="user" />
+          <NavigationProperty Name="departamento" Relationship="sgdbModel.FK_PermissaoDeparramento_tb_departamento" FromRole="PermissaoDeparramento_tb" ToRole="departamento" />
+          <NavigationProperty Name="user" Relationship="sgdbModel.FK_PermissaoPasta_user" FromRole="PermissaoDeparramento_tb" ToRole="user" />
         </EntityType>
         <EntityType Name="RecebimentoDocumentos">
           <Key>
@@ -1023,8 +1071,21 @@ FROM [dbo].[View_RespostasCartas] AS [View_RespostasCartas]</DefiningQuery>
           <Property Name="idPastaDepartamento" Type="Int32" />
           <Property Name="Informacao" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="GuidMap" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="EnviarDocumentos" Relationship="Self.FK_RecebimentoDocumentos_EnviarDocumentos" FromRole="RecebimentoDocumentos" ToRole="EnviarDocumentos" />
           <NavigationProperty Name="pastadepartamento" Relationship="sgdbModel.FK_RecebimentoDocumentos_pastadepartamento" FromRole="RecebimentoDocumentos" ToRole="pastadepartamento" />
+          <NavigationProperty Name="EnviarDocumentos" Relationship="sgdbModel.FK_RecebimentoDocumentos_EnviarDocumentos" FromRole="RecebimentoDocumentos" ToRole="EnviarDocumentos" />
+        </EntityType>
+        <EntityType Name="RespostaCartas_tb">
+          <Key>
+            <PropertyRef Name="idResposta" />
+          </Key>
+          <Property Name="idResposta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idCarta" Type="Int32" />
+          <Property Name="DataResposta" Type="DateTime" Precision="3" />
+          <Property Name="Resposta" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Nota" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Anexo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="idUsuario" Type="Int32" />
+          <NavigationProperty Name="Cartas_tb" Relationship="sgdbModel.FK_RespostaCartas_tb_Cartas_tb" FromRole="RespostaCartas_tb" ToRole="Cartas_tb" />
         </EntityType>
         <EntityType Name="RespostaDocumento">
           <Key>
@@ -1037,8 +1098,21 @@ FROM [dbo].[View_RespostasCartas] AS [View_RespostasCartas]</DefiningQuery>
           <Property Name="Resposta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Comentario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="GuidMap" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="EnviarDocumentos" Relationship="Self.FK_RespostaDocumento_EnviarDocumentos" FromRole="RespostaDocumento" ToRole="EnviarDocumentos" />
-          <NavigationProperty Name="user" Relationship="Self.FK_RespostaDocumento_user" FromRole="RespostaDocumento" ToRole="user" />
+          <NavigationProperty Name="user" Relationship="sgdbModel.FK_RespostaDocumento_user" FromRole="RespostaDocumento" ToRole="user" />
+          <NavigationProperty Name="EnviarDocumentos" Relationship="sgdbModel.FK_RespostaDocumento_EnviarDocumentos" FromRole="RespostaDocumento" ToRole="EnviarDocumentos" />
+        </EntityType>
+        <EntityType Name="RespostaDocumentoUsuario_tb">
+          <Key>
+            <PropertyRef Name="idRespostaDocumentoUsuario" />
+          </Key>
+          <Property Name="idRespostaDocumentoUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idDocumentoUser" Type="Int32" />
+          <Property Name="Resposta" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DataResposta" Type="DateTime" Precision="3" />
+          <Property Name="HoraResposta" Type="Time" Precision="7" />
+          <Property Name="idUserResposta" Type="Int32" />
+          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="DocumentoUsuario_tb" Relationship="sgdbModel.FK_RespostaDocumentoUsuario_tb_DocumentoUsuario_tb" FromRole="RespostaDocumentoUsuario_tb" ToRole="DocumentoUsuario_tb" />
         </EntityType>
         <EntityType Name="Sms_tb">
           <Key>
@@ -1055,7 +1129,7 @@ FROM [dbo].[View_RespostasCartas] AS [View_RespostasCartas]</DefiningQuery>
           <Key>
             <PropertyRef Name="diagram_id" />
           </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="principal_id" Type="Int32" Nullable="false" />
           <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="version" Type="Int32" />
@@ -1068,17 +1142,7 @@ FROM [dbo].[View_RespostasCartas] AS [View_RespostasCartas]</DefiningQuery>
           <Property Name="id_tipo_usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nome_tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Descricao" Type="String" MaxLength="520" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="user" Relationship="Self.FK_user_Tipo_usuario_tb" FromRole="Tipo_usuario_tb" ToRole="user" />
-        </EntityType>
-        <EntityType Name="TipoFuncao_tb">
-          <Key>
-            <PropertyRef Name="idTipoFuncao" />
-          </Key>
-          <Property Name="idTipoFuncao" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NomeTipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Descricao" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="GuidMap" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Funcoes_tb" Relationship="Self.FK_Funcoes_tb_TipoFuncao_tb" FromRole="TipoFuncao_tb" ToRole="Funcoes_tb" />
+          <NavigationProperty Name="user" Relationship="sgdbModel.FK_user_Tipo_usuario_tb" FromRole="Tipo_usuario_tb" ToRole="user" />
         </EntityType>
         <EntityType Name="user">
           <Key>
@@ -1101,12 +1165,11 @@ FROM [dbo].[View_RespostasCartas] AS [View_RespostasCartas]</DefiningQuery>
           <Property Name="Sexo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="idDepartamento" Type="Int32" />
           <Property Name="id_tipo_usuario" Type="Int32" />
-          <NavigationProperty Name="Condicao_tb" Relationship="Self.FK_Condicao_tb_user" FromRole="user" ToRole="Condicao_tb" />
-          <NavigationProperty Name="departamento" Relationship="Self.FK_user_departamento" FromRole="user" ToRole="departamento" />
-          <NavigationProperty Name="EnviarDocumentos" Relationship="Self.FK_EnviarDocumentos_user" FromRole="user" ToRole="EnviarDocumentos" />
-          <NavigationProperty Name="PermissaoDeparramento_tb" Relationship="Self.FK_PermissaoPasta_user" FromRole="user" ToRole="PermissaoDeparramento_tb" />
-          <NavigationProperty Name="RespostaDocumento" Relationship="Self.FK_RespostaDocumento_user" FromRole="user" ToRole="RespostaDocumento" />
-          <NavigationProperty Name="Tipo_usuario_tb" Relationship="Self.FK_user_Tipo_usuario_tb" FromRole="user" ToRole="Tipo_usuario_tb" />
+          <NavigationProperty Name="departamento" Relationship="sgdbModel.FK_user_departamento" FromRole="user" ToRole="departamento" />
+          <NavigationProperty Name="PermissaoDeparramento_tb" Relationship="sgdbModel.FK_PermissaoPasta_user" FromRole="user" ToRole="PermissaoDeparramento_tb" />
+          <NavigationProperty Name="RespostaDocumento" Relationship="sgdbModel.FK_RespostaDocumento_user" FromRole="user" ToRole="RespostaDocumento" />
+          <NavigationProperty Name="Tipo_usuario_tb" Relationship="sgdbModel.FK_user_Tipo_usuario_tb" FromRole="user" ToRole="Tipo_usuario_tb" />
+          <NavigationProperty Name="EnviarDocumentos" Relationship="sgdbModel.FK_EnviarDocumentos_user" FromRole="user" ToRole="EnviarDocumentos" />
         </EntityType>
         <EntityType Name="View_Expedientes">
           <Key>
@@ -1210,383 +1273,18 @@ FROM [dbo].[View_RespostasCartas] AS [View_RespostasCartas]</DefiningQuery>
           <Property Name="Resposta" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="Nota" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
         </EntityType>
-        <Association Name="FK_EnviarDocumentos_categoria">
-          <End Role="categoria" Type="Self.categoria" Multiplicity="0..1" />
-          <End Role="EnviarDocumentos" Type="Self.EnviarDocumentos" Multiplicity="*" />
+        <Association Name="FK_Anexos_Cartas_tb_Cartas_tb">
+          <End Type="sgdbModel.Cartas_tb" Role="Cartas_tb" Multiplicity="0..1" />
+          <End Type="sgdbModel.Anexos_Cartas_tb" Role="Anexos_Cartas_tb" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="categoria">
-              <PropertyRef Name="idCategoria" />
+            <Principal Role="Cartas_tb">
+              <PropertyRef Name="idCarta" />
             </Principal>
-            <Dependent Role="EnviarDocumentos">
-              <PropertyRef Name="idCategoria" />
+            <Dependent Role="Anexos_Cartas_tb">
+              <PropertyRef Name="idCarta" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Condicao_tb_Funcoes_tb">
-          <End Role="Funcoes_tb" Type="Self.Funcoes_tb" Multiplicity="0..1" />
-          <End Role="Condicao_tb" Type="Self.Condicao_tb" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Funcoes_tb">
-              <PropertyRef Name="idFuncao" />
-            </Principal>
-            <Dependent Role="Condicao_tb">
-              <PropertyRef Name="idFuncao" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Condicao_tb_user">
-          <End Role="user" Type="Self.user" Multiplicity="0..1" />
-          <End Role="Condicao_tb" Type="Self.Condicao_tb" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="user">
-              <PropertyRef Name="idUser" />
-            </Principal>
-            <Dependent Role="Condicao_tb">
-              <PropertyRef Name="idUsuario" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PermissaoDeparramento_tb_departamento">
-          <End Role="departamento" Type="Self.departamento" Multiplicity="0..1" />
-          <End Role="PermissaoDeparramento_tb" Type="Self.PermissaoDeparramento_tb" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="departamento">
-              <PropertyRef Name="iddepartamento" />
-            </Principal>
-            <Dependent Role="PermissaoDeparramento_tb">
-              <PropertyRef Name="idDepartamento" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_user_departamento">
-          <End Role="departamento" Type="Self.departamento" Multiplicity="0..1" />
-          <End Role="user" Type="Self.user" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="departamento">
-              <PropertyRef Name="iddepartamento" />
-            </Principal>
-            <Dependent Role="user">
-              <PropertyRef Name="idDepartamento" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_documentosenviados_EnviarDocumentos">
-          <End Role="EnviarDocumentos" Type="Self.EnviarDocumentos" Multiplicity="0..1" />
-          <End Role="documentosenviados" Type="Self.documentosenviados" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="EnviarDocumentos">
-              <PropertyRef Name="idEnvio" />
-            </Principal>
-            <Dependent Role="documentosenviados">
-              <PropertyRef Name="idEnvio" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_EnviarDocumentos_user">
-          <End Role="user" Type="Self.user" Multiplicity="0..1" />
-          <End Role="EnviarDocumentos" Type="Self.EnviarDocumentos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="user">
-              <PropertyRef Name="idUser" />
-            </Principal>
-            <Dependent Role="EnviarDocumentos">
-              <PropertyRef Name="idUsuario" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_RecebimentoDocumentos_EnviarDocumentos">
-          <End Role="EnviarDocumentos" Type="Self.EnviarDocumentos" Multiplicity="0..1" />
-          <End Role="RecebimentoDocumentos" Type="Self.RecebimentoDocumentos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="EnviarDocumentos">
-              <PropertyRef Name="idEnvio" />
-            </Principal>
-            <Dependent Role="RecebimentoDocumentos">
-              <PropertyRef Name="idEnvio" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_RespostaDocumento_EnviarDocumentos">
-          <End Role="EnviarDocumentos" Type="Self.EnviarDocumentos" Multiplicity="0..1" />
-          <End Role="RespostaDocumento" Type="Self.RespostaDocumento" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="EnviarDocumentos">
-              <PropertyRef Name="idEnvio" />
-            </Principal>
-            <Dependent Role="RespostaDocumento">
-              <PropertyRef Name="idEnvio" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Funcoes_tb_TipoFuncao_tb">
-          <End Role="TipoFuncao_tb" Type="Self.TipoFuncao_tb" Multiplicity="0..1" />
-          <End Role="Funcoes_tb" Type="Self.Funcoes_tb" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TipoFuncao_tb">
-              <PropertyRef Name="idTipoFuncao" />
-            </Principal>
-            <Dependent Role="Funcoes_tb">
-              <PropertyRef Name="idTipoFuncao" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PermissaoPasta_user">
-          <End Role="user" Type="Self.user" Multiplicity="0..1" />
-          <End Role="PermissaoDeparramento_tb" Type="Self.PermissaoDeparramento_tb" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="user">
-              <PropertyRef Name="idUser" />
-            </Principal>
-            <Dependent Role="PermissaoDeparramento_tb">
-              <PropertyRef Name="idUsuario" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_RespostaDocumento_user">
-          <End Role="user" Type="Self.user" Multiplicity="0..1" />
-          <End Role="RespostaDocumento" Type="Self.RespostaDocumento" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="user">
-              <PropertyRef Name="idUser" />
-            </Principal>
-            <Dependent Role="RespostaDocumento">
-              <PropertyRef Name="idUsuario" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_user_Tipo_usuario_tb">
-          <End Role="Tipo_usuario_tb" Type="Self.Tipo_usuario_tb" Multiplicity="0..1" />
-          <End Role="user" Type="Self.user" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tipo_usuario_tb">
-              <PropertyRef Name="id_tipo_usuario" />
-            </Principal>
-            <Dependent Role="user">
-              <PropertyRef Name="id_tipo_usuario" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="sgdbEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="categoria" EntityType="Self.categoria" />
-          <EntitySet Name="COMConfig_tb" EntityType="Self.COMConfig_tb" />
-          <EntitySet Name="Condicao_tb" EntityType="Self.Condicao_tb" />
-          <EntitySet Name="Curso_tb" EntityType="Self.Curso_tb" />
-          <EntitySet Name="departamento" EntityType="Self.departamento" />
-          <EntitySet Name="documento" EntityType="Self.documento" />
-          <EntitySet Name="documentosenviados" EntityType="Self.documentosenviados" />
-          <EntitySet Name="EnviarDocumentos" EntityType="Self.EnviarDocumentos" />
-          <EntitySet Name="Funcoes_tb" EntityType="Self.Funcoes_tb" />
-          <EntitySet Name="Instituicao_tb" EntityType="Self.Instituicao_tb" />
-          <EntitySet Name="Pedidos_tb" EntityType="Self.Pedidos_tb" />
-          <EntitySet Name="PermissaoDeparramento_tb" EntityType="Self.PermissaoDeparramento_tb" />
-          <EntitySet Name="RecebimentoDocumentos" EntityType="Self.RecebimentoDocumentos" />
-          <EntitySet Name="RespostaDocumento" EntityType="Self.RespostaDocumento" />
-          <EntitySet Name="Sms_tb" EntityType="Self.Sms_tb" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
-          <EntitySet Name="Tipo_usuario_tb" EntityType="Self.Tipo_usuario_tb" />
-          <EntitySet Name="TipoFuncao_tb" EntityType="Self.TipoFuncao_tb" />
-          <EntitySet Name="user" EntityType="Self.user" />
-          <EntitySet Name="View_Expedientes" EntityType="Self.View_Expedientes" />
-          <EntitySet Name="View_Pastas" EntityType="Self.View_Pastas" />
-          <EntitySet Name="View_PermissaoDepartamento" EntityType="Self.View_PermissaoDepartamento" />
-          <EntitySet Name="View_Recebimentos" EntityType="Self.View_Recebimentos" />
-          <EntitySet Name="View_RespostasCartas" EntityType="Self.View_RespostasCartas" />
-          <AssociationSet Name="FK_EnviarDocumentos_categoria" Association="Self.FK_EnviarDocumentos_categoria">
-            <End Role="categoria" EntitySet="categoria" />
-            <End Role="EnviarDocumentos" EntitySet="EnviarDocumentos" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Condicao_tb_Funcoes_tb" Association="Self.FK_Condicao_tb_Funcoes_tb">
-            <End Role="Funcoes_tb" EntitySet="Funcoes_tb" />
-            <End Role="Condicao_tb" EntitySet="Condicao_tb" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Condicao_tb_user" Association="Self.FK_Condicao_tb_user">
-            <End Role="user" EntitySet="user" />
-            <End Role="Condicao_tb" EntitySet="Condicao_tb" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PermissaoDeparramento_tb_departamento" Association="Self.FK_PermissaoDeparramento_tb_departamento">
-            <End Role="departamento" EntitySet="departamento" />
-            <End Role="PermissaoDeparramento_tb" EntitySet="PermissaoDeparramento_tb" />
-          </AssociationSet>
-          <AssociationSet Name="FK_user_departamento" Association="Self.FK_user_departamento">
-            <End Role="departamento" EntitySet="departamento" />
-            <End Role="user" EntitySet="user" />
-          </AssociationSet>
-          <AssociationSet Name="FK_documentosenviados_EnviarDocumentos" Association="Self.FK_documentosenviados_EnviarDocumentos">
-            <End Role="EnviarDocumentos" EntitySet="EnviarDocumentos" />
-            <End Role="documentosenviados" EntitySet="documentosenviados" />
-          </AssociationSet>
-          <AssociationSet Name="FK_EnviarDocumentos_user" Association="Self.FK_EnviarDocumentos_user">
-            <End Role="user" EntitySet="user" />
-            <End Role="EnviarDocumentos" EntitySet="EnviarDocumentos" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RecebimentoDocumentos_EnviarDocumentos" Association="Self.FK_RecebimentoDocumentos_EnviarDocumentos">
-            <End Role="EnviarDocumentos" EntitySet="EnviarDocumentos" />
-            <End Role="RecebimentoDocumentos" EntitySet="RecebimentoDocumentos" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RespostaDocumento_EnviarDocumentos" Association="Self.FK_RespostaDocumento_EnviarDocumentos">
-            <End Role="EnviarDocumentos" EntitySet="EnviarDocumentos" />
-            <End Role="RespostaDocumento" EntitySet="RespostaDocumento" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Funcoes_tb_TipoFuncao_tb" Association="Self.FK_Funcoes_tb_TipoFuncao_tb">
-            <End Role="TipoFuncao_tb" EntitySet="TipoFuncao_tb" />
-            <End Role="Funcoes_tb" EntitySet="Funcoes_tb" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PermissaoPasta_user" Association="Self.FK_PermissaoPasta_user">
-            <End Role="user" EntitySet="user" />
-            <End Role="PermissaoDeparramento_tb" EntitySet="PermissaoDeparramento_tb" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RespostaDocumento_user" Association="Self.FK_RespostaDocumento_user">
-            <End Role="user" EntitySet="user" />
-            <End Role="RespostaDocumento" EntitySet="RespostaDocumento" />
-          </AssociationSet>
-          <AssociationSet Name="FK_user_Tipo_usuario_tb" Association="Self.FK_user_Tipo_usuario_tb">
-            <End Role="Tipo_usuario_tb" EntitySet="Tipo_usuario_tb" />
-            <End Role="user" EntitySet="user" />
-          </AssociationSet>
-          <EntitySet Name="DocumentoUsuario_tb" EntityType="sgdbModel.DocumentoUsuario_tb" />
-          <EntitySet Name="RespostaDocumentoUsuario_tb" EntityType="sgdbModel.RespostaDocumentoUsuario_tb" />
-          <AssociationSet Name="FK_RespostaDocumentoUsuario_tb_DocumentoUsuario_tb" Association="sgdbModel.FK_RespostaDocumentoUsuario_tb_DocumentoUsuario_tb">
-            <End Role="DocumentoUsuario_tb" EntitySet="DocumentoUsuario_tb" />
-            <End Role="RespostaDocumentoUsuario_tb" EntitySet="RespostaDocumentoUsuario_tb" />
-          </AssociationSet>
-          <EntitySet Name="pastadepartamento" EntityType="sgdbModel.pastadepartamento" />
-          <AssociationSet Name="pastadepartamento_FK_pastadepartamento_idDeparta" Association="sgdbModel.pastadepartamento_FK_pastadepartamento_idDeparta">
-            <End Role="departamento" EntitySet="departamento" />
-            <End Role="pastadepartamento" EntitySet="pastadepartamento" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RecebimentoDocumentos_pastadepartamento" Association="sgdbModel.FK_RecebimentoDocumentos_pastadepartamento">
-            <End Role="pastadepartamento" EntitySet="pastadepartamento" />
-            <End Role="RecebimentoDocumentos" EntitySet="RecebimentoDocumentos" />
-          </AssociationSet>
-          <EntitySet Name="Cartas_tb" EntityType="sgdbModel.Cartas_tb" />
-          <AssociationSet Name="FK_Cartas_tb_Curso_tb" Association="sgdbModel.FK_Cartas_tb_Curso_tb">
-            <End Role="Curso_tb" EntitySet="Curso_tb" />
-            <End Role="Cartas_tb" EntitySet="Cartas_tb" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Cartas_tb_pastadepartamento" Association="sgdbModel.FK_Cartas_tb_pastadepartamento">
-            <End Role="pastadepartamento" EntitySet="pastadepartamento" />
-            <End Role="Cartas_tb" EntitySet="Cartas_tb" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Cartas_tb_Pedidos_tb" Association="sgdbModel.FK_Cartas_tb_Pedidos_tb">
-            <End Role="Pedidos_tb" EntitySet="Pedidos_tb" />
-            <End Role="Cartas_tb" EntitySet="Cartas_tb" />
-          </AssociationSet>
-          <EntitySet Name="Anexos_Cartas_tb" EntityType="sgdbModel.Anexos_Cartas_tb" />
-          <AssociationSet Name="FK_Anexos_Cartas_tb_Cartas_tb" Association="sgdbModel.FK_Anexos_Cartas_tb_Cartas_tb">
-            <End Role="Cartas_tb" EntitySet="Cartas_tb" />
-            <End Role="Anexos_Cartas_tb" EntitySet="Anexos_Cartas_tb" />
-          </AssociationSet>
-          <EntitySet Name="RespostaCartas_tb" EntityType="sgdbModel.RespostaCartas_tb" />
-          <AssociationSet Name="FK_RespostaCartas_tb_Cartas_tb" Association="sgdbModel.FK_RespostaCartas_tb_Cartas_tb">
-            <End Role="Cartas_tb" EntitySet="Cartas_tb" />
-            <End Role="RespostaCartas_tb" EntitySet="RespostaCartas_tb" />
-          </AssociationSet>
-        </EntityContainer>
-        <EntityType Name="DocumentoUsuario_tb">
-          <Key>
-            <PropertyRef Name="idDocumentouser" />
-          </Key>
-          <Property Name="idDocumentouser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="idUserReceiver" Type="Int32" />
-          <Property Name="idUserSender" Type="Int32" />
-          <Property Name="Assunto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Nota" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CodigoDocumneto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="idPedido" Type="Int32" />
-          <Property Name="DataEnvio" Type="DateTime" Precision="3" />
-          <Property Name="HoraEnvio" Type="Time" Precision="7" />
-          <Property Name="GuidMap" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="RespostaDocumentoUsuario_tb" Relationship="sgdbModel.FK_RespostaDocumentoUsuario_tb_DocumentoUsuario_tb" FromRole="DocumentoUsuario_tb" ToRole="RespostaDocumentoUsuario_tb" />
-        </EntityType>
-        <EntityType Name="RespostaDocumentoUsuario_tb">
-          <Key>
-            <PropertyRef Name="idRespostaDocumentoUsuario" />
-          </Key>
-          <Property Name="idRespostaDocumentoUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="idDocumentoUser" Type="Int32" />
-          <Property Name="Resposta" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="DataResposta" Type="DateTime" Precision="3" />
-          <Property Name="HoraResposta" Type="Time" Precision="7" />
-          <Property Name="idUserResposta" Type="Int32" />
-          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="DocumentoUsuario_tb" Relationship="sgdbModel.FK_RespostaDocumentoUsuario_tb_DocumentoUsuario_tb" FromRole="RespostaDocumentoUsuario_tb" ToRole="DocumentoUsuario_tb" />
-        </EntityType>
-        <Association Name="FK_RespostaDocumentoUsuario_tb_DocumentoUsuario_tb">
-          <End Type="sgdbModel.DocumentoUsuario_tb" Role="DocumentoUsuario_tb" Multiplicity="0..1" />
-          <End Type="sgdbModel.RespostaDocumentoUsuario_tb" Role="RespostaDocumentoUsuario_tb" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="DocumentoUsuario_tb">
-              <PropertyRef Name="idDocumentouser" />
-            </Principal>
-            <Dependent Role="RespostaDocumentoUsuario_tb">
-              <PropertyRef Name="idDocumentoUser" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="pastadepartamento">
-          <Key>
-            <PropertyRef Name="idpastadepartamento" />
-          </Key>
-          <Property Name="idpastadepartamento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NomePasta" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="idDepartamento" Type="Int32" Nullable="false" />
-          <Property Name="GuidMap" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="idOwner" Type="Int32" />
-          <Property Name="DataCriada" Type="DateTime" Precision="3" />
-          <Property Name="DescricaoPasta" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="departamento" Relationship="sgdbModel.pastadepartamento_FK_pastadepartamento_idDeparta" FromRole="pastadepartamento" ToRole="departamento" />
-          <NavigationProperty Name="RecebimentoDocumentos" Relationship="sgdbModel.FK_RecebimentoDocumentos_pastadepartamento" FromRole="pastadepartamento" ToRole="RecebimentoDocumentos" />
-          <NavigationProperty Name="Cartas_tb" Relationship="sgdbModel.FK_Cartas_tb_pastadepartamento" FromRole="pastadepartamento" ToRole="Cartas_tb" />
-        </EntityType>
-        <Association Name="pastadepartamento_FK_pastadepartamento_idDeparta">
-          <End Type="sgdbModel.departamento" Role="departamento" Multiplicity="1" />
-          <End Type="sgdbModel.pastadepartamento" Role="pastadepartamento" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="departamento">
-              <PropertyRef Name="iddepartamento" />
-            </Principal>
-            <Dependent Role="pastadepartamento">
-              <PropertyRef Name="idDepartamento" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_RecebimentoDocumentos_pastadepartamento">
-          <End Type="sgdbModel.pastadepartamento" Role="pastadepartamento" Multiplicity="0..1" />
-          <End Type="sgdbModel.RecebimentoDocumentos" Role="RecebimentoDocumentos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="pastadepartamento">
-              <PropertyRef Name="idpastadepartamento" />
-            </Principal>
-            <Dependent Role="RecebimentoDocumentos">
-              <PropertyRef Name="idPastaDepartamento" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="Cartas_tb">
-          <Key>
-            <PropertyRef Name="idCarta" />
-          </Key>
-          <Property Name="idCarta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NomeRequerente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="idCurso" Type="Int32" />
-          <Property Name="Periodo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="idPedido" Type="Int32" />
-          <Property Name="CodigoCarta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="DataCarta" Type="DateTime" Precision="3" />
-          <Property Name="idUsuario" Type="Int32" />
-          <Property Name="idPastaDepartamento" Type="Int32" Nullable="false" />
-          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="GuidMap" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Descricao" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="ContactoCelular" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="AnoLectivo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Curso_tb" Relationship="sgdbModel.FK_Cartas_tb_Curso_tb" FromRole="Cartas_tb" ToRole="Curso_tb" />
-          <NavigationProperty Name="pastadepartamento" Relationship="sgdbModel.FK_Cartas_tb_pastadepartamento" FromRole="Cartas_tb" ToRole="pastadepartamento" />
-          <NavigationProperty Name="Pedidos_tb" Relationship="sgdbModel.FK_Cartas_tb_Pedidos_tb" FromRole="Cartas_tb" ToRole="Pedidos_tb" />
-          <NavigationProperty Name="Anexos_Cartas_tb" Relationship="sgdbModel.FK_Anexos_Cartas_tb_Cartas_tb" FromRole="Cartas_tb" ToRole="Anexos_Cartas_tb" />
-          <NavigationProperty Name="RespostaCartas_tb" Relationship="sgdbModel.FK_RespostaCartas_tb_Cartas_tb" FromRole="Cartas_tb" ToRole="RespostaCartas_tb" />
-        </EntityType>
         <Association Name="FK_Cartas_tb_Curso_tb">
           <End Type="sgdbModel.Curso_tb" Role="Curso_tb" Multiplicity="0..1" />
           <End Type="sgdbModel.Cartas_tb" Role="Cartas_tb" Multiplicity="*" />
@@ -1623,46 +1321,6 @@ FROM [dbo].[View_RespostasCartas] AS [View_RespostasCartas]</DefiningQuery>
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="Anexos_Cartas_tb">
-          <Key>
-            <PropertyRef Name="idAnexosCartas" />
-          </Key>
-          <Property Name="idAnexosCartas" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="idCarta" Type="Int32" />
-          <Property Name="DataAnexo" Type="DateTime" Precision="3" />
-          <Property Name="idUsuario" Type="Int32" />
-          <Property Name="Anexo_Nome" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Anexo_Ficheiro" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Anexo_Type" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="Anexo_Contentype" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Anexo_GuidMap" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Cartas_tb" Relationship="sgdbModel.FK_Anexos_Cartas_tb_Cartas_tb" FromRole="Anexos_Cartas_tb" ToRole="Cartas_tb" />
-        </EntityType>
-        <Association Name="FK_Anexos_Cartas_tb_Cartas_tb">
-          <End Type="sgdbModel.Cartas_tb" Role="Cartas_tb" Multiplicity="0..1" />
-          <End Type="sgdbModel.Anexos_Cartas_tb" Role="Anexos_Cartas_tb" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Cartas_tb">
-              <PropertyRef Name="idCarta" />
-            </Principal>
-            <Dependent Role="Anexos_Cartas_tb">
-              <PropertyRef Name="idCarta" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="RespostaCartas_tb">
-          <Key>
-            <PropertyRef Name="idResposta" />
-          </Key>
-          <Property Name="idResposta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="idCarta" Type="Int32" />
-          <Property Name="DataResposta" Type="DateTime" Precision="3" />
-          <Property Name="Resposta" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="Nota" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="Anexo" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="idUsuario" Type="Int32" />
-          <NavigationProperty Name="Cartas_tb" Relationship="sgdbModel.FK_RespostaCartas_tb_Cartas_tb" FromRole="RespostaCartas_tb" ToRole="Cartas_tb" />
-        </EntityType>
         <Association Name="FK_RespostaCartas_tb_Cartas_tb">
           <End Type="sgdbModel.Cartas_tb" Role="Cartas_tb" Multiplicity="0..1" />
           <End Type="sgdbModel.RespostaCartas_tb" Role="RespostaCartas_tb" Multiplicity="*" />
@@ -1675,379 +1333,202 @@ FROM [dbo].[View_RespostasCartas] AS [View_RespostasCartas]</DefiningQuery>
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_PermissaoDeparramento_tb_departamento">
+          <End Type="sgdbModel.departamento" Role="departamento" Multiplicity="0..1" />
+          <End Type="sgdbModel.PermissaoDeparramento_tb" Role="PermissaoDeparramento_tb" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="departamento">
+              <PropertyRef Name="iddepartamento" />
+            </Principal>
+            <Dependent Role="PermissaoDeparramento_tb">
+              <PropertyRef Name="idDepartamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_departamento">
+          <End Type="sgdbModel.departamento" Role="departamento" Multiplicity="0..1" />
+          <End Type="sgdbModel.user" Role="user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="departamento">
+              <PropertyRef Name="iddepartamento" />
+            </Principal>
+            <Dependent Role="user">
+              <PropertyRef Name="idDepartamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pastadepartamento_FK_pastadepartamento_idDeparta">
+          <End Type="sgdbModel.departamento" Role="departamento" Multiplicity="1" />
+          <End Type="sgdbModel.pastadepartamento" Role="pastadepartamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="departamento">
+              <PropertyRef Name="iddepartamento" />
+            </Principal>
+            <Dependent Role="pastadepartamento">
+              <PropertyRef Name="idDepartamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RespostaDocumentoUsuario_tb_DocumentoUsuario_tb">
+          <End Type="sgdbModel.DocumentoUsuario_tb" Role="DocumentoUsuario_tb" Multiplicity="0..1" />
+          <End Type="sgdbModel.RespostaDocumentoUsuario_tb" Role="RespostaDocumentoUsuario_tb" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DocumentoUsuario_tb">
+              <PropertyRef Name="idDocumentouser" />
+            </Principal>
+            <Dependent Role="RespostaDocumentoUsuario_tb">
+              <PropertyRef Name="idDocumentoUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RecebimentoDocumentos_pastadepartamento">
+          <End Type="sgdbModel.pastadepartamento" Role="pastadepartamento" Multiplicity="0..1" />
+          <End Type="sgdbModel.RecebimentoDocumentos" Role="RecebimentoDocumentos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pastadepartamento">
+              <PropertyRef Name="idpastadepartamento" />
+            </Principal>
+            <Dependent Role="RecebimentoDocumentos">
+              <PropertyRef Name="idPastaDepartamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PermissaoPasta_user">
+          <End Type="sgdbModel.user" Role="user" Multiplicity="0..1" />
+          <End Type="sgdbModel.PermissaoDeparramento_tb" Role="PermissaoDeparramento_tb" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="idUser" />
+            </Principal>
+            <Dependent Role="PermissaoDeparramento_tb">
+              <PropertyRef Name="idUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RespostaDocumento_user">
+          <End Type="sgdbModel.user" Role="user" Multiplicity="0..1" />
+          <End Type="sgdbModel.RespostaDocumento" Role="RespostaDocumento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="idUser" />
+            </Principal>
+            <Dependent Role="RespostaDocumento">
+              <PropertyRef Name="idUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_Tipo_usuario_tb">
+          <End Type="sgdbModel.Tipo_usuario_tb" Role="Tipo_usuario_tb" Multiplicity="0..1" />
+          <End Type="sgdbModel.user" Role="user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo_usuario_tb">
+              <PropertyRef Name="id_tipo_usuario" />
+            </Principal>
+            <Dependent Role="user">
+              <PropertyRef Name="id_tipo_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="EnviarDocumentos">
+          <Key>
+            <PropertyRef Name="idEnvio" />
+          </Key>
+          <Property Name="idEnvio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DataEnvio" Type="DateTime" Precision="3" />
+          <Property Name="idUsuario" Type="Int32" />
+          <Property Name="idPastaDepartamento" Type="Int32" />
+          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Mensagem" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Titulo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Contacto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NivelUrgencia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="idCategoria" Type="Int32" />
+          <Property Name="GuidMap" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CodExpediente" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="categoria" Relationship="sgdbModel.FK_EnviarDocumentos_categoria" FromRole="EnviarDocumentos" ToRole="categoria" />
+          <NavigationProperty Name="documentosenviados" Relationship="sgdbModel.FK_documentosenviados_EnviarDocumentos" FromRole="EnviarDocumentos" ToRole="documentosenviados" />
+          <NavigationProperty Name="user" Relationship="sgdbModel.FK_EnviarDocumentos_user" FromRole="EnviarDocumentos" ToRole="user" />
+          <NavigationProperty Name="RecebimentoDocumentos" Relationship="sgdbModel.FK_RecebimentoDocumentos_EnviarDocumentos" FromRole="EnviarDocumentos" ToRole="RecebimentoDocumentos" />
+          <NavigationProperty Name="RespostaDocumento" Relationship="sgdbModel.FK_RespostaDocumento_EnviarDocumentos" FromRole="EnviarDocumentos" ToRole="RespostaDocumento" />
+        </EntityType>
+        <Association Name="FK_EnviarDocumentos_categoria">
+          <End Type="sgdbModel.categoria" Role="categoria" Multiplicity="0..1" />
+          <End Type="sgdbModel.EnviarDocumentos" Role="EnviarDocumentos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categoria">
+              <PropertyRef Name="idCategoria" />
+            </Principal>
+            <Dependent Role="EnviarDocumentos">
+              <PropertyRef Name="idCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_documentosenviados_EnviarDocumentos">
+          <End Type="sgdbModel.EnviarDocumentos" Role="EnviarDocumentos" Multiplicity="0..1" />
+          <End Type="sgdbModel.documentosenviados" Role="documentosenviados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EnviarDocumentos">
+              <PropertyRef Name="idEnvio" />
+            </Principal>
+            <Dependent Role="documentosenviados">
+              <PropertyRef Name="idEnvio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EnviarDocumentos_user">
+          <End Type="sgdbModel.user" Role="user" Multiplicity="0..1" />
+          <End Type="sgdbModel.EnviarDocumentos" Role="EnviarDocumentos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="idUser" />
+            </Principal>
+            <Dependent Role="EnviarDocumentos">
+              <PropertyRef Name="idUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RecebimentoDocumentos_EnviarDocumentos">
+          <End Type="sgdbModel.EnviarDocumentos" Role="EnviarDocumentos" Multiplicity="0..1" />
+          <End Type="sgdbModel.RecebimentoDocumentos" Role="RecebimentoDocumentos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EnviarDocumentos">
+              <PropertyRef Name="idEnvio" />
+            </Principal>
+            <Dependent Role="RecebimentoDocumentos">
+              <PropertyRef Name="idEnvio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RespostaDocumento_EnviarDocumentos">
+          <End Type="sgdbModel.EnviarDocumentos" Role="EnviarDocumentos" Multiplicity="0..1" />
+          <End Type="sgdbModel.RespostaDocumento" Role="RespostaDocumento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EnviarDocumentos">
+              <PropertyRef Name="idEnvio" />
+            </Principal>
+            <Dependent Role="RespostaDocumento">
+              <PropertyRef Name="idEnvio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="sgdbModelStoreContainer" CdmEntityContainer="sgdbEntities">
-          <EntitySetMapping Name="categoria">
-            <EntityTypeMapping TypeName="sgdbModel.categoria">
-              <MappingFragment StoreEntitySet="categoria">
-                <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
-                <ScalarProperty Name="NomeCategoria" ColumnName="NomeCategoria" />
-                <ScalarProperty Name="DescricaoCategoria" ColumnName="DescricaoCategoria" />
-                <ScalarProperty Name="GuidMap" ColumnName="GuidMap" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="COMConfig_tb">
-            <EntityTypeMapping TypeName="sgdbModel.COMConfig_tb">
-              <MappingFragment StoreEntitySet="COMConfig_tb">
-                <ScalarProperty Name="idCOM" ColumnName="idCOM" />
-                <ScalarProperty Name="COMConfig" ColumnName="COMConfig" />
-                <ScalarProperty Name="DataAlteracao" ColumnName="DataAlteracao" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Condicao_tb">
-            <EntityTypeMapping TypeName="sgdbModel.Condicao_tb">
-              <MappingFragment StoreEntitySet="Condicao_tb">
-                <ScalarProperty Name="idCondicao" ColumnName="idCondicao" />
-                <ScalarProperty Name="idFuncao" ColumnName="idFuncao" />
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <EntitySetMapping Name="Anexos_Cartas_tb">
+            <EntityTypeMapping TypeName="sgdbModel.Anexos_Cartas_tb">
+              <MappingFragment StoreEntitySet="Anexos_Cartas_tb">
+                <ScalarProperty Name="Anexo_GuidMap" ColumnName="Anexo_GuidMap" />
+                <ScalarProperty Name="Anexo_Contentype" ColumnName="Anexo_Contentype" />
+                <ScalarProperty Name="Anexo_Type" ColumnName="Anexo_Type" />
+                <ScalarProperty Name="Anexo_Ficheiro" ColumnName="Anexo_Ficheiro" />
+                <ScalarProperty Name="Anexo_Nome" ColumnName="Anexo_Nome" />
                 <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Curso_tb">
-            <EntityTypeMapping TypeName="sgdbModel.Curso_tb">
-              <MappingFragment StoreEntitySet="Curso_tb">
-                <ScalarProperty Name="idCurso" ColumnName="idCurso" />
-                <ScalarProperty Name="Curso" ColumnName="Curso" />
-                <ScalarProperty Name="DescricaoCurso" ColumnName="DescricaoCurso" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="departamento">
-            <EntityTypeMapping TypeName="sgdbModel.departamento">
-              <MappingFragment StoreEntitySet="departamento">
-                <ScalarProperty Name="iddepartamento" ColumnName="iddepartamento" />
-                <ScalarProperty Name="NomeDepartamento" ColumnName="NomeDepartamento" />
-                <ScalarProperty Name="DescricaoDepartamanto" ColumnName="DescricaoDepartamanto" />
-                <ScalarProperty Name="GuidMap" ColumnName="GuidMap" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="documento">
-            <EntityTypeMapping TypeName="sgdbModel.documento">
-              <MappingFragment StoreEntitySet="documento">
-                <ScalarProperty Name="iddocumento" ColumnName="iddocumento" />
-                <ScalarProperty Name="NomeDocumento" ColumnName="NomeDocumento" />
-                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
-                <ScalarProperty Name="Destaque" ColumnName="Destaque" />
-                <ScalarProperty Name="idPastaDocumento" ColumnName="idPastaDocumento" />
-                <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
-                <ScalarProperty Name="DateUpload" ColumnName="DateUpload" />
-                <ScalarProperty Name="GuidMap" ColumnName="GuidMap" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="documentosenviados">
-            <EntityTypeMapping TypeName="sgdbModel.documentosenviados">
-              <MappingFragment StoreEntitySet="documentosenviados">
-                <ScalarProperty Name="idDocumentosEnviados" ColumnName="idDocumentosEnviados" />
-                <ScalarProperty Name="NomeDocumento" ColumnName="NomeDocumento" />
-                <ScalarProperty Name="Ficheiro" ColumnName="Ficheiro" />
-                <ScalarProperty Name="Extensao" ColumnName="Extensao" />
-                <ScalarProperty Name="idEnvio" ColumnName="idEnvio" />
-                <ScalarProperty Name="Contentype" ColumnName="Contentype" />
-                <ScalarProperty Name="GuidMap" ColumnName="GuidMap" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="EnviarDocumentos">
-            <EntityTypeMapping TypeName="sgdbModel.EnviarDocumentos">
-              <MappingFragment StoreEntitySet="EnviarDocumentos">
-                <ScalarProperty Name="idEnvio" ColumnName="idEnvio" />
-                <ScalarProperty Name="DataEnvio" ColumnName="DataEnvio" />
-                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
-                <ScalarProperty Name="idPastaDepartamento" ColumnName="idPastaDepartamento" />
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="Mensagem" ColumnName="Mensagem" />
-                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
-                <ScalarProperty Name="Contacto" ColumnName="Contacto" />
-                <ScalarProperty Name="NivelUrgencia" ColumnName="NivelUrgencia" />
-                <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
-                <ScalarProperty Name="GuidMap" ColumnName="GuidMap" />
-                <ScalarProperty Name="CodExpediente" ColumnName="CodExpediente" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Funcoes_tb">
-            <EntityTypeMapping TypeName="sgdbModel.Funcoes_tb">
-              <MappingFragment StoreEntitySet="Funcoes_tb">
-                <ScalarProperty Name="idFuncao" ColumnName="idFuncao" />
-                <ScalarProperty Name="Funcao" ColumnName="Funcao" />
-                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
-                <ScalarProperty Name="idTipoFuncao" ColumnName="idTipoFuncao" />
-                <ScalarProperty Name="GuidMap" ColumnName="GuidMap" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Instituicao_tb">
-            <EntityTypeMapping TypeName="sgdbModel.Instituicao_tb">
-              <MappingFragment StoreEntitySet="Instituicao_tb">
-                <ScalarProperty Name="idinstituicao" ColumnName="idinstituicao" />
-                <ScalarProperty Name="Nome" ColumnName="Nome" />
-                <ScalarProperty Name="Extensao" ColumnName="Extensao" />
-                <ScalarProperty Name="Localizacao" ColumnName="Localizacao" />
-                <ScalarProperty Name="Telefone" ColumnName="Telefone" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="NUIT" ColumnName="NUIT" />
-                <ScalarProperty Name="Slogan" ColumnName="Slogan" />
-                <ScalarProperty Name="Logo" ColumnName="Logo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Pedidos_tb">
-            <EntityTypeMapping TypeName="sgdbModel.Pedidos_tb">
-              <MappingFragment StoreEntitySet="Pedidos_tb">
-                <ScalarProperty Name="idPedidos" ColumnName="idPedidos" />
-                <ScalarProperty Name="Pedido" ColumnName="Pedido" />
-                <ScalarProperty Name="DescricaoPedido" ColumnName="DescricaoPedido" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PermissaoDeparramento_tb">
-            <EntityTypeMapping TypeName="sgdbModel.PermissaoDeparramento_tb">
-              <MappingFragment StoreEntitySet="PermissaoDeparramento_tb">
-                <ScalarProperty Name="idPermissao" ColumnName="idPermissao" />
-                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
-                <ScalarProperty Name="idDepartamento" ColumnName="idDepartamento" />
-                <ScalarProperty Name="DataRegisto" ColumnName="DataRegisto" />
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="GuidMap" ColumnName="GuidMap" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="RecebimentoDocumentos">
-            <EntityTypeMapping TypeName="sgdbModel.RecebimentoDocumentos">
-              <MappingFragment StoreEntitySet="RecebimentoDocumentos">
-                <ScalarProperty Name="idRecebimento" ColumnName="idRecebimento" />
-                <ScalarProperty Name="DataRecebimento" ColumnName="DataRecebimento" />
-                <ScalarProperty Name="idEnvio" ColumnName="idEnvio" />
-                <ScalarProperty Name="idPastaDepartamento" ColumnName="idPastaDepartamento" />
-                <ScalarProperty Name="Informacao" ColumnName="Informacao" />
-                <ScalarProperty Name="GuidMap" ColumnName="GuidMap" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="RespostaDocumento">
-            <EntityTypeMapping TypeName="sgdbModel.RespostaDocumento">
-              <MappingFragment StoreEntitySet="RespostaDocumento">
-                <ScalarProperty Name="idResposta" ColumnName="idResposta" />
-                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
-                <ScalarProperty Name="idEnvio" ColumnName="idEnvio" />
-                <ScalarProperty Name="DatResposta" ColumnName="DatResposta" />
-                <ScalarProperty Name="Resposta" ColumnName="Resposta" />
-                <ScalarProperty Name="Comentario" ColumnName="Comentario" />
-                <ScalarProperty Name="GuidMap" ColumnName="GuidMap" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Sms_tb">
-            <EntityTypeMapping TypeName="sgdbModel.Sms_tb">
-              <MappingFragment StoreEntitySet="Sms_tb">
-                <ScalarProperty Name="idSms" ColumnName="idSms" />
-                <ScalarProperty Name="NumeroTelefone" ColumnName="NumeroTelefone" />
-                <ScalarProperty Name="Mensagem" ColumnName="Mensagem" />
-                <ScalarProperty Name="DataEnvio" ColumnName="DataEnvio" />
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="GuidMap" ColumnName="GuidMap" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="sgdbModel.sysdiagrams">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Tipo_usuario_tb">
-            <EntityTypeMapping TypeName="sgdbModel.Tipo_usuario_tb">
-              <MappingFragment StoreEntitySet="Tipo_usuario_tb">
-                <ScalarProperty Name="id_tipo_usuario" ColumnName="id_tipo_usuario" />
-                <ScalarProperty Name="Nome_tipo" ColumnName="Nome_tipo" />
-                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TipoFuncao_tb">
-            <EntityTypeMapping TypeName="sgdbModel.TipoFuncao_tb">
-              <MappingFragment StoreEntitySet="TipoFuncao_tb">
-                <ScalarProperty Name="idTipoFuncao" ColumnName="idTipoFuncao" />
-                <ScalarProperty Name="NomeTipo" ColumnName="NomeTipo" />
-                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
-                <ScalarProperty Name="GuidMap" ColumnName="GuidMap" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="user">
-            <EntityTypeMapping TypeName="sgdbModel.user">
-              <MappingFragment StoreEntitySet="user">
-                <ScalarProperty Name="idUser" ColumnName="idUser" />
-                <ScalarProperty Name="NomeUsuario" ColumnName="NomeUsuario" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Senha" ColumnName="Senha" />
-                <ScalarProperty Name="GuidMap" ColumnName="GuidMap" />
-                <ScalarProperty Name="Naturalidade" ColumnName="Naturalidade" />
-                <ScalarProperty Name="Local_residencia" ColumnName="Local_residencia" />
-                <ScalarProperty Name="Altura" ColumnName="Altura" />
-                <ScalarProperty Name="Documento" ColumnName="Documento" />
-                <ScalarProperty Name="N_documento" ColumnName="N_documento" />
-                <ScalarProperty Name="Local_emissao" ColumnName="Local_emissao" />
-                <ScalarProperty Name="Data_emissao" ColumnName="Data_emissao" />
-                <ScalarProperty Name="Data_nascimento" ColumnName="Data_nascimento" />
-                <ScalarProperty Name="Estado_civil" ColumnName="Estado_civil" />
-                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
-                <ScalarProperty Name="idDepartamento" ColumnName="idDepartamento" />
-                <ScalarProperty Name="id_tipo_usuario" ColumnName="id_tipo_usuario" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="View_Expedientes">
-            <EntityTypeMapping TypeName="sgdbModel.View_Expedientes">
-              <MappingFragment StoreEntitySet="View_Expedientes">
-                <ScalarProperty Name="idEnvio" ColumnName="idEnvio" />
-                <ScalarProperty Name="DataEnvio" ColumnName="DataEnvio" />
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="Mensagem" ColumnName="Mensagem" />
-                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
-                <ScalarProperty Name="Contacto" ColumnName="Contacto" />
-                <ScalarProperty Name="NivelUrgencia" ColumnName="NivelUrgencia" />
-                <ScalarProperty Name="NomeCategoria" ColumnName="NomeCategoria" />
-                <ScalarProperty Name="NomeUsuario" ColumnName="NomeUsuario" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Senha" ColumnName="Senha" />
-                <ScalarProperty Name="idpastadepartamento" ColumnName="idpastadepartamento" />
-                <ScalarProperty Name="NomePasta" ColumnName="NomePasta" />
-                <ScalarProperty Name="iddepartamento" ColumnName="iddepartamento" />
-                <ScalarProperty Name="NomeDepartamento" ColumnName="NomeDepartamento" />
-                <ScalarProperty Name="idUser" ColumnName="idUser" />
-                <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
-                <ScalarProperty Name="GuidDepartamento" ColumnName="GuidDepartamento" />
-                <ScalarProperty Name="GuidPastaDepartamento" ColumnName="GuidPastaDepartamento" />
-                <ScalarProperty Name="GuidEnviarDocumento" ColumnName="GuidEnviarDocumento" />
-                <ScalarProperty Name="GuidCategoria" ColumnName="GuidCategoria" />
-                <ScalarProperty Name="GuidUser" ColumnName="GuidUser" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="View_Pastas">
-            <EntityTypeMapping TypeName="sgdbModel.View_Pastas">
-              <MappingFragment StoreEntitySet="View_Pastas">
-                <ScalarProperty Name="iddepartamento" ColumnName="iddepartamento" />
-                <ScalarProperty Name="NomeDepartamento" ColumnName="NomeDepartamento" />
-                <ScalarProperty Name="idpastadepartamento" ColumnName="idpastadepartamento" />
-                <ScalarProperty Name="NomePasta" ColumnName="NomePasta" />
-                <ScalarProperty Name="GuidDepartamento" ColumnName="GuidDepartamento" />
-                <ScalarProperty Name="GuidPastaDepartamento" ColumnName="GuidPastaDepartamento" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="View_PermissaoDepartamento">
-            <EntityTypeMapping TypeName="sgdbModel.View_PermissaoDepartamento">
-              <MappingFragment StoreEntitySet="View_PermissaoDepartamento">
-                <ScalarProperty Name="idUser" ColumnName="idUser" />
-                <ScalarProperty Name="NomeUsuario" ColumnName="NomeUsuario" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="idPermissao" ColumnName="idPermissao" />
-                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
-                <ScalarProperty Name="DataRegisto" ColumnName="DataRegisto" />
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="iddepartamento" ColumnName="iddepartamento" />
-                <ScalarProperty Name="NomeDepartamento" ColumnName="NomeDepartamento" />
-                <ScalarProperty Name="GuidDepartamento" ColumnName="GuidDepartamento" />
-                <ScalarProperty Name="GuidPermissaoDepartamento" ColumnName="GuidPermissaoDepartamento" />
-                <ScalarProperty Name="GuidUser" ColumnName="GuidUser" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="View_Recebimentos">
-            <EntityTypeMapping TypeName="sgdbModel.View_Recebimentos">
-              <MappingFragment StoreEntitySet="View_Recebimentos">
-                <ScalarProperty Name="idRecebimento" ColumnName="idRecebimento" />
-                <ScalarProperty Name="DataRecebimento" ColumnName="DataRecebimento" />
-                <ScalarProperty Name="idPastaDepartamento" ColumnName="idPastaDepartamento" />
-                <ScalarProperty Name="Informacao" ColumnName="Informacao" />
-                <ScalarProperty Name="idEnvio" ColumnName="idEnvio" />
-                <ScalarProperty Name="DataEnvio" ColumnName="DataEnvio" />
-                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
-                <ScalarProperty Name="Contacto" ColumnName="Contacto" />
-                <ScalarProperty Name="NivelUrgencia" ColumnName="NivelUrgencia" />
-                <ScalarProperty Name="NomeCategoria" ColumnName="NomeCategoria" />
-                <ScalarProperty Name="DescricaoCategoria" ColumnName="DescricaoCategoria" />
-                <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
-                <ScalarProperty Name="Mensagem" ColumnName="Mensagem" />
-                <ScalarProperty Name="GuidRecebimentoDocumento" ColumnName="GuidRecebimentoDocumento" />
-                <ScalarProperty Name="GuidEnviarDocumentos" ColumnName="GuidEnviarDocumentos" />
-                <ScalarProperty Name="GuidCategoria" ColumnName="GuidCategoria" />
-                <ScalarProperty Name="CodExpediente" ColumnName="CodExpediente" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="View_RespostasCartas">
-            <EntityTypeMapping TypeName="sgdbModel.View_RespostasCartas">
-              <MappingFragment StoreEntitySet="View_RespostasCartas">
+                <ScalarProperty Name="DataAnexo" ColumnName="DataAnexo" />
                 <ScalarProperty Name="idCarta" ColumnName="idCarta" />
-                <ScalarProperty Name="NomeRequerente" ColumnName="NomeRequerente" />
-                <ScalarProperty Name="CodigoCarta" ColumnName="CodigoCarta" />
-                <ScalarProperty Name="DataCarta" ColumnName="DataCarta" />
-                <ScalarProperty Name="idResposta" ColumnName="idResposta" />
-                <ScalarProperty Name="DataResposta" ColumnName="DataResposta" />
-                <ScalarProperty Name="Resposta" ColumnName="Resposta" />
-                <ScalarProperty Name="Nota" ColumnName="Nota" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="DocumentoUsuario_tb">
-            <EntityTypeMapping TypeName="sgdbModel.DocumentoUsuario_tb">
-              <MappingFragment StoreEntitySet="DocumentoUsuario_tb">
-                <ScalarProperty Name="GuidMap" ColumnName="GuidMap" />
-                <ScalarProperty Name="HoraEnvio" ColumnName="HoraEnvio" />
-                <ScalarProperty Name="DataEnvio" ColumnName="DataEnvio" />
-                <ScalarProperty Name="idPedido" ColumnName="idPedido" />
-                <ScalarProperty Name="CodigoDocumneto" ColumnName="CodigoDocumneto" />
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="Nota" ColumnName="Nota" />
-                <ScalarProperty Name="Assunto" ColumnName="Assunto" />
-                <ScalarProperty Name="idUserSender" ColumnName="idUserSender" />
-                <ScalarProperty Name="idUserReceiver" ColumnName="idUserReceiver" />
-                <ScalarProperty Name="idDocumentouser" ColumnName="idDocumentouser" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="RespostaDocumentoUsuario_tb">
-            <EntityTypeMapping TypeName="sgdbModel.RespostaDocumentoUsuario_tb">
-              <MappingFragment StoreEntitySet="RespostaDocumentoUsuario_tb">
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="idUserResposta" ColumnName="idUserResposta" />
-                <ScalarProperty Name="HoraResposta" ColumnName="HoraResposta" />
-                <ScalarProperty Name="DataResposta" ColumnName="DataResposta" />
-                <ScalarProperty Name="Resposta" ColumnName="Resposta" />
-                <ScalarProperty Name="idDocumentoUser" ColumnName="idDocumentoUser" />
-                <ScalarProperty Name="idRespostaDocumentoUsuario" ColumnName="idRespostaDocumentoUsuario" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="pastadepartamento">
-            <EntityTypeMapping TypeName="sgdbModel.pastadepartamento">
-              <MappingFragment StoreEntitySet="pastadepartamento">
-                <ScalarProperty Name="DescricaoPasta" ColumnName="DescricaoPasta" />
-                <ScalarProperty Name="DataCriada" ColumnName="DataCriada" />
-                <ScalarProperty Name="idOwner" ColumnName="idOwner" />
-                <ScalarProperty Name="GuidMap" ColumnName="GuidMap" />
-                <ScalarProperty Name="idDepartamento" ColumnName="idDepartamento" />
-                <ScalarProperty Name="NomePasta" ColumnName="NomePasta" />
-                <ScalarProperty Name="idpastadepartamento" ColumnName="idpastadepartamento" />
+                <ScalarProperty Name="idAnexosCartas" ColumnName="idAnexosCartas" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2071,18 +1552,146 @@ FROM [dbo].[View_RespostasCartas] AS [View_RespostasCartas]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Anexos_Cartas_tb">
-            <EntityTypeMapping TypeName="sgdbModel.Anexos_Cartas_tb">
-              <MappingFragment StoreEntitySet="Anexos_Cartas_tb">
-                <ScalarProperty Name="Anexo_GuidMap" ColumnName="Anexo_GuidMap" />
-                <ScalarProperty Name="Anexo_Contentype" ColumnName="Anexo_Contentype" />
-                <ScalarProperty Name="Anexo_Type" ColumnName="Anexo_Type" />
-                <ScalarProperty Name="Anexo_Ficheiro" ColumnName="Anexo_Ficheiro" />
-                <ScalarProperty Name="Anexo_Nome" ColumnName="Anexo_Nome" />
+          <EntitySetMapping Name="categoria">
+            <EntityTypeMapping TypeName="sgdbModel.categoria">
+              <MappingFragment StoreEntitySet="categoria">
+                <ScalarProperty Name="GuidMap" ColumnName="GuidMap" />
+                <ScalarProperty Name="DescricaoCategoria" ColumnName="DescricaoCategoria" />
+                <ScalarProperty Name="NomeCategoria" ColumnName="NomeCategoria" />
+                <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COMConfig_tb">
+            <EntityTypeMapping TypeName="sgdbModel.COMConfig_tb">
+              <MappingFragment StoreEntitySet="COMConfig_tb">
+                <ScalarProperty Name="DataAlteracao" ColumnName="DataAlteracao" />
+                <ScalarProperty Name="COMConfig" ColumnName="COMConfig" />
+                <ScalarProperty Name="idCOM" ColumnName="idCOM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Curso_tb">
+            <EntityTypeMapping TypeName="sgdbModel.Curso_tb">
+              <MappingFragment StoreEntitySet="Curso_tb">
+                <ScalarProperty Name="DescricaoCurso" ColumnName="DescricaoCurso" />
+                <ScalarProperty Name="Curso" ColumnName="Curso" />
+                <ScalarProperty Name="idCurso" ColumnName="idCurso" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="departamento">
+            <EntityTypeMapping TypeName="sgdbModel.departamento">
+              <MappingFragment StoreEntitySet="departamento">
+                <ScalarProperty Name="GuidMap" ColumnName="GuidMap" />
+                <ScalarProperty Name="DescricaoDepartamanto" ColumnName="DescricaoDepartamanto" />
+                <ScalarProperty Name="NomeDepartamento" ColumnName="NomeDepartamento" />
+                <ScalarProperty Name="iddepartamento" ColumnName="iddepartamento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="documento">
+            <EntityTypeMapping TypeName="sgdbModel.documento">
+              <MappingFragment StoreEntitySet="documento">
+                <ScalarProperty Name="GuidMap" ColumnName="GuidMap" />
+                <ScalarProperty Name="DateUpload" ColumnName="DateUpload" />
+                <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
+                <ScalarProperty Name="idPastaDocumento" ColumnName="idPastaDocumento" />
+                <ScalarProperty Name="Destaque" ColumnName="Destaque" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+                <ScalarProperty Name="NomeDocumento" ColumnName="NomeDocumento" />
+                <ScalarProperty Name="iddocumento" ColumnName="iddocumento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="documentosenviados">
+            <EntityTypeMapping TypeName="sgdbModel.documentosenviados">
+              <MappingFragment StoreEntitySet="documentosenviados">
+                <ScalarProperty Name="GuidMap" ColumnName="GuidMap" />
+                <ScalarProperty Name="Contentype" ColumnName="Contentype" />
+                <ScalarProperty Name="idEnvio" ColumnName="idEnvio" />
+                <ScalarProperty Name="Extensao" ColumnName="Extensao" />
+                <ScalarProperty Name="Ficheiro" ColumnName="Ficheiro" />
+                <ScalarProperty Name="NomeDocumento" ColumnName="NomeDocumento" />
+                <ScalarProperty Name="idDocumentosEnviados" ColumnName="idDocumentosEnviados" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DocumentoUsuario_tb">
+            <EntityTypeMapping TypeName="sgdbModel.DocumentoUsuario_tb">
+              <MappingFragment StoreEntitySet="DocumentoUsuario_tb">
+                <ScalarProperty Name="GuidMap" ColumnName="GuidMap" />
+                <ScalarProperty Name="HoraEnvio" ColumnName="HoraEnvio" />
+                <ScalarProperty Name="DataEnvio" ColumnName="DataEnvio" />
+                <ScalarProperty Name="idPedido" ColumnName="idPedido" />
+                <ScalarProperty Name="CodigoDocumneto" ColumnName="CodigoDocumneto" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Nota" ColumnName="Nota" />
+                <ScalarProperty Name="Assunto" ColumnName="Assunto" />
+                <ScalarProperty Name="idUserSender" ColumnName="idUserSender" />
+                <ScalarProperty Name="idUserReceiver" ColumnName="idUserReceiver" />
+                <ScalarProperty Name="idDocumentouser" ColumnName="idDocumentouser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Instituicao_tb">
+            <EntityTypeMapping TypeName="sgdbModel.Instituicao_tb">
+              <MappingFragment StoreEntitySet="Instituicao_tb">
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
+                <ScalarProperty Name="Slogan" ColumnName="Slogan" />
+                <ScalarProperty Name="NUIT" ColumnName="NUIT" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Telefone" ColumnName="Telefone" />
+                <ScalarProperty Name="Localizacao" ColumnName="Localizacao" />
+                <ScalarProperty Name="Extensao" ColumnName="Extensao" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="idinstituicao" ColumnName="idinstituicao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pastadepartamento">
+            <EntityTypeMapping TypeName="sgdbModel.pastadepartamento">
+              <MappingFragment StoreEntitySet="pastadepartamento">
+                <ScalarProperty Name="DescricaoPasta" ColumnName="DescricaoPasta" />
+                <ScalarProperty Name="DataCriada" ColumnName="DataCriada" />
+                <ScalarProperty Name="idOwner" ColumnName="idOwner" />
+                <ScalarProperty Name="GuidMap" ColumnName="GuidMap" />
+                <ScalarProperty Name="idDepartamento" ColumnName="idDepartamento" />
+                <ScalarProperty Name="NomePasta" ColumnName="NomePasta" />
+                <ScalarProperty Name="idpastadepartamento" ColumnName="idpastadepartamento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pedidos_tb">
+            <EntityTypeMapping TypeName="sgdbModel.Pedidos_tb">
+              <MappingFragment StoreEntitySet="Pedidos_tb">
+                <ScalarProperty Name="DescricaoPedido" ColumnName="DescricaoPedido" />
+                <ScalarProperty Name="Pedido" ColumnName="Pedido" />
+                <ScalarProperty Name="idPedidos" ColumnName="idPedidos" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PermissaoDeparramento_tb">
+            <EntityTypeMapping TypeName="sgdbModel.PermissaoDeparramento_tb">
+              <MappingFragment StoreEntitySet="PermissaoDeparramento_tb">
+                <ScalarProperty Name="GuidMap" ColumnName="GuidMap" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="DataRegisto" ColumnName="DataRegisto" />
+                <ScalarProperty Name="idDepartamento" ColumnName="idDepartamento" />
                 <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
-                <ScalarProperty Name="DataAnexo" ColumnName="DataAnexo" />
-                <ScalarProperty Name="idCarta" ColumnName="idCarta" />
-                <ScalarProperty Name="idAnexosCartas" ColumnName="idAnexosCartas" />
+                <ScalarProperty Name="idPermissao" ColumnName="idPermissao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RecebimentoDocumentos">
+            <EntityTypeMapping TypeName="sgdbModel.RecebimentoDocumentos">
+              <MappingFragment StoreEntitySet="RecebimentoDocumentos">
+                <ScalarProperty Name="GuidMap" ColumnName="GuidMap" />
+                <ScalarProperty Name="Informacao" ColumnName="Informacao" />
+                <ScalarProperty Name="idPastaDepartamento" ColumnName="idPastaDepartamento" />
+                <ScalarProperty Name="idEnvio" ColumnName="idEnvio" />
+                <ScalarProperty Name="DataRecebimento" ColumnName="DataRecebimento" />
+                <ScalarProperty Name="idRecebimento" ColumnName="idRecebimento" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2096,6 +1705,202 @@ FROM [dbo].[View_RespostasCartas] AS [View_RespostasCartas]</DefiningQuery>
                 <ScalarProperty Name="DataResposta" ColumnName="DataResposta" />
                 <ScalarProperty Name="idCarta" ColumnName="idCarta" />
                 <ScalarProperty Name="idResposta" ColumnName="idResposta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RespostaDocumento">
+            <EntityTypeMapping TypeName="sgdbModel.RespostaDocumento">
+              <MappingFragment StoreEntitySet="RespostaDocumento">
+                <ScalarProperty Name="GuidMap" ColumnName="GuidMap" />
+                <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+                <ScalarProperty Name="Resposta" ColumnName="Resposta" />
+                <ScalarProperty Name="DatResposta" ColumnName="DatResposta" />
+                <ScalarProperty Name="idEnvio" ColumnName="idEnvio" />
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+                <ScalarProperty Name="idResposta" ColumnName="idResposta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RespostaDocumentoUsuario_tb">
+            <EntityTypeMapping TypeName="sgdbModel.RespostaDocumentoUsuario_tb">
+              <MappingFragment StoreEntitySet="RespostaDocumentoUsuario_tb">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="idUserResposta" ColumnName="idUserResposta" />
+                <ScalarProperty Name="HoraResposta" ColumnName="HoraResposta" />
+                <ScalarProperty Name="DataResposta" ColumnName="DataResposta" />
+                <ScalarProperty Name="Resposta" ColumnName="Resposta" />
+                <ScalarProperty Name="idDocumentoUser" ColumnName="idDocumentoUser" />
+                <ScalarProperty Name="idRespostaDocumentoUsuario" ColumnName="idRespostaDocumentoUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sms_tb">
+            <EntityTypeMapping TypeName="sgdbModel.Sms_tb">
+              <MappingFragment StoreEntitySet="Sms_tb">
+                <ScalarProperty Name="GuidMap" ColumnName="GuidMap" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="DataEnvio" ColumnName="DataEnvio" />
+                <ScalarProperty Name="Mensagem" ColumnName="Mensagem" />
+                <ScalarProperty Name="NumeroTelefone" ColumnName="NumeroTelefone" />
+                <ScalarProperty Name="idSms" ColumnName="idSms" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="sgdbModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tipo_usuario_tb">
+            <EntityTypeMapping TypeName="sgdbModel.Tipo_usuario_tb">
+              <MappingFragment StoreEntitySet="Tipo_usuario_tb">
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+                <ScalarProperty Name="Nome_tipo" ColumnName="Nome_tipo" />
+                <ScalarProperty Name="id_tipo_usuario" ColumnName="id_tipo_usuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user">
+            <EntityTypeMapping TypeName="sgdbModel.user">
+              <MappingFragment StoreEntitySet="user">
+                <ScalarProperty Name="id_tipo_usuario" ColumnName="id_tipo_usuario" />
+                <ScalarProperty Name="idDepartamento" ColumnName="idDepartamento" />
+                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+                <ScalarProperty Name="Estado_civil" ColumnName="Estado_civil" />
+                <ScalarProperty Name="Data_nascimento" ColumnName="Data_nascimento" />
+                <ScalarProperty Name="Data_emissao" ColumnName="Data_emissao" />
+                <ScalarProperty Name="Local_emissao" ColumnName="Local_emissao" />
+                <ScalarProperty Name="N_documento" ColumnName="N_documento" />
+                <ScalarProperty Name="Documento" ColumnName="Documento" />
+                <ScalarProperty Name="Altura" ColumnName="Altura" />
+                <ScalarProperty Name="Local_residencia" ColumnName="Local_residencia" />
+                <ScalarProperty Name="Naturalidade" ColumnName="Naturalidade" />
+                <ScalarProperty Name="GuidMap" ColumnName="GuidMap" />
+                <ScalarProperty Name="Senha" ColumnName="Senha" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="NomeUsuario" ColumnName="NomeUsuario" />
+                <ScalarProperty Name="idUser" ColumnName="idUser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_Expedientes">
+            <EntityTypeMapping TypeName="sgdbModel.View_Expedientes">
+              <MappingFragment StoreEntitySet="View_Expedientes">
+                <ScalarProperty Name="GuidUser" ColumnName="GuidUser" />
+                <ScalarProperty Name="GuidCategoria" ColumnName="GuidCategoria" />
+                <ScalarProperty Name="GuidEnviarDocumento" ColumnName="GuidEnviarDocumento" />
+                <ScalarProperty Name="GuidPastaDepartamento" ColumnName="GuidPastaDepartamento" />
+                <ScalarProperty Name="GuidDepartamento" ColumnName="GuidDepartamento" />
+                <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
+                <ScalarProperty Name="idUser" ColumnName="idUser" />
+                <ScalarProperty Name="NomeDepartamento" ColumnName="NomeDepartamento" />
+                <ScalarProperty Name="iddepartamento" ColumnName="iddepartamento" />
+                <ScalarProperty Name="NomePasta" ColumnName="NomePasta" />
+                <ScalarProperty Name="idpastadepartamento" ColumnName="idpastadepartamento" />
+                <ScalarProperty Name="Senha" ColumnName="Senha" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="NomeUsuario" ColumnName="NomeUsuario" />
+                <ScalarProperty Name="NomeCategoria" ColumnName="NomeCategoria" />
+                <ScalarProperty Name="NivelUrgencia" ColumnName="NivelUrgencia" />
+                <ScalarProperty Name="Contacto" ColumnName="Contacto" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="Mensagem" ColumnName="Mensagem" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="DataEnvio" ColumnName="DataEnvio" />
+                <ScalarProperty Name="idEnvio" ColumnName="idEnvio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_Pastas">
+            <EntityTypeMapping TypeName="sgdbModel.View_Pastas">
+              <MappingFragment StoreEntitySet="View_Pastas">
+                <ScalarProperty Name="GuidPastaDepartamento" ColumnName="GuidPastaDepartamento" />
+                <ScalarProperty Name="GuidDepartamento" ColumnName="GuidDepartamento" />
+                <ScalarProperty Name="NomePasta" ColumnName="NomePasta" />
+                <ScalarProperty Name="idpastadepartamento" ColumnName="idpastadepartamento" />
+                <ScalarProperty Name="NomeDepartamento" ColumnName="NomeDepartamento" />
+                <ScalarProperty Name="iddepartamento" ColumnName="iddepartamento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_PermissaoDepartamento">
+            <EntityTypeMapping TypeName="sgdbModel.View_PermissaoDepartamento">
+              <MappingFragment StoreEntitySet="View_PermissaoDepartamento">
+                <ScalarProperty Name="GuidUser" ColumnName="GuidUser" />
+                <ScalarProperty Name="GuidPermissaoDepartamento" ColumnName="GuidPermissaoDepartamento" />
+                <ScalarProperty Name="GuidDepartamento" ColumnName="GuidDepartamento" />
+                <ScalarProperty Name="NomeDepartamento" ColumnName="NomeDepartamento" />
+                <ScalarProperty Name="iddepartamento" ColumnName="iddepartamento" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="DataRegisto" ColumnName="DataRegisto" />
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+                <ScalarProperty Name="idPermissao" ColumnName="idPermissao" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="NomeUsuario" ColumnName="NomeUsuario" />
+                <ScalarProperty Name="idUser" ColumnName="idUser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_Recebimentos">
+            <EntityTypeMapping TypeName="sgdbModel.View_Recebimentos">
+              <MappingFragment StoreEntitySet="View_Recebimentos">
+                <ScalarProperty Name="CodExpediente" ColumnName="CodExpediente" />
+                <ScalarProperty Name="GuidCategoria" ColumnName="GuidCategoria" />
+                <ScalarProperty Name="GuidEnviarDocumentos" ColumnName="GuidEnviarDocumentos" />
+                <ScalarProperty Name="GuidRecebimentoDocumento" ColumnName="GuidRecebimentoDocumento" />
+                <ScalarProperty Name="Mensagem" ColumnName="Mensagem" />
+                <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
+                <ScalarProperty Name="DescricaoCategoria" ColumnName="DescricaoCategoria" />
+                <ScalarProperty Name="NomeCategoria" ColumnName="NomeCategoria" />
+                <ScalarProperty Name="NivelUrgencia" ColumnName="NivelUrgencia" />
+                <ScalarProperty Name="Contacto" ColumnName="Contacto" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+                <ScalarProperty Name="DataEnvio" ColumnName="DataEnvio" />
+                <ScalarProperty Name="idEnvio" ColumnName="idEnvio" />
+                <ScalarProperty Name="Informacao" ColumnName="Informacao" />
+                <ScalarProperty Name="idPastaDepartamento" ColumnName="idPastaDepartamento" />
+                <ScalarProperty Name="DataRecebimento" ColumnName="DataRecebimento" />
+                <ScalarProperty Name="idRecebimento" ColumnName="idRecebimento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_RespostasCartas">
+            <EntityTypeMapping TypeName="sgdbModel.View_RespostasCartas">
+              <MappingFragment StoreEntitySet="View_RespostasCartas">
+                <ScalarProperty Name="Nota" ColumnName="Nota" />
+                <ScalarProperty Name="Resposta" ColumnName="Resposta" />
+                <ScalarProperty Name="DataResposta" ColumnName="DataResposta" />
+                <ScalarProperty Name="idResposta" ColumnName="idResposta" />
+                <ScalarProperty Name="DataCarta" ColumnName="DataCarta" />
+                <ScalarProperty Name="CodigoCarta" ColumnName="CodigoCarta" />
+                <ScalarProperty Name="NomeRequerente" ColumnName="NomeRequerente" />
+                <ScalarProperty Name="idCarta" ColumnName="idCarta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EnviarDocumentos">
+            <EntityTypeMapping TypeName="sgdbModel.EnviarDocumentos">
+              <MappingFragment StoreEntitySet="EnviarDocumentos">
+                <ScalarProperty Name="CodExpediente" ColumnName="CodExpediente" />
+                <ScalarProperty Name="GuidMap" ColumnName="GuidMap" />
+                <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
+                <ScalarProperty Name="NivelUrgencia" ColumnName="NivelUrgencia" />
+                <ScalarProperty Name="Contacto" ColumnName="Contacto" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="Mensagem" ColumnName="Mensagem" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="idPastaDepartamento" ColumnName="idPastaDepartamento" />
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+                <ScalarProperty Name="DataEnvio" ColumnName="DataEnvio" />
+                <ScalarProperty Name="idEnvio" ColumnName="idEnvio" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

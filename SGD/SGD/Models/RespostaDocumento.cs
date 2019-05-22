@@ -22,7 +22,7 @@ namespace SGD.Models
         public string Comentario { get; set; }
         public string GuidMap { get; set; }
     
-        public virtual EnviarDocumentos EnviarDocumentos { get; set; }
         public virtual user user { get; set; }
+        public virtual EnviarDocumentos EnviarDocumentos { get; set; }
     }
 }

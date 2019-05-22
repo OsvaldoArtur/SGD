@@ -21,7 +21,7 @@ namespace SGD.Models
         public string Informacao { get; set; }
         public string GuidMap { get; set; }
     
-        public virtual EnviarDocumentos EnviarDocumentos { get; set; }
         public virtual pastadepartamento pastadepartamento { get; set; }
+        public virtual EnviarDocumentos EnviarDocumentos { get; set; }
     }
 }

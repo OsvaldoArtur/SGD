@@ -43,79 +43,79 @@ namespace SGD
 
         void enableButoes()
         {
-            var leva = si.Condicao_tb.Where(d => d.idUsuario == idu).ToList();
+            //var leva = si.Condicao_tb.Where(d => d.idUsuario == idu).ToList();
 
-            foreach (var ab in leva)
-            {
-                var bu = si.Funcoes_tb.Where(d => d.idFuncao == ab.idFuncao).FirstOrDefault();// si.Menus.Where(d => d.idMenu == ab.idMenu).FirstOrDefault();
-                nomess = bu.Funcao;
-                estado = ab.Estado;
-                foreach (var con in this.Controls)
-                {
+            //foreach (var ab in leva)
+            //{
+            //    var bu = si.Funcoes_tb.Where(d => d.idFuncao == ab.idFuncao).FirstOrDefault();// si.Menus.Where(d => d.idMenu == ab.idMenu).FirstOrDefault();
+            //    nomess = bu.Funcao;
+            //    estado = ab.Estado;
+            //    foreach (var con in this.Controls)
+            //    {
 
-                    Label label = con as Label;
-                    if (label != null) label.Text = "Found it!";
+            //        Label label = con as Label;
+            //        if (label != null) label.Text = "Found it!";
 
-                    //if (l.ID == nomess) {
-                    //    l.Enabled = bool.Parse(estado);
-                    //}
+            //        //if (l.ID == nomess) {
+            //        //    l.Enabled = bool.Parse(estado);
+            //        //}
 
-                }
-            }
+            //    }
+            //}
         }
 
-        void condicoes(int idUsuario)
-        {
-            try
-            {
+        //void condicoes(int idUsuario)
+        //{
+        //    try
+        //    {
 
-                var leva = si.Condicao_tb.Where(d => d.idUsuario == idUsuario).ToList();
+        //        var leva = si.Condicao_tb.Where(d => d.idUsuario == idUsuario).ToList();
 
-                foreach (var ab in leva)
-                {
-                    var bu = si.Funcoes_tb.Where(d => d.idFuncao == ab.idFuncao).FirstOrDefault();// si.Menus.Where(d => d.idMenu == ab.idMenu).FirstOrDefault();
+        //        foreach (var ab in leva)
+        //        {
+        //            var bu = si.Funcoes_tb.Where(d => d.idFuncao == ab.idFuncao).FirstOrDefault();// si.Menus.Where(d => d.idMenu == ab.idMenu).FirstOrDefault();
 
 
-                    foreach (Control x in this.Controls)
-                    {
-                        if (x is Label)
-                        {
-                            ((Label)x).Visible = bool.Parse(ab.Estado);
-                        }
-                    }
+        //            foreach (Control x in this.Controls)
+        //            {
+        //                if (x is Label)
+        //                {
+        //                    ((Label)x).Visible = bool.Parse(ab.Estado);
+        //                }
+        //            }
 
-                    string texto = bu.Funcao + ".Visible =" + bool.Parse(ab.Estado);
-                    //if (this.FindControl = bu.Funcao) {
-                    //}
-                    //if (btnPermissoes.ID == bu.NomeMenu)
-                    //{
-                    //    btnPermissoes.Visible = bool.Parse(ab.Estado);
-                    //}
-                    //if (btnAgenda.ID == bu.NomeMenu)
-                    //{
-                    //    btnAgenda.Visible = bool.Parse(ab.Estado);
-                    //}
-                    //if (btnCadastroColaborador.ID == bu.NomeMenu)
-                    //{
-                    //    btnCadastroColaborador.Visible = bool.Parse(ab.Estado);
-                    //}
-                    //if (btnRealizarConsulta.ID == bu.NomeMenu)
-                    //{
-                    //    btnRealizarConsulta.Visible = bool.Parse(ab.Estado);
-                    //}
-                    //if (btnAdicionarUsuario.ID == bu.NomeMenu)
-                    //{
-                    //    btnAdicionarUsuario.Visible = bool.Parse(ab.Estado);
-                    //}
+        //            string texto = bu.Funcao + ".Visible =" + bool.Parse(ab.Estado);
+        //            //if (this.FindControl = bu.Funcao) {
+        //            //}
+        //            //if (btnPermissoes.ID == bu.NomeMenu)
+        //            //{
+        //            //    btnPermissoes.Visible = bool.Parse(ab.Estado);
+        //            //}
+        //            //if (btnAgenda.ID == bu.NomeMenu)
+        //            //{
+        //            //    btnAgenda.Visible = bool.Parse(ab.Estado);
+        //            //}
+        //            //if (btnCadastroColaborador.ID == bu.NomeMenu)
+        //            //{
+        //            //    btnCadastroColaborador.Visible = bool.Parse(ab.Estado);
+        //            //}
+        //            //if (btnRealizarConsulta.ID == bu.NomeMenu)
+        //            //{
+        //            //    btnRealizarConsulta.Visible = bool.Parse(ab.Estado);
+        //            //}
+        //            //if (btnAdicionarUsuario.ID == bu.NomeMenu)
+        //            //{
+        //            //    btnAdicionarUsuario.Visible = bool.Parse(ab.Estado);
+        //            //}
 
-                }
-            }
-            catch (Exception)
-            {
+        //        }
+        //    }
+        //    catch (Exception)
+        //    {
 
-                return;
-            }
-        }
+        //        return;
+        //    }
+        //}
         void dados(int ids)
         {
             try

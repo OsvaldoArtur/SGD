@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="WebFormDetalhesCartas.aspx.cs" Inherits="SGD.WebFormDetalhesCartas" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="WebFormViewC.aspx.cs" Inherits="SGD.WebFormViewC" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -27,84 +27,8 @@
                     </div>
                     <div class="page-body">
                         <div class="row">
-                            
-                            <div class="col-lg-12">
-                                <asp:Panel ID="PanelResponder" Visible="false" runat="server">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="card b-l-info business-info services m-b-20">
-                                                <div class="card-header">
-                                                    <div class="card-header-right">
-                                                        <i class="icofont icofont-rounded-down"></i>
-                                                        <i class="icofont icofont-close-circled"></i>
-
-                                                    </div>
-                                                    <div class="service-header">
-                                                        <a>
-                                                            <h5 class="card-header-text">Resposta <i class="icofont icofont-2x icofont-attachment"></i></h5>
-                                                            <span class="text-muted">A resposta do expediente deve ser acompanhada de um comentario. </span>
-
-                                                        </a>
-                                                    </div>
-
-                                                </div>
-                                                <div class="card-block">
-                                                    <div class="">
-                                                        <div class="form-group row">
-                                                            <div class="col-sm-2 col-form-label">
-                                                                <label class="text-center">Resposta do Expediente: </label>
-                                                            </div>
-                                                            <div class="col-sm-2">
-                                                                <asp:DropDownList ID="DropResposta" CssClass="form-control form-control-info" runat="server">
-                                                                    <asp:ListItem>Deferido</asp:ListItem>
-                                                                    <asp:ListItem>Indeferido</asp:ListItem>
-                                                                    <asp:ListItem>Autorizado</asp:ListItem>
-                                                                    <asp:ListItem>Nao Autorizado</asp:ListItem>
-                                                                    <asp:ListItem>Em analise</asp:ListItem>
-                                                                </asp:DropDownList>
-
-                                                            </div>
-                                                            <div class="col-sm-6">
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row">
-                                                            <div class="col-sm-12">
-                                                                <asp:TextBox ID="txtComentario" ValidateRequestMode="Enabled" runat="server" Placeholder="Comentarios..." CssClass="form-control form-control-info" TextMode="MultiLine" Rows="6">
-
-                                                                </asp:TextBox>
-
-                                                            </div>
-                                                            <div class="col-sm-6">
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row">
-
-                                                            <div class=" col-lg-12">
-                                                                <div class=" text-right">
-
-                                                                    <asp:Button ID="btnResponde" CssClass=" btn btn-info" OnClick="btnResponde_Click1" runat="server" Text="Responder" />
-                                                                </div>
-                                                            </div>
-                                                        </div>
 
 
-                                                        <!-- end of col-sm-8 -->
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </asp:Panel>
-                            </div>
-
-                            <div class="col-lg-12">
-                                <div runat="server" visible="false" class="alert alert-success">
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                        <i class="icofont icofont-close-line-circled"></i>
-                                    </button>
-                                    <strong>Sucesso!</strong> Submetido com sucesso! <code></code>
-                                </div>
-                            </div>
                             <div class="col-lg-12">
                                 <div class="card card-border-info">
                                     <div class="card-header">
@@ -130,7 +54,6 @@
                                                                             si = new SGD.Models.sgdbEntities();
                                                                             string idP = Request.QueryString["index"];
                                                                             var leva = si.Cartas_tb.Where(d => d.GuidMap.Equals(idP)).FirstOrDefault();
-
                                                                             var usuario = si.user.Where(s => s.idUser == leva.idUsuario).FirstOrDefault();
                                                                             string Nome = usuario.NomeUsuario.ToString();
                                                                             var cusreq = si.Curso_tb.Where(d => d.idCurso == leva.idCurso).FirstOrDefault();
@@ -188,13 +111,8 @@
                                                                                 <th scope="row">Guid:</th>
                                                                                 <td><%=leva.GuidMap %></td>
                                                                             </tr>
-                                                                                 <tr>
+                                                                            <tr>
                                                                                 <th scope="row"></th>
-                                                                                <td>
-                                                                                    <div class="text-right">
-                                                                                        <asp:LinkButton ID="btnRespondesr" OnClick="btnRespondesr_Click" CssClass="btn btn-info" runat="server" Text="Responder" />
-                                                                                    </div>
-                                                                                </td>
                                                                             </tr>
                                                                         </tbody>
                                                                     </table>
@@ -346,7 +264,7 @@
                                                                         <td><%=item.Resposta %></td>
                                                                         <td><%=item.Nota %></td>
                                                                         <td>@<%=cate.NomeUsuario %></td>
-                                                                         <td><a target="_blank" href="WebFormPrintResultC.aspx?Resposta=<%=item.Resposta%>&CodigoExpe=<%=leva.CodigoCarta%>"><i class="icofont icofont-print"></i></a></td>
+                                                                          <td><a target="_blank" href="WebFormPrintResultC.aspx?Resposta=<%=item.Resposta%>&CodigoExpe=<%=leva.CodigoCarta%>"><i class="icofont icofont-print"></i></a></td>
 
                                                                         <%--<td class="social-user-name b-none p-t-0 text-muted"><a href="WebFormDownloadAnexo.aspx?id=<%=item.idResposta%>" target="_blank">Anexo</a></td>--%>
                                                                     </tr>

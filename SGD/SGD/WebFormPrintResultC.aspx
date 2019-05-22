@@ -1,11 +1,11 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebFormPrintResult.aspx.cs" Inherits="SGD.WebFormPrintResult" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebFormPrintResultC.aspx.cs" Inherits="SGD.WebFormPrintResultC" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Sistema de Gestao de Expediente v.1</title>
-    <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
+     <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="assets/icon/icofont/css/icofont.css" />
 
     <script type="text/javascript">
@@ -31,12 +31,11 @@
             /* change the margins as you want them to be. */
         }
     </style>
-
-
 </head>
 <body onload="window.print()">
     <form id="form1" runat="server">
-        <asp:Panel ID="Panel1" CssClass="titlepage" runat="server">
+    <div>
+          <asp:Panel ID="Panel1" CssClass="titlepage" runat="server">
             <div class="container">
 
 
@@ -86,13 +85,13 @@
                                         <td colspan="2">
                                             <br />
                                             <div class=" text-justify" style="font-size: 18px; font-family: 'Times New Roman', Times, serif; font-style: normal">
-                                                <b>Codigo do Expediente:</b> <%=codexp%>
+                                                <b>Codigo da Carta:</b> <%=codexp%>
                                             </div>
                                             <br />
                                             <div class=" text-justify" style="font-size: 18px; font-family: 'Times New Roman', Times, serif; font-style: normal">
                                                 <b>A UNIVERSIDADE CATOLICA DE MOCAMBIQUE:</b> - Faculdade de Gestao de Recursos
                                                  Naturais e Mineralogia - Tete, vem por meio desta que o
-                                                 pedido de V.Excia <b>Sr(a) <%=Nome%> </b>, <%=Pedido%> 
+                                                 pedido do(a) estudante <b> <%=Nome%> </b> do curso de <b><%=Curso %></b> do <b><%=Ano %></b> no periodo <b><%=Periodo %></b>, tendo solicitado(a) <%=Pedido%>,  
                                                  recaiu sobre o seguinte despacho:
                                             </div>
 
@@ -169,7 +168,7 @@
 
         </asp:Panel>
 
+    </div>
     </form>
-
 </body>
 </html>

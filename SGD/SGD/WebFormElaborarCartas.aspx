@@ -142,7 +142,7 @@
                                                                             </div>
                                                                             <div class="row">
                                                                                  <div class="input-group col-lg-6">
-                                                                                   <asp:TextBox ID="txtContacto" CssClass="form-control form-control-primary" runat="server" placeholder="Ex: 848046991"></asp:TextBox>
+                                                                                   <asp:TextBox ID="txtContacto" CssClass="form-control form-control-feedback" runat="server" placeholder="Ex: 848046991"></asp:TextBox>
                                                                                 </div>
                                                                                 <div class="input-group col-lg-6">
                                                                                     <asp:FileUpload ID="FileUpload2" AllowMultiple="true" ToolTip="Selecionar Ficheiros 'docx, xls, pdf, txt, other'" CssClass="form-control"  ValidateRequestMode="Enabled" runat="server" />

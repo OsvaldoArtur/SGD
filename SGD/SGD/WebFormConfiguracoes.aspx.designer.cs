@@ -220,6 +220,42 @@ namespace SGD {
         protected global::System.Web.UI.WebControls.TextBox txtNomeusuario;
         
         /// <summary>
+        /// txtSexo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList txtSexo;
+        
+        /// <summary>
+        /// txtEstadoCivil control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList txtEstadoCivil;
+        
+        /// <summary>
+        /// txtTipo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList txtTipo;
+        
+        /// <summary>
+        /// SqlDataSourceTipoUsuario control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceTipoUsuario;
+        
+        /// <summary>
         /// txtDataNascimento control.
         /// </summary>
         /// <remarks>
@@ -292,24 +328,6 @@ namespace SGD {
         protected global::System.Web.UI.WebControls.TextBox txtDataEmissao;
         
         /// <summary>
-        /// txtEstadoCivil control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList txtEstadoCivil;
-        
-        /// <summary>
-        /// txtSexo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList txtSexo;
-        
-        /// <summary>
         /// txtDeparta control.
         /// </summary>
         /// <remarks>
@@ -326,24 +344,6 @@ namespace SGD {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceDeparta;
-        
-        /// <summary>
-        /// txtTipo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList txtTipo;
-        
-        /// <summary>
-        /// SqlDataSourceTipoUsuario control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceTipoUsuario;
         
         /// <summary>
         /// txtEmails control.

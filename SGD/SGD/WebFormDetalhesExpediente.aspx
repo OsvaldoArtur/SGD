@@ -343,7 +343,7 @@
                                                                         <td><%=item.Comentario %></td>
                                                                         <td>@<%=cate.NomeUsuario %></td>
                                                                         
-                                                                        <td><a  target="_blank" href="WebFormPrintResult.aspx?Resposta=<%=item.Resposta%>&Nome=<% =leva.Titulo%>&Categoria=<%=leva.NomeCategoria%>&CodigoExpe=<% =leva.CodExpediente%>"><i class="icofont icofont-print"></i></a></td>
+                                                                        <td><a  target="_blank" href="WebFormPrintResult.aspx?Resposta=<%=item.Resposta%>&CodigoExpe=<%=leva.CodExpediente%>"><i class="icofont icofont-print"></i></a></td>
                                                                     </tr>
                                                                     <%} %>
                                                                 </tbody>

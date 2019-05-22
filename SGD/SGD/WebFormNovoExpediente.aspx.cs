@@ -115,7 +115,7 @@ namespace SGD
                 string a = Guid.NewGuid().ToString();
 
                 int contar = si.EnviarDocumentos.Count();
-                var pedidonumero = "UCM710" + "0" + contar.ToString();
+                var pedidonumero = "UCM710" + "0" + contar.ToString() + "E";
 
                 EnviarDocumentos ev = new EnviarDocumentos
                 {
