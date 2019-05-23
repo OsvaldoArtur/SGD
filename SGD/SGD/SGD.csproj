@@ -75,6 +75,84 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\images\ucm_logo.jpg" />
+    <Content Include="BootStrapindex\css\scss-files.txt" />
+    <Content Include="BootStrapindex\css\style.css" />
+    <Content Include="BootStrapindex\img\about-img.jpg" />
+    <Content Include="BootStrapindex\img\apple-touch-icon.png" />
+    <Content Include="BootStrapindex\img\clients\client-1.png" />
+    <Content Include="BootStrapindex\img\clients\client-2.png" />
+    <Content Include="BootStrapindex\img\clients\client-3.png" />
+    <Content Include="BootStrapindex\img\clients\client-4.png" />
+    <Content Include="BootStrapindex\img\clients\client-5.png" />
+    <Content Include="BootStrapindex\img\clients\client-6.png" />
+    <Content Include="BootStrapindex\img\clients\client-7.png" />
+    <Content Include="BootStrapindex\img\clients\client-8.png" />
+    <Content Include="BootStrapindex\img\favicon.png" />
+    <Content Include="BootStrapindex\img\features-1.svg" />
+    <Content Include="BootStrapindex\img\features-2.svg" />
+    <Content Include="BootStrapindex\img\intro-bg.jpg" />
+    <Content Include="BootStrapindex\img\intro-img.svg" />
+    <Content Include="BootStrapindex\img\portfolio\app1.jpg" />
+    <Content Include="BootStrapindex\img\portfolio\app2.jpg" />
+    <Content Include="BootStrapindex\img\portfolio\app3.jpg" />
+    <Content Include="BootStrapindex\img\portfolio\card1.jpg" />
+    <Content Include="BootStrapindex\img\portfolio\card2.jpg" />
+    <Content Include="BootStrapindex\img\portfolio\card3.jpg" />
+    <Content Include="BootStrapindex\img\portfolio\web1.jpg" />
+    <Content Include="BootStrapindex\img\portfolio\web2.jpg" />
+    <Content Include="BootStrapindex\img\portfolio\web3.jpg" />
+    <Content Include="BootStrapindex\img\team-1.jpg" />
+    <Content Include="BootStrapindex\img\team-2.jpg" />
+    <Content Include="BootStrapindex\img\team-3.jpg" />
+    <Content Include="BootStrapindex\img\team-4.jpg" />
+    <Content Include="BootStrapindex\img\testimonial-1.jpg" />
+    <Content Include="BootStrapindex\img\testimonial-2.jpg" />
+    <Content Include="BootStrapindex\img\testimonial-3.jpg" />
+    <Content Include="BootStrapindex\img\testimonial-4.jpg" />
+    <Content Include="BootStrapindex\img\why-us.jpg" />
+    <Content Include="BootStrapindex\js\main.js" />
+    <Content Include="BootStrapindex\lib\animate\animate.css" />
+    <Content Include="BootStrapindex\lib\animate\animate.min.css" />
+    <Content Include="BootStrapindex\lib\bootstrap\css\bootstrap.css" />
+    <Content Include="BootStrapindex\lib\bootstrap\css\bootstrap.min.css" />
+    <Content Include="BootStrapindex\lib\bootstrap\js\bootstrap.bundle.min.js" />
+    <Content Include="BootStrapindex\lib\bootstrap\js\bootstrap.min.js" />
+    <Content Include="BootStrapindex\lib\counterup\counterup.min.js" />
+    <Content Include="BootStrapindex\lib\easing\easing.js" />
+    <Content Include="BootStrapindex\lib\easing\easing.min.js" />
+    <Content Include="BootStrapindex\lib\font-awesome\css\font-awesome.css" />
+    <Content Include="BootStrapindex\lib\font-awesome\css\font-awesome.min.css" />
+    <Content Include="BootStrapindex\lib\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="BootStrapindex\lib\ionicons\css\ionicons.css" />
+    <Content Include="BootStrapindex\lib\ionicons\css\ionicons.min.css" />
+    <Content Include="BootStrapindex\lib\ionicons\fonts\ionicons.svg" />
+    <Content Include="BootStrapindex\lib\isotope\isotope.pkgd.js" />
+    <Content Include="BootStrapindex\lib\isotope\isotope.pkgd.min.js" />
+    <Content Include="BootStrapindex\lib\jquery\jquery-migrate.min.js" />
+    <Content Include="BootStrapindex\lib\jquery\jquery.min.js" />
+    <Content Include="BootStrapindex\lib\lightbox\css\lightbox.css" />
+    <Content Include="BootStrapindex\lib\lightbox\css\lightbox.min.css" />
+    <Content Include="BootStrapindex\lib\lightbox\images\close.png" />
+    <Content Include="BootStrapindex\lib\lightbox\images\loading.gif" />
+    <Content Include="BootStrapindex\lib\lightbox\images\next.png" />
+    <Content Include="BootStrapindex\lib\lightbox\images\prev.png" />
+    <Content Include="BootStrapindex\lib\lightbox\js\lightbox.js" />
+    <Content Include="BootStrapindex\lib\lightbox\js\lightbox.min.js" />
+    <Content Include="BootStrapindex\lib\mobile-nav\mobile-nav.js" />
+    <Content Include="BootStrapindex\lib\owlcarousel\assets\ajax-loader.gif" />
+    <Content Include="BootStrapindex\lib\owlcarousel\assets\owl.carousel.css" />
+    <Content Include="BootStrapindex\lib\owlcarousel\assets\owl.carousel.min.css" />
+    <Content Include="BootStrapindex\lib\owlcarousel\assets\owl.theme.default.css" />
+    <Content Include="BootStrapindex\lib\owlcarousel\assets\owl.theme.default.min.css" />
+    <Content Include="BootStrapindex\lib\owlcarousel\assets\owl.theme.green.css" />
+    <Content Include="BootStrapindex\lib\owlcarousel\assets\owl.theme.green.min.css" />
+    <Content Include="BootStrapindex\lib\owlcarousel\assets\owl.video.play.png" />
+    <Content Include="BootStrapindex\lib\owlcarousel\owl.carousel.js" />
+    <Content Include="BootStrapindex\lib\owlcarousel\owl.carousel.min.js" />
+    <Content Include="BootStrapindex\lib\waypoints\waypoints.min.js" />
+    <Content Include="BootStrapindex\lib\wow\wow.js" />
+    <Content Include="BootStrapindex\lib\wow\wow.min.js" />
+    <Content Include="Index.aspx" />
     <Content Include="Models\Modelo.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Modelo.edmx</DependentUpon>
@@ -182,6 +260,16 @@
     <Content Include="Models\Modelo.edmx.diagram">
       <DependentUpon>Modelo.edmx</DependentUpon>
     </Content>
+    <Content Include="BootStrapindex\img\header-bg.psd" />
+    <Content Include="BootStrapindex\lib\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="BootStrapindex\lib\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="BootStrapindex\lib\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="BootStrapindex\lib\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="BootStrapindex\lib\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="BootStrapindex\lib\ionicons\fonts\ionicons.eot" />
+    <Content Include="BootStrapindex\lib\ionicons\fonts\ionicons.ttf" />
+    <Content Include="BootStrapindex\lib\ionicons\fonts\ionicons.woff" />
+    <Content Include="BootStrapindex\lib\owlcarousel\LICENSE" />
     <None Include="Properties\PublishProfiles\www.sgd.com.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -1678,6 +1766,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
     </Compile>
     <Compile Include="Models\Anexos_Cartas_tb.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
