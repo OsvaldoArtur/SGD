@@ -10,7 +10,7 @@
   <meta content="" name="description" />
 
   <!-- Favicons -->
-  <link href="BootStrapindex/img/favicon.png" rel="icon" />
+  <%--<link href="BootStrapindex/img/favicon.png" rel="icon" />--%>
 
   <link href="BootStrapindex/img/apple-touch-icon.png" rel="apple-touch-icon" />
 
@@ -99,7 +99,7 @@
             <a href="Default.aspx" class="btn-get-started scrollto">Começar</a>
           </div>
              <div class="text-right">
-                   Nome: Osvaldo Artur Dionsio 20k9<br />Email: osvaldoarturdionisio@gmail.com <br /> Contacto: 848046991
+                   Nome: Osvaldo Artur Dionsio<br />Email: osvaldoarturdionisio@gmail.com <br /> Contacto: 848046991
                 </div>
         </div>
   
