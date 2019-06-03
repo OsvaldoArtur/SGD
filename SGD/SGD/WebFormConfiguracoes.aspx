@@ -157,9 +157,9 @@
                                                                     <div class="media">
 
                                                                         <div class="media-body">
-                                                                            <asp:GridView ID="GridViewDepartamento" CssClass="table table-striped table-bordered nowrap" runat="server" AutoGenerateColumns="False" DataKeyNames="iddepartamento" DataSourceID="SqlDataSource1">
+                                                                            <asp:GridView ID="GridViewDepartamento" CssClass="table table-striped table-bordered nowrap" runat="server" AutoGenerateColumns="False" DataKeyNames="iddepartamento" DataSourceID="SqlDataSource1" AllowPaging="True" AllowSorting="True">
                                                                                 <Columns>
-                                                                                    <asp:CommandField ShowEditButton="True" />
+                                                                                    <asp:CommandField ShowEditButton="True" ShowDeleteButton="True" />
                                                                                     <asp:BoundField DataField="iddepartamento" HeaderText="iddepartamento" InsertVisible="False" ReadOnly="True" SortExpression="iddepartamento" Visible="False" />
                                                                                     <asp:BoundField DataField="NomeDepartamento" HeaderText="NomeDepartamento" SortExpression="NomeDepartamento" />
                                                                                     <asp:BoundField DataField="DescricaoDepartamanto" HeaderText="DescricaoDepartamanto" SortExpression="DescricaoDepartamanto" />
@@ -221,8 +221,9 @@
 
                                                                         <div class="media-body">
                                                                             <div class="table">
-                                                                                <asp:GridView ID="GridViewCategoria" CssClass="table table-striped table-bordered nowrap" runat="server" AutoGenerateColumns="False" DataKeyNames="idCategoria" DataSourceID="SqlDataSourceCategoria">
+                                                                                <asp:GridView ID="GridViewCategoria" CssClass="table table-striped table-bordered nowrap" runat="server" AutoGenerateColumns="False" DataKeyNames="idCategoria" DataSourceID="SqlDataSourceCategoria" AllowPaging="True" AllowSorting="True">
                                                                                     <Columns>
+                                                                                        <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
                                                                                         <asp:BoundField DataField="idCategoria" HeaderText="Code" ReadOnly="True" SortExpression="idCategoria" InsertVisible="False" />
                                                                                         <asp:BoundField DataField="NomeCategoria" HeaderText="Nome" SortExpression="NomeCategoria" />
                                                                                         <asp:BoundField DataField="DescricaoCategoria" HeaderText="Descricao" SortExpression="DescricaoCategoria" />
@@ -282,8 +283,9 @@
                                                                     <div class="media">
 
                                                                         <div class="media-body">
-                                                                            <asp:GridView ID="GridViewPedidos" CssClass="table table-striped table-bordered nowrap" runat="server" AutoGenerateColumns="False" DataKeyNames="idPedidos" DataSourceID="SqlDataSourcePedido">
+                                                                            <asp:GridView ID="GridViewPedidos" CssClass="table table-striped table-bordered nowrap" runat="server" AutoGenerateColumns="False" DataKeyNames="idPedidos" DataSourceID="SqlDataSourcePedido" AllowSorting="True">
                                                                                 <Columns>
+                                                                                    <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
                                                                                     <asp:BoundField DataField="idPedidos" HeaderText="Code" InsertVisible="False" ReadOnly="True" SortExpression="idPedidos" />
                                                                                     <asp:BoundField DataField="Pedido" HeaderText="Pedido" SortExpression="Pedido" />
                                                                                     <asp:BoundField DataField="DescricaoPedido" HeaderText="Descricao" SortExpression="DescricaoPedido" />

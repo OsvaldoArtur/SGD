@@ -104,7 +104,7 @@
                                                     <i class="icon-user text-white"></i> Resumo do Sistema
                                                 </a>
                                             </li>
-                                            <li>
+                                            <li id="config" runat="server">
                                                 <a href="WebFormConfiguracoes.aspx">
                                                     <i class="icon-options text-white"></i> Configuracoes
                                                 </a>

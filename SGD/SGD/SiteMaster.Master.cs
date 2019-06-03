@@ -31,7 +31,8 @@ namespace SGD
             dados(idu);
             //condicoes(idu);
             // enableButoes();
-       
+            cond(idu);
+            sendPendente();
         }
         
         void sair() {
@@ -39,8 +40,51 @@ namespace SGD
             HttpContext.Current.Response.Redirect("~/Default.aspx", false);
             HttpContext.Current.ApplicationInstance.CompleteRequest();
         }
-        public string nomess, estado;
 
+
+        SendSmsToCliente enivo = new SendSmsToCliente();
+        void sendPendente() {
+
+            try
+            {
+                var procpend = si.Sms_tb.Where(d => d.Estado.Equals("false")).ToList();
+            foreach (var item in procpend) {
+                    enivo.EnviaSms(item.NumeroTelefone, "Bem vindos ao SGE -Sistema de Gestao de Expediente. Entrada do documento nº: " + item.Mensagem + ". Em breve sera enviado uma mensagem da resposta. Obrigado");
+                    Sms_tb ab = si.Sms_tb.Where(s => s.idSms == item.idSms).FirstOrDefault();
+                    ab.Estado = "true";
+                    si.SaveChanges();
+                }
+  
+                }
+                catch (Exception)
+                {
+                    //   enivo.salvarMensagem(prefixo + txtContacto.Text, "Bem vindos ao SGE -Sistema de Gestao de Expediente.  Entrada do documento nº: " + mensagem + ". Em breve sera enviado uma mensagem da resposta. Obrigado", "false");
+                    return;
+                }
+            
+        }
+        public string nomess, estado;
+        private void cond(int id) {
+            try
+            {
+                var us = si.user.Where(d => d.idUser == id).FirstOrDefault();
+                var proc = si.Tipo_usuario_tb.Where(a => a.id_tipo_usuario == us.id_tipo_usuario).FirstOrDefault();
+
+                if (proc.Nome_tipo.Equals("Administrador"))
+                {
+                    config.Visible = true;
+                }
+                else if(proc.Nome_tipo.Equals("Simples")) {
+
+                    config.Visible = false;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
         void enableButoes()
         {
             //var leva = si.Condicao_tb.Where(d => d.idUsuario == idu).ToList();
