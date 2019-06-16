@@ -11,6 +11,8 @@ namespace SGD
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            HttpContext.Current.Response.Redirect("~/Default.aspx", false);
+            HttpContext.Current.ApplicationInstance.CompleteRequest();
 
         }
     }

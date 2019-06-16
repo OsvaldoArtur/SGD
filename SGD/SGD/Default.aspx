@@ -108,7 +108,7 @@ Ponta-Gêa, Beira, Mo&ccedil;ambique
                             - Web:
                             <a title="www.ucm.ac.mz" class="text-white" href="http://www.ucm.ac.mz">www.ucm.ac.mz</a>
                             <br />
-                            Desenvolvido por Osvaldo Artur Dionisio @Copyright 2019
+                            Desenvolvido por Osvaldo Artur Dionisio para trabalho final do curso @Copyright 2019
                         </p>
                     </div>
                 </asp:Panel>

@@ -40,117 +40,118 @@
         </div>
 
         <div class="">
-        <div id="pcoded" class="">
-            <div class="pcoded-overlay-box"></div>
-            <div class="pcoded-container navbar-wrapper">
-                <div class="pcoded-main-container">
-                    <div class="pcoded-wrapper">
+            <div id="pcoded" class="">
+                <div class="pcoded-overlay-box"></div>
+                <div class="pcoded-container navbar-wrapper">
+                    <div class="pcoded-main-container">
+                        <div class="pcoded-wrapper">
 
-                        <nav class="navbar navbar-toggleable-md navbar-light info-nav-dark fixed-top light-nav-border">
-                            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbardropdown">
-                                <span class="navbar-toggler-icon"></span>
-                            </button>
-                            <a class="navbar-brand text-white" href="WebFormInicio.aspx"><i class="icofont icofont-home text-white"></i>Pagina Inicial</a>
-                            <div id="navbardropdown" class="collapse navbar-collapse">
-                                <ul class="navbar-nav mr-auto">
-                                    <li class="nav-item">
-                                        <a class="nav-link text-white" href="WebFormNovoExpediente.aspx"><i class="icofont icofont-file-document text-white"></i> Novo Expediente 
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link text-white" href="WebFormElaborarCartas.aspx"><i class="icofont icofont-mail text-white"></i> Cartas 
-                                        </a>
-                                    </li>
-                                    <%--   <li class="nav-item">
+                            <nav class="navbar navbar-toggleable-md navbar-light info-nav-dark fixed-top light-nav-border">
+                                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbardropdown">
+                                    <span class="navbar-toggler-icon"></span>
+                                </button>
+                                <a class="navbar-brand text-white" href="WebFormInicio.aspx"><i class="icofont icofont-home text-white"></i>Pagina Inicial</a>
+                                <div id="navbardropdown" class="collapse navbar-collapse">
+                                    <ul class="navbar-nav mr-auto">
+                                        <li class="nav-item">
+                                            <a class="nav-link text-white" href="WebFormNovoExpediente.aspx"><i class="icofont icofont-file-document text-white"></i>Novo Expediente 
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link text-white" href="WebFormElaborarCartas.aspx"><i class="icofont icofont-mail text-white"></i>Cartas 
+                                            </a>
+                                        </li>
+                                        <%--   <li class="nav-item">
                                                 <a class="nav-link text-white" href="WebFormReport.aspx"><i class="icofont icofont-attachment text-white"></i> Report 
                                                     </a>
                                             </li>--%>
-                                    <li class="nav-item">
-                                        <%
-                                            si = new SGD.Models.sgdbEntities();
-                                            var cantaemial = si.DocumentoUsuario_tb.Where(d => d.idUserReceiver == idu && d.Estado.Equals("Enviado")).Count();
-                                             %>
-                                        <a class="nav-link text-white" href="WebFormMailSgd.aspx"><i class="icofont icofont-send-mail text-white"></i> Email <span class="badge badge-info text-white"> <%=cantaemial%></span>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link text-white" href="WebFormPesquisarExpedientes.aspx"><i class="icofont icofont-search text-white"></i> Pesquisar Expedientes
-                                        </a>
-                                    </li>
+                                        <li class="nav-item">
+                                            <%
+                                                si = new SGD.Models.sgdbEntities();
+                                                var cantaemial = si.DocumentoUsuario_tb.Where(d => d.idUserReceiver == idu && d.Estado.Equals("Enviado")).Count();
+                                            %>
+                                            <a class="nav-link text-white" href="WebFormMailSgd.aspx"><i class="icofont icofont-send-mail text-white"></i>Email <span class="badge badge-info text-white"><%=cantaemial%></span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link text-white" href="WebFormPesquisarExpedientes.aspx"><i class="icofont icofont-search text-white"></i>Pesquisar Expedientes
+                                            </a>
+                                        </li>
 
 
-                                </ul>
+                                    </ul>
 
 
-                                <div class="form-inline">
+                                    <div class="form-inline">
 
-                                    <div class="nav-item">
-                                        <a href="#">
-                                          <%--  <img class="img-40" src="assets/images/user.png" alt="User-Profile-Image" />
-                                          --%>
-                                            <i class="icofont icofont-user-alt-3 icofont-2x text-white"></i>
-                                              <span runat="server" id="nomeUsuario"></span>
-                                             <i class="icofont icofont-rounded-down"></i>
-                                        </a>
-                                        <ul class="navbar-varient-submenu">
-                                          
-                                            <li>
-                                                <a href="WebFormPerfilUsuario.aspx">
-                                                    <i class="icon-user-follow text-white"></i> Perfil
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="WebFormResumoActual.aspx">
-                                                    <i class="icon-user text-white"></i> Resumo do Sistema
-                                                </a>
-                                            </li>
-                                            <li id="config" runat="server">
-                                                <a href="WebFormConfiguracoes.aspx">
-                                                    <i class="icon-options text-white"></i> Configuracoes
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="Default.aspx">
-                                                    <i class="icon-logout text-white"></i> Sair
-                                                </a>
-                                            </li>
-                                        </ul>
+                                        <div class="nav-item">
+                                            <a href="#">
+                                                <%--  <img class="img-40" src="assets/images/user.png" alt="User-Profile-Image" />
+                                                --%>
+                                                <i class="icofont icofont-user-alt-3 icofont-2x text-white"></i>
+                                                <span runat="server" id="nomeUsuario"></span>
+                                                <i class="icofont icofont-rounded-down"></i>
+                                            </a>
+                                            <ul class="navbar-varient-submenu">
+
+                                                <li>
+                                                    <a href="WebFormPerfilUsuario.aspx">
+                                                        <i class="icon-user-follow text-white"></i>Perfil
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="WebFormResumoActual.aspx">
+                                                        <i class="icon-user text-white"></i>Resumo do Sistema
+                                                    </a>
+                                                </li>
+                                                <li id="config" runat="server">
+                                                    <a href="WebFormConfiguracoes.aspx">
+                                                        <i class="icon-options text-white"></i>Configuracoes
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="Default.aspx">
+                                                        <i class="icon-logout text-white"></i>Sair
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </nav>
-                        <br />
-                        <br />
-                        <div class="well-lg">
+                            </nav>
                             <br />
-                            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-                            </asp:ContentPlaceHolder>
-                        </div>
-                        <br />
-                        <div class="footer" style="background-color: cornflowerblue">
-                            <div class="container text-white">
-                                <p class="text-center">
-                                    Universidade Cat&oacute;lica de Mo&ccedil;ambique - &copy; 2019 Todos os Direitos Reservados - Rua Comandante Galvão, nº688, 
+                            <br />
+                            <div class="well-lg">
+                                <br />
+                                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                            
+                                </asp:ContentPlaceHolder>
+                            </div>
+                            <br />
+                            <div class="footer" style="background-color: cornflowerblue">
+                                <div class="container text-white">
+                                    <p class="text-center">
+                                        Universidade Cat&oacute;lica de Mo&ccedil;ambique - &copy; 2019 Todos os Direitos Reservados - Rua Comandante Galvão, nº688, 
 Ponta-Gêa, Beira, Mo&ccedil;ambique
                                     <br />
-                                    Tel (Central): (+258) 23 324 809 - Fax: (+258) 23 324 858 - Email:
+                                        Tel (Central): (+258) 23 324 809 - Fax: (+258) 23 324 858 - Email:
                                     <a href="mailto:reitoria@ucm.ac.mz" class="text-white">reitoria@ucm.ac.mz</a>
-                                    - Web:
+                                        - Web:
                                     <a title="www.ucm.ac.mz" class="text-white" href="http://www.ucm.ac.mz">www.ucm.ac.mz</a>
-                                    <br />
-                                    Desenvolvido por Osvaldo Artur Dionisio @Copyright 2019
-                                </p>
+                                        <br />
+                                        Desenvolvido por Osvaldo Artur Dionisio para trabalho final do curso @Copyright 2019
+                                    </p>
 
-                            </div>
-                            <%--       <div class="text-right">
+                                </div>
+                                <%--       <div class="text-right">
                              <span>Deezy@20k8</span>   
                         </div>--%>
-                        </div>
+                            </div>
 
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
         </div>
 
     </form>

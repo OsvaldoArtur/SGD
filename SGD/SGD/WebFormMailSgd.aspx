@@ -57,7 +57,7 @@
                                                         </li>
                                                         <li>
                                                             <div class="mail-section">
-                                                                <i class="icofont icofont-inbox"></i>
+                                                             <i class="icofont icofont-paper-plane"></i>
                                                                 <asp:LinkButton runat="server" OnClick="btnEmailEnviado_Click" ID="btnEmailEnviado" CssClass="" Text="Enviados"></asp:LinkButton>
                                                                 <% si = new SGD.Models.sgdbEntities();
                                                                     var nenv = si.DocumentoUsuario_tb.Where(d => d.idUserSender == idu).Count();
@@ -68,11 +68,11 @@
 
                                                         </li>
                                                         <li>
-                                                            <div class="mail-section">
+                                                   <%--         <div class="mail-section">
                                                                 <a href="#">
                                                                     <i class="icofont icofont-paper-plane"></i>Email enviado
                                                                 </a>
-                                                            </div>
+                                                            </div>--%>
                                                         </li>
 
                                                     </ul>

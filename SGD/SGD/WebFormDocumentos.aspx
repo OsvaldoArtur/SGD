@@ -38,6 +38,7 @@
                                         <div class="form-group">
                                             <button id="btnExpediente" runat="server" onserverclick="btnExpediente_ServerClick" class="btn btn-primary btn-outline-primary btn-block"><i class="icofont icofont-file"></i>Expedientes</button>
                                         </div>
+
                                         <div class="form-group">
                                             <%
                                                 si = new SGD.Models.sgdbEntities();
