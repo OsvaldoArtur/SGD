@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using SGD.Models;
-
+using System.Net;
 
 namespace SGD
 {
@@ -123,7 +123,7 @@ namespace SGD
                     DataEnvio = DateTime.Now,
                     idPastaDepartamento = int.Parse(txtPasta.SelectedValue),
                     idUsuario = idu,
-                    Mensagem = txtDescricao.Text,
+                    Mensagem = WebUtility.HtmlEncode( txtDescricao.Text),
                     idCategoria = int.Parse(txtcategoria.SelectedValue),
                     NivelUrgencia = txtUrgencia.Text,
                     Estado = "Enviado",

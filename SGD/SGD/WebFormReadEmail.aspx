@@ -26,7 +26,11 @@
                         </div>
                     </div>
                     <div class="page-body">
-                        <div class="row">
+                     <asp:UpdatePanel runat="server">
+                                            <ContentTemplate>
+                                                <asp:Timer runat="server" Interval="1000"></asp:Timer>
+                                             
+                               <div class="row">
                             <%
                                 si = new SGD.Models.sgdbEntities();
                                 var qrstring = Request.QueryString["id"];
@@ -60,11 +64,13 @@
                                     </div>
                                 </div>
                             </div>
+                               
+                                           
                             <div class="col-sm-12">
                                 <div class="card borderless-card">
 
                                     <div class="card-block">
-
+                                 
                                         <ul class="media-list">
                                             <% si = new SGD.Models.sgdbEntities();
                                                 var procs = si.RespostaDocumentoUsuario_tb.Where(p => p.idDocumentoUser == proc.idDocumentouser).ToList();
@@ -91,14 +97,17 @@
                                                 <%} %>
                                             </li>
                                         </ul>
-                                    </div>
+                                        </div>
+                                  </div>
+                                
                                 </div>
-
+                             </ContentTemplate>
+                                        </asp:UpdatePanel>
                             </div>
                         </div>
 
                     </div>
-                </div>
+                
             </div>
 
             <div id="styleSelector">

@@ -5,24 +5,17 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using SGD.Models;
+
+
 namespace SGD
 {
-    public partial class Default : System.Web.UI.Page
+    public partial class index : System.Web.UI.Page
     {
-        sgdbEntities si = new sgdbEntities();
         protected void Page_Load(object sender, EventArgs e)
         {
-            Session["idu"] = null;
-            var contarusuario = si.user.Count();
-            if (contarusuario != 0)
-            {
-
-            }
-            else if (contarusuario == 0) {
-                HttpContext.Current.Response.Redirect("~/WebFormRegistration.aspx", false);
-                HttpContext.Current.ApplicationInstance.CompleteRequest();
-            }
+            Session["idu"] = 0;
         }
+        sgdbEntities si = new sgdbEntities();
         void entrar(string emai, string senha)
         {
             try
@@ -39,8 +32,8 @@ namespace SGD
                 else
                 {
                     mensages.Visible = true;
-                    inputPassword.Text = "";
-                    inputUsuario.Text = "";
+                    inputPassword.Value = "";
+                    inputUsuario.Value = "";
                 }
 
             }
@@ -51,21 +44,20 @@ namespace SGD
             }
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-            entrar(inputUsuario.Text, inputPassword.Text);
-        }
-
-        protected void Button3_Click(object sender, EventArgs e)
-        {
-            HttpContext.Current.Response.Redirect("~/WebFormRegistration.aspx", false);
-            HttpContext.Current.ApplicationInstance.CompleteRequest();
-        }
-
         protected void Unnamed_ServerClick(object sender, EventArgs e)
         {
-            HttpContext.Current.Response.Redirect("~/Login.aspx", false);
-            HttpContext.Current.ApplicationInstance.CompleteRequest();
+            entrar(inputUsuario.Value, inputPassword.Value);
+        }
+
+        protected void btn_ServerClick(object sender, EventArgs e)
+        {
+            entrar(inputUsuario.Value, inputPassword.Value);
+
+        }
+
+        protected void btnEntrar_Click(object sender, EventArgs e)
+        {
+            entrar(inputUsuario.Value, inputPassword.Value);
         }
     }
 }

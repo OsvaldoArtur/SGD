@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using SGD.Models;
 using System.IO;
+using System.Net;
 
 namespace SGD
 {
@@ -19,10 +20,20 @@ namespace SGD
         public string guidR;
         protected void Page_Load(object sender, EventArgs e)
         {
-            guidR = Request.QueryString["index"];
-            var procu = si.EnviarDocumentos.Where(d => d.GuidMap.Equals(guidR)).FirstOrDefault();
-            idEnvio = procu.idEnvio;
-            idu = int.Parse(Session["idu"].ToString());
+            try
+            {
+                guidR = Request.QueryString["index"];
+                var procu = si.EnviarDocumentos.Where(d => d.GuidMap.Equals(guidR)).FirstOrDefault();
+                idEnvio = procu.idEnvio;
+                idu = int.Parse(Session["idu"].ToString());
+            }
+            catch (Exception)
+            {
+
+                return;
+            }
+           
+          
         }
         void baixar() {
             MemoryStream ms = new MemoryStream();

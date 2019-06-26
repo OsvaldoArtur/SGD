@@ -1,5 +1,10 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="WebFormNovoExpediente.aspx.cs" Inherits="SGD.WebFormNovoExpediente" %>
 
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="aspx" %>
+
+
+
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -113,28 +118,26 @@
                                                                             <div class="row">
                                                                                 <div class="input-group col-lg-6">
                                                                                     <asp:FileUpload ID="FileUpload2" CssClass="form-control" AllowMultiple="true" ValidateRequestMode="Enabled" runat="server" />
-
                                                                                 </div>
                                                                                 <div class="input-group col-lg-6">
                                                                                     <asp:Label ID="lblSucesso" CssClass="text-success" Visible="false" runat="server" Text="Label"></asp:Label>
                                                                                 </div>
-
                                                                             </div>
                                                                             <div class="row">
                                                                                 <div class="input-group col-sm-12">
+                                                                                    <%--<asp:Button ID="Button3" runat="server" Text="Button" />--%>
+                                                                                     <ajaxToolkit:ConfirmButtonExtender  ID="btn1" runat="server" TargetControlID="Button1" ConfirmText="Deseja submeter o pedido? " OnClientCancel="OnClientCancel" />
                                                                                 </div>
-
                                                                                 <div class="input-group col-sm-12">
-                                                                                    <asp:TextBox ID="txtDescricao" placeholder="Comentario" TextMode="MultiLine" Rows="4" Text="Null" CssClass="form-control form-control-feedback" runat="server"></asp:TextBox>
+                                                                                    <aspx:HtmlEditorExtender ID="HtmlEditorExtender1" TargetControlID="txtDescricao" runat="server"></aspx:HtmlEditorExtender>
                                                                                 </div>
-
+                                                                                <div class="input-group col-sm-12">
+                                                                                    <asp:TextBox ID="txtDescricao" placeholder="Comentario" TextMode="MultiLine" Rows="10" Text="Null" CssClass="form-control form-control-feedback" runat="server"></asp:TextBox>
+                                                                                </div>
                                                                                 <div class="card-block">
                                                                                     <asp:Button ID="Button1" OnClick="Button1_Click" ValidationGroup="0A" CssClass="btn btn-success" runat="server" Text="Enviar" />
                                                                                     <asp:Button ID="Button2" CssClass="btn btn-info" runat="server" Text="Cancelar" />
-
                                                                                 </div>
-
-
                                                                             </div>
                                                                             <div class="row">
                                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ValidationGroup="0A" CssClass="label label-danger" runat="server" ControlToValidate="txtTitulo" ErrorMessage="*Titulo" Display="Dynamic"></asp:RequiredFieldValidator>
@@ -159,23 +162,14 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
-    <script>
-        function msgConfirmOkCancel() {
-            var x = confirm("Deseja Realmente efetuar a operacao?");
-            if (x == true) {
+     <script type="text/javascript">
+    function OnClientCancel() {
+        alert("Cancelado!");
+    }
+</script>
 
-
-                confirm("Sucesso");
-
-            } else {
-                confirm("Cancel");
-            }
-        }
-
-    </script>
 </asp:Content>

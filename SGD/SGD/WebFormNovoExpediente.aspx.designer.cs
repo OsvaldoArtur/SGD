@@ -112,6 +112,24 @@ namespace SGD {
         protected global::System.Web.UI.WebControls.Label lblSucesso;
         
         /// <summary>
+        /// btn1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.ConfirmButtonExtender btn1;
+        
+        /// <summary>
+        /// HtmlEditorExtender1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.HtmlEditorExtender HtmlEditorExtender1;
+        
+        /// <summary>
         /// txtDescricao control.
         /// </summary>
         /// <remarks>

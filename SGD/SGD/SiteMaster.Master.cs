@@ -22,7 +22,7 @@ namespace SGD
             else
             {
                 Session["idu"] = 0;
-                HttpContext.Current.Response.Redirect("~/Default.aspx", false);
+                HttpContext.Current.Response.Redirect("~/Index.aspx", false);
                 HttpContext.Current.ApplicationInstance.CompleteRequest();
 
             }
@@ -32,12 +32,12 @@ namespace SGD
             //condicoes(idu);
             // enableButoes();
             cond(idu);
-            sendPendente();
+           // sendPendente();
         }
         
         void sair() {
             Session["idu"] = 0;
-            HttpContext.Current.Response.Redirect("~/Default.aspx", false);
+            HttpContext.Current.Response.Redirect("~/Index.aspx", false);
             HttpContext.Current.ApplicationInstance.CompleteRequest();
         }
 
@@ -72,17 +72,18 @@ namespace SGD
 
                 if (proc.Nome_tipo.Equals("Administrador"))
                 {
-                    config.Visible = true;
+                    /*Volta*/
+                    //      config.Visible = true;
                 }
                 else if(proc.Nome_tipo.Equals("Simples")) {
-
-                    config.Visible = false;
+                    /*Volta*/
+                    //     config.Visible = false;
                 }
             }
             catch (Exception)
             {
 
-                throw;
+                return;
             }
         }
         void enableButoes()
@@ -106,6 +107,11 @@ namespace SGD
 
             //    }
             //}
+        }
+
+        protected void Timer1_Tick(object sender, EventArgs e)
+        {
+          //  TimeOfPrice.Text = DateTime.Now.ToLongTimeString();
         }
 
         //void condicoes(int idUsuario)
@@ -166,8 +172,8 @@ namespace SGD
             {
                 var nomm = si.user.Where(d => d.idUser == ids).FirstOrDefault();
 
-                //   var permissao = si.Permissoes.Where(d => d.idPermissao == idp).FirstOrDefault();
-                nomeUsuario.InnerText = nomm.NomeUsuario.ToString() /*+ " (" + permissao.NomePermisao.ToString() + ")"*/;
+                nome2.InnerText = nomm.NomeUsuario.ToString();
+               nomeUsuario.InnerText = nomm.NomeUsuario.ToString() /*+ " (" + permissao.NomePermisao.ToString() + ")"*/;
             }
             catch (Exception)
             {

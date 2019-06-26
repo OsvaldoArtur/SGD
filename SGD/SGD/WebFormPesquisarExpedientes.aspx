@@ -26,7 +26,9 @@
                         </div>
                     </div>
                     <div class="page-body">
-                        <div class="row">
+                     <asp:UpdatePanel runat="server">
+                         <ContentTemplate>
+                                 <div class="row">
                             <div class="col-lg-12">
                                 <div class="card card-border-info">
                                     <div class="card-header">
@@ -91,6 +93,11 @@
                                 </div>
                             </div>
                         </div>
+                             
+                       <asp:ScriptManager runat="server" ID="sm1"></asp:ScriptManager>
+                         </ContentTemplate>
+                         
+                     </asp:UpdatePanel>
                     </div>
                 </div>
             </div>

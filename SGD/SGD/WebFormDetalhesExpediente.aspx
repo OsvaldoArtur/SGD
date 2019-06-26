@@ -223,7 +223,8 @@
                                                 <div class="row">
                                                     <div class="col-sm-12">
                                                         <p class="task-detail" style="font-size: larger"><%=leva.Mensagem %></p>
-                                                    </div>
+                                                      
+                                                         </div>
                                                     <!-- end of col-sm-8 -->
                                                 </div>
                                             </div>
