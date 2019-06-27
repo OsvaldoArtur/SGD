@@ -49,6 +49,15 @@ namespace SGD {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl nomeUsuario;
         
         /// <summary>
+        /// nome3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl nome3;
+        
+        /// <summary>
         /// ContentPlaceHolder1 control.
         /// </summary>
         /// <remarks>

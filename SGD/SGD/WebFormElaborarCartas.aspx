@@ -3,212 +3,176 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="pcoded-content">
-        <div class="pcoded-inner-content">
-            <div class="main-body">
-                <div class="page-wrapper">
-                    <div class="page-header">
-                        <div class="page-header-title">
-                            <h4>Cartas (Estudante)</h4>
-                            <span class="text-muted">Criar novas Cartas (Estudantes) </span>
-                        </div>
-                        <div class="page-header-breadcrumb">
-                            <ul class="breadcrumb-title">
-                                <li class="breadcrumb-item">
-                                    <a href="WebFormInicio.aspx">
-                                        <i class="icofont icofont-home"></i>
-                                        Inicio
-                                    </a>
-                                </li>
-                                <li class="breadcrumb-item">Cartas
-                                </li>
-                            </ul>
-                        </div>
+    <section class="content-header">
+        <h1>Navegacao
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="WebFormInicio.aspx"><i class="fa fa-home"></i>Inicio</a></li>
+            <li class="active">Nova Carta</li>
+        </ol>
+    </section>
+    <br />
+
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <div class="box-title">Nova Carta</div>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
                     </div>
-                    <div class="page-body">
-                        <div class="row">
+                </div>
+
+                <div class="box-body">
+
+                    <div class="form-horizontal">
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <asp:TextBox ID="txtNomeCliente" placeholder="Nome Completo" CssClass="form-control" runat="server"></asp:TextBox>
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <asp:TextBox ID="txtContacto" CssClass="form-control" runat="server" placeholder="Ex: 848046991"></asp:TextBox>
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <asp:TextBox ID="txtMotivo" placeholder="Motivo" CssClass="form-control" runat="server"></asp:TextBox>
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <asp:FileUpload ID="FileUpload2" AllowMultiple="true" ToolTip="Selecionar Ficheiros 'docx, xls, pdf, txt, other'" ValidateRequestMode="Enabled" runat="server" />
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+
+                                <div class="col-sm-12">
+                                    <asp:TextBox ID="txtDescr" runat="server" TextMode="MultiLine" Rows="4" CssClass="form-control" placeholder="Descricao" Text="Default"></asp:TextBox>
+
+                                </div>
+                            </div>
 
 
-                            <div class="col-lg-12">
-                                <div class="card card-border-info">
-                                    <div class="card-header">
-                                        <h5>Cartas</h5>
-                                        <div class="card-header-right">
-                                            <i class="icofont icofont-rounded-down"></i>
-                                            <i class="icofont icofont-refresh"></i>
-                                            <i class="icofont icofont-close-circled"></i>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Curso:</label>
+                                <div class="col-sm-10">
+                                    <asp:DropDownList ID="txtCurso" CssClass="form-control " runat="server" DataSourceID="SqlDataSourceCursos" DataTextField="Curso" DataValueField="idCurso">
+                                    </asp:DropDownList>
 
-                                        </div>
-                                    </div>
+                                    <asp:SqlDataSource ID="SqlDataSourceCursos" runat="server" ConnectionString="<%$ ConnectionStrings:sgdbConnectionString %>" SelectCommand="SELECT [idCurso], [Curso] FROM [Curso_tb]"></asp:SqlDataSource>
+                                </div>
 
-                                    <div class=" row card-block">
-                                        <div class="col-sm-12">
-                                            <%--         <div class="text-right">
-                                                <a href="#sign-in" data-toggle="modal" data-target="#sign-in"><i class="ion-plus"> Novo Pedidos</i></a>
-                                            </div>--%>
-                                            <br />
-                                            <ul class="list-view">
-                                                <li>
-                                                    <div class="card user-card">
-                                                        <div class="card-block">
-                                                            <div class="media">
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Periodo:</label>
+                                <div class="col-sm-4">
+                                    <asp:DropDownList ID="DropDownListPeriodo" CssClass="form-control" runat="server">
+                                        <asp:ListItem>Laboral</asp:ListItem>
+                                        <asp:ListItem>Laboral-Tarde</asp:ListItem>
+                                        <asp:ListItem>Pos-Laboral</asp:ListItem>
 
-                                                                <div class="media-body">
-                                                                    <div class=" row">
-                                                                        <div class="col-sm-12">
-                                                                            <div class="row">
-                                                                                <div class="input-group col-sm-6">
+                                    </asp:DropDownList>
+                                </div>
+                                <label class="col-sm-2 control-label">Ano:</label>
+                                <div class="col-sm-4">
+                                    <asp:DropDownList ID="DropDownList2" CssClass="form-control" runat="server">
+                                        <asp:ListItem>1º Ano</asp:ListItem>
+                                        <asp:ListItem>2º Ano</asp:ListItem>
+                                        <asp:ListItem>3º Ano</asp:ListItem>
+                                        <asp:ListItem>4º Ano</asp:ListItem>
 
-                                                                                    <asp:TextBox ID="txtNomeCliente" placeholder="Nome Completo" CssClass="form-control form-control-feedback" runat="server"></asp:TextBox>
-                                                                                </div>
-                                                                                <div class="input-group col-sm-6">
-                                                                                    <label class="col-form-label col-sm-4">Curso:</label>
-                                                                                    <asp:DropDownList ID="txtCurso" CssClass="form-control form-control-feedback col-sm-8" runat="server" DataSourceID="SqlDataSourceCursos" DataTextField="Curso" DataValueField="idCurso">
-                                                                                    </asp:DropDownList>
+                                    </asp:DropDownList>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Pedido:</label>
+                                <div class="col-sm-10">
+                                    <asp:DropDownList ID="txtPedido" CssClass="form-control" runat="server" DataSourceID="SqlDataSourcePedidos" DataTextField="Pedido" DataValueField="idPedidos">
+                                    </asp:DropDownList>
+                                    <asp:SqlDataSource ID="SqlDataSourcePedidos" runat="server" ConnectionString="<%$ ConnectionStrings:sgdbConnectionString %>" SelectCommand="SELECT [idPedidos], [Pedido], [DescricaoPedido] FROM [Pedidos_tb]"></asp:SqlDataSource>
+                                </div>
+                            </div>
 
-                                                                                    <asp:SqlDataSource ID="SqlDataSourceCursos" runat="server" ConnectionString="<%$ ConnectionStrings:sgdbConnectionString %>" SelectCommand="SELECT [idCurso], [Curso] FROM [Curso_tb]"></asp:SqlDataSource>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Departame.:</label>
+                                <div class="col-sm-10">
+                                    <asp:DropDownList ID="txtDepartamentos" CssClass="form-control " runat="server" AutoPostBack="True" DataSourceID="SqlDataSourceDepartamento" DataTextField="NomeDepartamento" DataValueField="iddepartamento">
+                                    </asp:DropDownList>
+                                    <asp:SqlDataSource ID="SqlDataSourceDepartamento" runat="server" ConnectionString="<%$ ConnectionStrings:sgdbConnectionString %>" SelectCommand="SELECT [iddepartamento], [NomeDepartamento] FROM [departamento]"></asp:SqlDataSource>
 
-                                                                                </div>
-                                                                                <%--                                 <div class="border-checkbox-group border-checkbox-group-default">
-                                                <input class="border-checkbox" type="checkbox" id="checkbox0">
-                                                <label class="border-checkbox-label" for="checkbox0">Do you like it?</label>
-                                            </div>--%>
-                                                                            </div>
-                                                                            <div class="row">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Pasta:</label>
+                                <div class="col-sm-10">
+                                    <asp:DropDownList ID="txtPasta" CssClass="form-control" runat="server" DataSourceID="SqlDataSourcePasta" DataTextField="NomePasta" DataValueField="idpastadepartamento">
+                                    </asp:DropDownList>
+                                    <asp:SqlDataSource ID="SqlDataSourcePasta" runat="server" ConnectionString="<%$ ConnectionStrings:sgdbConnectionString %>" SelectCommand="SELECT * FROM [pastadepartamento] WHERE ([idDepartamento] = @idDepartamento)">
+                                        <SelectParameters>
+                                            <asp:ControlParameter ControlID="txtDepartamentos" DefaultValue="" Name="idDepartamento" PropertyName="SelectedValue" Type="Int32" />
+                                        </SelectParameters>
+                                    </asp:SqlDataSource>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-12 text-right">
+                                    <asp:Button ID="Button1" ValidationGroup="0A" CssClass="btn btn-success" runat="server" OnClick="Button1_Click" Text="Enviar Carta" />
+                                    <asp:Button ID="Button2" CssClass="btn btn-info" runat="server" Text="Cancelar" />
 
-
-                                                                                <div class="input-group col-sm-6">
-                                                                                    <label class="col-form-label col-sm-4">Pedido:</label>
-                                                                                    <asp:DropDownList ID="txtPedido" CssClass="form-control form-control-feedback col-sm-8" runat="server" DataSourceID="SqlDataSourcePedidos" DataTextField="Pedido" DataValueField="idPedidos">
-                                                                                    </asp:DropDownList>
-                                                                                    <asp:SqlDataSource ID="SqlDataSourcePedidos" runat="server" ConnectionString="<%$ ConnectionStrings:sgdbConnectionString %>" SelectCommand="SELECT [idPedidos], [Pedido], [DescricaoPedido] FROM [Pedidos_tb]"></asp:SqlDataSource>
-                                                                                </div>
-                                                                                <div class="input-group col-sm-6">
-
-                                                                                    <label class="col-form-label col-sm-4 ">Periodo:</label>
-                                                                                    <asp:DropDownList ID="DropDownListPeriodo" CssClass="form-control form-control-feedback col-sm-8" runat="server">
-                                                                                        <asp:ListItem>Laboral</asp:ListItem>
-                                                                                        <asp:ListItem>Laboral-Tarde</asp:ListItem>
-                                                                                        <asp:ListItem>Pos-Laboral</asp:ListItem>
-
-                                                                                    </asp:DropDownList>
-                                                                                </div>
-
-                                                                            </div>
-
-                                                                            <div class="row">
-
-
-                                                                                <div class="input-group col-sm-6">
-                                                                                    <%--                                                                                                                                                                    <label class="col-form-label col-sm-4">Categoria:</label>
-                                                                                    <asp:DropDownList ID="DropDownList1" CssClass="form-control form-control-feedback col-sm-8" runat="server" DataSourceID="SqlDataSourceCategoria" DataTextField="NomeCategoria" DataValueField="idCategoria">
-                                                                                    </asp:DropDownList>
-                                                                                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:sgdbConnectionString %>" SelectCommand="SELECT [idCategoria], [NomeCategoria] FROM [categoria]">/asp:SqlDataSource>--%>
-                                                                                    <asp:TextBox ID="txtMotivo" placeholder="Motivo" CssClass="form-control form-control-feedback" runat="server"></asp:TextBox>
-                                                                                </div>
-                                                                                <div class="input-group col-sm-6">
-                                                                                    <%-- <asp:TextBox ID="txtContacto" placeholder="Ex:. 840000000" CssClass="form-control form-control-feedback" runat="server"></asp:TextBox>--%>
-                                                                                    <label class="col-form-label col-sm-4">Ano Lectivo:</label>
-                                                                                    <asp:DropDownList ID="DropDownList2" CssClass="form-control form-control-feedback col-sm-8" runat="server">
-                                                                                        <asp:ListItem>1º Ano</asp:ListItem>
-                                                                                        <asp:ListItem>2º Ano</asp:ListItem>
-                                                                                        <asp:ListItem>3º Ano</asp:ListItem>
-                                                                                        <asp:ListItem>4º Ano</asp:ListItem>
-
-                                                                                    </asp:DropDownList>
-                                                                                </div>
-
-                                                                            </div>
-
-                                                                            <div class="row">
-
-
-                                                                                <div class="input-group col-sm-6">
-                                                                                    <label class="col-form-label col-sm-4">Departame.:</label>
-                                                                                    <asp:DropDownList ID="txtDepartamentos" CssClass="form-control form-control-feedback col-sm-8" runat="server" AutoPostBack="True" DataSourceID="SqlDataSourceDepartamento" DataTextField="NomeDepartamento" DataValueField="iddepartamento">
-                                                                                    </asp:DropDownList>
-                                                                                    <asp:SqlDataSource ID="SqlDataSourceDepartamento" runat="server" ConnectionString="<%$ ConnectionStrings:sgdbConnectionString %>" SelectCommand="SELECT [iddepartamento], [NomeDepartamento] FROM [departamento]"></asp:SqlDataSource>
-                                                                                </div>
-                                                                                <div class="input-group col-sm-6">
-                                                                                    <label class="col-form-label col-sm-4">Pasta:</label>
-                                                                                    <asp:DropDownList ID="txtPasta" CssClass="form-control form-control-feedback col-sm-8" runat="server" DataSourceID="SqlDataSourcePasta" DataTextField="NomePasta" DataValueField="idpastadepartamento">
-                                                                                    </asp:DropDownList>
-                                                                                    <asp:SqlDataSource ID="SqlDataSourcePasta" runat="server" ConnectionString="<%$ ConnectionStrings:sgdbConnectionString %>" SelectCommand="SELECT * FROM [pastadepartamento] WHERE ([idDepartamento] = @idDepartamento)">
-                                                                                        <SelectParameters>
-                                                                                            <asp:ControlParameter ControlID="txtDepartamentos" DefaultValue="" Name="idDepartamento" PropertyName="SelectedValue" Type="Int32" />
-                                                                                        </SelectParameters>
-                                                                                    </asp:SqlDataSource>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="row">
-                                                                                 <div class="input-group col-lg-6">
-                                                                                   <asp:TextBox ID="txtContacto" CssClass="form-control form-control-feedback" runat="server" placeholder="Ex: 848046991"></asp:TextBox>
-                                                                                </div>
-                                                                                <div class="input-group col-lg-6">
-                                                                                    <asp:FileUpload ID="FileUpload2" AllowMultiple="true" ToolTip="Selecionar Ficheiros 'docx, xls, pdf, txt, other'" CssClass="form-control"  ValidateRequestMode="Enabled" runat="server" />
-
-                                                                                </div>
-                                               
-                                                                               
-
-                                                                            </div>
-                                                                            <div class=" row">
-                                                                                
-                                                                                <div class=" input-group col-lg-12">
-                                                                                    <asp:TextBox ID="txtDescr" runat="server" TextMode="MultiLine" Rows="3" CssClass="form-control form-control-default" placeholder="Descricao" Text="Default"></asp:TextBox>
-                                                                                </div>
-                                                                            </div>
-
-                                                                            <div class="row">
-                                                                                <%--                                                                         <div class="input-group col-sm-12">
-                                                                                </div>
-
-                                                                                <div class="input-group col-sm-12">
-                                                                                    <asp:TextBox ID="txtDescricao" placeholder="Comentario" TextMode="MultiLine" Rows="4" Text="Null" CssClass="form-control form-control-feedback" runat="server"></asp:TextBox>
-                                                                                </div>--%>
-
-                                                                                <div class="card-block">
-                                                                                    <asp:Button ID="Button1" ValidationGroup="0A" CssClass="btn btn-success" runat="server" OnClick="Button1_Click"  Text="Enviar Carta" />
-                                                                                    <asp:Button ID="Button2" CssClass="btn btn-info" runat="server" Text="Cancelar" />
-
-                                                                                </div>
-
-
-                                                                            </div>
-                                                                            <div class="row">
-                                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ValidationGroup="0A" CssClass="label label-danger" runat="server" ControlToValidate="txtNomeCliente" ErrorMessage="*Nome Cliente" Display="Dynamic"></asp:RequiredFieldValidator>
-                                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ValidationGroup="0A" CssClass="label label-danger" runat="server" ControlToValidate="txtCurso" ErrorMessage="*Urgencia" Display="Dynamic"></asp:RequiredFieldValidator>
-                                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator3" ValidationGroup="0A" CssClass="label label-danger" runat="server" ControlToValidate="txtPedido" ErrorMessage="*Pedido" Display="Dynamic"></asp:RequiredFieldValidator>
-                                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator4" ValidationGroup="0A" CssClass="label label-danger" runat="server" ControlToValidate="DropDownListPeriodo" ErrorMessage="*Periodo" Display="Dynamic"></asp:RequiredFieldValidator>
-                                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator5" ValidationGroup="0A" CssClass="label label-danger" runat="server" ControlToValidate="txtMotivo" ErrorMessage="*Motivo" Display="Dynamic"></asp:RequiredFieldValidator>
-                                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator6" ValidationGroup="0A" CssClass="label label-danger" runat="server" ControlToValidate="DropDownList2" ErrorMessage="*Ano" Display="Dynamic"></asp:RequiredFieldValidator>
-                                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator7" ValidationGroup="0A" CssClass="label label-danger" runat="server" ControlToValidate="txtDepartamentos" ErrorMessage="*Departamento" Display="Dynamic"></asp:RequiredFieldValidator>
-                                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator8" ValidationGroup="0A" CssClass="label label-danger" runat="server" ControlToValidate="txtPasta" ErrorMessage="*Pasta" Display="Dynamic"></asp:RequiredFieldValidator>
-                                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator9" ValidationGroup="0A" CssClass="label label-danger" runat="server" ControlToValidate="txtDescr" ErrorMessage="*Comentario" Display="Dynamic"></asp:RequiredFieldValidator>
-                                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator10" ValidationGroup="0A" CssClass="label label-danger" runat="server" ControlToValidate="txtContacto" ErrorMessage="*Contacto" Display="Dynamic"></asp:RequiredFieldValidator>
-                                                                              
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-
-
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
+
+
+
+
+
+                </div>
+
+                <div class="box-footer">
+               <div class="col-lg-12">
+                         <div class="form-group">
+                        <div class="col-sm-12">
+
+                            <div class="row">
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ValidationGroup="0A" CssClass="label label-danger" runat="server" ControlToValidate="txtNomeCliente" ErrorMessage="*Nome Cliente" Display="Dynamic"></asp:RequiredFieldValidator>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ValidationGroup="0A" CssClass="label label-danger" runat="server" ControlToValidate="txtCurso" ErrorMessage="*Urgencia" Display="Dynamic"></asp:RequiredFieldValidator>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" ValidationGroup="0A" CssClass="label label-danger" runat="server" ControlToValidate="txtPedido" ErrorMessage="*Pedido" Display="Dynamic"></asp:RequiredFieldValidator>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator4" ValidationGroup="0A" CssClass="label label-danger" runat="server" ControlToValidate="DropDownListPeriodo" ErrorMessage="*Periodo" Display="Dynamic"></asp:RequiredFieldValidator>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator5" ValidationGroup="0A" CssClass="label label-danger" runat="server" ControlToValidate="txtMotivo" ErrorMessage="*Motivo" Display="Dynamic"></asp:RequiredFieldValidator>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator6" ValidationGroup="0A" CssClass="label label-danger" runat="server" ControlToValidate="DropDownList2" ErrorMessage="*Ano" Display="Dynamic"></asp:RequiredFieldValidator>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator7" ValidationGroup="0A" CssClass="label label-danger" runat="server" ControlToValidate="txtDepartamentos" ErrorMessage="*Departamento" Display="Dynamic"></asp:RequiredFieldValidator>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator8" ValidationGroup="0A" CssClass="label label-danger" runat="server" ControlToValidate="txtPasta" ErrorMessage="*Pasta" Display="Dynamic"></asp:RequiredFieldValidator>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator9" ValidationGroup="0A" CssClass="label label-danger" runat="server" ControlToValidate="txtDescr" ErrorMessage="*Comentario" Display="Dynamic"></asp:RequiredFieldValidator>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator10" ValidationGroup="0A" CssClass="label label-danger" runat="server" ControlToValidate="txtContacto" ErrorMessage="*Contacto" Display="Dynamic"></asp:RequiredFieldValidator>
+
+                            </div>
+                        </div>
+                    </div>
+                   </div>
                 </div>
             </div>
         </div>
     </div>
+
+
+
+
+
 </asp:Content>

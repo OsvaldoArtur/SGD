@@ -171,7 +171,7 @@ namespace SGD
             try
             {
                 var nomm = si.user.Where(d => d.idUser == ids).FirstOrDefault();
-
+                nome3.InnerText= nomm.NomeUsuario.ToString();
                 nome2.InnerText = nomm.NomeUsuario.ToString();
                nomeUsuario.InnerText = nomm.NomeUsuario.ToString() /*+ " (" + permissao.NomePermisao.ToString() + ")"*/;
             }

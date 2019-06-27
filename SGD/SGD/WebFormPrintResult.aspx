@@ -5,8 +5,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Sistema de Gestao de Expediente v.1</title>
-    <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="assets/icon/icofont/css/icofont.css" />
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css" />
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css" />
 
     <script type="text/javascript">
         function PrintPanel() {
@@ -40,12 +41,7 @@
             <div class="container">
 
 
-                <div id="pcoded" class="">
-                    <div class="pcoded-overlay-box"></div>
-                    <div class="pcoded-container navbar-wrapper">
-                        <div class="pcoded-main-container">
-                            <div class="pcoded-wrapper">
-
+             
                                 <br />
                                 <br />
 
@@ -55,7 +51,7 @@
                                 <table>
                                     <tr>
                                         <td style="width: 200px">
-                                            <img src="assets/images/ucm_logo.jpg" width="100" height="100" />
+                                            <img src="dist/img/ucm_logo.jpg" width="100" height="100" />
                                         </td>
 
                                         <td style="width: 500px">
@@ -64,7 +60,7 @@
                                                 <b>Faculdade de Gestao de Recursos Naturais e Mineralogia</b><br />
                                                 Av. da Liberdade<br />
                                                 C.P. 821 Tete - Mocambique<br />
-                                                <i class="icofont icofont-telephone"></i>Tel: (252) 24066 Fax: (252) 24986<br />
+                                                <i class="fa fa-fw fa-phone"></i>Tel: (252) 24066 Fax: (252) 24986<br />
                                                 Email: fegtete@ucm.ac.mz
                                             </div>
                                         </td>
@@ -159,11 +155,7 @@
 
                             </div>
 
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+         
 
 
 

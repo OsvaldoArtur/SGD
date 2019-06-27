@@ -48,11 +48,15 @@
 
 
         <div class="container">
+                <h3 class="text-muted text-center" >Bem-vindo ao Sistema de Gestão de Expediente </h3>
             <div class="row">
                 <div class="col-md-3"><a href="http://ucm.ac.mz">
                     <img class="pull-right" src="dist/img/ucm_logo.jpg" alt="UCM logo" /></a></div>
                 <div class="col-md-9 brand">
-                    <h1 class="text-muted">Bem-vindo ao Sistema de Gestão de Expediente da Universidade Católica de Moçambique</h1>
+                    <h1 class="text-muted">Universidade Católica de Moçambique</h1>
+                    <h4 class="text-muted">Faculdade de Gestao de Recursos Naturais e Mineralogia</h4>
+                
+                    
                     <h4></h4>
                 </div>
             </div>
@@ -76,8 +80,8 @@
                                         <p class="task-detail" style="font-size: larger">Por aceder clicar no botão <a href="Login.aspx" title="Entrar">entrar</a>.</p>
                                         <p class="text-center">
 
-                                            <button type="button" onserverclick="Unnamed_ServerClick" runat="server" class="btn btn-info">Entrar</button>
-                                            <asp:Button ID="Button3" OnClick="Button3_Click" runat="server" CssClass=" btn btn-primary" Text="Registrar-se" />
+                                           
+                                                <asp:HyperLink ID="Butto" NavigateUrl="~/Login.aspx" runat="server" CssClass=" btn btn-primary" Text="Entrar" />
                                         </p>
                                         <p class="text-center">
                                             <label id="mensages" runat="server" visible="false" style="font-size: 14px" class=" label label-danger">Email ou Senha Incorrecta, por favor Tente Novamente!</label></p>
