@@ -16,9 +16,9 @@ namespace SGD.Models
     {
         public user()
         {
+            this.EnviarDocumentos = new HashSet<EnviarDocumentos>();
             this.PermissaoDeparramento_tb = new HashSet<PermissaoDeparramento_tb>();
             this.RespostaDocumento = new HashSet<RespostaDocumento>();
-            this.EnviarDocumentos = new HashSet<EnviarDocumentos>();
         }
     
         public int idUser { get; set; }
@@ -40,9 +40,9 @@ namespace SGD.Models
         public Nullable<int> id_tipo_usuario { get; set; }
     
         public virtual departamento departamento { get; set; }
+        public virtual ICollection<EnviarDocumentos> EnviarDocumentos { get; set; }
         public virtual ICollection<PermissaoDeparramento_tb> PermissaoDeparramento_tb { get; set; }
         public virtual ICollection<RespostaDocumento> RespostaDocumento { get; set; }
         public virtual Tipo_usuario_tb Tipo_usuario_tb { get; set; }
-        public virtual ICollection<EnviarDocumentos> EnviarDocumentos { get; set; }
     }
 }

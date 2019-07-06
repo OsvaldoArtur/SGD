@@ -3,9 +3,23 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <!-- Content Header (Page header) -->
+   
+                  <%
+                    si = new SGD.Models.sgdbEntities();
+                    string idPsa = Request.QueryString["id"];
+                    var idpast = si.pastadepartamento.Where(d => d.GuidMap.Equals(idPsa)).FirstOrDefault();
+                    var procuranaolidos = si.EnviarDocumentos.Where(d => d.Estado.Equals("Enviado") && d.idPastaDepartamento == idpast.idpastadepartamento).Count();
+                    var procuralidos = si.EnviarDocumentos.Where(d => d.Estado.Equals("Respondido") && d.idPastaDepartamento == idpast.idpastadepartamento).Count();
+
+                    var procuranaolidosc = si.Cartas_tb.Where(d => d.Estado.Equals("Enviado") && d.idPastaDepartamento == idpast.idpastadepartamento).Count();
+                    var procuralidosc = si.Cartas_tb.Where(d => d.Estado.Equals("Recebido") && d.idPastaDepartamento == idpast.idpastadepartamento).Count();
+
+
+                %>
+    
+     <!-- Content Header (Page header) -->
     <section class="content-header">
-        <h1>Navegacao
+        <h1><%=idpast.NomePasta %>
         <%--<small>Version 2.0</small>--%>
         </h1>
         <ol class="breadcrumb">
@@ -26,18 +40,7 @@
             </div>
 
             <div class="form-group">
-                <%
-                    si = new SGD.Models.sgdbEntities();
-                    string idPsa = Request.QueryString["id"];
-                    var idpast = si.pastadepartamento.Where(d => d.GuidMap.Equals(idPsa)).FirstOrDefault();
-                    var procuranaolidos = si.EnviarDocumentos.Where(d => d.Estado.Equals("Enviado") && d.idPastaDepartamento == idpast.idpastadepartamento).Count();
-                    var procuralidos = si.EnviarDocumentos.Where(d => d.Estado.Equals("Respondido") && d.idPastaDepartamento == idpast.idpastadepartamento).Count();
-
-                    var procuranaolidosc = si.Cartas_tb.Where(d => d.Estado.Equals("Enviado") && d.idPastaDepartamento == idpast.idpastadepartamento).Count();
-                    var procuralidosc = si.Cartas_tb.Where(d => d.Estado.Equals("Recebido") && d.idPastaDepartamento == idpast.idpastadepartamento).Count();
-
-
-                %>
+  
                 <label class="text-dark">Resumo de Expedientes</label>
                 <br />
                 <label class="text-dark ">Recebidos:</label>

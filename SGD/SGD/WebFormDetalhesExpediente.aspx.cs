@@ -62,7 +62,7 @@ namespace SGD
 
                 //   enivo.EnviaSms(prefixo + txtContacto.Text, "Entrada do documento nº: " + mensagem);
                 enivo.EnviaSms(prefixo + contacto, "Bem vindos ao SGE -Sistema de Gestao de Expediente. Possui uma resposta do documento nº: " + mensagem + ". Queira por favor aproximar a secretaria. Obrigado");
-                messagesucesso.Visible = true;
+            //    messagesucesso.Visible = true;
             }
             catch (Exception)
             {

@@ -3,47 +3,51 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="pcoded-content">
-        <div class="pcoded-inner-content">
-            <div class="main-body">
-                <div class="page-wrapper">
-                    <div class="page-header">
-                        <div class="page-header-title">
-                            <h4>Permissao</h4>
-                            <span class="text-muted">Permissoes usuario </span>
+    <section class="content-header">
+        <h1>Configuracao
+
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="WebFormInicio.aspx"><i class="fa fa-home"></i>Inicio</a></li>
+            <li >Configuracoes</li>
+            <li class="active">Detalhes do usuario</li>
+        </ol>
+    </section>
+    <br />
+
+     <div class="row">
+
+        <div class="col-lg-12">
+
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <div class="box-title">
+                            Permisssao Departamento
                         </div>
-                        <div class="page-header-breadcrumb">
-                            <ul class="breadcrumb-title">
-                                <li class="breadcrumb-item">
-                                    <a href="WebFormInicio.aspx">
-                                        <i class="icofont icofont-home"></i>
-                                        Inicio
-                                    </a>
-                                </li>
-                                <li class="breadcrumb-item">Permissao
-                                </li>
-                            </ul>
+                        <br />
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
                         </div>
                     </div>
-                    <div class="page-body">
-                        <asp:Panel ID="panelPermissao" runat="server">
-                            <div class="row">
 
-                                <div class="col-md-6">
-                                    <div class="card card-border-info">
-                                        <div class="card-header">
-                                            <h5 runat="server" id="nomeusuario"></h5>
-                                            <div class="card-header-right">
-                                                <i class="icofont icofont-rounded-down"></i>
-                                                <i class="icofont icofont-close-circled"></i>
-                                            </div>
-                                        </div>
+                    <div class="box-body">
+                  <div class="form-horizontal">
+                      <div class="form-group">
+                   <div class="col-md-12">
+                                <h5 runat="server" id="nomeusuario"></h5>
+                      <br />
+                      </div>
+                    </div>
+                      <asp:UpdatePanel runat="server">
+                          <ContentTemplate>
 
-                                        <div class=" row card-block">
-                                            <div class="col-lg-12">
-                                                <%--         <asp:TreeView ID="TreeView1" ShowCheckBoxes="Leaf" runat="server" OnTreeNodeCheckChanged="TreeView1_TreeNodeCheckChanged">
-                                            </asp:TreeView>--%>
-                                                <asp:GridView ID="GridView1" CssClass="table table-striped table-bordered nowrap" runat="server" AutoGenerateColumns="False" DataKeyNames="iddepartamento" DataSourceID="SqlDataSourcePastas">
+                      <div class="form-group">
+                                             <div class="col-md-6">
+                                        
+                                                <asp:GridView ID="GridView1" CssClass="table table-responsive table-striped table-bordered no-margin" runat="server" AutoGenerateColumns="False" DataKeyNames="iddepartamento" DataSourceID="SqlDataSourcePastas">
                                                     <Columns>
                                                         <asp:BoundField DataField="iddepartamento" HeaderText="iddepartamento" ReadOnly="True" SortExpression="iddepartamento" InsertVisible="False" Visible="True" />
                                                         <asp:BoundField DataField="NomeDepartamento" HeaderText="NomeDepartamento" SortExpression="NomeDepartamento" />
@@ -65,28 +69,7 @@
 
 
                                             </div>
-                                            <div class="col-lg-12">
-
-
-                                                <%--<asp:Button ID="Button1" Visible="false" CssClass="btn btn-info" OnClick="Button1_Click" runat="server" Text="Button" />--%>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="card b-l-success business-info services m-b-20">
-                                        <div class="card-header">
-                                            <div class="service-header">
-                                                <a href="#">
-                                                    <h5 class="card-header-text">Permissao Departamento</h5>
-                                                </a>
-                                            </div>
-
-                                        </div>
-                                        <div class="card-block">
-                                            <div class="row">
-                                                <div class="col-sm-12">
+                            <div class="col-md-6">
                                                     <table class="table">
                                                         <thead>
                                                             <tr class="">
@@ -118,25 +101,25 @@
 
 
                                                 </div>
-                                                <!-- end of col-sm-8 -->
-                                            </div>
-                                            <!-- end of row -->
-                                        </div>
-                                        <!-- end of card-block -->
-                                    </div>
-                                </div>
-                            </div>
-                        </asp:Panel>
-                        <asp:Panel ID="panelPermissaolista" runat="server">
-                            <div class="row">
-                            </div>
 
-                        </asp:Panel>
-                    </div>
+                      </div>
+    
+                              <asp:ScriptManager runat="server" ID="sm3"></asp:ScriptManager>
+                          </ContentTemplate>
+                      </asp:UpdatePanel>
+                        </div>
+                       
+                    <!-- end of col-sm-8 -->
+                 
+                </div>
+ <div class="box-footer"></div>
+         
+        </div>
+
+                
 
                 </div>
             </div>
-        </div>
-    </div>
+     
 
 </asp:Content>

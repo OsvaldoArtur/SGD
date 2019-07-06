@@ -12,16 +12,13 @@ namespace SGD.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class RecebimentoDocumentos
+    public partial class Movimentacao_Documentos_tb
     {
-        public int idRecebimento { get; set; }
-        public Nullable<System.DateTime> DataRecebimento { get; set; }
-        public Nullable<int> idEnvio { get; set; }
-        public Nullable<int> idPastaDepartamento { get; set; }
-        public string Informacao { get; set; }
-        public string GuidMap { get; set; }
-    
-        public virtual EnviarDocumentos EnviarDocumentos { get; set; }
-        public virtual pastadepartamento pastadepartamento { get; set; }
+        public int idMovimentacao { get; set; }
+        public Nullable<int> idusuario { get; set; }
+        public Nullable<int> idOrigem { get; set; }
+        public Nullable<int> idDestino { get; set; }
+        public Nullable<System.DateTime> DataMovimentacao { get; set; }
+        public string DescricaoMovimentacao { get; set; }
     }
 }

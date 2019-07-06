@@ -12,16 +12,19 @@ namespace SGD.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class RecebimentoDocumentos
+    public partial class Supervisor_mono_tb
     {
-        public int idRecebimento { get; set; }
-        public Nullable<System.DateTime> DataRecebimento { get; set; }
-        public Nullable<int> idEnvio { get; set; }
-        public Nullable<int> idPastaDepartamento { get; set; }
-        public string Informacao { get; set; }
-        public string GuidMap { get; set; }
+        public Supervisor_mono_tb()
+        {
+            this.Submissao_tb = new HashSet<Submissao_tb>();
+        }
     
-        public virtual EnviarDocumentos EnviarDocumentos { get; set; }
-        public virtual pastadepartamento pastadepartamento { get; set; }
+        public int idSupervisor { get; set; }
+        public string Nome_completo { get; set; }
+        public string Departamento { get; set; }
+        public string Contacto { get; set; }
+        public string Descricao { get; set; }
+    
+        public virtual ICollection<Submissao_tb> Submissao_tb { get; set; }
     }
 }

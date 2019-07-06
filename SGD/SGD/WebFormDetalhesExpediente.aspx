@@ -99,7 +99,7 @@
                 <div class="box-body">
                     <div class="form-horizontal">
                         <div class="col-md-6">
-                            <table class="table">
+                            <table class="table no-margin">
                                 <%
                                     si = new SGD.Models.sgdbEntities();
                                     var idP = Request.QueryString["index"];

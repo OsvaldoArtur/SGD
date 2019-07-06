@@ -50,7 +50,7 @@
                         </div>
                         <div class="form-group">
                             <div class="col-sm-12">
-                                <asp:TextBox ID="txtContacto" placeholder="Ex:. 840000000" CssClass="form-control" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="txtContacto" TextMode="Number" placeholder="Ex:. 840000000" CssClass="form-control" runat="server"></asp:TextBox>
                             </div>
                         </div>
                         <div class="form-group ">

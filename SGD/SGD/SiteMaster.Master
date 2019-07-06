@@ -127,9 +127,7 @@
           <a href="#">
             <i class="fa fa-files-o"></i>
             <span>Documentos</span>
-            <span class="pull-right-container">
-              <span class="label label-primary pull-right">New</span>
-            </span>
+          
           </a>
           <ul class="treeview-menu">
             <li><a href="WebFormNovoExpediente.aspx"><i class="fa fa-plus"></i>Novo Expediente</a></li>
@@ -179,6 +177,15 @@
           </ul>
         </li>--%>
         <li><a href="WebFormResumoActual.aspx"><i class="fa fa-eye"></i> <span>Resumo</span></a></li>
+               <li>
+          <a href="WebFormCriarVagasTFC.aspx">
+            <i class="fa fa-file-archive-o"></i> <span>TFC - Vagas</span>
+                <span class="pull-right-container">
+              <span class="label label-primary pull-right">New</span>
+            </span>
+        
+          </a>
+        </li>
 <%--        <li class="header">LABELS</li>
         <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
         <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
@@ -217,173 +224,40 @@ Ponta-Gêa, Beira, Mo&ccedil;ambique
                                 </div>
   </footer>
  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Create the tabs -->
+
     <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
       <li><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
       <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
     </ul>
      </aside>
          <div class="control-sidebar-bg"></div>
-<%--        <div class="">
-            <div id="pcoded" class="">
-                <div class="pcoded-overlay-box"></div>
-                <div class="pcoded-container navbar-wrapper">
-                    <div class="pcoded-main-container">
-                        <div class="pcoded-wrapper">
 
-                            <nav class="navbar navbar-toggleable-md navbar-light info-nav-dark fixed-top light-nav-border">
-                                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbardropdown">
-                                    <span class="navbar-toggler-icon"></span>
-                                </button>
-                                <a class="navbar-brand text-white" href="WebFormInicio.aspx"><i class="icofont icofont-home text-white"></i>Pagina Inicial</a>
-                                <div id="navbardropdown" class="collapse navbar-collapse">
-                                    <ul class="navbar-nav mr-auto">
-                                        <li class="nav-item">
-                                            <a class="nav-link text-white" href="WebFormNovoExpediente.aspx"><i class="icofont icofont-file-document text-white"></i>Novo Expediente 
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link text-white" href="WebFormElaborarCartas.aspx"><i class="icofont icofont-mail text-white"></i>Cartas 
-                                            </a>
-                                        </li>
-                                        <asp:UpdatePanel runat="server">
-                                            <ContentTemplate>
-                                                <asp:Timer runat="server" Interval="1000"></asp:Timer>
-                                                <asp:ScriptManager runat="server" ID="sm2"></asp:ScriptManager>
-                                                <li class="nav-item">
-                                                    <%
-                                                        si = new SGD.Models.sgdbEntities();
-                                                        var cantaemial = si.DocumentoUsuario_tb.Where(d => d.idUserReceiver == idu && d.Estado.Equals("Enviado")).Count();
-                                                    %>
-                                                    <a class="nav-link text-white" href="WebFormMailSgd.aspx"><i class="icofont icofont-send-mail text-white"></i>Email <span class="badge badge-info text-white"><%=cantaemial%></span>
-                                                    </a>
-                                                </li>
-
-                                            </ContentTemplate>
-                                        </asp:UpdatePanel>
-
-
-                                        <li class="nav-item">
-                                            <a class="nav-link text-white" href="WebFormPesquisarExpedientes.aspx"><i class="icofont icofont-search text-white"></i>Pesquisar Expedientes
-                                            </a>
-                                        </li>
-
-
-                                    </ul>
-
-
-                                    <div class="form-inline">
-
-                                        <div class="nav-item">
-                                            <a href="#">
-                                                <i class="icofont icofont-user-alt-3 icofont-2x text-white"></i>
-                                                <span runat="server" id="nomeUsuario"></span>
-                                                <i class="icofont icofont-rounded-down"></i>
-                                            </a>
-                                            <ul class="navbar-varient-submenu">
-
-                                                <li>
-                                                    <a href="WebFormPerfilUsuario.aspx">
-                                                        <i class="icon-user-follow text-white"></i>Perfil
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="WebFormResumoActual.aspx">
-                                                        <i class="icon-user text-white"></i>Resumo do Sistema
-                                                    </a>
-                                                </li>
-                                                <li id="config" runat="server">
-                                                    <a href="WebFormConfiguracoes.aspx">
-                                                        <i class="icon-options text-white"></i>Configuracoes
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="Default.aspx">
-                                                        <i class="icon-logout text-white"></i>Sair
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </nav>
-                            <br />
-                            <br />
-                            <div class="well-lg">
-
-
-
-                                <br />
-                                
-
-                            </div>
-                            <br />
-                            <div class="footer" style="background-color: cornflowerblue">
-                                <div class="container text-white">
-                                    <p class="text-center">
-                                        <asp:Label ID="TimeOfPrice" runat="server"></asp:Label>
-                                        Universidade Cat&oacute;lica de Mo&ccedil;ambique - &copy; 2019 Todos os Direitos Reservados - Rua Comandante Galvão, nº688, 
-Ponta-Gêa, Beira, Mo&ccedil;ambique
-                                    <br />
-                                        Tel (Central): (+258) 23 324 809 - Fax: (+258) 23 324 858 - Email:
-                                    <a href="mailto:reitoria@ucm.ac.mz" class="text-white">reitoria@ucm.ac.mz</a>
-                                        - Web:
-                                    <a title="www.ucm.ac.mz" class="text-white" href="http://www.ucm.ac.mz">www.ucm.ac.mz</a>
-                                        <br />
-                                        Desenvolvido por Osvaldo Artur Dionisio para trabalho final do curso @Copyright 2019
-                                    </p>
-
-                                </div>
-                                         </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>--%>
-
-
-
-                 
      
     </form>
       </div>
-<!-- jQuery 3 -->
+
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
-<!-- jQuery UI 1.11.4 -->
+
 <script src="bower_components/jquery-ui/jquery-ui.min.js"></script>
-<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+
 <script>
   $.widget.bridge('uibutton', $.ui.button);
 </script>
-<!-- Bootstrap 3.3.7 -->
+
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<!-- Morris.js charts -->
 <script src="bower_components/raphael/raphael.min.js"></script>
 <script src="bower_components/morris.js/morris.min.js"></script>
-<!-- Sparkline -->
 <script src="bower_components/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
-<!-- jvectormap -->
 <script src="plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
 <script src="plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-<!-- jQuery Knob Chart -->
 <script src="bower_components/jquery-knob/dist/jquery.knob.min.js"></script>
-<!-- daterangepicker -->
 <script src="bower_components/moment/min/moment.min.js"></script>
 <script src="bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
-<!-- datepicker -->
 <script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-<!-- Bootstrap WYSIHTML5 -->
 <script src="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
-<!-- Slimscroll -->
 <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-<!-- FastClick -->
 <script src="bower_components/fastclick/lib/fastclick.js"></script>
-<!-- AdminLTE App -->
 <script src="dist/js/adminlte.min.js"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<%--<script src="dist/js/pages/dashboard.js"></script>--%>
-<!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
 </body>
 </html>

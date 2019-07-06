@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using SGD.Models;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace SGD
 {
@@ -21,12 +23,7 @@ public         sgdbEntities si = new sgdbEntities();
 
         protected void btnCursos_Click(object sender, EventArgs e)
         {
-           PanelCursos.Visible = true;
-            PanelCOM.Visible = false;
-            PanelDepartamento.Visible = false;
-            PanelCategoria.Visible = false;
-            PanelPedidos.Visible = false;
-            PanelUsuario.Visible = false;
+   
 
         }
 
@@ -60,12 +57,7 @@ public         sgdbEntities si = new sgdbEntities();
 
         protected void btnDepartamento_Click(object sender, EventArgs e)
         {
-            PanelCursos.Visible = false;
-            PanelDepartamento.Visible = true;
-            PanelCategoria.Visible = false;
-            PanelPedidos.Visible = false;
-            PanelCOM.Visible = false;
-            PanelUsuario.Visible = false;
+    
         }
 
         protected void adicionarnovoDepartamento()
@@ -95,12 +87,6 @@ public         sgdbEntities si = new sgdbEntities();
         protected void btnCategoria_Click(object sender, EventArgs e)
         {
 
-            PanelCursos.Visible = false;
-            PanelDepartamento.Visible = false;
-            PanelCategoria.Visible = true;
-            PanelPedidos.Visible = false;
-            PanelCOM.Visible = false;
-            PanelUsuario.Visible = false;
         }
 
         protected void btnSalvarCategoria_Click(object sender, EventArgs e)
@@ -127,12 +113,7 @@ public         sgdbEntities si = new sgdbEntities();
         {
 
             
-            PanelCursos.Visible = false;
-            PanelDepartamento.Visible = false;
-            PanelCategoria.Visible = false;
-            PanelPedidos.Visible = true;
-            PanelCOM.Visible = false;
-            PanelUsuario.Visible = false;
+         
         }
         protected void adicionarnovoPedido()
         {
@@ -166,12 +147,7 @@ public         sgdbEntities si = new sgdbEntities();
         protected void btnCOM_Click(object sender, EventArgs e)
         {
 
-            PanelCursos.Visible = false;
-            PanelDepartamento.Visible = false;
-            PanelCategoria.Visible = false;
-            PanelPedidos.Visible = false;
-            PanelCOM.Visible = true;
-            PanelUsuario.Visible = false;
+       
 
         }
 
@@ -203,6 +179,31 @@ public         sgdbEntities si = new sgdbEntities();
             }
         }
 
+        string has = "Fr@ncoLu(KY%@m!a01254[]<>*&NSsbzxX";
+
+
+
+
+
+
+
+        String Cri(string passs)
+        {
+            String decrip = "";
+            Byte[] dados = UTF8Encoding.UTF8.GetBytes(passs);
+            using (MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider())
+            {
+                Byte[] chave = md5.ComputeHash(UTF8Encoding.UTF8.GetBytes(has));
+                using (TripleDESCryptoServiceProvider dat = new TripleDESCryptoServiceProvider() { Key = chave, Mode = CipherMode.ECB, Padding = PaddingMode.PKCS7 })
+                {
+                    ICryptoTransform tras = dat.CreateEncryptor();
+                    byte[] resulta = tras.TransformFinalBlock(dados, 0, dados.Length);
+                    decrip = Convert.ToBase64String(resulta, 0, resulta.Length);
+                }
+
+            }
+            return decrip;
+        }
         private void fpermissio( int idDep, int idus) {
 
             try
@@ -259,13 +260,25 @@ public         sgdbEntities si = new sgdbEntities();
 
         protected void btnUsuario_Click(object sender, EventArgs e)
         {
-            PanelCursos.Visible = false;
-            PanelDepartamento.Visible = false;
-            PanelCategoria.Visible = false;
-            PanelPedidos.Visible = false;
-            PanelCOM.Visible = false;
-            PanelUsuario.Visible = true;
+       
 
+        }
+        int guiid;
+        protected void gdvw1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                
+                guiid = int.Parse( gdvw1.SelectedRow.Cells[1] .Text);
+                var getid = si.user.Where(d => d.idUser == guiid).FirstOrDefault();
+                HttpContext.Current.Response.Redirect("~/WebFormDetalhesUsuario.aspx?id="+ getid.GuidMap, false);
+                HttpContext.Current.ApplicationInstance.CompleteRequest();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }

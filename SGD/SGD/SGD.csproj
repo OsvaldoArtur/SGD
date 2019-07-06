@@ -375,6 +375,7 @@
     <Content Include="bower_components\bootstrap\dist\css\bootstrap-theme.min.css" />
     <Content Include="bower_components\bootstrap\dist\css\bootstrap.css" />
     <Content Include="bower_components\bootstrap\dist\css\bootstrap.min.css" />
+    <Content Include="bower_components\bootstrap\dist\css\pagination.css" />
     <Content Include="bower_components\bootstrap\dist\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="bower_components\bootstrap\dist\js\bootstrap.js" />
     <Content Include="bower_components\bootstrap\dist\js\bootstrap.min.js" />
@@ -6529,11 +6530,13 @@
     <Content Include="plugins\timepicker\bootstrap-timepicker.min.js" />
     <Content Include="WebFormCadastroEmpresa.aspx" />
     <Content Include="WebFormConfiguracoes.aspx" />
+    <Content Include="WebFormCriarVagasTFC.aspx" />
     <Content Include="WebFormCursos.aspx" />
     <Content Include="WebFormDetalhesCartas.aspx" />
     <Content Include="WebFormDetalhesExpediente.aspx" />
     <Content Include="WebFormDetalhesExpedienteEnviado.aspx" />
     <Content Include="WebFormDetalhesUsuario.aspx" />
+    <Content Include="WebFormDetalhesVaga.aspx" />
     <Content Include="WebFormDownloadAnexo.aspx" />
     <Content Include="WebFormDownloadCartas.aspx" />
     <Content Include="WebFormDownloadDocument.aspx" />
@@ -6555,6 +6558,7 @@
     <Content Include="WebFormResumoActual.aspx" />
     <Content Include="WebFormSendSMS.aspx" />
     <Content Include="SiteMaster.Master" />
+    <Content Include="WebFormSubmissao.aspx" />
     <Content Include="WebFormSucessoCartas.aspx" />
     <Content Include="WebFormViewC.aspx" />
     <Content Include="WebFormViewE.aspx" />
@@ -7040,6 +7044,7 @@
     <Content Include="plugins\input-mask\phone-codes\phone-be.json" />
     <Content Include="plugins\input-mask\phone-codes\phone-codes.json" />
     <None Include="Properties\PublishProfiles\www.sgd.com.pubxml" />
+    <Content Include="SiteSub.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -7125,6 +7130,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Modelo.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Movimentacao_Documentos_tb.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\pastadepartamento.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
@@ -7149,6 +7157,12 @@
     <Compile Include="Models\Sms_tb.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Submissao_tb.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Supervisor_mono_tb.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\sysdiagrams.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
@@ -7156,6 +7170,9 @@
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\user.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Vagas_Submissao_tb.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\View_Expedientes.cs">
@@ -7182,6 +7199,13 @@
     <Compile Include="SiteMaster.Master.designer.cs">
       <DependentUpon>SiteMaster.Master</DependentUpon>
     </Compile>
+    <Compile Include="SiteSub.Master.cs">
+      <DependentUpon>SiteSub.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteSub.Master.designer.cs">
+      <DependentUpon>SiteSub.Master</DependentUpon>
+    </Compile>
     <Compile Include="WebFormCadastroEmpresa.aspx.cs">
       <DependentUpon>WebFormCadastroEmpresa.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -7195,6 +7219,13 @@
     </Compile>
     <Compile Include="WebFormConfiguracoes.aspx.designer.cs">
       <DependentUpon>WebFormConfiguracoes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebFormCriarVagasTFC.aspx.cs">
+      <DependentUpon>WebFormCriarVagasTFC.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebFormCriarVagasTFC.aspx.designer.cs">
+      <DependentUpon>WebFormCriarVagasTFC.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebFormCursos.aspx.cs">
       <DependentUpon>WebFormCursos.aspx</DependentUpon>
@@ -7230,6 +7261,13 @@
     </Compile>
     <Compile Include="WebFormDetalhesUsuario.aspx.designer.cs">
       <DependentUpon>WebFormDetalhesUsuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebFormDetalhesVaga.aspx.cs">
+      <DependentUpon>WebFormDetalhesVaga.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebFormDetalhesVaga.aspx.designer.cs">
+      <DependentUpon>WebFormDetalhesVaga.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebFormDownloadAnexo.aspx.cs">
       <DependentUpon>WebFormDownloadAnexo.aspx</DependentUpon>
@@ -7419,6 +7457,13 @@
     </Compile>
     <Compile Include="WebFormSendSMS.aspx.designer.cs">
       <DependentUpon>WebFormSendSMS.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebFormSubmissao.aspx.cs">
+      <DependentUpon>WebFormSubmissao.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebFormSubmissao.aspx.designer.cs">
+      <DependentUpon>WebFormSubmissao.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebFormSucessoCartas.aspx.cs">
       <DependentUpon>WebFormSucessoCartas.aspx</DependentUpon>

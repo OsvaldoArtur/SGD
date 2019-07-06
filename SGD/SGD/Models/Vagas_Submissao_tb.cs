@@ -12,19 +12,23 @@ namespace SGD.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Curso_tb
+    public partial class Vagas_Submissao_tb
     {
-        public Curso_tb()
+        public Vagas_Submissao_tb()
         {
-            this.Cartas_tb = new HashSet<Cartas_tb>();
             this.Submissao_tb = new HashSet<Submissao_tb>();
         }
     
-        public int idCurso { get; set; }
-        public string Curso { get; set; }
-        public string DescricaoCurso { get; set; }
+        public int id_vaga_submissao { get; set; }
+        public string Titulo { get; set; }
+        public Nullable<System.DateTime> Data_inicio { get; set; }
+        public Nullable<System.DateTime> Data_fim { get; set; }
+        public string Descricao { get; set; }
+        public Nullable<int> idOwner { get; set; }
+        public string Estado { get; set; }
+        public string Guidmap { get; set; }
+        public Nullable<int> Ano { get; set; }
     
-        public virtual ICollection<Cartas_tb> Cartas_tb { get; set; }
         public virtual ICollection<Submissao_tb> Submissao_tb { get; set; }
     }
 }

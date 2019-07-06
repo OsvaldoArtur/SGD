@@ -4,9 +4,17 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <!-- Content Header (Page header) -->
-    <section class="content-header">
-        <h1>Navegacao
-        <%--<small>Version 2.0</small>--%>
+   
+    <%
+                        var gui = Request.QueryString["id"];
+                        si = new SGD.Models.sgdbEntities();
+                        var LevaNome = si.departamento.Where(d => d.GuidMap.Equals(gui)).FirstOrDefault();
+
+                    %>
+    
+     <section class="content-header">
+        <h1><%=LevaNome.NomeDepartamento %>
+        
         </h1>
         <ol class="breadcrumb">
             <li><a href="WebFormInicio.aspx"><i class="fa fa-home"></i>Inicio</a></li>
@@ -19,35 +27,12 @@
 
     <div class="row">
         <div class="col-lg-12">
-            <div class="box box-info">
-                <div class="box-header with-border">
-                    <%
-                        var gui = Request.QueryString["id"];
-                        si = new SGD.Models.sgdbEntities();
-                        var LevaNome = si.departamento.Where(d => d.GuidMap.Equals(gui)).FirstOrDefault();
-
-                    %>
-
-                    <div class="box-title"><%=LevaNome.NomeDepartamento %></div>
-
-                    <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
-                            <i class="fa fa-minus"></i>
-                        </button>
-                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                    </div>
-                </div>
-
-                <div class="box-body">
-                    <div class="col-sm-12">
-                        <div class="text-right">
+         
+                  <div class="text-right">
                             <a href="#sign-in" data-toggle="modal" data-target="#sign-in"><i class="ion-plus">Nova Pasta</i></a>
                         </div>
-                        <br />
-                        <%--  <ul class="list-view">
-                                                <li>--%>
-
-                        <div class="row">
+           
+                                  
                             <% 
                                 int idusuario = int.Parse(Session["idu"].ToString());
                                 si = new SGD.Models.sgdbEntities();
@@ -64,17 +49,18 @@
                                     var contou1 = si.EnviarDocumentos.Where(s => s.idPastaDepartamento == site.idpastadepartamento && s.Estado.Equals("Respondido")).Count();
 
                             %>
-                            <div class="col-md-3">
+                            <div class="col-md-3 col-sm-6 col-xs-12">
                                 <a href="WebFormDocumentos.aspx?id=<%=site.GuidMap%>">
-                                    <div class="info-box bg-aqua">
-                                        <span class="info-box-icon"><i class="ion-ios-folder-outline"></i></span>
+                                    <div class="info-box">
+                                        <span class="info-box-icon bg-aqua">
+                                            <i class="ion-ios-folder-outline"></i></span>
 
-                                        <div class="info-box-content">
-                                            <span class="info-box-text"><b><%=site.DataCriada %> </b></span>
-                                            <span class="info-box-number"><% =site.NomePasta %></span>
+                                        <div class="info-box-content ">
+                                         <br />
+                                          <% =site.NomePasta %>
 
                                         </div>
-
+                                     
                                         <!-- /.info-box-content -->
                                     </div>
                                 </a>
@@ -83,17 +69,12 @@
 
 
                             <% }%>
-                        </div>
-
-                    </div>
+                        
 
 
-
-                </div>
-            </div>
+           
         </div>
-        <%--    </li>
-                                            </ul>--%>
+      
     </div>
     </div>
                             </div>

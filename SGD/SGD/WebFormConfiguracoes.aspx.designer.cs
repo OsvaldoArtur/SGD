@@ -13,69 +13,6 @@ namespace SGD {
     public partial class WebFormConfiguracoes {
         
         /// <summary>
-        /// btnCursos control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCursos;
-        
-        /// <summary>
-        /// btnDepartamento control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnDepartamento;
-        
-        /// <summary>
-        /// btnCategoria control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCategoria;
-        
-        /// <summary>
-        /// ButtonPedidos control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonPedidos;
-        
-        /// <summary>
-        /// btnCOM control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCOM;
-        
-        /// <summary>
-        /// btnUsuario control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnUsuario;
-        
-        /// <summary>
-        /// PanelCursos control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel PanelCursos;
-        
-        /// <summary>
         /// GridViewCurso control.
         /// </summary>
         /// <remarks>
@@ -92,15 +29,6 @@ namespace SGD {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceCurso;
-        
-        /// <summary>
-        /// PanelDepartamento control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel PanelDepartamento;
         
         /// <summary>
         /// GridViewDepartamento control.
@@ -121,15 +49,6 @@ namespace SGD {
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
         
         /// <summary>
-        /// PanelCategoria control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel PanelCategoria;
-        
-        /// <summary>
         /// GridViewCategoria control.
         /// </summary>
         /// <remarks>
@@ -146,15 +65,6 @@ namespace SGD {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceCategoria;
-        
-        /// <summary>
-        /// PanelPedidos control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel PanelPedidos;
         
         /// <summary>
         /// GridViewPedidos control.
@@ -175,15 +85,6 @@ namespace SGD {
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourcePedido;
         
         /// <summary>
-        /// PanelCOM control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel PanelCOM;
-        
-        /// <summary>
         /// TextBoxCOMSMS control.
         /// </summary>
         /// <remarks>
@@ -202,13 +103,13 @@ namespace SGD {
         protected global::System.Web.UI.WebControls.Button btnAddUpdateCOM;
         
         /// <summary>
-        /// PanelUsuario control.
+        /// sm1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel PanelUsuario;
+        protected global::System.Web.UI.ScriptManager sm1;
         
         /// <summary>
         /// txtNomeusuario control.
@@ -371,6 +272,24 @@ namespace SGD {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSalvarUsuario;
+        
+        /// <summary>
+        /// gdvw1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gdvw1;
+        
+        /// <summary>
+        /// SqlDataSourceUsuario control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceUsuario;
         
         /// <summary>
         /// txtNomeCurso control.

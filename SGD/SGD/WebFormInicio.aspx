@@ -21,6 +21,8 @@
   
     
          <div class="row">
+
+
               <%
                                 si = new SGD.Models.sgdbEntities();
                                 var busca = si.View_PermissaoDepartamento.Where(d => d.idUsuario == idu && d.Estado.Equals("true")).ToList();
@@ -28,7 +30,7 @@
                                 {
                                     nome = item.NomeDepartamento;
                                     id = item.GuidDepartamento;
-
+                      
                             %>
         <div class="col-md-4 col-sm-6 col-xs-12">
              <a href="WebFormPastaDepartamento.aspx?id=<%=id%>">
@@ -36,8 +38,10 @@
             <span class="info-box-icon bg-aqua"><i class="ion ion-ios-folder"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-text"><%=nome %></span>
-              <span ><small> Criada por <%=item.NomeUsuario %></small></span>
+                <br />
+                
+              <%=nome %>
+<%--              <span ><small> Criada por <%=item.NomeUsuario %></small></span>--%>
             </div>
             <!-- /.info-box-content -->
           </div>

@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using SGD.Models;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace SGD
 {
@@ -60,10 +62,31 @@ namespace SGD
                 throw ex;
             }
         }
+
+        UnicodeEncoding unicodeEncoding = new UnicodeEncoding();
+        RSACryptoServiceProvider rSACryptoServiceProvider = new RSACryptoServiceProvider();
+        byte[] data;
+        byte[] encryptData;
+        byte[] Encrypt(byte[] data, RSAParameters RSAKey, bool fOAEP)
+        {
+            byte[] encryptedData;
+            using (RSACryptoServiceProvider rSACryptoServiceProvider = new RSACryptoServiceProvider())
+            {
+                rSACryptoServiceProvider.ImportParameters(RSAKey);
+                encryptedData = rSACryptoServiceProvider.Encrypt(data, fOAEP);
+            }
+            return encryptedData;
+        }
         protected void btnSalvarUsuario_Click(object sender, EventArgs e)
         {
             try
             {
+
+                data = unicodeEncoding.GetBytes(txtSenhas.Text);
+                encryptData = Encrypt(data, rSACryptoServiceProvider.ExportParameters(false), false);
+                String senha = unicodeEncoding.GetString(encryptData);
+
+
                 string a = Guid.NewGuid().ToString();
 
                 user us = new Models.user()
@@ -90,7 +113,7 @@ namespace SGD
                 si.SaveChanges();
                 fpermissio(int.Parse(txtDeparta.SelectedValue), us.idUser);
 
-                HttpContext.Current.Response.Redirect("~/Default.aspx", false);
+                HttpContext.Current.Response.Redirect("~/Login.aspx", false);
                 HttpContext.Current.ApplicationInstance.CompleteRequest();
             }
             catch (Exception)

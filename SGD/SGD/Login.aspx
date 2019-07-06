@@ -21,16 +21,18 @@
 
 
 </head>
-<body class="hold-transition login-page">
+<body class="hold-transition">
     <div class="login-box">
 
         <div class="login-logo">
-
-
-            <a href="index.aspx">Sistema de Gestao de <b>Expedientes</b></a>
+           <a href="index.aspx" ><img src="dist/img/ucm_logo.jpg" /></a>    
+            <br />
+            <a href="index.aspx" class="text-muted">Sistema de Gestao de <b>Expedientes</b></a>
+            
         </div>
 
         <div class="login-box-body">
+
             <p class="login-box-msg">Entrar</p>
 
             <form runat="server">
@@ -44,12 +46,13 @@
                 </div>
                 <div class="row">
 
-                    <div class="col-xs-8">
-                    </div>
-                    <div class="col-xs-4">
-                        <asp:Button ID="btnEnter" CssClass="btn btn-primary btn-flat btn-block" OnClick="btnEntrar_Click" Text="Entrar" runat="server" />
+               <div class="form-group">
+                     
+                    <div class="col-sm-12 text-center">
+                        <asp:Button ID="btnEnter" CssClass="btn btn-primary" OnClick="btnEntrar_Click" Text="Entrar" runat="server" />
                     </div>
                    
+               </div>
                 </div>
             </form>
             <br />
