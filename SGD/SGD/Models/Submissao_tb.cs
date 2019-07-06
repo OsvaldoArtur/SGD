@@ -28,6 +28,7 @@ namespace SGD.Models
         public Nullable<int> id_Secretaria_Confirmacao { get; set; }
         public string Guidmap { get; set; }
         public Nullable<int> id_vaga_submissao { get; set; }
+        public byte[] Documento { get; set; }
     
         public virtual Curso_tb Curso_tb { get; set; }
         public virtual Supervisor_mono_tb Supervisor_mono_tb { get; set; }

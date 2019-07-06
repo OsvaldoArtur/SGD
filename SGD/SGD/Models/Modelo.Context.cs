@@ -45,7 +45,6 @@ namespace SGD.Models
         public DbSet<RespostaDocumento> RespostaDocumento { get; set; }
         public DbSet<RespostaDocumentoUsuario_tb> RespostaDocumentoUsuario_tb { get; set; }
         public DbSet<Sms_tb> Sms_tb { get; set; }
-        public DbSet<Submissao_tb> Submissao_tb { get; set; }
         public DbSet<Supervisor_mono_tb> Supervisor_mono_tb { get; set; }
         public DbSet<sysdiagrams> sysdiagrams { get; set; }
         public DbSet<Tipo_usuario_tb> Tipo_usuario_tb { get; set; }
@@ -56,5 +55,6 @@ namespace SGD.Models
         public DbSet<View_Recebimentos> View_Recebimentos { get; set; }
         public DbSet<View_RespostasCartas> View_RespostasCartas { get; set; }
         public DbSet<Vagas_Submissao_tb> Vagas_Submissao_tb { get; set; }
+        public DbSet<Submissao_tb> Submissao_tb { get; set; }
     }
 }

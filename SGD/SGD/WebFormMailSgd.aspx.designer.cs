@@ -13,6 +13,15 @@ namespace SGD {
     public partial class WebFormMailSgd {
         
         /// <summary>
+        /// PanelRecebidos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PanelRecebidos;
+        
+        /// <summary>
         /// linkInbox control.
         /// </summary>
         /// <remarks>
@@ -29,15 +38,6 @@ namespace SGD {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton btnEmailEnviado;
-        
-        /// <summary>
-        /// PanelRecebidos control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel PanelRecebidos;
         
         /// <summary>
         /// PanelComporEmail control.

@@ -179,7 +179,7 @@
                                                     <td class="text-muted"><%=an.Anexo_Nome  %></td>
                                                     <td class="text-muted"><%=an.Anexo_Type %></td>
                                                     <td class="text-muted"><%=an.Anexo_Contentype %></td>
-                                                    <td class="text-muted"><a href="WebFormDownloadCartas.aspx?id=<%=an.idAnexosCartas%>" target="_blank">Download</a></td>
+                                                    <td class="text-muted"><a href="WebFormDownloadCartas.aspx?id=<%=an.idAnexosCartas%>" target="_blank">Download</a> </td>
 
                                                 </tr>
 

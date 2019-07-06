@@ -33,7 +33,7 @@ namespace SGD
                 ab.Resposta = txtNota.Text;
                 si.RespostaDocumentoUsuario_tb.Add(ab);
                 si.SaveChanges();
-
+                txtNota.Text = "";
             }
             catch (Exception)
             {

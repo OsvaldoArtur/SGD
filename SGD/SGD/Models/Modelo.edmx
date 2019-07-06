@@ -262,6 +262,7 @@
           <Property Name="id_Secretaria_Confirmacao" Type="int" />
           <Property Name="Guidmap" Type="text" />
           <Property Name="id_vaga_submissao" Type="int" />
+          <Property Name="Documento" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="Supervisor_mono_tb">
           <Key>
@@ -915,7 +916,6 @@ FROM [dbo].[View_RespostasCartas] AS [View_RespostasCartas]</DefiningQuery>
           <EntitySet Name="RespostaDocumento" EntityType="sgdbModel.RespostaDocumento" />
           <EntitySet Name="RespostaDocumentoUsuario_tb" EntityType="sgdbModel.RespostaDocumentoUsuario_tb" />
           <EntitySet Name="Sms_tb" EntityType="sgdbModel.Sms_tb" />
-          <EntitySet Name="Submissao_tb" EntityType="sgdbModel.Submissao_tb" />
           <EntitySet Name="Supervisor_mono_tb" EntityType="sgdbModel.Supervisor_mono_tb" />
           <EntitySet Name="sysdiagrams" EntityType="sgdbModel.sysdiagrams" />
           <EntitySet Name="Tipo_usuario_tb" EntityType="sgdbModel.Tipo_usuario_tb" />
@@ -948,10 +948,6 @@ FROM [dbo].[View_RespostasCartas] AS [View_RespostasCartas]</DefiningQuery>
           <AssociationSet Name="FK_EnviarDocumentos_categoria" Association="sgdbModel.FK_EnviarDocumentos_categoria">
             <End Role="categoria" EntitySet="categoria" />
             <End Role="EnviarDocumentos" EntitySet="EnviarDocumentos" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Submissao_tb_Curso_tb" Association="sgdbModel.FK_Submissao_tb_Curso_tb">
-            <End Role="Curso_tb" EntitySet="Curso_tb" />
-            <End Role="Submissao_tb" EntitySet="Submissao_tb" />
           </AssociationSet>
           <AssociationSet Name="FK_PermissaoDeparramento_tb_departamento" Association="sgdbModel.FK_PermissaoDeparramento_tb_departamento">
             <End Role="departamento" EntitySet="departamento" />
@@ -997,15 +993,20 @@ FROM [dbo].[View_RespostasCartas] AS [View_RespostasCartas]</DefiningQuery>
             <End Role="user" EntitySet="user" />
             <End Role="RespostaDocumento" EntitySet="RespostaDocumento" />
           </AssociationSet>
-          <AssociationSet Name="FK_Submissao_tb_Supervisor_mono_tb" Association="sgdbModel.FK_Submissao_tb_Supervisor_mono_tb">
-            <End Role="Supervisor_mono_tb" EntitySet="Supervisor_mono_tb" />
-            <End Role="Submissao_tb" EntitySet="Submissao_tb" />
-          </AssociationSet>
           <AssociationSet Name="FK_user_Tipo_usuario_tb" Association="sgdbModel.FK_user_Tipo_usuario_tb">
             <End Role="Tipo_usuario_tb" EntitySet="Tipo_usuario_tb" />
             <End Role="user" EntitySet="user" />
           </AssociationSet>
           <EntitySet Name="Vagas_Submissao_tb" EntityType="sgdbModel.Vagas_Submissao_tb" />
+          <EntitySet Name="Submissao_tb" EntityType="sgdbModel.Submissao_tb" />
+          <AssociationSet Name="FK_Submissao_tb_Curso_tb" Association="sgdbModel.FK_Submissao_tb_Curso_tb">
+            <End Role="Curso_tb" EntitySet="Curso_tb" />
+            <End Role="Submissao_tb" EntitySet="Submissao_tb" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Submissao_tb_Supervisor_mono_tb" Association="sgdbModel.FK_Submissao_tb_Supervisor_mono_tb">
+            <End Role="Supervisor_mono_tb" EntitySet="Supervisor_mono_tb" />
+            <End Role="Submissao_tb" EntitySet="Submissao_tb" />
+          </AssociationSet>
           <AssociationSet Name="FK_Submissao_tb_Vagas_Submissao_tb" Association="sgdbModel.FK_Submissao_tb_Vagas_Submissao_tb">
             <End Role="Vagas_Submissao_tb" EntitySet="Vagas_Submissao_tb" />
             <End Role="Submissao_tb" EntitySet="Submissao_tb" />
@@ -1281,28 +1282,6 @@ FROM [dbo].[View_RespostasCartas] AS [View_RespostasCartas]</DefiningQuery>
           <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="GuidMap" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="Submissao_tb">
-          <Key>
-            <PropertyRef Name="idSubmissao" />
-          </Key>
-          <Property Name="idSubmissao" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Nome_completo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="idCurso" Type="Int32" />
-          <Property Name="Tema" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="Tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="id_Supervisor" Type="Int32" />
-          <Property Name="Data_Submissao" Type="DateTime" Precision="3" />
-          <Property Name="Data_Registo" Type="DateTime" Precision="3" />
-          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Contacto_Estudante" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Codigo_Projecto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="id_Secretaria_Confirmacao" Type="Int32" />
-          <Property Name="Guidmap" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="id_vaga_submissao" Type="Int32" />
-          <NavigationProperty Name="Curso_tb" Relationship="sgdbModel.FK_Submissao_tb_Curso_tb" FromRole="Submissao_tb" ToRole="Curso_tb" />
-          <NavigationProperty Name="Supervisor_mono_tb" Relationship="sgdbModel.FK_Submissao_tb_Supervisor_mono_tb" FromRole="Submissao_tb" ToRole="Supervisor_mono_tb" />
-          <NavigationProperty Name="Vagas_Submissao_tb" Relationship="sgdbModel.FK_Submissao_tb_Vagas_Submissao_tb" FromRole="Submissao_tb" ToRole="Vagas_Submissao_tb" />
-        </EntityType>
         <EntityType Name="Supervisor_mono_tb">
           <Key>
             <PropertyRef Name="idSupervisor" />
@@ -1534,18 +1513,6 @@ FROM [dbo].[View_RespostasCartas] AS [View_RespostasCartas]</DefiningQuery>
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Submissao_tb_Curso_tb">
-          <End Type="sgdbModel.Curso_tb" Role="Curso_tb" Multiplicity="0..1" />
-          <End Type="sgdbModel.Submissao_tb" Role="Submissao_tb" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Curso_tb">
-              <PropertyRef Name="idCurso" />
-            </Principal>
-            <Dependent Role="Submissao_tb">
-              <PropertyRef Name="idCurso" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_PermissaoDeparramento_tb_departamento">
           <End Type="sgdbModel.departamento" Role="departamento" Multiplicity="0..1" />
           <End Type="sgdbModel.PermissaoDeparramento_tb" Role="PermissaoDeparramento_tb" Multiplicity="*" />
@@ -1678,18 +1645,6 @@ FROM [dbo].[View_RespostasCartas] AS [View_RespostasCartas]</DefiningQuery>
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Submissao_tb_Supervisor_mono_tb">
-          <End Type="sgdbModel.Supervisor_mono_tb" Role="Supervisor_mono_tb" Multiplicity="0..1" />
-          <End Type="sgdbModel.Submissao_tb" Role="Submissao_tb" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Supervisor_mono_tb">
-              <PropertyRef Name="idSupervisor" />
-            </Principal>
-            <Dependent Role="Submissao_tb">
-              <PropertyRef Name="id_Supervisor" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_user_Tipo_usuario_tb">
           <End Type="sgdbModel.Tipo_usuario_tb" Role="Tipo_usuario_tb" Multiplicity="0..1" />
           <End Type="sgdbModel.user" Role="user" Multiplicity="*" />
@@ -1717,6 +1672,53 @@ FROM [dbo].[View_RespostasCartas] AS [View_RespostasCartas]</DefiningQuery>
           <Property Name="Ano" Type="Int32" />
           <NavigationProperty Name="Submissao_tb" Relationship="sgdbModel.FK_Submissao_tb_Vagas_Submissao_tb" FromRole="Vagas_Submissao_tb" ToRole="Submissao_tb" />
         </EntityType>
+        <EntityType Name="Submissao_tb">
+          <Key>
+            <PropertyRef Name="idSubmissao" />
+          </Key>
+          <Property Name="idSubmissao" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome_completo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="idCurso" Type="Int32" />
+          <Property Name="Tema" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="id_Supervisor" Type="Int32" />
+          <Property Name="Data_Submissao" Type="DateTime" Precision="3" />
+          <Property Name="Data_Registo" Type="DateTime" Precision="3" />
+          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Contacto_Estudante" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Codigo_Projecto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="id_Secretaria_Confirmacao" Type="Int32" />
+          <Property Name="Guidmap" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="id_vaga_submissao" Type="Int32" />
+          <Property Name="Documento" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Curso_tb" Relationship="sgdbModel.FK_Submissao_tb_Curso_tb" FromRole="Submissao_tb" ToRole="Curso_tb" />
+          <NavigationProperty Name="Supervisor_mono_tb" Relationship="sgdbModel.FK_Submissao_tb_Supervisor_mono_tb" FromRole="Submissao_tb" ToRole="Supervisor_mono_tb" />
+          <NavigationProperty Name="Vagas_Submissao_tb" Relationship="sgdbModel.FK_Submissao_tb_Vagas_Submissao_tb" FromRole="Submissao_tb" ToRole="Vagas_Submissao_tb" />
+        </EntityType>
+        <Association Name="FK_Submissao_tb_Curso_tb">
+          <End Type="sgdbModel.Curso_tb" Role="Curso_tb" Multiplicity="0..1" />
+          <End Type="sgdbModel.Submissao_tb" Role="Submissao_tb" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Curso_tb">
+              <PropertyRef Name="idCurso" />
+            </Principal>
+            <Dependent Role="Submissao_tb">
+              <PropertyRef Name="idCurso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Submissao_tb_Supervisor_mono_tb">
+          <End Type="sgdbModel.Supervisor_mono_tb" Role="Supervisor_mono_tb" Multiplicity="0..1" />
+          <End Type="sgdbModel.Submissao_tb" Role="Submissao_tb" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supervisor_mono_tb">
+              <PropertyRef Name="idSupervisor" />
+            </Principal>
+            <Dependent Role="Submissao_tb">
+              <PropertyRef Name="id_Supervisor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Submissao_tb_Vagas_Submissao_tb">
           <End Type="sgdbModel.Vagas_Submissao_tb" Role="Vagas_Submissao_tb" Multiplicity="0..1" />
           <End Type="sgdbModel.Submissao_tb" Role="Submissao_tb" Multiplicity="*" />
@@ -1994,26 +1996,6 @@ FROM [dbo].[View_RespostasCartas] AS [View_RespostasCartas]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Submissao_tb">
-            <EntityTypeMapping TypeName="sgdbModel.Submissao_tb">
-              <MappingFragment StoreEntitySet="Submissao_tb">
-                <ScalarProperty Name="id_vaga_submissao" ColumnName="id_vaga_submissao" />
-                <ScalarProperty Name="Guidmap" ColumnName="Guidmap" />
-                <ScalarProperty Name="id_Secretaria_Confirmacao" ColumnName="id_Secretaria_Confirmacao" />
-                <ScalarProperty Name="Codigo_Projecto" ColumnName="Codigo_Projecto" />
-                <ScalarProperty Name="Contacto_Estudante" ColumnName="Contacto_Estudante" />
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="Data_Registo" ColumnName="Data_Registo" />
-                <ScalarProperty Name="Data_Submissao" ColumnName="Data_Submissao" />
-                <ScalarProperty Name="id_Supervisor" ColumnName="id_Supervisor" />
-                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
-                <ScalarProperty Name="Tema" ColumnName="Tema" />
-                <ScalarProperty Name="idCurso" ColumnName="idCurso" />
-                <ScalarProperty Name="Nome_completo" ColumnName="Nome_completo" />
-                <ScalarProperty Name="idSubmissao" ColumnName="idSubmissao" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Supervisor_mono_tb">
             <EntityTypeMapping TypeName="sgdbModel.Supervisor_mono_tb">
               <MappingFragment StoreEntitySet="Supervisor_mono_tb">
@@ -2177,6 +2159,27 @@ FROM [dbo].[View_RespostasCartas] AS [View_RespostasCartas]</DefiningQuery>
                 <ScalarProperty Name="Data_inicio" ColumnName="Data_inicio" />
                 <ScalarProperty Name="Titulo" ColumnName="Titulo" />
                 <ScalarProperty Name="id_vaga_submissao" ColumnName="id_vaga_submissao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Submissao_tb">
+            <EntityTypeMapping TypeName="sgdbModel.Submissao_tb">
+              <MappingFragment StoreEntitySet="Submissao_tb">
+                <ScalarProperty Name="Documento" ColumnName="Documento" />
+                <ScalarProperty Name="id_vaga_submissao" ColumnName="id_vaga_submissao" />
+                <ScalarProperty Name="Guidmap" ColumnName="Guidmap" />
+                <ScalarProperty Name="id_Secretaria_Confirmacao" ColumnName="id_Secretaria_Confirmacao" />
+                <ScalarProperty Name="Codigo_Projecto" ColumnName="Codigo_Projecto" />
+                <ScalarProperty Name="Contacto_Estudante" ColumnName="Contacto_Estudante" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Data_Registo" ColumnName="Data_Registo" />
+                <ScalarProperty Name="Data_Submissao" ColumnName="Data_Submissao" />
+                <ScalarProperty Name="id_Supervisor" ColumnName="id_Supervisor" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Tema" ColumnName="Tema" />
+                <ScalarProperty Name="idCurso" ColumnName="idCurso" />
+                <ScalarProperty Name="Nome_completo" ColumnName="Nome_completo" />
+                <ScalarProperty Name="idSubmissao" ColumnName="idSubmissao" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

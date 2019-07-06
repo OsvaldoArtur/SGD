@@ -25,7 +25,6 @@
         <EntityTypeShape EntityType="sgdbModel.RespostaDocumento" Width="1.5" PointX="10.5" PointY="10.25" />
         <EntityTypeShape EntityType="sgdbModel.RespostaDocumentoUsuario_tb" Width="1.5" PointX="3" PointY="1.375" />
         <EntityTypeShape EntityType="sgdbModel.Sms_tb" Width="1.5" PointX="9.75" PointY="0.75" />
-        <EntityTypeShape EntityType="sgdbModel.Submissao_tb" Width="1.5" PointX="5.25" PointY="24.125" />
         <EntityTypeShape EntityType="sgdbModel.Supervisor_mono_tb" Width="1.5" PointX="3" PointY="26.25" />
         <EntityTypeShape EntityType="sgdbModel.sysdiagrams" Width="1.5" PointX="10.75" PointY="3.75" />
         <EntityTypeShape EntityType="sgdbModel.Tipo_usuario_tb" Width="1.5" PointX="0.75" PointY="7.75" />
@@ -41,7 +40,6 @@
         <AssociationConnector Association="sgdbModel.FK_Cartas_tb_Pedidos_tb" />
         <AssociationConnector Association="sgdbModel.FK_RespostaCartas_tb_Cartas_tb" />
         <AssociationConnector Association="sgdbModel.FK_EnviarDocumentos_categoria" />
-        <AssociationConnector Association="sgdbModel.FK_Submissao_tb_Curso_tb" />
         <AssociationConnector Association="sgdbModel.FK_PermissaoDeparramento_tb_departamento" />
         <AssociationConnector Association="sgdbModel.FK_user_departamento" />
         <AssociationConnector Association="sgdbModel.pastadepartamento_FK_pastadepartamento_idDeparta" />
@@ -53,9 +51,11 @@
         <AssociationConnector Association="sgdbModel.FK_RecebimentoDocumentos_pastadepartamento" />
         <AssociationConnector Association="sgdbModel.FK_PermissaoPasta_user" />
         <AssociationConnector Association="sgdbModel.FK_RespostaDocumento_user" />
-        <AssociationConnector Association="sgdbModel.FK_Submissao_tb_Supervisor_mono_tb" />
         <AssociationConnector Association="sgdbModel.FK_user_Tipo_usuario_tb" />
         <EntityTypeShape EntityType="sgdbModel.Vagas_Submissao_tb" Width="1.5" PointX="16.375" PointY="11" />
+        <EntityTypeShape EntityType="sgdbModel.Submissao_tb" Width="1.5" PointX="18.625" PointY="17.5" />
+        <AssociationConnector Association="sgdbModel.FK_Submissao_tb_Curso_tb" />
+        <AssociationConnector Association="sgdbModel.FK_Submissao_tb_Supervisor_mono_tb" />
         <AssociationConnector Association="sgdbModel.FK_Submissao_tb_Vagas_Submissao_tb" />
       </Diagram>
     </edmx:Diagrams>

@@ -13,6 +13,24 @@ namespace SGD {
     public partial class WebFormReadEmail {
         
         /// <summary>
+        /// tm1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.Timer tm1;
+        
+        /// <summary>
+        /// sm1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager sm1;
+        
+        /// <summary>
         /// txtNota control.
         /// </summary>
         /// <remarks>

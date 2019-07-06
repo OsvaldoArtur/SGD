@@ -25,16 +25,18 @@
     <div class="login-box">
 
         <div class="login-logo">
-           <a href="index.aspx" ><img src="dist/img/ucm_logo.jpg" /></a>    
+            <a href="index.aspx">
+                <img src="dist/img/ucm_logo.jpg" /></a>
             <br />
             <a href="index.aspx" class="text-muted">Sistema de Gestao de <b>Expedientes</b></a>
-            
+
         </div>
 
         <div class="login-box-body">
 
             <p class="login-box-msg">Entrar</p>
-
+      
+         
             <form runat="server">
                 <div class="form-group has-feedback">
                     <input type="email" runat="server" id="inputUsuario" class="form-control" placeholder="Email">
@@ -46,29 +48,32 @@
                 </div>
                 <div class="row">
 
-               <div class="form-group">
-                     
-                    <div class="col-sm-12 text-center">
-                        <asp:Button ID="btnEnter" CssClass="btn btn-primary" OnClick="btnEntrar_Click" Text="Entrar" runat="server" />
+                    <div class="form-group">
+
+                        <div class="col-sm-12 text-center">
+                            <asp:Button ID="btnEnter" CssClass="btn btn-primary" OnClick="btnEntrar_Click" Text="Entrar" runat="server" />
+                        </div>
+
                     </div>
-                   
-               </div>
+
+              
+                                        <div class="form-group">
+                        <div class="col-sm-12 text-center">
+                            Todos os direitos Reservados. @Osvaldo Artur Dionisio
+                        </div>
+         <br />     
+             <div class="form-group">
+                        <div class="col-sm-12 text-center">
+                            <label id="mensages" runat="server" visible="false" style="font-size: 14px" class=" label label-danger">Email ou senha incorrecta, tente novamente!</label>
+
+                        </div>
+                    </div>
+                    </div>
                 </div>
             </form>
-            <br />
-            <p class="text-center">
-                <br />
-
-
-                Todos os direitos Reservados. @Osvaldo Artur Dionisio
-
         </div>
-        <br />
-          <div class="">
-                        <label id="mensages" runat="server" visible="false" style="font-size: 14px" class=" label label-danger">Email ou Senha Incorrecta, por favor Tente Novamente!</label>   
-                    </div>
     </div>
-   
+
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
 
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
