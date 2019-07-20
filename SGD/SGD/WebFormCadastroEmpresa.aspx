@@ -60,17 +60,18 @@
 
                                             </div>
                                             <div class="col-lg-4">
-                                                <input type="file" id="txtFile" class="form-control form-control-info" runat="server" />
-                                            </div>
-
-                                        </div>
-                                        <div class="form-group row">
-                                            <div class="col-lg-6">
+                                                <input type="file" id="txtFile" runat="server" />
                                             </div>
                                             <div class="col-lg-4">
+                                                <asp:FileUpload ID="FileUpload1"  runat="server" accept=".png,.jpg,.jpeg,.gif" />
+
                                             </div>
-                                            <div class="col-lg-2">
-                                                <asp:Button ID="BtnSalvar" OnClick="BtnSalvar_Click" CssClass="btn btn-info btn-block" Text="Salvar" runat="server" />
+                                           
+                                        </div>
+                                        <div class="form-group row">
+                                           
+                                            <div class="col-lg-12">
+                                                <asp:Button ID="BtnSalvar" OnClick="BtnSalvar_Click" CssClass="btn btn-info pull-right" Text="Salvar" runat="server" />
                                             </div>
 
                                         </div>

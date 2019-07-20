@@ -16,7 +16,18 @@ namespace SGD
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            idu = int.Parse(Session["idu"].ToString());
+            if (Session["idu"] != null)
+            {
+                idu = int.Parse(Session["idu"].ToString());
+            }
+
+            else
+            {
+                Session["idu"] = 0;
+                HttpContext.Current.Response.Redirect("~/Index.aspx", false);
+                HttpContext.Current.ApplicationInstance.CompleteRequest();
+
+            }
         }
 
         void sb() {

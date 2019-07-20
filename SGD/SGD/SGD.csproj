@@ -6542,6 +6542,7 @@
     <Content Include="WebFormDownloadDocument.aspx" />
     <Content Include="WebFormElaborarCartas.aspx" />
     <Content Include="WebFormExpe.aspx" />
+    <Content Include="WebFormListaSubmissao.aspx" />
     <Content Include="WebFormMailSgd.aspx" />
     <Content Include="WebFormNovoExpediente.aspx" />
     <Content Include="WebFormPedidosCartas.aspx" />
@@ -6559,6 +6560,7 @@
     <Content Include="WebFormSendSMS.aspx" />
     <Content Include="SiteMaster.Master" />
     <Content Include="WebFormSubmissao.aspx" />
+    <Content Include="WebFormSubmissaoPesquisar.aspx" />
     <Content Include="WebFormSucessoCartas.aspx" />
     <Content Include="WebFormViewC.aspx" />
     <Content Include="WebFormViewE.aspx" />
@@ -7057,7 +7059,6 @@
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
     <Content Include="WebFormSendEmail.aspx" />
-    <Content Include="WebForm1.aspx" />
     <Content Include="WebFormCategoria.aspx" />
     <Content Include="WebFormDepartamentos.aspx" />
     <Content Include="WebFormDocumentos.aspx" />
@@ -7175,6 +7176,9 @@
     <Compile Include="Models\Vagas_Submissao_tb.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\View_Email.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\View_Expedientes.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
@@ -7188,6 +7192,9 @@
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\View_RespostasCartas.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\View_Submissao.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -7304,6 +7311,13 @@
     <Compile Include="WebFormExpe.aspx.designer.cs">
       <DependentUpon>WebFormExpe.aspx</DependentUpon>
     </Compile>
+    <Compile Include="WebFormListaSubmissao.aspx.cs">
+      <DependentUpon>WebFormListaSubmissao.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebFormListaSubmissao.aspx.designer.cs">
+      <DependentUpon>WebFormListaSubmissao.aspx</DependentUpon>
+    </Compile>
     <Compile Include="WebFormMailSgd.aspx.cs">
       <DependentUpon>WebFormMailSgd.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -7409,13 +7423,6 @@
     <Compile Include="WebFormSendEmail.aspx.designer.cs">
       <DependentUpon>WebFormSendEmail.aspx</DependentUpon>
     </Compile>
-    <Compile Include="WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-    </Compile>
     <Compile Include="WebFormCategoria.aspx.cs">
       <DependentUpon>WebFormCategoria.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -7464,6 +7471,13 @@
     </Compile>
     <Compile Include="WebFormSubmissao.aspx.designer.cs">
       <DependentUpon>WebFormSubmissao.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebFormSubmissaoPesquisar.aspx.cs">
+      <DependentUpon>WebFormSubmissaoPesquisar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebFormSubmissaoPesquisar.aspx.designer.cs">
+      <DependentUpon>WebFormSubmissaoPesquisar.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebFormSucessoCartas.aspx.cs">
       <DependentUpon>WebFormSucessoCartas.aspx</DependentUpon>

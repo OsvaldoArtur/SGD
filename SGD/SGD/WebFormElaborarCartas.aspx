@@ -132,7 +132,8 @@
                                 <div class="col-sm-12 text-right">
                                     <asp:Button ID="Button1" ValidationGroup="0A" CssClass="btn btn-success" runat="server" OnClick="Button1_Click" Text="Enviar Carta" />
                                     <asp:Button ID="Button2" CssClass="btn btn-info" runat="server" Text="Cancelar" />
-
+                                        <ajaxToolkit:ConfirmButtonExtender ID="btn1" runat="server" TargetControlID="Button1" ConfirmText="Deseja submeter o pedido? " />
+                        <asp:ScriptManager runat="server"></asp:ScriptManager>
                                 </div>
                             </div>
                         </div>

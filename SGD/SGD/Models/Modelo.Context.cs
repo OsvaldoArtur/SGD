@@ -56,5 +56,7 @@ namespace SGD.Models
         public DbSet<View_RespostasCartas> View_RespostasCartas { get; set; }
         public DbSet<Vagas_Submissao_tb> Vagas_Submissao_tb { get; set; }
         public DbSet<Submissao_tb> Submissao_tb { get; set; }
+        public DbSet<View_Email> View_Email { get; set; }
+        public DbSet<View_Submissao> View_Submissao { get; set; }
     }
 }

@@ -17,6 +17,7 @@ namespace SGD.Models
         public Pedidos_tb()
         {
             this.Cartas_tb = new HashSet<Cartas_tb>();
+            this.DocumentoUsuario_tb = new HashSet<DocumentoUsuario_tb>();
         }
     
         public int idPedidos { get; set; }
@@ -24,5 +25,6 @@ namespace SGD.Models
         public string DescricaoPedido { get; set; }
     
         public virtual ICollection<Cartas_tb> Cartas_tb { get; set; }
+        public virtual ICollection<DocumentoUsuario_tb> DocumentoUsuario_tb { get; set; }
     }
 }

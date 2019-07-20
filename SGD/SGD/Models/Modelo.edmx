@@ -329,6 +329,27 @@
           <Property Name="Ano" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6002: The table/view 'sgdb.dbo.View_Email' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_Email">
+          <Key>
+            <PropertyRef Name="idDocumentouser" />
+            <PropertyRef Name="idPedidos" />
+          </Key>
+          <Property Name="idDocumentouser" Type="int" Nullable="false" />
+          <Property Name="idUserReceiver" Type="int" />
+          <Property Name="idUserSender" Type="int" />
+          <Property Name="Assunto" Type="varchar" MaxLength="50" />
+          <Property Name="Nota" Type="varchar(max)" />
+          <Property Name="Estado" Type="varchar" MaxLength="50" />
+          <Property Name="CodigoDocumneto" Type="varchar" MaxLength="50" />
+          <Property Name="DataEnvio" Type="datetime" />
+          <Property Name="HoraEnvio" Type="time" Precision="7" />
+          <Property Name="GuidMap" Type="varchar(max)" />
+          <Property Name="idPedidos" Type="int" Nullable="false" />
+          <Property Name="Pedido" Type="varchar" MaxLength="50" />
+          <Property Name="DescricaoPedido" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'sgdb.dbo.View_Expedientes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="View_Expedientes">
           <Key>
@@ -440,6 +461,35 @@ warning 6002: The table/view 'sgdb.dbo.View_RespostasCartas' does not have a pri
           <Property Name="Resposta" Type="varchar" MaxLength="500" />
           <Property Name="Nota" Type="varchar" MaxLength="500" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'sgdb.dbo.View_Submissao' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_Submissao">
+          <Key>
+            <PropertyRef Name="idSubmissao" />
+            <PropertyRef Name="idCurso" />
+            <PropertyRef Name="idSupervisor" />
+            <PropertyRef Name="id_vaga_submissao" />
+          </Key>
+          <Property Name="idSubmissao" Type="int" Nullable="false" />
+          <Property Name="Nome_completo" Type="varchar" MaxLength="250" />
+          <Property Name="Tema" Type="varchar" MaxLength="250" />
+          <Property Name="Tipo" Type="varchar" MaxLength="50" />
+          <Property Name="Data_Submissao" Type="datetime" />
+          <Property Name="Data_Registo" Type="datetime" />
+          <Property Name="Estado" Type="varchar" MaxLength="50" />
+          <Property Name="Contacto_Estudante" Type="varchar" MaxLength="50" />
+          <Property Name="Codigo_Projecto" Type="varchar" MaxLength="50" />
+          <Property Name="Guidmap" Type="text" />
+          <Property Name="Documento" Type="varbinary(max)" />
+          <Property Name="idCurso" Type="int" Nullable="false" />
+          <Property Name="Curso" Type="varchar" MaxLength="500" />
+          <Property Name="idSupervisor" Type="int" Nullable="false" />
+          <Property Name="Expr1" Type="varchar" MaxLength="250" />
+          <Property Name="Departamento" Type="varchar" MaxLength="50" />
+          <Property Name="Contacto" Type="varchar" MaxLength="50" />
+          <Property Name="id_vaga_submissao" Type="int" Nullable="false" />
+          <Property Name="Expr2" Type="varchar(max)" />
+        </EntityType>
         <Association Name="FK_Anexos_Cartas_tb_Cartas_tb">
           <End Role="Cartas_tb" Type="Self.Cartas_tb" Multiplicity="0..1" />
           <End Role="Anexos_Cartas_tb" Type="Self.Anexos_Cartas_tb" Multiplicity="*" />
@@ -497,6 +547,18 @@ warning 6002: The table/view 'sgdb.dbo.View_RespostasCartas' does not have a pri
             </Principal>
             <Dependent Role="documentosenviados">
               <PropertyRef Name="idEnvio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DocumentoUsuario_tb_Pedidos_tb">
+          <End Role="Pedidos_tb" Type="Self.Pedidos_tb" Multiplicity="0..1" />
+          <End Role="DocumentoUsuario_tb" Type="Self.DocumentoUsuario_tb" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pedidos_tb">
+              <PropertyRef Name="idPedidos" />
+            </Principal>
+            <Dependent Role="DocumentoUsuario_tb">
+              <PropertyRef Name="idPedido" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -719,6 +781,23 @@ warning 6002: The table/view 'sgdb.dbo.View_RespostasCartas' does not have a pri
           <EntitySet Name="Tipo_usuario_tb" EntityType="Self.Tipo_usuario_tb" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="user" EntityType="Self.user" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Vagas_Submissao_tb" EntityType="Self.Vagas_Submissao_tb" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="View_Email" EntityType="Self.View_Email" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[View_Email].[idDocumentouser] AS [idDocumentouser], 
+[View_Email].[idUserReceiver] AS [idUserReceiver], 
+[View_Email].[idUserSender] AS [idUserSender], 
+[View_Email].[Assunto] AS [Assunto], 
+[View_Email].[Nota] AS [Nota], 
+[View_Email].[Estado] AS [Estado], 
+[View_Email].[CodigoDocumneto] AS [CodigoDocumneto], 
+[View_Email].[DataEnvio] AS [DataEnvio], 
+[View_Email].[HoraEnvio] AS [HoraEnvio], 
+[View_Email].[GuidMap] AS [GuidMap], 
+[View_Email].[idPedidos] AS [idPedidos], 
+[View_Email].[Pedido] AS [Pedido], 
+[View_Email].[DescricaoPedido] AS [DescricaoPedido]
+FROM [dbo].[View_Email] AS [View_Email]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="View_Expedientes" EntityType="Self.View_Expedientes" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
 [View_Expedientes].[idEnvio] AS [idEnvio], 
@@ -806,6 +885,29 @@ FROM [dbo].[View_Recebimentos] AS [View_Recebimentos]</DefiningQuery>
 [View_RespostasCartas].[Nota] AS [Nota]
 FROM [dbo].[View_RespostasCartas] AS [View_RespostasCartas]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="View_Submissao" EntityType="Self.View_Submissao" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[View_Submissao].[idSubmissao] AS [idSubmissao], 
+[View_Submissao].[Nome_completo] AS [Nome_completo], 
+[View_Submissao].[Tema] AS [Tema], 
+[View_Submissao].[Tipo] AS [Tipo], 
+[View_Submissao].[Data_Submissao] AS [Data_Submissao], 
+[View_Submissao].[Data_Registo] AS [Data_Registo], 
+[View_Submissao].[Estado] AS [Estado], 
+[View_Submissao].[Contacto_Estudante] AS [Contacto_Estudante], 
+[View_Submissao].[Codigo_Projecto] AS [Codigo_Projecto], 
+[View_Submissao].[Guidmap] AS [Guidmap], 
+[View_Submissao].[Documento] AS [Documento], 
+[View_Submissao].[idCurso] AS [idCurso], 
+[View_Submissao].[Curso] AS [Curso], 
+[View_Submissao].[idSupervisor] AS [idSupervisor], 
+[View_Submissao].[Expr1] AS [Expr1], 
+[View_Submissao].[Departamento] AS [Departamento], 
+[View_Submissao].[Contacto] AS [Contacto], 
+[View_Submissao].[id_vaga_submissao] AS [id_vaga_submissao], 
+[View_Submissao].[Expr2] AS [Expr2]
+FROM [dbo].[View_Submissao] AS [View_Submissao]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_Anexos_Cartas_tb_Cartas_tb" Association="Self.FK_Anexos_Cartas_tb_Cartas_tb">
             <End Role="Cartas_tb" EntitySet="Cartas_tb" />
             <End Role="Anexos_Cartas_tb" EntitySet="Anexos_Cartas_tb" />
@@ -825,6 +927,10 @@ FROM [dbo].[View_RespostasCartas] AS [View_RespostasCartas]</DefiningQuery>
           <AssociationSet Name="FK_documentosenviados_EnviarDocumentos" Association="Self.FK_documentosenviados_EnviarDocumentos">
             <End Role="EnviarDocumentos" EntitySet="EnviarDocumentos" />
             <End Role="documentosenviados" EntitySet="documentosenviados" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DocumentoUsuario_tb_Pedidos_tb" Association="Self.FK_DocumentoUsuario_tb_Pedidos_tb">
+            <End Role="Pedidos_tb" EntitySet="Pedidos_tb" />
+            <End Role="DocumentoUsuario_tb" EntitySet="DocumentoUsuario_tb" />
           </AssociationSet>
           <AssociationSet Name="FK_EnviarDocumentos_categoria" Association="Self.FK_EnviarDocumentos_categoria">
             <End Role="categoria" EntitySet="categoria" />
@@ -1011,6 +1117,12 @@ FROM [dbo].[View_RespostasCartas] AS [View_RespostasCartas]</DefiningQuery>
             <End Role="Vagas_Submissao_tb" EntitySet="Vagas_Submissao_tb" />
             <End Role="Submissao_tb" EntitySet="Submissao_tb" />
           </AssociationSet>
+          <EntitySet Name="View_Email" EntityType="sgdbModel.View_Email" />
+          <AssociationSet Name="FK_DocumentoUsuario_tb_Pedidos_tb" Association="sgdbModel.FK_DocumentoUsuario_tb_Pedidos_tb">
+            <End Role="Pedidos_tb" EntitySet="Pedidos_tb" />
+            <End Role="DocumentoUsuario_tb" EntitySet="DocumentoUsuario_tb" />
+          </AssociationSet>
+          <EntitySet Name="View_Submissao" EntityType="sgdbModel.View_Submissao" />
         </EntityContainer>
         <EntityType Name="Anexos_Cartas_tb">
           <Key>
@@ -1133,6 +1245,7 @@ FROM [dbo].[View_RespostasCartas] AS [View_RespostasCartas]</DefiningQuery>
           <Property Name="HoraEnvio" Type="Time" Precision="7" />
           <Property Name="GuidMap" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="RespostaDocumentoUsuario_tb" Relationship="sgdbModel.FK_RespostaDocumentoUsuario_tb_DocumentoUsuario_tb" FromRole="DocumentoUsuario_tb" ToRole="RespostaDocumentoUsuario_tb" />
+          <NavigationProperty Name="Pedidos_tb" Relationship="sgdbModel.FK_DocumentoUsuario_tb_Pedidos_tb" FromRole="DocumentoUsuario_tb" ToRole="Pedidos_tb" />
         </EntityType>
         <EntityType Name="EnviarDocumentos">
           <Key>
@@ -1204,6 +1317,7 @@ FROM [dbo].[View_RespostasCartas] AS [View_RespostasCartas]</DefiningQuery>
           <Property Name="Pedido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="DescricaoPedido" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Cartas_tb" Relationship="sgdbModel.FK_Cartas_tb_Pedidos_tb" FromRole="Pedidos_tb" ToRole="Cartas_tb" />
+          <NavigationProperty Name="DocumentoUsuario_tb" Relationship="sgdbModel.FK_DocumentoUsuario_tb_Pedidos_tb" FromRole="Pedidos_tb" ToRole="DocumentoUsuario_tb" />
         </EntityType>
         <EntityType Name="PermissaoDeparramento_tb">
           <Key>
@@ -1731,6 +1845,64 @@ FROM [dbo].[View_RespostasCartas] AS [View_RespostasCartas]</DefiningQuery>
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="View_Email">
+          <Key>
+            <PropertyRef Name="idDocumentouser" />
+            <PropertyRef Name="idPedidos" />
+          </Key>
+          <Property Name="idDocumentouser" Type="Int32" Nullable="false" />
+          <Property Name="idUserReceiver" Type="Int32" />
+          <Property Name="idUserSender" Type="Int32" />
+          <Property Name="Assunto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Nota" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CodigoDocumneto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DataEnvio" Type="DateTime" Precision="3" />
+          <Property Name="HoraEnvio" Type="Time" Precision="7" />
+          <Property Name="GuidMap" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="idPedidos" Type="Int32" Nullable="false" />
+          <Property Name="Pedido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DescricaoPedido" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_DocumentoUsuario_tb_Pedidos_tb">
+          <End Type="sgdbModel.Pedidos_tb" Role="Pedidos_tb" Multiplicity="0..1" />
+          <End Type="sgdbModel.DocumentoUsuario_tb" Role="DocumentoUsuario_tb" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pedidos_tb">
+              <PropertyRef Name="idPedidos" />
+            </Principal>
+            <Dependent Role="DocumentoUsuario_tb">
+              <PropertyRef Name="idPedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="View_Submissao">
+          <Key>
+            <PropertyRef Name="idSubmissao" />
+            <PropertyRef Name="idCurso" />
+            <PropertyRef Name="idSupervisor" />
+            <PropertyRef Name="id_vaga_submissao" />
+          </Key>
+          <Property Name="idSubmissao" Type="Int32" Nullable="false" />
+          <Property Name="Nome_completo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Tema" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Data_Submissao" Type="DateTime" Precision="3" />
+          <Property Name="Data_Registo" Type="DateTime" Precision="3" />
+          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Contacto_Estudante" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Codigo_Projecto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Guidmap" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Documento" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="idCurso" Type="Int32" Nullable="false" />
+          <Property Name="Curso" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="idSupervisor" Type="Int32" Nullable="false" />
+          <Property Name="Expr1" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Departamento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Contacto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="id_vaga_submissao" Type="Int32" Nullable="false" />
+          <Property Name="Expr2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2178,6 +2350,50 @@ FROM [dbo].[View_RespostasCartas] AS [View_RespostasCartas]</DefiningQuery>
                 <ScalarProperty Name="Tipo" ColumnName="Tipo" />
                 <ScalarProperty Name="Tema" ColumnName="Tema" />
                 <ScalarProperty Name="idCurso" ColumnName="idCurso" />
+                <ScalarProperty Name="Nome_completo" ColumnName="Nome_completo" />
+                <ScalarProperty Name="idSubmissao" ColumnName="idSubmissao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_Email">
+            <EntityTypeMapping TypeName="sgdbModel.View_Email">
+              <MappingFragment StoreEntitySet="View_Email">
+                <ScalarProperty Name="DescricaoPedido" ColumnName="DescricaoPedido" />
+                <ScalarProperty Name="Pedido" ColumnName="Pedido" />
+                <ScalarProperty Name="idPedidos" ColumnName="idPedidos" />
+                <ScalarProperty Name="GuidMap" ColumnName="GuidMap" />
+                <ScalarProperty Name="HoraEnvio" ColumnName="HoraEnvio" />
+                <ScalarProperty Name="DataEnvio" ColumnName="DataEnvio" />
+                <ScalarProperty Name="CodigoDocumneto" ColumnName="CodigoDocumneto" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Nota" ColumnName="Nota" />
+                <ScalarProperty Name="Assunto" ColumnName="Assunto" />
+                <ScalarProperty Name="idUserSender" ColumnName="idUserSender" />
+                <ScalarProperty Name="idUserReceiver" ColumnName="idUserReceiver" />
+                <ScalarProperty Name="idDocumentouser" ColumnName="idDocumentouser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_Submissao">
+            <EntityTypeMapping TypeName="sgdbModel.View_Submissao">
+              <MappingFragment StoreEntitySet="View_Submissao">
+                <ScalarProperty Name="Expr2" ColumnName="Expr2" />
+                <ScalarProperty Name="id_vaga_submissao" ColumnName="id_vaga_submissao" />
+                <ScalarProperty Name="Contacto" ColumnName="Contacto" />
+                <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+                <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+                <ScalarProperty Name="idSupervisor" ColumnName="idSupervisor" />
+                <ScalarProperty Name="Curso" ColumnName="Curso" />
+                <ScalarProperty Name="idCurso" ColumnName="idCurso" />
+                <ScalarProperty Name="Documento" ColumnName="Documento" />
+                <ScalarProperty Name="Guidmap" ColumnName="Guidmap" />
+                <ScalarProperty Name="Codigo_Projecto" ColumnName="Codigo_Projecto" />
+                <ScalarProperty Name="Contacto_Estudante" ColumnName="Contacto_Estudante" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Data_Registo" ColumnName="Data_Registo" />
+                <ScalarProperty Name="Data_Submissao" ColumnName="Data_Submissao" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Tema" ColumnName="Tema" />
                 <ScalarProperty Name="Nome_completo" ColumnName="Nome_completo" />
                 <ScalarProperty Name="idSubmissao" ColumnName="idSubmissao" />
               </MappingFragment>

@@ -14,152 +14,152 @@
     </section>
     <br />
 
-    
+
     <link href="bower_components/bootstrap/dist/css/pagination.css" rel="stylesheet" />
 
 
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="nav-tabs-custom">
-                        <ul class="nav nav-tabs">
-                            <li class=""><a href="#Cursos" data-toggle="tab">Cursos</a></li>
-                            <li><a href="#Departamento" data-toggle="tab">Departamento</a></li>
-                            <li><a href="#Categoria" data-toggle="tab">Categoria</a></li>
-                            <li><a href="#Pedidos" data-toggle="tab">Pedidos</a></li>
-                            <li><a href="#Portas" data-toggle="tab">Port SMS</a></li>
-                            <li><a href="#Usuarios" data-toggle="tab">Usuarios</a></li>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="nav-tabs-custom">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#Cursos" data-toggle="tab">Cursos</a></li>
+                    <li><a href="#Departamento" data-toggle="tab">Departamento</a></li>
+                    <li><a href="#Categoria" data-toggle="tab">Categoria</a></li>
+                    <li><a href="#Pedidos" data-toggle="tab">Pedidos</a></li>
+                    <li><a href="#Portas" data-toggle="tab">Port SMS</a></li>
+                    <li><a href="#Usuarios" data-toggle="tab">Usuarios</a></li>
 
-                        </ul>
-                        <div class="tab-content">
-                            <div class="tab-pane" id="Cursos">
-                                <div class="post">
-                                    <div class="text-right">
-                                        <a href="#curso" data-toggle="modal" data-target="#curso"><i class="ion-plus">Novo Curso</i></a>
-                                    </div>
-                                    <br />
-                                    <div>
-                                        <asp:GridView ID="GridViewCurso" CssClass="table table-responsive table-striped table-bordered no-margin" runat="server" AutoGenerateColumns="False" DataKeyNames="idCurso" DataSourceID="SqlDataSourceCurso">
-                                            <Columns>
-                                                <asp:BoundField DataField="idCurso" HeaderText="Code" InsertVisible="False" ReadOnly="True" SortExpression="idCurso" />
-                                                <asp:BoundField DataField="Curso" HeaderText="Curso" SortExpression="Curso" />
-                                                <asp:BoundField DataField="DescricaoCurso" HeaderText="Descricao" SortExpression="DescricaoCurso" />
-                                            </Columns>
-
-                                        </asp:GridView>
-
-                                        <asp:SqlDataSource ID="SqlDataSourceCurso" runat="server" ConnectionString="<%$ ConnectionStrings:sgdbConnectionString %>" DeleteCommand="DELETE FROM [Curso_tb] WHERE [idCurso] = @idCurso" InsertCommand="INSERT INTO [Curso_tb] ([Curso], [DescricaoCurso]) VALUES (@Curso, @DescricaoCurso)" SelectCommand="SELECT [idCurso], [Curso], [DescricaoCurso] FROM [Curso_tb] ORDER BY [Curso]" UpdateCommand="UPDATE [Curso_tb] SET [Curso] = @Curso, [DescricaoCurso] = @DescricaoCurso WHERE [idCurso] = @idCurso">
-                                            <DeleteParameters>
-                                                <asp:Parameter Name="idCurso" Type="Int32" />
-                                            </DeleteParameters>
-                                            <InsertParameters>
-                                                <asp:Parameter Name="Curso" Type="String" />
-                                                <asp:Parameter Name="DescricaoCurso" Type="String" />
-                                            </InsertParameters>
-                                            <UpdateParameters>
-                                                <asp:Parameter Name="Curso" Type="String" />
-                                                <asp:Parameter Name="DescricaoCurso" Type="String" />
-                                                <asp:Parameter Name="idCurso" Type="Int32" />
-                                            </UpdateParameters>
-                                        </asp:SqlDataSource>
-                                    </div>
-                                </div>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="Cursos">
+                        <div class="post">
+                            <div class="text-right">
+                                <a href="#curso" data-toggle="modal" data-target="#curso"><i class="ion-plus">Novo Curso</i></a>
                             </div>
-                            <div class="tab-pane" id="Departamento">
-                                <div class="text-right">
-                                    <a href="#departamentos" data-toggle="modal" data-target="#departamentos"><i class="ion-plus">Novo Departamento</i></a>
-                                </div>
-                                <br />
-                                <asp:GridView ID="GridViewDepartamento" CssClass="table table-responsive table-striped table-bordered no-margin" runat="server" AutoGenerateColumns="False" DataKeyNames="iddepartamento" DataSourceID="SqlDataSource1" AllowPaging="True" AllowSorting="True">
+                            <br />
+                            <div>
+                                <asp:GridView ID="GridViewCurso" CssClass="table table-responsive table-striped table-bordered no-margin" runat="server" AllowPaging="True" AllowSorting="true" AutoGenerateColumns="False" DataKeyNames="idCurso" DataSourceID="SqlDataSourceCurso">
                                     <Columns>
-                                        <asp:CommandField ShowEditButton="True" ShowDeleteButton="True" />
-                                        <asp:BoundField DataField="iddepartamento" HeaderText="iddepartamento" InsertVisible="False" ReadOnly="True" SortExpression="iddepartamento" Visible="False" />
-                                        <asp:BoundField DataField="NomeDepartamento" HeaderText="NomeDepartamento" SortExpression="NomeDepartamento" />
-                                        <asp:BoundField DataField="DescricaoDepartamanto" HeaderText="DescricaoDepartamanto" SortExpression="DescricaoDepartamanto" />
+                                        <asp:BoundField DataField="idCurso" HeaderText="Code" InsertVisible="False" ReadOnly="True" SortExpression="idCurso" />
+                                        <asp:BoundField DataField="Curso" HeaderText="Curso" SortExpression="Curso" />
+                                        <asp:BoundField DataField="DescricaoCurso" HeaderText="Descricao" SortExpression="DescricaoCurso" />
                                     </Columns>
+                                     <PagerStyle HorizontalAlign="Center" CssClass="pagination-ys" />
                                 </asp:GridView>
-                                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:sgdbConnectionString %>" DeleteCommand="DELETE FROM [departamento] WHERE [iddepartamento] = @iddepartamento" InsertCommand="INSERT INTO [departamento] ([NomeDepartamento], [DescricaoDepartamanto]) VALUES (@NomeDepartamento, @DescricaoDepartamanto)" SelectCommand="SELECT * FROM [departamento]" UpdateCommand="UPDATE [departamento] SET [NomeDepartamento] = @NomeDepartamento, [DescricaoDepartamanto] = @DescricaoDepartamanto WHERE [iddepartamento] = @iddepartamento">
+
+                                <asp:SqlDataSource ID="SqlDataSourceCurso" runat="server" ConnectionString="<%$ ConnectionStrings:sgdbConnectionString %>" DeleteCommand="DELETE FROM [Curso_tb] WHERE [idCurso] = @idCurso" InsertCommand="INSERT INTO [Curso_tb] ([Curso], [DescricaoCurso]) VALUES (@Curso, @DescricaoCurso)" SelectCommand="SELECT [idCurso], [Curso], [DescricaoCurso] FROM [Curso_tb] ORDER BY [Curso]" UpdateCommand="UPDATE [Curso_tb] SET [Curso] = @Curso, [DescricaoCurso] = @DescricaoCurso WHERE [idCurso] = @idCurso">
                                     <DeleteParameters>
-                                        <asp:Parameter Name="iddepartamento" Type="Int32" />
+                                        <asp:Parameter Name="idCurso" Type="Int32" />
                                     </DeleteParameters>
                                     <InsertParameters>
-                                        <asp:Parameter Name="NomeDepartamento" Type="String" />
-                                        <asp:Parameter Name="DescricaoDepartamanto" Type="String" />
+                                        <asp:Parameter Name="Curso" Type="String" />
+                                        <asp:Parameter Name="DescricaoCurso" Type="String" />
                                     </InsertParameters>
                                     <UpdateParameters>
-                                        <asp:Parameter Name="NomeDepartamento" Type="String" />
-                                        <asp:Parameter Name="DescricaoDepartamanto" Type="String" />
-                                        <asp:Parameter Name="iddepartamento" Type="Int32" />
+                                        <asp:Parameter Name="Curso" Type="String" />
+                                        <asp:Parameter Name="DescricaoCurso" Type="String" />
+                                        <asp:Parameter Name="idCurso" Type="Int32" />
                                     </UpdateParameters>
                                 </asp:SqlDataSource>
                             </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="Departamento">
+                        <div class="text-right">
+                            <a href="#departamentos" data-toggle="modal" data-target="#departamentos"><i class="ion-plus">Novo Departamento</i></a>
+                        </div>
+                        <br />
+                        <asp:GridView ID="GridViewDepartamento" CssClass="table table-responsive table-striped table-bordered no-margin" runat="server" AutoGenerateColumns="False" DataKeyNames="iddepartamento" DataSourceID="SqlDataSource1" AllowPaging="True" AllowSorting="True">
+                            <Columns>
+                                <asp:CommandField ShowEditButton="True" ShowDeleteButton="True" />
+                                <asp:BoundField DataField="iddepartamento" HeaderText="iddepartamento" InsertVisible="False" ReadOnly="True" SortExpression="iddepartamento" Visible="False" />
+                                <asp:BoundField DataField="NomeDepartamento" HeaderText="NomeDepartamento" SortExpression="NomeDepartamento" />
+                                <asp:BoundField DataField="DescricaoDepartamanto" HeaderText="DescricaoDepartamanto" SortExpression="DescricaoDepartamanto" />
+                            </Columns>
+                        </asp:GridView>
+                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:sgdbConnectionString %>" DeleteCommand="DELETE FROM [departamento] WHERE [iddepartamento] = @iddepartamento" InsertCommand="INSERT INTO [departamento] ([NomeDepartamento], [DescricaoDepartamanto]) VALUES (@NomeDepartamento, @DescricaoDepartamanto)" SelectCommand="SELECT * FROM [departamento]" UpdateCommand="UPDATE [departamento] SET [NomeDepartamento] = @NomeDepartamento, [DescricaoDepartamanto] = @DescricaoDepartamanto WHERE [iddepartamento] = @iddepartamento">
+                            <DeleteParameters>
+                                <asp:Parameter Name="iddepartamento" Type="Int32" />
+                            </DeleteParameters>
+                            <InsertParameters>
+                                <asp:Parameter Name="NomeDepartamento" Type="String" />
+                                <asp:Parameter Name="DescricaoDepartamanto" Type="String" />
+                            </InsertParameters>
+                            <UpdateParameters>
+                                <asp:Parameter Name="NomeDepartamento" Type="String" />
+                                <asp:Parameter Name="DescricaoDepartamanto" Type="String" />
+                                <asp:Parameter Name="iddepartamento" Type="Int32" />
+                            </UpdateParameters>
+                        </asp:SqlDataSource>
+                    </div>
 
-                            <div class="tab-pane" id="Categoria">
-                                <div class="form-horizontal">
-                                    <div class="text-right">
-                                        <a href="#categoria" data-toggle="modal" data-target="#categoria"><i class="ion-plus">Nova Categoria</i></a>
-                                    </div>
-                                    <br />
-                                    <asp:GridView ID="GridViewCategoria" CssClass="table table-striped table-responsive table-bordered no-margin" runat="server" AutoGenerateColumns="False" DataKeyNames="idCategoria" DataSourceID="SqlDataSourceCategoria" AllowPaging="True" AllowSorting="True">
-                                        <Columns>
-                                            <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
-                                            <asp:BoundField DataField="idCategoria" HeaderText="Code" ReadOnly="True" SortExpression="idCategoria" InsertVisible="False" />
-                                            <asp:BoundField DataField="NomeCategoria" HeaderText="Nome" SortExpression="NomeCategoria" />
-                                            <asp:BoundField DataField="DescricaoCategoria" HeaderText="Descricao" SortExpression="DescricaoCategoria" />
-                                        </Columns>
-                                    </asp:GridView>
-                                    <asp:SqlDataSource ID="SqlDataSourceCategoria" runat="server" ConnectionString="<%$ ConnectionStrings:sgdbConnectionString %>" DeleteCommand="DELETE FROM [categoria] WHERE [idCategoria] = @idCategoria" InsertCommand="INSERT INTO [categoria] ([NomeCategoria], [DescricaoCategoria]) VALUES (@NomeCategoria, @DescricaoCategoria)" SelectCommand="SELECT [idCategoria], [NomeCategoria], [DescricaoCategoria] FROM [categoria]" UpdateCommand="UPDATE [categoria] SET [NomeCategoria] = @NomeCategoria, [DescricaoCategoria] = @DescricaoCategoria WHERE [idCategoria] = @idCategoria">
-                                        <DeleteParameters>
-                                            <asp:Parameter Name="idCategoria" Type="Int32" />
-                                        </DeleteParameters>
-                                        <InsertParameters>
-                                            <asp:Parameter Name="NomeCategoria" Type="String" />
-                                            <asp:Parameter Name="DescricaoCategoria" Type="String" />
-                                        </InsertParameters>
-                                        <UpdateParameters>
-                                            <asp:Parameter Name="NomeCategoria" Type="String" />
-                                            <asp:Parameter Name="DescricaoCategoria" Type="String" />
-                                            <asp:Parameter Name="idCategoria" Type="Int32" />
-                                        </UpdateParameters>
-                                    </asp:SqlDataSource>
-                                </div>
+                    <div class="tab-pane" id="Categoria">
+                        <div class="form-horizontal">
+                            <div class="text-right">
+                                <a href="#categoria" data-toggle="modal" data-target="#categoria"><i class="ion-plus">Nova Categoria</i></a>
                             </div>
-                            <div class="tab-pane" id="Pedidos">
-                                <div class="form-horizontal">
-                                    <div class="text-right">
-                                        <a href="#pedidos" data-toggle="modal" data-target="#pedidos"><i class="ion-plus">Novos Pedidos</i></a>
-                                    </div>
-                                    <br />
-                                    <asp:GridView ID="GridViewPedidos" CssClass="table table-striped table-bordered nowrap" runat="server" AutoGenerateColumns="False" DataKeyNames="idPedidos" DataSourceID="SqlDataSourcePedido" AllowSorting="True">
-                                        <Columns>
-                                            <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
-                                            <asp:BoundField DataField="idPedidos" HeaderText="Code" InsertVisible="False" ReadOnly="True" SortExpression="idPedidos" />
-                                            <asp:BoundField DataField="Pedido" HeaderText="Pedido" SortExpression="Pedido" />
-                                            <asp:BoundField DataField="DescricaoPedido" HeaderText="Descricao" SortExpression="DescricaoPedido" />
-                                        </Columns>
-
-
-                                    </asp:GridView>
-                                    <asp:SqlDataSource ID="SqlDataSourcePedido" runat="server" ConnectionString="<%$ ConnectionStrings:sgdbConnectionString %>" DeleteCommand="DELETE FROM [Pedidos_tb] WHERE [idPedidos] = @idPedidos" InsertCommand="INSERT INTO [Pedidos_tb] ([Pedido], [DescricaoPedido]) VALUES (@Pedido, @DescricaoPedido)" SelectCommand="SELECT [idPedidos], [Pedido], [DescricaoPedido] FROM [Pedidos_tb] ORDER BY [Pedido]" UpdateCommand="UPDATE [Pedidos_tb] SET [Pedido] = @Pedido, [DescricaoPedido] = @DescricaoPedido WHERE [idPedidos] = @idPedidos">
-                                        <DeleteParameters>
-                                            <asp:Parameter Name="idPedidos" Type="Int32" />
-                                        </DeleteParameters>
-                                        <InsertParameters>
-                                            <asp:Parameter Name="Pedido" Type="String" />
-                                            <asp:Parameter Name="DescricaoPedido" Type="String" />
-                                        </InsertParameters>
-                                        <UpdateParameters>
-                                            <asp:Parameter Name="Pedido" Type="String" />
-                                            <asp:Parameter Name="DescricaoPedido" Type="String" />
-                                            <asp:Parameter Name="idPedidos" Type="Int32" />
-                                        </UpdateParameters>
-                                    </asp:SqlDataSource>
-                                </div>
+                            <br />
+                            <asp:GridView ID="GridViewCategoria" CssClass="table table-striped table-responsive table-bordered no-margin" runat="server" AutoGenerateColumns="False" DataKeyNames="idCategoria" DataSourceID="SqlDataSourceCategoria" AllowPaging="True" AllowSorting="True">
+                                <Columns>
+                                    <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
+                                    <asp:BoundField DataField="idCategoria" HeaderText="Code" ReadOnly="True" SortExpression="idCategoria" InsertVisible="False" />
+                                    <asp:BoundField DataField="NomeCategoria" HeaderText="Nome" SortExpression="NomeCategoria" />
+                                    <asp:BoundField DataField="DescricaoCategoria" HeaderText="Descricao" SortExpression="DescricaoCategoria" />
+                                </Columns>
+                            </asp:GridView>
+                            <asp:SqlDataSource ID="SqlDataSourceCategoria" runat="server" ConnectionString="<%$ ConnectionStrings:sgdbConnectionString %>" DeleteCommand="DELETE FROM [categoria] WHERE [idCategoria] = @idCategoria" InsertCommand="INSERT INTO [categoria] ([NomeCategoria], [DescricaoCategoria]) VALUES (@NomeCategoria, @DescricaoCategoria)" SelectCommand="SELECT [idCategoria], [NomeCategoria], [DescricaoCategoria] FROM [categoria]" UpdateCommand="UPDATE [categoria] SET [NomeCategoria] = @NomeCategoria, [DescricaoCategoria] = @DescricaoCategoria WHERE [idCategoria] = @idCategoria">
+                                <DeleteParameters>
+                                    <asp:Parameter Name="idCategoria" Type="Int32" />
+                                </DeleteParameters>
+                                <InsertParameters>
+                                    <asp:Parameter Name="NomeCategoria" Type="String" />
+                                    <asp:Parameter Name="DescricaoCategoria" Type="String" />
+                                </InsertParameters>
+                                <UpdateParameters>
+                                    <asp:Parameter Name="NomeCategoria" Type="String" />
+                                    <asp:Parameter Name="DescricaoCategoria" Type="String" />
+                                    <asp:Parameter Name="idCategoria" Type="Int32" />
+                                </UpdateParameters>
+                            </asp:SqlDataSource>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="Pedidos">
+                        <div class="form-horizontal">
+                            <div class="text-right">
+                                <a href="#pedidos" data-toggle="modal" data-target="#pedidos"><i class="ion-plus">Novos Pedidos</i></a>
                             </div>
+                            <br />
+                            <asp:GridView ID="GridViewPedidos" CssClass="table table-striped table-bordered nowrap" runat="server" AutoGenerateColumns="False" DataKeyNames="idPedidos" DataSourceID="SqlDataSourcePedido" AllowSorting="True">
+                                <Columns>
+                                    <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
+                                    <asp:BoundField DataField="idPedidos" HeaderText="Code" InsertVisible="False" ReadOnly="True" SortExpression="idPedidos" />
+                                    <asp:BoundField DataField="Pedido" HeaderText="Pedido" SortExpression="Pedido" />
+                                    <asp:BoundField DataField="DescricaoPedido" HeaderText="Descricao" SortExpression="DescricaoPedido" />
+                                </Columns>
 
-                            <div class="tab-pane" id="Portas">
 
-                                <asp:UpdatePanel runat="server">
-        <ContentTemplate>
+                            </asp:GridView>
+                            <asp:SqlDataSource ID="SqlDataSourcePedido" runat="server" ConnectionString="<%$ ConnectionStrings:sgdbConnectionString %>" DeleteCommand="DELETE FROM [Pedidos_tb] WHERE [idPedidos] = @idPedidos" InsertCommand="INSERT INTO [Pedidos_tb] ([Pedido], [DescricaoPedido]) VALUES (@Pedido, @DescricaoPedido)" SelectCommand="SELECT [idPedidos], [Pedido], [DescricaoPedido] FROM [Pedidos_tb] ORDER BY [Pedido]" UpdateCommand="UPDATE [Pedidos_tb] SET [Pedido] = @Pedido, [DescricaoPedido] = @DescricaoPedido WHERE [idPedidos] = @idPedidos">
+                                <DeleteParameters>
+                                    <asp:Parameter Name="idPedidos" Type="Int32" />
+                                </DeleteParameters>
+                                <InsertParameters>
+                                    <asp:Parameter Name="Pedido" Type="String" />
+                                    <asp:Parameter Name="DescricaoPedido" Type="String" />
+                                </InsertParameters>
+                                <UpdateParameters>
+                                    <asp:Parameter Name="Pedido" Type="String" />
+                                    <asp:Parameter Name="DescricaoPedido" Type="String" />
+                                    <asp:Parameter Name="idPedidos" Type="Int32" />
+                                </UpdateParameters>
+                            </asp:SqlDataSource>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="Portas">
+
+                        <asp:UpdatePanel runat="server">
+                            <ContentTemplate>
 
                                 <div class="form-horizontal">
                                     <div class="form-group">
@@ -200,15 +200,15 @@
 
 
                                 </div>
-               <asp:ScriptManager runat="server" ID="sm1"></asp:ScriptManager>
-        </ContentTemplate>
-    </asp:UpdatePanel>
+                                <asp:ScriptManager runat="server" ID="sm1"></asp:ScriptManager>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
 
-                            </div>
-                            <div class="tab-pane active" id="Usuarios">
-                                                                <asp:UpdatePanel runat="server">
-        <ContentTemplate>
-         
+                    </div>
+                    <div class="tab-pane" id="Usuarios">
+                        <asp:UpdatePanel runat="server">
+                            <ContentTemplate>
+
 
                                 <div class="form-horizontal">
 
@@ -328,13 +328,13 @@
                                     <div class="form-group">
                                         <div class="col-sm-12">
                                             <div class="">
-                                                <asp:GridView runat="server" ID="gdvw1"  CssClass="table table-responsive table-striped table-bordered no-margin" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="idUser" DataSourceID="SqlDataSourceUsuario" OnSelectedIndexChanged="gdvw1_SelectedIndexChanged">
+                                                <asp:GridView runat="server" ID="gdvw1" CssClass="table table-responsive table-striped table-bordered no-margin" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="idUser" DataSourceID="SqlDataSourceUsuario" OnSelectedIndexChanged="gdvw1_SelectedIndexChanged">
                                                     <Columns>
                                                         <asp:CommandField ShowSelectButton="True" />
                                                         <asp:BoundField DataField="idUser" HeaderText="#" InsertVisible="False" ReadOnly="True" SortExpression="idUser" />
                                                         <asp:BoundField DataField="NomeUsuario" HeaderText="Nome" SortExpression="NomeUsuario" />
                                                         <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
-                                                        <asp:BoundField DataField="GuidMap"  HeaderText="GuidMap" SortExpression="GuidMap" Visible="false" />
+                                                        <asp:BoundField DataField="GuidMap" HeaderText="GuidMap" SortExpression="GuidMap" Visible="false" />
                                                     </Columns>
                                                     <PagerStyle HorizontalAlign="Center" CssClass="pagination-ys" />
                                                 </asp:GridView>
@@ -358,8 +358,8 @@
                                                 </asp:SqlDataSource>
 
 
-                                               
-                                                  </div>
+
+                                            </div>
 
                                         </div>
 
@@ -367,25 +367,25 @@
 
                                 </div>
 
-            
-            </ContentTemplate>
-                                                                    
-                                                                    </asp:UpdatePanel>
-                            </div>
-                        </div>
 
+                            </ContentTemplate>
 
-
+                        </asp:UpdatePanel>
                     </div>
-
-
-
                 </div>
+
+
 
             </div>
 
-          
-   
+
+
+        </div>
+
+    </div>
+
+
+
 
     <div class="modal fade" id="curso">
         <div class="modal-dialog">
@@ -458,21 +458,21 @@
                     <h4 class="modal-title">Nova Categoria</h4>
                 </div>
                 <div class="modal-body">
-                         <div class="form-group">
+                    <div class="form-group">
 
-                            <asp:TextBox ID="txtNomeCategoria" ValidateRequestMode="Enabled" CssClass="form-control" placeholder="Nome Categoria" runat="server"></asp:TextBox>
-                            <span class="md-line"></span>
-                        </div>
-                        <div class="form-group">
+                        <asp:TextBox ID="txtNomeCategoria" ValidateRequestMode="Enabled" CssClass="form-control" placeholder="Nome Categoria" runat="server"></asp:TextBox>
+                        <span class="md-line"></span>
+                    </div>
+                    <div class="form-group">
 
-                            <asp:TextBox ID="txtDescricaoCategoria" ValidateRequestMode="Enabled" CssClass="form-control" TextMode="MultiLine" Rows="4" placeholder="Descricao" runat="server"></asp:TextBox>
-                            <span class="md-line"></span>
-                        </div>
+                        <asp:TextBox ID="txtDescricaoCategoria" ValidateRequestMode="Enabled" CssClass="form-control" TextMode="MultiLine" Rows="4" placeholder="Descricao" runat="server"></asp:TextBox>
+                        <span class="md-line"></span>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                    
-                                <asp:Button ID="btnSalvarCategoria" runat="server" CssClass="btn btn-info" OnClick="btnSalvarCategoria_Click" Text="Salvar" />
+
+                    <asp:Button ID="btnSalvarCategoria" runat="server" CssClass="btn btn-info" OnClick="btnSalvarCategoria_Click" Text="Salvar" />
                 </div>
             </div>
             <!-- /.modal-content -->
@@ -482,38 +482,38 @@
     <!-- /.modal -->
 
 
-   <div class="modal fade" id="pedidos">
-          <div class="modal-dialog">
+    <div class="modal fade" id="pedidos">
+        <div class="modal-dialog">
             <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title"> Novo Pedido</h4>
-              </div>
-                     <div class="form-group">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Novo Pedido</h4>
+                </div>
+                <div class="form-group">
 
-                            <asp:TextBox ID="txtNomePedido" ValidateRequestMode="Enabled" CssClass="form-control" placeholder="Nome Pedido" runat="server"></asp:TextBox>
-                            <span class="md-line"></span>
-                        </div>
-                        <div class="form-group">
+                    <asp:TextBox ID="txtNomePedido" ValidateRequestMode="Enabled" CssClass="form-control" placeholder="Nome Pedido" runat="server"></asp:TextBox>
+                    <span class="md-line"></span>
+                </div>
+                <div class="form-group">
 
-                            <asp:TextBox ID="txtDescricaoPedido" ValidateRequestMode="Enabled" CssClass="form-control" TextMode="MultiLine" Rows="4" placeholder="Descricao" runat="server"></asp:TextBox>
-                            <span class="md-line"></span>
-                        </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                          <asp:Button ID="btnSalvarpedidos" runat="server" CssClass="btn btn-info" OnClick="btnSalvarpedidos_Click" Text="Salvar" />
-                     
-              </div>
+                    <asp:TextBox ID="txtDescricaoPedido" ValidateRequestMode="Enabled" CssClass="form-control" TextMode="MultiLine" Rows="4" placeholder="Descricao" runat="server"></asp:TextBox>
+                    <span class="md-line"></span>
+                </div>
             </div>
-            <!-- /.modal-content -->
-          </div>
-          <!-- /.modal-dialog -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                <asp:Button ID="btnSalvarpedidos" runat="server" CssClass="btn btn-info" OnClick="btnSalvarpedidos_Click" Text="Salvar" />
 
-        <!-- /.modal -->
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+
+    <!-- /.modal -->
 
 
 
-    
+
 </asp:Content>

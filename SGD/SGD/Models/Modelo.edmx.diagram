@@ -57,6 +57,9 @@
         <AssociationConnector Association="sgdbModel.FK_Submissao_tb_Curso_tb" />
         <AssociationConnector Association="sgdbModel.FK_Submissao_tb_Supervisor_mono_tb" />
         <AssociationConnector Association="sgdbModel.FK_Submissao_tb_Vagas_Submissao_tb" />
+        <EntityTypeShape EntityType="sgdbModel.View_Email" Width="1.5" PointX="17.375" PointY="0.75" />
+        <AssociationConnector Association="sgdbModel.FK_DocumentoUsuario_tb_Pedidos_tb" />
+        <EntityTypeShape EntityType="sgdbModel.View_Submissao" Width="1.5" PointX="17.375" PointY="5.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

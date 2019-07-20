@@ -51,5 +51,63 @@ namespace SGD
                 throw;
             }
         }
+
+        void update(int idsub, int idu, string estdado) {
+            try
+            {
+                Submissao_tb ab = si.Submissao_tb.Where(d => d.idSubmissao == idsub).FirstOrDefault();
+                ab.id_Secretaria_Confirmacao = idu;
+                ab.Data_Submissao = DateTime.Now;
+                ab.Estado = estdado;
+                si.SaveChanges();
+                GridViewCurso.DataBind();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        protected void GridViewCurso_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            try
+            {
+                if (e.CommandName == "sim")
+                {
+                    int crow;
+                    crow = Convert.ToInt32(e.CommandArgument.ToString());
+                    int v = int.Parse( GridViewCurso.Rows[crow].Cells[0].Text);
+
+                    update(v, idu, "Aprovado");
+                }
+                else if (e.CommandName == "nao")
+                {
+                    int crow;
+                    crow = Convert.ToInt32(e.CommandArgument.ToString());
+                    int v = int.Parse(GridViewCurso.Rows[crow].Cells[0].Text);
+
+                    update(v, idu, "Rejeitado");
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        
+
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            HttpContext.Current.Response.Redirect("~/WebFormListaSubmissao.aspx?id=" + thePID + "&status=" + "Aprovado", false);
+            HttpContext.Current.ApplicationInstance.CompleteRequest();
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            HttpContext.Current.Response.Redirect("~/WebFormListaSubmissao.aspx?id=" + thePID + "&status=" + "Rejeitado", false);
+            HttpContext.Current.ApplicationInstance.CompleteRequest();
+        }
     }
 }

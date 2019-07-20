@@ -39,7 +39,7 @@
                 <div class="box-header with-border">
                     <h3 class="box-title">Read Mail</h3>
 
-                    <div class="box-tools pull-right">
+                    <div class="box-tools pull-right hide">
                         <a href="#" class="btn btn-box-tool" data-toggle="tooltip" title="Previous"><i class="fa fa-chevron-left"></i></a>
                         <a href="#" class="btn btn-box-tool" data-toggle="tooltip" title="Next"><i class="fa fa-chevron-right"></i></a>
                     </div>
@@ -49,7 +49,7 @@
                     <div class="mailbox-read-info">
                         <h3><%=proc .Assunto %></h3>
                         <h5>Mensagem: <%=peds.Pedido %></h5>
-                        <h5>From: <%=usrsender.NomeUsuario %>
+                        <h5>From: <%=usrsender.NomeUsuario %> - <%=usrsender.Email %>
                             <span class="mailbox-read-time pull-right"><%=DateTime.Parse(proc.DataEnvio.ToString()).ToUniversalTime() %></span></h5>
                     </div>
 

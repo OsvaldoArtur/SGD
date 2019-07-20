@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using SGD.Models;
-
+using System.IO;
 
 namespace SGD
 {
@@ -40,10 +40,17 @@ namespace SGD
         {
             
         }
-
+        string path;
         protected void BtnSalvar_Click(object sender, EventArgs e)
         {
-            cadastrarEmpresa();
+           // cadastrarEmpresa();
+            if (FileUpload1.HasFile) {
+                 path = "~/App_Data/" + Guid.NewGuid().ToString() + "" + Path.GetExtension(FileUpload1.FileName);
+                FileUpload1.SaveAs(MapPath(path));
+                System.Web.HttpContext.Current.Server.MapPath(path);
+
+             
+            }
         }
     }
 }

@@ -79,21 +79,21 @@ namespace SGD
 
             PanelEnviados.Visible = false;
             PanelRecebidos.Visible = true;
-            PanelComporEmail.Visible = false;
+       
             
         }
 
         protected void btnCompor_Click(object sender, EventArgs e)
         {
             PanelRecebidos.Visible = false;
-            PanelComporEmail.Visible = true;
+     
         }
 
         protected void btnEmailEnviado_Click(object sender, EventArgs e)
         {
             PanelEnviados.Visible = true;
             PanelRecebidos.Visible = false;
-            PanelComporEmail.Visible = false;
+      
         }
     }
 }

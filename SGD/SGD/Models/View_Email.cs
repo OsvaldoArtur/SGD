@@ -12,13 +12,8 @@ namespace SGD.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class DocumentoUsuario_tb
+    public partial class View_Email
     {
-        public DocumentoUsuario_tb()
-        {
-            this.RespostaDocumentoUsuario_tb = new HashSet<RespostaDocumentoUsuario_tb>();
-        }
-    
         public int idDocumentouser { get; set; }
         public Nullable<int> idUserReceiver { get; set; }
         public Nullable<int> idUserSender { get; set; }
@@ -26,12 +21,11 @@ namespace SGD.Models
         public string Nota { get; set; }
         public string Estado { get; set; }
         public string CodigoDocumneto { get; set; }
-        public Nullable<int> idPedido { get; set; }
         public Nullable<System.DateTime> DataEnvio { get; set; }
         public Nullable<System.TimeSpan> HoraEnvio { get; set; }
         public string GuidMap { get; set; }
-    
-        public virtual ICollection<RespostaDocumentoUsuario_tb> RespostaDocumentoUsuario_tb { get; set; }
-        public virtual Pedidos_tb Pedidos_tb { get; set; }
+        public int idPedidos { get; set; }
+        public string Pedido { get; set; }
+        public string DescricaoPedido { get; set; }
     }
 }
